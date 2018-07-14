@@ -8,6 +8,7 @@ const validateEmail = email => {
   return re.test(String(email).toLowerCase());
 }
 
+
 const userSchema = new Schema({
   name: {
     first: {
@@ -30,15 +31,7 @@ const userSchema = new Schema({
     lowercase: true,
     trim: true,
     minlength: [4, 'Please select username 4 characters or more.'],
-    minlength: [20, 'Please select username 20 characters or less.'],
-    validate: {
-      validator: (v, cb) => {
-        User.find({username: v}, (err,docs) => {
-           cb(docs.length == 0);
-        });
-      },
-      message: 'Username already exists!'
-    }
+    maxlength: [20, 'Please select username 20 characters or less.'],
   },
   contact: {
     email: {
@@ -47,16 +40,10 @@ const userSchema = new Schema({
       unique: true,
       lowercase: true,
       trim: true,
-      validate: [
-        [validateEmail, '{VALUE} is not a valid email/'],
-        {
-          validator: (v, cb) => {
-            User.find({email: v}, (err,docs) => {
-              cb(docs.length == 0);
-            });
-          }, message: 'Email already exists!'
-        }
-      ] 
+      validate: {
+        validator: validateEmail,
+        message: '{VALUE} is not a valid email'
+      }
     },
     phone: {
       type: String,
@@ -82,11 +69,11 @@ const userSchema = new Schema({
       maxlength: 2
     }
   },
-  recipes: [{ type : ObjectId, ref: 'Recipe' }],
+  recipes: [{ type : Schema.Types.ObjectId, ref: 'Recipe' }],
   social: {
-    followers: [{ type : ObjectId, ref: 'User' }],
-    following: [{ type : ObjectId, ref: 'User' }],
-    favorites: [{ type : ObjectId, ref: 'Recipe' }]
+    followers: [{ type : Schema.Types.ObjectId, ref: 'User' }],
+    following: [{ type : Schema.Types.ObjectId, ref: 'User' }],
+    favorites: [{ type : Schema.Types.ObjectId, ref: 'Recipe' }]
   },
 
   created: { type: Date, default: Date.now }

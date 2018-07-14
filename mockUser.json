@@ -1,15 +1,17 @@
 [
     {
-        "_id": 1,
-        "name": "Nick Clear",
+        "name": {
+            "first": "Nick",
+            "last": "Clear"
+        },
         "username": "nmclear",
         "contact": {
             "email": "nickclear22@gmail.com",
-            "phone": "2314090332",
+            "phone": "231-409-0332",
             "city": "Laguna Beach",
             "state": "CA"
         },
-        "recipes": [1, 2, 3],
+        "recipes": [],
         "social": {
             "followers":[],
             "following":[],
