@@ -9,6 +9,7 @@ const app = express();
 // MIDDLEWARE
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
 // SERVE STATIC
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
@@ -17,11 +18,9 @@ if (process.env.NODE_ENV === "production") {
 // API ROUTES
 app.use(routes);
 
-
-
 // REACT ROUTE
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+  res.sendFile(path.join(__dirname, "./../client/build/index.html"));
 });
 
 // MONGO CONNECT
