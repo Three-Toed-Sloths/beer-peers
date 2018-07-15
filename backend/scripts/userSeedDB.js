@@ -113,7 +113,7 @@ db.User
   .remove({})
   .then(() => db.User.collection.insertMany(userSeed))
   .then(data => {
-    console.log(data.insertedIds.length + " records inserted!");
+    console.log(data.insertedIds.length + " user records inserted!");
     process.exit(0);
   })
   .catch(err => {
