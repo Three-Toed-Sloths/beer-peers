@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
-const db = require("../models");
+const mongoose = require('mongoose');
+const db = require('../models');
 mongoose.Promise = global.Promise;
 
 // This file empties the Users collection and inserts the user below
@@ -113,7 +113,7 @@ db.User
   .remove({})
   .then(() => db.User.collection.insertMany(userSeed))
   .then(data => {
-    console.log(data.insertedIds.length + " user records inserted!");
+    console.log(data.insertedIds.length + ' user records inserted!');
     process.exit(0);
   })
   .catch(err => {

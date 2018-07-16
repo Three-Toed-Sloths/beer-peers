@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
-const db = require("../models");
+const mongoose = require('mongoose');
+const db = require('../models');
 mongoose.Promise = global.Promise;
 
 // This file empties the Users collection and inserts the user below
@@ -94,7 +94,7 @@ db.Recipe
   .remove({})
   .then(() => db.Recipe.collection.insertMany(recipeSeed))
   .then(data => {
-    console.log(data.insertedIds.length + " recipe records inserted!");
+    console.log(data.insertedIds.length + ' recipe records inserted!');
     process.exit(0);
   })
   .catch(err => {
