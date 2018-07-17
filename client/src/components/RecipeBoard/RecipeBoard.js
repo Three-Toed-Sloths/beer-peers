@@ -37,14 +37,15 @@ class RecipeBoard extends Component {
             <div className="recipeBoard">
                 <Grid container spacing={24}>
                     {this.state.recipes.map(recipe => (
-                        <Grid item sm={12} m={6}>
+                        <Grid item key={recipe.id} sm={12} m={6}>
                             <RecipeCard
                                 id={recipe.id}
-                                key={recipe.id}
+                                // key={recipe.id}
                                 name={recipe.name}
                                 style={recipe.style}
                                 abv={recipe.specs.abv}
-                                batch={recipe.specs.batch}
+                                batchSize={recipe.specs.batch.size}
+                                batchUnits={recipe.specs.batch.units}
                                 ibu={recipe.specs.ibu}
                                 fg={recipe.specs.fg}
                                 brewer={recipe.brewer}
