@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import API from '../../utils/recipeAPI';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import RecipeBoard from './../../components/RecipeBoard';
-import SearchBar from './../../components/SearchBar';
 
 import "./ViewAllRecipes.css";
 

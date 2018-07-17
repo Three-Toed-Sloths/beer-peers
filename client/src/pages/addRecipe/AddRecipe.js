@@ -1,16 +1,18 @@
-import React, { Component } from 'react';
-import API from '../../utils/recipeAPI';
+import React from 'react';
+
+import RecipeForm from './../../components/RecipeForm';
 
 
+import "./AddRecipe.css";
 
-class AddRecipe extends Component {
-    state = {
 
-    }
-    render() {
-        return('test')
-    }
-}
+const AddRecipe = props => (
+    <div className="RecipeForm">
+        <RecipeForm/>
+    </div>
+)
+    
+
 
 
 

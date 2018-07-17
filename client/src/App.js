@@ -2,7 +2,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NoMatch from './pages/NoMatch';
-import Nav from './components/Nav';
+// import Nav from './components/Nav';
 import Wrapper from './components/Wrapper';
 import AllRecipes from './pages/ViewAllRecipes';
 import ViewRecipe from './pages/ViewRecipe';
