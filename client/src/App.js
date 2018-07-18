@@ -6,6 +6,7 @@ import Nav from './components/Nav';
 import AllRecipes from './pages/viewAllRecipes';
 import Likes from './pages/Likes';
 import Following from './pages/Following';
+import Register from './pages/Register';
 
 const App = () => (
   <Router>
