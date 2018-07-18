@@ -3,18 +3,20 @@ import Grid from 'react-bootstrap/lib/Grid';
 import Col from 'react-bootstrap/lib/Col';
 import Row from 'react-bootstrap/lib/Row';
 import ProfileCard from "../../components/ProfileCard";
+import SecondaryNav from "../../components/SecondaryNav";
 
 
-//MATERIAL UI
 const Profile = () => (
     <Grid>
         <Row>
-            <Col sm={2}>
+            <Col sm={12}>
                 <ProfileCard></ProfileCard>
             </Col>
         </Row>
         <Row>
-            <Col sm={12}>Secondary Nav</Col>
+            <Col sm={12}>
+                <SecondaryNav></SecondaryNav>
+            </Col>
         </Row>
         <Row>
             <Col sm={6}>Recipe Cards</Col>
