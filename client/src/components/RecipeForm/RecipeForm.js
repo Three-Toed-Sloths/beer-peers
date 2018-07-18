@@ -10,7 +10,9 @@ import "./RecipeForm.css";
 
 
 const beerStyles = ['American IPA', 'Stout', 'Amber Ale'];
-const units = ['gal', 'liters', 'bbls']
+const liqUnits = ['gal', 'liters', 'bbls'];
+const weightUnits = ['lbs', 'kg', 'oz', 'g'];
+const hopType = ['Pellet', 'Extract', 'Whole Leaf']
 
 class RecipeForm extends Component {
     state = {
@@ -39,8 +41,6 @@ class RecipeForm extends Component {
             <Row className="show-grid">
                 <Col xs={12} md={12}>
                     <form>
-
-
                         <Row>
                             <Col xs={6}>
                                 <FormGroup controlId="formBasicText">
@@ -66,8 +66,6 @@ class RecipeForm extends Component {
                                 </FormGroup>
                             </Col>
                         </Row>
-
-                        
                         <Row>
                             <Col xs={4}>
                                 <Row>
@@ -81,7 +79,7 @@ class RecipeForm extends Component {
                                                     id="input-dropdown-addon"
                                                     title="Units"
                                                 >
-                                                    {units.map(unit => (
+                                                    {liqUnits.map(unit => (
                                                         <MenuItem key={unit} value={unit}>{unit}</MenuItem>
                                                     ))}
                                                 </DropdownButton>
@@ -131,7 +129,7 @@ class RecipeForm extends Component {
                                                     id="input-dropdown-addon"
                                                     title="Units"
                                                 >
-                                                    {units.map(unit => (
+                                                    {liqUnits.map(unit => (
                                                         <MenuItem key={unit} value={unit}>{unit}</MenuItem>
                                                     ))}
                                                 </DropdownButton>
@@ -139,8 +137,8 @@ class RecipeForm extends Component {
                                         </FormGroup>
                                     </Col>
                                     <Col xs={6}>
-                                        <FormGroup controlId="boilTime">
-                                            <ControlLabel>Boil Time</ControlLabel>
+                                        <FormGroup controlId="boilLength">
+                                            <ControlLabel>Boil Length</ControlLabel>
                                             <InputGroup>
                                                 <FormControl type="number" placeholder="Boil"/>
                                                 <InputGroup.Addon>min</InputGroup.Addon>
@@ -148,7 +146,6 @@ class RecipeForm extends Component {
                                         </FormGroup>
                                     </Col>
                                 </Row>
-
                             </Col>
                             <Col xs={8}>
                                 <FormGroup controlId="recipeDescription">

@@ -41,7 +41,7 @@ class RecipeBoard extends Component {
                         <Row>
                             <Col item key={recipe.id} sm={12} md={12}>
                                 <RecipeCard
-                                    id={recipe.id}
+                                    id={recipe._id}
                                     // key={recipe.id}
                                     name={recipe.name}
                                     style={recipe.style}
