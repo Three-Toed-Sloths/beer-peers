@@ -3,6 +3,7 @@
     margin-bottom: 10px;
     border: solid 2px red;
     padding: 20px;
+    width: 100%;
 }
 .profileCard_content{
     height: 300px;
