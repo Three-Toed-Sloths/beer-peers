@@ -8,6 +8,8 @@
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
+    /* overflow not working */
+    /* overflow: hidden; */
     /* margin: -10px; */
     /* left: -10px;
     top: -10px; */

@@ -13,20 +13,20 @@ const userSchema = new Schema({
   name: {
     first: {
       type: String,
-      required: [true, 'Please enter first name.'],
+      // required: [true, 'Please enter first name.'],
       trim: true,
       maxlength: 50
     },
     last: {
       type: String,
-      required: [true, 'Please enter last name.'],
+      // required: [true, 'Please enter last name.'],
       trim: true,
       maxlength: 50
     }
   },
   username: {
     type: String,
-    required: [true, 'Please enter username.'],
+    // required: [true, 'Please enter username.'],
     unique: true,
     lowercase: true,
     trim: true,
@@ -36,38 +36,38 @@ const userSchema = new Schema({
   contact: {
     email: {
       type: String,
-      required: [true, 'Please enter email.'],
+      // required: [true, 'Please enter email.'],
       unique: true,
       lowercase: true,
       trim: true,
-      validate: {
-        validator: validateEmail,
-        message: '{VALUE} is not a valid email'
-      }
+      // validate: {
+      //   validator: validateEmail,
+      //   message: '{VALUE} is not a valid email'
+      // }
     },
     phone: {
       type: String,
       required: false,
       trim: true,
-      validate: {
-        validator: phone =>  /\d{3}-\d{3}-\d{4}/.test(phone),
-        message: '{VALUE} is not a valid phone number.'
-      },
+      // validate: {
+      //   validator: phone =>  /\d{3}-\d{3}-\d{4}/.test(phone),
+      //   message: '{VALUE} is not a valid phone number.'
+      // },
       maxlength: 12
     },
     city: {
       type: String,
-      required: [true, 'Please enter city.'],
+      // required: [true, 'Please enter city.'],
       trim: true,
       maxlength: 50
-    },
-    state: {
-      type: String,
-      required: [true, 'Please enter state.'],
-      trim: true,
-      enum: STATES,
-      maxlength: 2
     }
+    // state: {
+    //   type: String,
+    //   required: [true, 'Please enter state.'],
+    //   trim: true,
+    //   enum: STATES,
+    //   maxlength: 2
+    // }
   },
   recipes: [{ type : Schema.Types.ObjectId, ref: 'Recipe' }],
   social: {

@@ -4,7 +4,7 @@ import './Likes.css';
 
 const Likes = () => {
     return (
-        <Grid className='marquee'>
+        // <Grid className='marquee'>
             <Row>
                 <Col xs={12}>
                     <div className='likesParallax'>
@@ -15,7 +15,7 @@ const Likes = () => {
                     </div>
                 </Col>
             </Row>
-        </Grid>
+        // </Grid>
     );
 }
 
