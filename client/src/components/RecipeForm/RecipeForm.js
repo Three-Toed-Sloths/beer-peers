@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import API from '../../utils/recipeAPI';
 
-
-
 import { Grid, Col, Row, Button } from 'react-bootstrap';
 import { FormGroup, ControlLabel, FormControl, HelpBlock, InputGroup, DropdownButton, MenuItem } from 'react-bootstrap';
+import GrainRow from './GrainRow';
+
 
 import "./RecipeForm.css";
 
@@ -16,7 +16,9 @@ const hopType = ['Pellet', 'Extract', 'Whole Leaf']
 
 class RecipeForm extends Component {
     state = {
-        recipe: {}
+        recipe: {},
+        numGrainRow: 1,
+        numGrainRowArr: [1]
     }   
 
     componentDidMount() {
@@ -31,6 +33,13 @@ class RecipeForm extends Component {
 
     collectFormData = () => {
         this.setState()
+    }
+
+    onAddGrainRow = () => {
+        this.setState({
+            numGrainRow: this.state.numGrainRow + 1,
+            numGrainRowArr: [...this.state.numGrainRowArr, 1]
+        });
     }
 
 
@@ -154,8 +163,61 @@ class RecipeForm extends Component {
                                 </FormGroup>
                             </Col>
                         </Row>
+                        <Row>
+                            <Col xs={4}>
+                                <FormGroup controlId="baseMalt" >
+                                    <ControlLabel>Base Malt</ControlLabel>
+                                    {this.state.numGrainRowArr.map(unit => (
+                                        <GrainRow />
+                                    ))}
+                                    <Button onClick={this.onAddGrainRow}>New Base Malt</Button>
+                                    {/* <Row className="baseMaltInputRow">
+                                        <Col xs={6}>
+                                            <InputGroup>
+                                                <FormControl type="text" id="baseMalt" placeholder="Malt Name"/>
+                                            </InputGroup>
+                                        </Col>
+                                        <Col xs={6}>
+                                            <InputGroup>
+                                                <FormControl type="number" id="maltWeight" placeholder="Weight"/>
+                                                <DropdownButton
+                                                    componentClass={InputGroup.Button}
+                                                    id="input-dropdown-addon"
+                                                    title="Units"
+                                                >
+                                                    {weightUnits.map(unit => (
+                                                        <MenuItem key={unit} value={unit}>{unit}</MenuItem>
+                                                    ))}
+                                                </DropdownButton>
+                                            </InputGroup>
+                                        </Col>
+                                    </Row> */}
+                                </FormGroup>
+                            </Col>
+                            <Col xs={6}>
+                                <Row>
+                                    <Col xs={6}>
+                                      
+                                      
+                                    </Col>
+                                    <Col xs={6}>
 
+                                      
+                                    </Col>
+                                </Row>
+
+                            </Col>
+
+                        </Row>
                         
+
+
+
+
+
+
+
+
                         <FormGroup controlId="formControlsTextarea">
                             <ControlLabel>Recipe Instructions</ControlLabel>
                             <FormControl componentClass="textarea" placeholder="Instructions" />

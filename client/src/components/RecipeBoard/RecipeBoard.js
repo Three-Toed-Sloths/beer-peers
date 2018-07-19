@@ -31,8 +31,6 @@ class RecipeBoard extends Component {
     }
 
 
-
-
     render() {
         return (
             <div className="recipeBoard">
