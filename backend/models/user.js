@@ -49,25 +49,25 @@ const userSchema = new Schema({
       type: String,
       required: false,
       trim: true,
-      // validate: {
-      //   validator: phone =>  /\d{3}-\d{3}-\d{4}/.test(phone),
-      //   message: '{VALUE} is not a valid phone number.'
-      // },
+      validate: {
+        validator: phone =>  /\d{3}-\d{3}-\d{4}/.test(phone),
+        message: '{VALUE} is not a valid phone number.'
+      },
       maxlength: 12
     },
     city: {
       type: String,
-      // required: [true, 'Please enter city.'],
+      required: [true, 'Please enter city.'],
       trim: true,
       maxlength: 50
+    },
+    state: {
+      type: String,
+      required: [true, 'Please enter state.'],
+      trim: true,
+      enum: STATES,
+      maxlength: 2
     }
-    // state: {
-    //   type: String,
-    //   required: [true, 'Please enter state.'],
-    //   trim: true,
-    //   enum: STATES,
-    //   maxlength: 2
-    // }
   },
   recipes: [{ type : Schema.Types.ObjectId, ref: 'Recipe' }],
   social: {
