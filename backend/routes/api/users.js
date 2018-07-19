@@ -13,4 +13,9 @@ router
   .put(usersController.update)
   .delete(usersController.remove);
 
+  //my things.
+router
+  .route('/rec/:id')
+  .post(usersController.addRecById)
+
 module.exports = router;
