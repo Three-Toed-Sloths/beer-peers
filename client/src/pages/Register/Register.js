@@ -1,16 +1,7 @@
 import React, { Component } from 'react';
-import { FormGroup, ControlLabel, FormControl, Button, Row, Col } from 'react-bootstrap';
+import { FormGroup, ControlLabel, FormControl, Button, Row, Col, Feedback } from 'react-bootstrap';
 import API from '../../utils/userAPI';
 import './Register.css';
-
-const FieldGroup = ({ id, label, ...props }) => {
-    return(
-        <FormGroup controlId={id}>
-            <ControlLabel>{label}</ControlLabel>
-            <FormControl {...props} />
-        </FormGroup>
-    );
-};
 
 class Register extends Component {
     state = {
@@ -20,17 +11,14 @@ class Register extends Component {
         password: '',
         email: '',
         phone: '',
-        city: ''
+        city: '',
         // state: ''
+        image: ''
     };
 
     handleInputChange = event => {
         let value = event.target.value;
         const name = event.target.name;
-
-        // if (name === 'password') {
-        //     value = value.substring(0, 15);
-        // };
 
         this.setState({
             [name]: value
@@ -39,11 +27,11 @@ class Register extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        if (!this.state.first || !this.state.last || !this.state.username || 
-        !this.state.email) {
-            alert('Please fill out all manditory fields.')
-        }
-        else (
+        // if (!this.state.first || !this.state.last || !this.state.username || 
+        // !this.state.email) {
+        //     alert('Please fill out all manditory fields.')
+        // }
+        // else (
             API.saveUser({
                 name: {
                     first: this.state.first,
@@ -56,9 +44,16 @@ class Register extends Component {
                     city: this.state.city,
                     // state: this.state.state
                 },
-                password: this.state.password
+                password: this.state.password,
+                // currently not included in the seed. We'll have to come back and update
+                // image: this.state.image
             })
-        )
+        // )
+
+        
+        // ==============================
+        // || Checking Form Submission ||
+        // ==============================
 
         let newUser = {
             name: {
@@ -77,115 +72,150 @@ class Register extends Component {
 
         console.log(newUser);
 
-        this.setState({
-            first: '',
-            last: '',
-            username: '',
-            password: '',
-            email: '',
-            phone: '',
-            city: '',
-            // state: ''
-        });
+        // ===============
+        // || End Check ||
+        // ===============
+
+        // this.setState({
+        //     first: '',
+        //     last: '',
+        //     username: '',
+        //     password: '',
+        //     email: '',
+        //     phone: '',
+        //     city: '',
+        //     state: ''
+        // });
     };
+
+    // handleValidateName() {
+    //     const length = this.state.value.length;
+    //     if (length > 1) return 'success';
+    //     else if (length > 50) return 'error';
+    //     return null;
+    // };
+    // handleValidationState() {
+    //     const length = this.state.value.length;
+    //     if (length > 10) return 'success';
+    //     else if (length > 5) return 'warning';
+    //     else if (length > 0) return 'error';
+    //     return null;
+    // }
 
     render() {
         return(
             <form>
                 <Row>
                     <Col xs={12} md={6}>
-                    <FieldGroup
-                        id='formFirst'
-                        type='text'
-                        label='First Name:'
-                        placeholder='First Name'
-                        value={this.state.first}
-                        name='first'
-                        onChange={this.handleInputChange}
-                    />
+                    <FormGroup controlId={'formFirst'}>
+                        <ControlLabel>First Name:</ControlLabel>
+                        <FormControl 
+                            type='text'
+                            placeholder='First Name'
+                            value={this.state.first}
+                            name='first'
+                            onChange={this.handleInputChange}
+                        />
+                        {/* setup for the validation. still testing */}
+                        {/* validateName={this.handleValidationState()} */}
+                        <FormControl.Feedback />
+                    </FormGroup>
                     </Col>
                     <Col xs={12} md={6}>
-                    <FieldGroup
-                        id='formLast'
-                        type='text'
-                        label='Last Name:'
-                        placeholder='Last Name'
-                        value={this.state.last}
-                        name='last'
-                        onChange={this.handleInputChange}
-                    />
+                    <FormGroup controlId={'formLast'}>
+                        <ControlLabel>Last Name:</ControlLabel>
+                        <FormControl
+                            type='text'
+                            placeholder='Last Name'
+                            value={this.state.last}
+                            name='last'
+                            onChange={this.handleInputChange}
+                        />
+                        {/* setup for the validation. still testing */}
+                        {/* validateName={this.handleValidationState()} */}
+                    </FormGroup>
                     </Col>
                 </Row>
                 <Row>
                     <Col sm={12} md={6}>
-                        <FieldGroup
-                            id='formUsername'
-                            type='text'
-                            label='Username:'
-                            placeholder='Username'
-                            value={this.state.username}
-                            name='username'
-                            onChange={this.handleInputChange}
-                        />
+                        <FormGroup controlId={'formUsername'}>
+                            <ControlLabel>Username:</ControlLabel>
+                            <FormControl
+                                type='text'
+                                placeholder='Username'
+                                value={this.state.username}
+                                name='username'
+                                onChange={this.handleInputChange}
+                            />
+                        </FormGroup>
                     </Col>
                     <Col xs={12} md={6}>
-                        <FieldGroup
-                            id='formPassword'
-                            type='password'
-                            label='Password:'
-                            placeholder='Password'
-                            value={this.state.password}
-                            name='password'
-                            onChange={this.handleInputChange}
-                        />
-                    </Col>
-                </Row>
-                <Row>
-                    <Col xs={12} md={6}>
-                        <FieldGroup 
-                            id='formEmail'
-                            type='email'
-                            label='Email Address:'
-                            placeholder='Email Address'
-                            value={this.state.email}
-                            name='email'
-                            onChange={this.handleInputChange}
-                        />
-                    </Col>
-                    <Col xs={12} md={6}>
-                        <FieldGroup
-                            id='formPhone'
-                            type='text'
-                            label='Phone Number:'
-                            placeholder='Phone Number'
-                            value={this.state.phone}
-                            name='phone'
-                            onChange={this.handleInputChange}
-                        />
+                        <FormGroup controlId={'formPassword'}>
+                            <ControlLabel>Password:</ControlLabel>
+                            <FormControl
+                                type='password'
+                                placeholder='Password'
+                                value={this.state.password}
+                                name='password'
+                                onChange={this.handleInputChange}
+                            />
+                        </FormGroup>
                     </Col>
                 </Row>
                 <Row>
                     <Col xs={12} md={6}>
-                        <FieldGroup
-                            id='formCity'
-                            type='text'
-                            label='City:'
-                            placeholder='City'
-                            value={this.state.city}
-                            name='city'
-                            onChange={this.handleInputChange}
-                        />
+                        <FormGroup controlId={'formEmail'}>
+                            <ControlLabel>Email Address:</ControlLabel>
+                            <FormControl
+                                type='email'
+                                placeholder='Email Address'
+                                value={this.state.email}
+                                name='email'
+                                onChange={this.handleInputChange}
+                            />
+                        </FormGroup>
+                    </Col>
+                    <Col xs={12} md={6}>
+                        <FormGroup controlId={'formPhone'}>
+                            <ControlLabel>Phone Number:</ControlLabel>
+                            <FormControl
+                                type='text'
+                                placeholder='Phone Number'
+                                value={this.state.phone}
+                                name='phone'
+                                onChange={this.handleInputChange}
+                            />
+                        </FormGroup>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col xs={12} md={6}>
+                        <FormGroup controlId={'formCity'}>
+                            <ControlLabel>City:</ControlLabel>
+                            <FormControl
+                                type='text'
+                                placeholder='City'
+                                value={this.state.city}
+                                name='city'
+                                onChange={this.handleInputChange}
+                            />
+                        </FormGroup>
                     </Col>
                 </Row>
                 {/* will have to work on this later */}
                 {/* <FieldGroup id='formState'>
                     <controlLabel>Select</controlLabel>
                 </FieldGroup> */}
-                <FieldGroup 
-                    id='formFile'
-                    type='file'
-                    label='Add a Profile Image:'
-                />
+                <FormGroup controlId={'formImage'}>
+                    <ControlLabel>Image URL:</ControlLabel>
+                    <FormControl
+                        type='text'
+                        placeholder='Image URL'
+                        value={this.state.image}
+                        name='image'
+                        onChange={this.handleInputChange}
+                    />
+                </FormGroup>
                 <Button onClick={this.handleSubmit} type='submit'>Submit</Button>
             </form>
         )
