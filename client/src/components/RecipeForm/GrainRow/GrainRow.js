@@ -11,12 +11,12 @@ const GrainRow = props => (
 <Row className="baseMaltInputRow">
     <Col xs={6}>
         <InputGroup>
-            <FormControl type="text" id="baseMalt" placeholder="Malt Name"/>
+            <FormControl type="text" class="baseMalt" placeholder="Malt Name"/>
         </InputGroup>
     </Col>
     <Col xs={6}>
         <InputGroup>
-            <FormControl type="number" id="maltWeight" placeholder="Weight"/>
+            <FormControl type="number" class="maltWeight" placeholder="Weight"/>
             <DropdownButton
                 componentClass={InputGroup.Button}
                 id="input-dropdown-addon"
