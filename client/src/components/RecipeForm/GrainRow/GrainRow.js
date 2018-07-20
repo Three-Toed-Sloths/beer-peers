@@ -8,13 +8,13 @@ import "./GrainRow.css";
 const weightUnits = ['lbs', 'kg', 'oz', 'g'];
 
 const GrainRow = props => (
-    <Row className="baseMaltInputRow">
+    <Row className="maltInputRow">
         <Col xs={6}>
             <InputGroup>
                 <FormControl
                     type="text"
                     className="maltName"
-                    name={'maltName'}
+                    name='name'
                     value={props.nameValue}
                     onChange={props.nameUpdate}
                     placeholder="Malt Name"
@@ -26,7 +26,7 @@ const GrainRow = props => (
                 <FormControl
                     type="number"
                     className="maltWeight"
-                    name={'MaltWeight'}
+                    name='amount'
                     value={props.weightValue}
                     onChange={props.weightUpdate}
                     placeholder="Weight"
