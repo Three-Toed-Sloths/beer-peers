@@ -52,12 +52,10 @@ class RecipeForm extends Component {
         ]
     }   
 
-    addRecipe = () => {
-        API.addRecipe()
-         .then(res => {console.log(res.data)})
+    addRecipe = newRecipe => {
+        API.saveRecipe(newRecipe)
+         .then(res => this.resetState())
          .catch(err => console.log(err));
-
-        this.resetState();
     }
 
     handleInputChange = event => {
@@ -143,14 +141,14 @@ class RecipeForm extends Component {
                 {
                     name: '',
                     amount: '',
-                    units: 'lbs'
+                    units: 'lb'
                 }
             ],
             specialityMaltArr: [
                 {
                     name: '',
                     amount: '',
-                    units: 'lbs'
+                    units: 'lb'
                 }
             ]
         })
@@ -161,22 +159,22 @@ class RecipeForm extends Component {
 
         const newRecipe = {
             name: this.state.name,
-            brewer: '',
+            brewer: '5b4a548d4cb96a51b8d6c61b',
             style: this.state.style,
-            likes: 0,
+            likes: parseFloat(0),
             description: this.state.description,
             specs: {
-                abv: this.state.abv,
-                ibu: this.state.ibu,
-                og: this.state.og,
-                fg: this.state.fg,
+                abv: parseFloat(this.state.abv),
+                ibu: parseFloat(this.state.ibu),
+                og: parseFloat(this.state.og),
+                fg: parseFloat(this.state.fg),
                 batch: {
-                    size: this.state.batchVol,
+                    size: parseFloat(this.state.batchVol),
                     units: 'gal'
                 },
-                boil: this.state.boilLength,
+                boil: parseFloat(this.state.boilLength),
                 preboil: {
-                    size: this.state.preBoil,
+                    size: parseFloat(this.state.preBoil),
                     units: 'gal'
                 }
             },
@@ -195,8 +193,8 @@ class RecipeForm extends Component {
         }
 
         console.log(newRecipe);
+        this.addRecipe(newRecipe);
     }
-
 
 
     render() {
