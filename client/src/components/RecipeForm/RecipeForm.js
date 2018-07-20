@@ -25,7 +25,7 @@ class RecipeForm extends Component {
         numHopArr: [1],
 
         name: '',
-        style: 'American IPA',
+        style: '',
         batchVol: '',
         abv: '',
         og: '',
@@ -37,7 +37,28 @@ class RecipeForm extends Component {
         misc: '',
         yeast: '',
         hops: [{}],
-        baseMalt: [],
+        baseMaltArr: [
+            {
+                maltName: '',
+                maltWeight: '',
+                units: 'lbs'
+            },
+            {
+                maltName: '',
+                maltWeight: '',
+                units: 'lbs'
+            }
+    
+    ],
+
+
+        // baseMalt:{
+        //     baseName: 'hello',
+        //     baseMaltWeight: 0
+        // },
+        // baseMaltName1: 'hello',
+        // baseMaltWeight1: 0,
+        
         specialityMalt: []
 
     }   
@@ -51,11 +72,39 @@ class RecipeForm extends Component {
     }
 
     handleInputChange = event => {
-        const { name, value } = event.target;
+        // const { name, value } = event.target;
+        const name = event.target.name;
+        const value = event.target.value;
         this.setState({
           [name]: value
         });
     };
+
+    // handleChangeFor = (propertyName, i) => (event) => {
+    //     const { malt } = this.state.baseMaltArr[i];
+    //     const newMalt = {
+    //       ...malt,
+    //       [propertyName]: event.target.value
+    //     };
+    //     this.setState({ malt: newMalt });
+    //     alert('final' + this.state.baseMaltArr[i].maltName0)
+    //   }
+  
+   handleChangeFor = (propertyName, i) => (event) => {
+       
+    
+
+       
+            const baseMalts = this.state.baseMaltArr;
+            baseMalts[i][propertyName] = event.target.value;
+
+          
+            this.setState({
+                baseMalts,
+            });
+
+        // alert('final - ' + this.state.baseMaltArr[i].maltName)
+   }
   
 
     onAddBaseGrainRow = () => {
@@ -63,6 +112,29 @@ class RecipeForm extends Component {
             numGrainRow: this.state.numGrainRow + 1,
             numBaseRowArr: [...this.state.numBaseRowArr, 1]
         });
+        // const newMalt = `baseMalt${this.state.numGrainRow + 1}`;
+        const rowNum = this.state.numGrainRow + 1;
+        // console.log(newMalt);
+        this.setState({
+            baseMaltArr: [...this.state.baseMaltArr, 
+
+            {
+                maltName: '',
+                maltWeight: '',
+                units: 'lbs'
+            }
+        ]
+
+            // [`baseMalt${rowNum}`]: 'tester',
+            // [`baseMaltWeight${rowNum}`]: 5,
+
+            // baseMalt: [...this.state.baseMalt, {
+            //     [`baseMalt${rowNum}`]: 'tester',
+            //     [`baseMaltWeight${rowNum}`]: 5
+            // }]
+
+
+        })
     }
 
     onAddSpecGrainRow = () => {
@@ -79,8 +151,18 @@ class RecipeForm extends Component {
         });
     }
 
+
+    getMaltBill = () => {
+        const malts = this.state.baseMalt;
+        for(let i = 0; i < malts.length; i++){
+            console.log(malts[i])
+        }
+    }
+
     handleFormSubmit = event => {
         event.preventDefault();
+
+        alert(this.state.baseMaltArr)
 
         const newRecipe = {
             name: this.state.name,
@@ -105,9 +187,7 @@ class RecipeForm extends Component {
             },
             ingredients: {
                 malt: {
-                    base: [
-
-                    ],
+                    base: this.state.baseMaltArr,
                     speciality: [
 
                     ]
@@ -148,7 +228,7 @@ class RecipeForm extends Component {
                                 </FormGroup>
                             </Col>
                             <Col xs={6}>
-                                <FormGroup controlId="beerStyleInput">
+                                <FormGroup>
                                     <ControlLabel>Select Beer Style</ControlLabel>
                                     <FormControl componentClass="select" name='style' value={this.state.style} onChange={this.handleInputChange}>
                                         {beerStyles.map(style => (
@@ -162,7 +242,7 @@ class RecipeForm extends Component {
                             <Col xs={4}>
                                 <Row>
                                     <Col xs={6}>
-                                        <FormGroup controlId="batch" >
+                                        <FormGroup>
                                             <ControlLabel>Batch Volume</ControlLabel>
                                             <InputGroup>
                                                 <FormControl type="number" name="batchVol" value={this.state.batchVol} onChange={this.handleInputChange} id="batchVol" placeholder="Batch"/>
@@ -179,7 +259,7 @@ class RecipeForm extends Component {
                                         </FormGroup>
                                     </Col>
                                     <Col xs={6}>
-                                        <FormGroup controlId="abv">
+                                        <FormGroup>
                                             <ControlLabel>ABV</ControlLabel>
                                             <InputGroup>
                                                 <FormControl id="abvInput" type="number" name="abv" value={this.state.abv} onChange={this.handleInputChange} placeholder="Enter ABV"/>
@@ -190,7 +270,7 @@ class RecipeForm extends Component {
                                 </Row>
                                 <Row>
                                 <Col xs={6}>
-                                        <FormGroup controlId="ibu">
+                                        <FormGroup>
                                             <ControlLabel>IBU</ControlLabel>
                                             <InputGroup>
                                                 <FormControl id="ibuInput" type="number" name="ibu" value={this.state.ibu} onChange={this.handleInputChange} placeholder="Enter IBUs"/>
@@ -201,7 +281,7 @@ class RecipeForm extends Component {
                                 </Row>
                                 <Row>
                                     <Col xs={6}>
-                                        <FormGroup controlId="originalGravity" >
+                                        <FormGroup>
                                             <ControlLabel>Original Gravity</ControlLabel>
                                             <FormControl
                                                 id="ogInput"
@@ -214,7 +294,7 @@ class RecipeForm extends Component {
                                         </FormGroup>
                                     </Col>
                                     <Col xs={6}>
-                                        <FormGroup controlId="finalGravity" >
+                                        <FormGroup>
                                             <ControlLabel>Final Gravity</ControlLabel>
                                             <FormControl
                                                 id="fgInput"
@@ -229,7 +309,7 @@ class RecipeForm extends Component {
                                 </Row>
                                 <Row>
                                     <Col xs={6}>
-                                        <FormGroup controlId="preboil" >
+                                        <FormGroup>
                                             <ControlLabel>Preboil Volume</ControlLabel>
                                             <InputGroup>
                                             <FormControl type="number" id="preBoilVolInput" name="preBoil" value={this.state.preBoil} onChange={this.handleInputChange} placeholder="Preboil"/>
@@ -246,7 +326,7 @@ class RecipeForm extends Component {
                                         </FormGroup>
                                     </Col>
                                     <Col xs={6}>
-                                        <FormGroup controlId="boilLength">
+                                        <FormGroup>
                                             <ControlLabel>Boil Length</ControlLabel>
                                             <InputGroup>
                                                 <FormControl type="number" name="boilLength" value={this.state.boilLength} onChange={this.handleInputChange} placeholder="Boil"/>
@@ -257,7 +337,7 @@ class RecipeForm extends Component {
                                 </Row>
                             </Col>
                             <Col xs={8}>
-                                <FormGroup controlId="recipeDescription">
+                                <FormGroup>
                                     <ControlLabel>Recipe Description</ControlLabel>
                                     <FormControl componentClass="textarea" id="recipeDescription" name="description" value={this.state.description} onChange={this.handleInputChange} placeholder="Description" />
                                 </FormGroup>
@@ -267,10 +347,28 @@ class RecipeForm extends Component {
                             <Col xs={4}>
                             <Row>
                                 <Col xs={12}>
-                                    <FormGroup controlId="baseMaltInputs" >
+                                    <FormGroup >
                                         <ControlLabel>Base Malt</ControlLabel>
-                                        {this.state.numBaseRowArr.map(unit => (
-                                            <GrainRow />
+                                        {this.state.baseMaltArr.map((unit, i) => (
+                                            
+                                            <GrainRow
+
+                                                length = {this.state.baseMaltArr.length}
+
+                                                maltName={`maltName${i}`}
+                                                maltWeight={`maltWeight${i}`}
+
+                                                rowNum={this.state.numGrainRow}
+                                                nameValue={this.state.baseMaltArr[i].maltName}
+                                               
+                                                // nameUpdate={this.handleChangeFor(`maltName${i}`, i)}
+                                                nameUpdate={this.handleChangeFor(`maltName`, i)}
+                                                weightUpdate={this.handleChangeFor(`maltWeight`, i)}
+
+     
+                                                weightValue={this.state.baseMaltArr[i].maltWeight}
+
+                                            />
                                         ))}
                                         <Button onClick={this.onAddBaseGrainRow}>New Base Malt</Button>
                                     </FormGroup>
@@ -278,7 +376,7 @@ class RecipeForm extends Component {
                             </Row>
                             <Row>
                                 <Col xs={12}>
-                                    <FormGroup controlId="specialityMaltInputs" >
+                                    <FormGroup >
                                         <ControlLabel>Speciality Malt</ControlLabel>
                                         {this.state.numSpecRowArr.map(unit => (
                                             <GrainRow />
@@ -289,7 +387,7 @@ class RecipeForm extends Component {
                             </Row>
                             <Row>
                                 <Col xs={12}>
-                                    <FormGroup controlId="yeastInput" >
+                                    <FormGroup >
                                         <ControlLabel>Yeast</ControlLabel>
                                         <InputGroup>
                                                 <FormControl type="text" name="yeast" value={this.state.yeast} onChange={this.handleInputChange} placeholder="Yeast Name"/>
@@ -310,7 +408,7 @@ class RecipeForm extends Component {
                             <Col xs={8}>
                                 <Row>
                                     <Col xs={12}>
-                                        <FormGroup controlId="hopAdditionInputs" >
+                                        <FormGroup >
                                             <ControlLabel>Hop Additions</ControlLabel>
                                                 {this.state.numHopArr.map(unit => (
                                                     <HopRow parent={this.state}/>
@@ -321,7 +419,7 @@ class RecipeForm extends Component {
                                 </Row>
                                 <Row>
                                     <Col xs={12}>
-                                        <FormGroup controlId="miscIngredients">
+                                        <FormGroup >
                                         <ControlLabel>Misc. Ingredients</ControlLabel>
                                         <FormControl componentClass="textarea" name="misc" value={this.state.misc} onChange={this.handleInputChange} placeholder="Enter Misc. Ingredients" />
                                     </FormGroup>
@@ -331,9 +429,15 @@ class RecipeForm extends Component {
                         </Row>
                         <Row>
                             <Col xs={12}>
-                                <FormGroup controlId="recipeInstructions">
+                                <FormGroup>
                                     <ControlLabel>Recipe Instructions</ControlLabel>
-                                    <FormControl componentClass="textarea" name="directions" value={this.state.directions} onChange={this.handleInputChange} placeholder="Instructions" />
+                                    <FormControl
+                                        componentClass="textarea"
+                                        name="directions"
+                                        value={this.state.directions}
+                                        onChange={this.handleInputChange}
+                                        placeholder="Instructions"
+                                    />
                                 </FormGroup>
                             </Col>
                         </Row>

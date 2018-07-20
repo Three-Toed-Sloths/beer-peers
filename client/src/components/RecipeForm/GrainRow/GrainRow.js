@@ -11,12 +11,28 @@ const GrainRow = props => (
 <Row className="baseMaltInputRow">
     <Col xs={6}>
         <InputGroup>
-            <FormControl type="text" class="baseMalt" placeholder="Malt Name"/>
+            <FormControl
+                type="text"
+                className="maltName"
+                // name={props.name}
+                // name={`baseMaltName${props.rowNum}`}
+                name={props.maltName}
+                value={props.nameValue}
+                onChange={props.nameUpdate}
+                placeholder="Malt Name"
+            />
         </InputGroup>
     </Col>
     <Col xs={6}>
         <InputGroup>
-            <FormControl type="number" class="maltWeight" placeholder="Weight"/>
+            <FormControl
+                type="number"
+                className="maltWeight"
+                name={props.maltWeight}
+                // name={`baseMaltWeight${props.rowNum}`}
+                value={props.weightValue}
+                onChange={props.weightUpdate}
+                placeholder="Weight"/>
             <DropdownButton
                 componentClass={InputGroup.Button}
                 id="input-dropdown-addon"

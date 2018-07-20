@@ -15,7 +15,7 @@ const HopRow = props => (
         <InputGroup>
             <FormControl
                 type="text"
-                class="hopName"
+                className="hopName"
                 name={'hopAddition' + props.parent.numHopRow}
                 value={props.parent.hops[props.parent.numHopRow - 1].name}
                 placeholder="Hop Name"
@@ -36,7 +36,7 @@ const HopRow = props => (
         <FormGroup>
             <ControlLabel>Alpha-Acids</ControlLabel>
            <InputGroup>
-               <FormControl class="alphaInput" type="number" placeholder="Alpha-Acids"/>
+               <FormControl className="alphaInput" type="number" placeholder="Alpha-Acids"/>
                <InputGroup.Addon>%</InputGroup.Addon>
             </InputGroup>
         </FormGroup>
@@ -46,7 +46,7 @@ const HopRow = props => (
     <Col xs={3}>
     <ControlLabel>Hop Amount</ControlLabel>
         <InputGroup>
-            <FormControl type="number" class="hopWeight" placeholder="Weight"/>
+            <FormControl type="number" className="hopWeight" placeholder="Weight"/>
             <DropdownButton
                 componentClass={InputGroup.Button}
                 id="input-dropdown-addon"
@@ -62,7 +62,7 @@ const HopRow = props => (
         <FormGroup>
             <ControlLabel>Addition</ControlLabel>
            <InputGroup>
-               <FormControl class="hopAddition" type="text" placeholder="30 min"/>
+               <FormControl className="hopAddition" type="text" placeholder="30 min"/>
             </InputGroup>
         </FormGroup>
     </Col>
