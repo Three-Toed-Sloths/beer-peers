@@ -42,28 +42,11 @@ class RecipeForm extends Component {
                 maltName: '',
                 maltWeight: '',
                 units: 'lbs'
-            },
-            {
-                maltName: '',
-                maltWeight: '',
-                units: 'lbs'
             }
-    
-    ],
-
-
-        // baseMalt:{
-        //     baseName: 'hello',
-        //     baseMaltWeight: 0
-        // },
-        // baseMaltName1: 'hello',
-        // baseMaltWeight1: 0,
-        
+        ],
         specialityMalt: []
 
     }   
-
-  
 
     addRecipe = () => {
         API.addRecipe()
@@ -72,68 +55,29 @@ class RecipeForm extends Component {
     }
 
     handleInputChange = event => {
-        // const { name, value } = event.target;
-        const name = event.target.name;
-        const value = event.target.value;
+        const { name, value } = event.target;
         this.setState({
           [name]: value
         });
     };
-
-    // handleChangeFor = (propertyName, i) => (event) => {
-    //     const { malt } = this.state.baseMaltArr[i];
-    //     const newMalt = {
-    //       ...malt,
-    //       [propertyName]: event.target.value
-    //     };
-    //     this.setState({ malt: newMalt });
-    //     alert('final' + this.state.baseMaltArr[i].maltName0)
-    //   }
   
    handleChangeFor = (propertyName, i) => (event) => {
-       
-    
-
-       
-            const baseMalts = this.state.baseMaltArr;
-            baseMalts[i][propertyName] = event.target.value;
-
-          
-            this.setState({
-                baseMalts,
-            });
-
-        // alert('final - ' + this.state.baseMaltArr[i].maltName)
-   }
+        const baseMalts = this.state.baseMaltArr;
+        baseMalts[i][propertyName] = event.target.value;
+        this.setState({
+            baseMalts,
+        });
+    }
   
-
     onAddBaseGrainRow = () => {
         this.setState({
-            numGrainRow: this.state.numGrainRow + 1,
-            numBaseRowArr: [...this.state.numBaseRowArr, 1]
-        });
-        // const newMalt = `baseMalt${this.state.numGrainRow + 1}`;
-        const rowNum = this.state.numGrainRow + 1;
-        // console.log(newMalt);
-        this.setState({
             baseMaltArr: [...this.state.baseMaltArr, 
-
-            {
-                maltName: '',
-                maltWeight: '',
-                units: 'lbs'
-            }
-        ]
-
-            // [`baseMalt${rowNum}`]: 'tester',
-            // [`baseMaltWeight${rowNum}`]: 5,
-
-            // baseMalt: [...this.state.baseMalt, {
-            //     [`baseMalt${rowNum}`]: 'tester',
-            //     [`baseMaltWeight${rowNum}`]: 5
-            // }]
-
-
+                {
+                    maltName: '',
+                    maltWeight: '',
+                    units: 'lbs'
+                }
+            ]
         })
     }
 
@@ -151,18 +95,8 @@ class RecipeForm extends Component {
         });
     }
 
-
-    getMaltBill = () => {
-        const malts = this.state.baseMalt;
-        for(let i = 0; i < malts.length; i++){
-            console.log(malts[i])
-        }
-    }
-
     handleFormSubmit = event => {
         event.preventDefault();
-
-        alert(this.state.baseMaltArr)
 
         const newRecipe = {
             name: this.state.name,
