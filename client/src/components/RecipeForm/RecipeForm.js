@@ -6,7 +6,7 @@ import { FormGroup, ControlLabel, FormControl, InputGroup, DropdownButton, MenuI
 import GrainRow from './GrainRow';
 import HopRow from './HopRow';
 
-import "./RecipeForm.css";
+import './RecipeForm.css';
 
 const beerStyles = ['American IPA', 'Stout', 'Amber Ale'];
 const liqUnits = ['gal', 'liters', 'bbls'];
@@ -200,7 +200,7 @@ class RecipeForm extends Component {
     render() {
         return(
         <Grid>
-            <Row className="show-grid">
+            <Row className='show-grid'>
                 <Col xs={12} md={12}>
                     <form>
                         <Row>
@@ -208,10 +208,10 @@ class RecipeForm extends Component {
                                 <FormGroup>
                                     <ControlLabel>Recipe Name</ControlLabel>
                                     <FormControl
-                                        type="text"
-                                        name="name"
+                                        type='text'
+                                        name='name'
                                         value={this.state.name}
-                                        placeholder="Enter name"
+                                        placeholder='Enter name'
                                         onChange={this.handleInputChange}
                                     />
                                 </FormGroup>
@@ -219,7 +219,7 @@ class RecipeForm extends Component {
                             <Col xs={6}>
                                 <FormGroup>
                                     <ControlLabel>Select Beer Style</ControlLabel>
-                                    <FormControl componentClass="select" name='style' value={this.state.style} onChange={this.handleInputChange}>
+                                    <FormControl componentClass='select' name='style' value={this.state.style} onChange={this.handleInputChange}>
                                         {beerStyles.map(style => (
                                             <option value={style}>{style}</option>
                                         ))}
@@ -234,11 +234,11 @@ class RecipeForm extends Component {
                                         <FormGroup>
                                             <ControlLabel>Batch Volume</ControlLabel>
                                             <InputGroup>
-                                                <FormControl type="number" name="batchVol" value={this.state.batchVol} onChange={this.handleInputChange} id="batchVol" placeholder="Batch"/>
+                                                <FormControl type='number' name='batchVol' value={this.state.batchVol} onChange={this.handleInputChange} id='batchVol' placeholder='Batch'/>
                                                 <DropdownButton
                                                     componentClass={InputGroup.Button}
-                                                    id="input-dropdown-addon"
-                                                    title="Units"
+                                                    id='input-dropdown-addon'
+                                                    title='Units'
                                                 >
                                                     {liqUnits.map(unit => (
                                                         <MenuItem key={unit} value={unit}>{unit}</MenuItem>
@@ -251,7 +251,7 @@ class RecipeForm extends Component {
                                         <FormGroup>
                                             <ControlLabel>ABV</ControlLabel>
                                             <InputGroup>
-                                                <FormControl id="abvInput" type="number" name="abv" value={this.state.abv} onChange={this.handleInputChange} placeholder="Enter ABV"/>
+                                                <FormControl id='abvInput' type='number' name='abv' value={this.state.abv} onChange={this.handleInputChange} placeholder='Enter ABV'/>
                                                 <InputGroup.Addon>%</InputGroup.Addon>
                                             </InputGroup>
                                         </FormGroup>
@@ -262,7 +262,7 @@ class RecipeForm extends Component {
                                         <FormGroup>
                                             <ControlLabel>IBU</ControlLabel>
                                             <InputGroup>
-                                                <FormControl id="ibuInput" type="number" name="ibu" value={this.state.ibu} onChange={this.handleInputChange} placeholder="Enter IBUs"/>
+                                                <FormControl id='ibuInput' type='number' name='ibu' value={this.state.ibu} onChange={this.handleInputChange} placeholder='Enter IBUs'/>
                                                 {/* <InputGroup.Addon>%</InputGroup.Addon> */}
                                             </InputGroup>
                                         </FormGroup>
@@ -273,12 +273,12 @@ class RecipeForm extends Component {
                                         <FormGroup>
                                             <ControlLabel>Original Gravity</ControlLabel>
                                             <FormControl
-                                                id="ogInput"
-                                                type="number"
-                                                name="og"
+                                                id='ogInput'
+                                                type='number'
+                                                name='og'
                                                 value={this.state.og}
                                                 onChange={this.handleInputChange}
-                                                placeholder="Enter OG"
+                                                placeholder='Enter OG'
                                             />
                                         </FormGroup>
                                     </Col>
@@ -286,12 +286,12 @@ class RecipeForm extends Component {
                                         <FormGroup>
                                             <ControlLabel>Final Gravity</ControlLabel>
                                             <FormControl
-                                                id="fgInput"
-                                                type="number"
-                                                name="fg"
+                                                id='fgInput'
+                                                type='number'
+                                                name='fg'
                                                 value={this.state.fg}
                                                 onChange={this.handleInputChange}
-                                                placeholder="Enter FG"
+                                                placeholder='Enter FG'
                                             />
                                         </FormGroup>
                                     </Col>
@@ -301,11 +301,11 @@ class RecipeForm extends Component {
                                         <FormGroup>
                                             <ControlLabel>Preboil Volume</ControlLabel>
                                             <InputGroup>
-                                            <FormControl type="number" id="preBoilVolInput" name="preBoil" value={this.state.preBoil} onChange={this.handleInputChange} placeholder="Preboil"/>
+                                            <FormControl type='number' id='preBoilVolInput' name='preBoil' value={this.state.preBoil} onChange={this.handleInputChange} placeholder='Preboil'/>
                                                 <DropdownButton
                                                     componentClass={InputGroup.Button}
-                                                    id="input-dropdown-addon"
-                                                    title="Units"
+                                                    id='input-dropdown-addon'
+                                                    title='Units'
                                                 >
                                                     {liqUnits.map(unit => (
                                                         <MenuItem key={unit} value={unit}>{unit}</MenuItem>
@@ -318,7 +318,7 @@ class RecipeForm extends Component {
                                         <FormGroup>
                                             <ControlLabel>Boil Length</ControlLabel>
                                             <InputGroup>
-                                                <FormControl type="number" name="boilLength" value={this.state.boilLength} onChange={this.handleInputChange} placeholder="Boil"/>
+                                                <FormControl type='number' name='boilLength' value={this.state.boilLength} onChange={this.handleInputChange} placeholder='Boil'/>
                                                 <InputGroup.Addon>min</InputGroup.Addon>
                                             </InputGroup>
                                         </FormGroup>
@@ -328,7 +328,7 @@ class RecipeForm extends Component {
                             <Col xs={8}>
                                 <FormGroup>
                                     <ControlLabel>Recipe Description</ControlLabel>
-                                    <FormControl componentClass="textarea" id="recipeDescription" name="description" value={this.state.description} onChange={this.handleInputChange} placeholder="Description" />
+                                    <FormControl componentClass='textarea' id='recipeDescription' name='description' value={this.state.description} onChange={this.handleInputChange} placeholder='Description' />
                                 </FormGroup>
                             </Col>
                         </Row>
@@ -371,14 +371,14 @@ class RecipeForm extends Component {
                                     <FormGroup >
                                         <ControlLabel>Yeast</ControlLabel>
                                         <InputGroup>
-                                                <FormControl type="text" name="yeast" value={this.state.yeast} onChange={this.handleInputChange} placeholder="Yeast Name"/>
+                                                <FormControl type='text' name='yeast' value={this.state.yeast} onChange={this.handleInputChange} placeholder='Yeast Name'/>
                                                 <DropdownButton
                                                     componentClass={InputGroup.Button}
-                                                    id="input-dropdown-addon"
-                                                    title="Type"
+                                                    id='input-dropdown-addon'
+                                                    title='Type'
                                                 >
-                                                    <MenuItem key="Dry" value="Dry">Dry</MenuItem>
-                                                    <MenuItem key="Liquid" value="Liquid">Liquid</MenuItem>
+                                                    <MenuItem key='Dry' value='Dry'>Dry</MenuItem>
+                                                    <MenuItem key='Liquid' value='Liquid'>Liquid</MenuItem>
                                                
                                                 </DropdownButton>
                                         </InputGroup>
@@ -414,7 +414,7 @@ class RecipeForm extends Component {
                                     <Col xs={12}>
                                         <FormGroup >
                                         <ControlLabel>Misc. Ingredients</ControlLabel>
-                                        <FormControl componentClass="textarea" name="misc" value={this.state.misc} onChange={this.handleInputChange} placeholder="Enter Misc. Ingredients" />
+                                        <FormControl componentClass='textarea' name='misc' value={this.state.misc} onChange={this.handleInputChange} placeholder='Enter Misc. Ingredients' />
                                     </FormGroup>
                                     </Col>
                                 </Row>
@@ -425,11 +425,11 @@ class RecipeForm extends Component {
                                 <FormGroup>
                                     <ControlLabel>Recipe Instructions</ControlLabel>
                                     <FormControl
-                                        componentClass="textarea"
-                                        name="directions"
+                                        componentClass='textarea'
+                                        name='directions'
                                         value={this.state.directions}
                                         onChange={this.handleInputChange}
-                                        placeholder="Instructions"
+                                        placeholder='Instructions'
                                     />
                                 </FormGroup>
                             </Col>
