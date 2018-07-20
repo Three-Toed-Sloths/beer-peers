@@ -14,7 +14,7 @@ const GrainRow = props => (
                 <FormControl
                     type="text"
                     className="maltName"
-                    name={props.maltName}
+                    name={'maltName'}
                     value={props.nameValue}
                     onChange={props.nameUpdate}
                     placeholder="Malt Name"
@@ -26,7 +26,7 @@ const GrainRow = props => (
                 <FormControl
                     type="number"
                     className="maltWeight"
-                    name={props.maltWeight}
+                    name={'MaltWeight'}
                     value={props.weightValue}
                     onChange={props.weightUpdate}
                     placeholder="Weight"

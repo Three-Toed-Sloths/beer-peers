@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import API from '../../utils/recipeAPI';
 
 import { Grid, Col, Row, Button } from 'react-bootstrap';
-import { FormGroup, ControlLabel, FormControl, HelpBlock, InputGroup, DropdownButton, MenuItem } from 'react-bootstrap';
+import { FormGroup, ControlLabel, FormControl, InputGroup, DropdownButton, MenuItem } from 'react-bootstrap';
 import GrainRow from './GrainRow';
 import HopRow from './HopRow';
 
@@ -12,8 +12,8 @@ import "./RecipeForm.css";
 
 const beerStyles = ['American IPA', 'Stout', 'Amber Ale'];
 const liqUnits = ['gal', 'liters', 'bbls'];
-const weightUnits = ['lbs', 'kg', 'oz', 'g'];
-const hopType = ['Pellet', 'Extract', 'Whole Leaf']
+// const weightUnits = ['lbs', 'kg', 'oz', 'g'];
+// const hopType = ['Pellet', 'Extract', 'Whole Leaf']
 
 class RecipeForm extends Component {
     state = {
@@ -44,7 +44,13 @@ class RecipeForm extends Component {
                 units: 'lbs'
             }
         ],
-        specialityMalt: []
+        specialityMaltArr: [
+            {
+                maltName: '',
+                maltWeight: '',
+                units: 'lbs'
+            }
+        ]
 
     }   
 
@@ -61,11 +67,16 @@ class RecipeForm extends Component {
         });
     };
   
-   handleChangeFor = (propertyName, i) => (event) => {
-        const baseMalts = this.state.baseMaltArr;
-        baseMalts[i][propertyName] = event.target.value;
+   handleChangeFor = (propertyName, type, i) => (event) => {
+        // const baseMalts = this.state.baseMaltArr;
+        // baseMalts[i][propertyName] = event.target.value;
+        // this.setState({
+        //     baseMalts,
+        // });
+        const malts = this.state[type];
+        malts[i][propertyName] = event.target.value;
         this.setState({
-            baseMalts,
+            malts,
         });
     }
   
@@ -83,9 +94,14 @@ class RecipeForm extends Component {
 
     onAddSpecGrainRow = () => {
         this.setState({
-            numGrainRow: this.state.numGrainRow + 1,
-            numSpecRowArr: [...this.state.numSpecRowArr, 1]
-        });
+            specialityMaltArr: [...this.state.specialityMaltArr, 
+                {
+                    maltName: '',
+                    maltWeight: '',
+                    units: 'lbs'
+                }
+            ]
+        })
     }
 
     onAddHopRow = () => {
@@ -122,9 +138,7 @@ class RecipeForm extends Component {
             ingredients: {
                 malt: {
                     base: this.state.baseMaltArr,
-                    speciality: [
-
-                    ]
+                    speciality: this.state.specialityMaltArr
                 },
                 hops: [
 
@@ -287,19 +301,16 @@ class RecipeForm extends Component {
                                             
                                             <GrainRow
 
-                                                length = {this.state.baseMaltArr.length}
+                                                // length = {this.state.baseMaltArr.length}
 
-                                                maltName={`maltName${i}`}
-                                                maltWeight={`maltWeight${i}`}
+                                                // maltName={`maltName`}
+                                                // maltWeight={`maltWeight`}
 
-                                                rowNum={this.state.numGrainRow}
+                                                // rowNum={this.state.numGrainRow}
+
                                                 nameValue={this.state.baseMaltArr[i].maltName}
-                                               
-                                                // nameUpdate={this.handleChangeFor(`maltName${i}`, i)}
-                                                nameUpdate={this.handleChangeFor(`maltName`, i)}
-                                                weightUpdate={this.handleChangeFor(`maltWeight`, i)}
-
-     
+                                                nameUpdate={this.handleChangeFor('maltName', 'baseMaltArr', i)}
+                                                weightUpdate={this.handleChangeFor('maltWeight', 'baseMaltArr', i)}
                                                 weightValue={this.state.baseMaltArr[i].maltWeight}
 
                                             />
@@ -312,8 +323,14 @@ class RecipeForm extends Component {
                                 <Col xs={12}>
                                     <FormGroup >
                                         <ControlLabel>Speciality Malt</ControlLabel>
-                                        {this.state.numSpecRowArr.map(unit => (
-                                            <GrainRow />
+                                        {this.state.specialityMaltArr.map((unit, i) => (
+                                            <GrainRow 
+                                                nameValue={this.state.specialityMaltArr[i].maltName}
+                                                nameUpdate={this.handleChangeFor('maltName', 'specialityMaltArr', i)}
+                                                weightUpdate={this.handleChangeFor('maltWeight', 'specialityMaltArr', i)}
+                                                weightValue={this.state.specialityMaltArr[i].maltWeight}
+                                            
+                                            />
                                         ))}
                                         <Button onClick={this.onAddSpecGrainRow}>New Speciality Malt</Button>
                                     </FormGroup>
