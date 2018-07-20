@@ -36,7 +36,16 @@ class RecipeForm extends Component {
         directions: '',
         misc: '',
         yeast: '',
-        hops: [{}],
+        hopsArr: [
+            {
+                name: '',
+                type: 'pellets',
+                alpha: '',
+                amount: '',
+                units: 'oz',
+                addition: ''
+            }
+        ],
         baseMaltArr: [
             {
                 maltName: '',
@@ -68,11 +77,6 @@ class RecipeForm extends Component {
     };
   
    handleChangeFor = (propertyName, type, i) => (event) => {
-        // const baseMalts = this.state.baseMaltArr;
-        // baseMalts[i][propertyName] = event.target.value;
-        // this.setState({
-        //     baseMalts,
-        // });
         const malts = this.state[type];
         malts[i][propertyName] = event.target.value;
         this.setState({
@@ -106,8 +110,16 @@ class RecipeForm extends Component {
 
     onAddHopRow = () => {
         this.setState({
-            numHopRow: this.state.numHopRow + 1,
-            numHopArr: [...this.state.numHopArr, 1]
+            hopsArr: [...this.state.hopsArr, 
+                {
+                    name: '',
+                    type: 'pellets',
+                    alpha: '',
+                    amount: '',
+                    units: 'oz',
+                    addition: ''
+                }
+            ]
         });
     }
 
@@ -140,9 +152,7 @@ class RecipeForm extends Component {
                     base: this.state.baseMaltArr,
                     speciality: this.state.specialityMaltArr
                 },
-                hops: [
-
-                ],
+                hops: this.state.hopsArr,
                 yeast: {
                     name: this.state.yeast,
                     amount: '1 bag'
@@ -361,8 +371,20 @@ class RecipeForm extends Component {
                                     <Col xs={12}>
                                         <FormGroup >
                                             <ControlLabel>Hop Additions</ControlLabel>
-                                                {this.state.numHopArr.map(unit => (
-                                                    <HopRow parent={this.state}/>
+                                                {this.state.hopsArr.map((unit, i) => (
+                                                    <HopRow
+                                                        nameValue={this.state.hopsArr[i].name}
+                                                        nameUpdate={this.handleChangeFor('name', 'hopsArr', i)}
+
+                                                        alphaValue={this.state.hopsArr[i].alpha}
+                                                        alphaUpdate={this.handleChangeFor('alpha', 'hopsArr', i)}
+
+                                                        weightUpdate={this.handleChangeFor('amount', 'hopsArr', i)}
+                                                        weightValue={this.state.hopsArr[i].amount}
+
+                                                        additionValue={this.state.hopsArr[i].addition}
+                                                        additionUpdate={this.handleChangeFor('addition', 'hopsArr', i)}
+                                                    />
                                                 ))}
                                             <Button onClick={this.onAddHopRow}>New Hop Addition</Button>
                                         </FormGroup>

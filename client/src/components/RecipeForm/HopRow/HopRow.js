@@ -16,8 +16,9 @@ const HopRow = props => (
             <FormControl
                 type="text"
                 className="hopName"
-                name={'hopAddition' + props.parent.numHopRow}
-                value={props.parent.hops[props.parent.numHopRow - 1].name}
+                name='name'
+                value={props.nameValue}
+                onChange={props.nameUpdate}
                 placeholder="Hop Name"
             />
             <DropdownButton
@@ -36,7 +37,14 @@ const HopRow = props => (
         <FormGroup>
             <ControlLabel>Alpha-Acids</ControlLabel>
            <InputGroup>
-               <FormControl className="alphaInput" type="number" placeholder="Alpha-Acids"/>
+                <FormControl
+                    type="number"
+                    className="alphaInput"
+                    name='alpha'
+                    value={props.alphaValue}
+                    onChange={props.alphaUpdate}
+                    placeholder="Alpha-Acids"
+                />
                <InputGroup.Addon>%</InputGroup.Addon>
             </InputGroup>
         </FormGroup>
@@ -46,7 +54,14 @@ const HopRow = props => (
     <Col xs={3}>
     <ControlLabel>Hop Amount</ControlLabel>
         <InputGroup>
-            <FormControl type="number" className="hopWeight" placeholder="Weight"/>
+            <FormControl
+                type="number"
+                className="hopWeight"
+                name='amount'
+                value={props.weightValue}
+                onChange={props.weightUpdate}
+                placeholder="Weight"
+            />
             <DropdownButton
                 componentClass={InputGroup.Button}
                 id="input-dropdown-addon"
@@ -62,7 +77,14 @@ const HopRow = props => (
         <FormGroup>
             <ControlLabel>Addition</ControlLabel>
            <InputGroup>
-               <FormControl className="hopAddition" type="text" placeholder="30 min"/>
+               <FormControl
+                    type="text"
+                    className="hopAddition"
+                    name='alpha'
+                    value={props.additionValue}
+                    onChange={props.additionUpdate}
+                    placeholder="30 min"
+                />
             </InputGroup>
         </FormGroup>
     </Col>
