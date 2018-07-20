@@ -6,30 +6,20 @@ import { FormGroup, ControlLabel, FormControl, InputGroup, DropdownButton, MenuI
 import GrainRow from './GrainRow';
 import HopRow from './HopRow';
 
-
 import "./RecipeForm.css";
-
 
 const beerStyles = ['American IPA', 'Stout', 'Amber Ale'];
 const liqUnits = ['gal', 'liters', 'bbls'];
-// const weightUnits = ['lbs', 'kg', 'oz', 'g'];
-// const hopType = ['Pellet', 'Extract', 'Whole Leaf']
 
 class RecipeForm extends Component {
     state = {
-        recipe: {},
-        numGrainRow: 1,
-        numHopRow: 1,
-        numBaseRowArr: [1],
-        numSpecRowArr: [1],
-        numHopArr: [1],
-
         name: '',
         style: '',
         batchVol: '',
         abv: '',
         og: '',
         fg: '',
+        ibu: '',
         preBoil: '',
         boilLength: '',
         description: '',
@@ -60,13 +50,14 @@ class RecipeForm extends Component {
                 units: 'lbs'
             }
         ]
-
     }   
 
     addRecipe = () => {
         API.addRecipe()
          .then(res => {console.log(res.data)})
          .catch(err => console.log(err));
+
+        this.resetState();
     }
 
     handleInputChange = event => {
@@ -121,6 +112,48 @@ class RecipeForm extends Component {
                 }
             ]
         });
+    }
+
+    resetState = () => {
+        this.setState({
+            name: '',
+            style: '',
+            batchVol: '',
+            abv: '',
+            og: '',
+            fg: '',
+            ibu: '',
+            preBoil: '',
+            boilLength: '',
+            description: '',
+            directions: '',
+            misc: '',
+            yeast: '',
+            hopsArr: [
+                {
+                    name: '',
+                    type: 'pellets',
+                    alpha: '',
+                    amount: '',
+                    units: 'oz',
+                    addition: ''
+                }
+            ],
+            baseMaltArr: [
+                {
+                    name: '',
+                    amount: '',
+                    units: 'lbs'
+                }
+            ],
+            specialityMaltArr: [
+                {
+                    name: '',
+                    amount: '',
+                    units: 'lbs'
+                }
+            ]
+        })
     }
 
     handleFormSubmit = event => {
