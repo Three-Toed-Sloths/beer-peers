@@ -1,0 +1,19 @@
+.secondaryNav{
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+}
+.secondaryNavRow{
+    width: 100%;
+    background: green;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 0 auto;
+}
+.secondaryCols{
+    text-align: center;
+    color: white;
+}
+.secondaryColText{
+    cursor: pointer;
+}
