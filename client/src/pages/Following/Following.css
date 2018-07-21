@@ -1,0 +1,18 @@
+.followingParallax {
+    background-image: url('./images/wil-stewart-24562-unsplash.jpg');
+    /* background-image: url('../../../public/images/wil-stewart-24562-unsplash.jpg'); */
+    min-height: 500px;
+    width: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.followingHeader {
+    margin-bottom: 0;
+}
+
+.followingContainer {
+    margin: 10%;
+}

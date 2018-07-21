@@ -5,93 +5,43 @@ var LocalStrategy = require('passport-local').Strategy;
 
 var User = require('../models/user');
 
-// Register ORIGINAL
-// router.get('/register', function (req, res) {
-//     res.render('register');
-// });
+// After Register render?
+router.get('/register', function (req, res) {
+    res.render('register');
+    console.log('res.render(register) ran');
+});
 
-// Login
+// After Login render?
 router.get('/login', function (req, res) {
     res.render('login');
+    console.log('res.render(login) ran');
 });
 
 // Register User
-router.post('/register', function (req, res) {
-    var first = req.body.first;
-    var last = req.body.last;
-    var email = req.body.email;
-    var username = req.body.username;
-    var password = req.body.password;
-    var email = req.body.email;
-    var phone = req.body.phone;
-    var city = req.body.city;
-    var state = req.body.state;
+// router.post('/register', function (req, res) {
+//     //checking if username are already taken
+//     User.findOne({
+//         username: {
+//             "$regex": "^" + newUser.username + "\\b", "$options": "i"
+//         }
+//     }, function (err, user) {
+//         if (user) {
+//             res.render('register', {
+//                 user: user,
+//             });
+//         }
+//         else {
+//             User.createUser(newUser, function (err, user) {
+//                 if (err) throw err;
+//                 console.log(user);
+//             });
+//             req.flash('success_msg', 'You are registered and can now login');
+//             console.log('success_msg', 'You are registered and can now login')
+//             res.redirect('/users/login');
+//         }
+//     });
+// });
 
-
-    // Validation
-    req.checkBody('name', 'Name is required').notEmpty();
-    req.checkBody('email', 'Email is required').notEmpty();
-    req.checkBody('email', 'Email is not valid').isEmail();
-    req.checkBody('username', 'Username is required').notEmpty();
-    req.checkBody('password', 'Password is required').notEmpty();
-
-    // Use below for secod re-enter password input if wanted
-    // req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
-
-    var errors = req.validationErrors();
-
-    if (errors) {
-        res.render('register', {
-            errors: errors
-        });
-    }
-    else {
-        //checking for email and username are already taken
-        User.findOne({
-            username: {
-                "$regex": "^" + username + "\\b", "$options": "i"
-            }
-        }, function (err, user) {
-            User.findOne({
-                email: {
-                    "$regex": "^" + email + "\\b", "$options": "i"
-                }
-            }, function (err, mail) {
-                if (user || mail) {
-                    res.render('register', {
-                        user: user,
-                        mail: mail
-                    });
-                }
-                else {
-                    // constructing new user object
-                    var newUser = new User({
-                        name: {
-                            first: first,
-                            last: last
-                        },
-                        username: username,
-                        password: password,
-                        contact:
-                        {
-                            email: email,
-                            phone: phone,
-                            state: state,
-                            city: city
-                        }
-                    });
-                    User.createUser(newUser, function (err, user) {
-                        if (err) throw err;
-                        console.log(user);
-                    });
-                    req.flash('success_msg', 'You are registered and can now login');
-                    console.log('success_msg', 'You are registered and can now login')
-                    res.redirect('/users/login');
-                }
-            });
-        });
-    }
-});
 
 // Login user
 passport.use(new LocalStrategy(

@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-// Used for hashing password.
-var bcrypt = require('bcryptjs');
+
 
 const STATES = [ 'AK', 'AL', 'AR', 'AS', 'AZ', 'CA', 'CO', 'CT', 'DC', 'DE', 'FL', 'GA', 'GU', 'HI', 'IA', 'ID', 'IL', 'IN', 'KS', 'KY', 'LA', 'MA', 'MD', 'ME', 'MI', 'MN', 'MO', 'MS', 'MT', 'NC', 'ND', 'NE', 'NH', 'NJ', 'NM', 'NV', 'NY', 'OH', 'OK', 'OR', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VA', 'VI', 'VT', 'WA', 'WI', 'WV', 'WY'];
 
@@ -36,10 +35,10 @@ const userSchema = new Schema({
     maxlength: [20, 'Please select username 20 characters or less.'],
   },
   password: {
-    type: String,
-    required: [true, 'Please enter password.'],
-    minlength: [4, 'Please select password 4 characters or more.'],
-    maxlength: [20, 'Please select password 20 characters or less.'],
+    type: String
+    // required: [true, 'Please enter password.'],
+    // minlength: [4, 'Please select password 4 characters or more.'],
+    // maxlength: [20, 'Please select password 20 characters or less.'],
   },
   contact: {
     email: {
@@ -57,25 +56,25 @@ const userSchema = new Schema({
       type: String,
       required: false,
       trim: true,
-      validate: {
-        validator: phone =>  /\d{3}-\d{3}-\d{4}/.test(phone),
-        message: '{VALUE} is not a valid phone number.'
-      },
+      // validate: {
+      //   validator: phone =>  /\d{3}-\d{3}-\d{4}/.test(phone),
+      //   message: '{VALUE} is not a valid phone number.'
+      // },
       maxlength: 12
     },
     city: {
       type: String,
-      required: [true, 'Please enter city.'],
+      // required: [true, 'Please enter city.'],
       trim: true,
       maxlength: 50
-    },
-    state: {
-      type: String,
-      required: [true, 'Please enter state.'],
-      trim: true,
-      enum: STATES,
-      maxlength: 2
     }
+    // state: {
+    //   type: String,
+    //   required: [true, 'Please enter state.'],
+    //   trim: true,
+    //   enum: STATES,
+    //   maxlength: 2
+    // }
   },
   recipes: [{ type : Schema.Types.ObjectId, ref: 'Recipe' }],
   social: {
@@ -89,32 +88,4 @@ const userSchema = new Schema({
 
 const User = mongoose.model('User', userSchema);
 
-
-// Taken from passport example. May need to replace what's in usersController with.
-module.exports.createUser = function(newUser, callback){
-	bcrypt.genSalt(10, function(err, salt) {
-	    bcrypt.hash(newUser.password, salt, function(err, hash) {
-	        newUser.password = hash;
-	        newUser.save(callback);
-	    });
-	});
-}
-
-module.exports.getUserByUsername = function(username, callback){
-	var query = {username: username};
-	User.findOne(query, callback);
-}
-
-module.exports.getUserById = function(id, callback){
-	User.findById(id, callback);
-}
-
-module.exports.comparePassword = function(candidatePassword, hash, callback){
-	bcrypt.compare(candidatePassword, hash, function(err, isMatch) {
-    	if(err) throw err;
-    	callback(null, isMatch);
-	});
-}
-
 module.exports = User;
-
