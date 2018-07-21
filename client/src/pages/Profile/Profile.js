@@ -36,7 +36,8 @@ class Profile extends Component {
                     city: res.data.contact.city,
                     state: res.data.contact.state,
                     email: res.data.contact.email,
-                    image: res.data.image,
+                    image: "https://i.ytimg.com/vi/I7jgu-8scIA/maxresdefault.jpg",
+                    // image: res.data.image ADD THIS TO DATABASE,
                     recipeIds: res.data.recipes
                 });
                 console.log(res.data);
