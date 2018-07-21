@@ -1,0 +1,76 @@
+[
+    {
+        "name": "Bell's Two Hearted Ale",
+        "brewer": "5b4a548d4cb96a51b8d6c61b",
+        "style": "American IPA",
+        "likes": 1,
+        "description": "Brewed with 100% Centennial hops from the Pacific Northwest and named after the Two Hearted River in Michigan’s Upper Peninsula, this IPA is bursting with hop aromas ranging from pine to grapefruit from massive hop additions in both the kettle and the fermenter.",
+        "specs": {
+            "abv": 6.7,
+            "ibu": 55,
+            "og": 1.063,
+            "fg": 1.012,
+            "batch": {
+                "size": 5,
+                "units": "gal"
+            },
+            "boil": 75,
+            "preboil": {
+                "size": 6.6,
+                "units": "gal"
+            }
+        },
+        "ingredients": {
+            "malt":{
+                "base": [
+                    {
+                     "name": "Briess Two-row Brewers Malt",
+                     "amount": 10,
+                     "units": "lb"
+                    },
+                    {
+                     "name": "Briess Pale Malt",
+                     "amount": 2.83,
+                     "units": "lb"
+                    }
+                ],
+                "speciality": [{
+                 "name": "Briess Caramel",
+                 "amount": 8,
+                 "units": "oz"
+                }]
+            },
+            "hops": [
+                {
+                    "name": "Centennial",
+                    "type": "pellets",
+                    "alpha": 9.1,
+                    "amount": 1.2,
+                    "units": "oz",
+                    "addition": "45 min"
+                },
+                {
+                    "name": "Centennial",
+                    "type": "pellets",
+                    "alpha": 9.1,
+                    "amount": 1.2,
+                    "units": "oz",
+                    "addition": "30 min"
+                },
+                {
+                    "name": "Centennial",
+                    "type": "pellets",
+                    "alpha": 9.1,
+                    "amount": 3.5,
+                    "units": "oz",
+                    "addition": "dry hop"
+                }
+            ],
+            "yeast": {
+        		"name": "White Labs WLP001 California Ale Yeast",
+        		"amount": "1 bag"
+            }
+        },
+        "directions": "Use 4.5 gallons (17 L) carbon filtered water, adjust with 4 grams gypsum. Step mash: 45 minutes at 150°F (66°C), ramp to 170°F (77°C) over 15 minutes (or ramp by infusing 2.5 gallons boiling water), rest 10 minutes at 170°F (77°C). Vorlauf until clear. Collect 6.6 gallons (25 L), sparging with 175°F (79°C) water. Boil vigorously for approximately 75 minutes, hopping as in ingredients section. Whirlpool and allow to settle for 15 minutes. Chill wort to 64°F (18°C). Aerate wort and pitch yeast. Ferment warm (ale temperature). Dry hop one week into fermentation. Allow two hearted clone to stay warm with hops for a week. Rack beer, crash cool, and cold age for a week. Rack beer, prime with sugar and bottle."
+    }
+]

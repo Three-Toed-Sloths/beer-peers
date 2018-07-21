@@ -1,0 +1,21 @@
+[
+    {
+        "name": {
+            "first": "Nick",
+            "last": "Clear"
+        },
+        "username": "nmclear",
+        "contact": {
+            "email": "nickclear22@gmail.com",
+            "phone": "231-409-0332",
+            "city": "Laguna Beach",
+            "state": "CA"
+        },
+        "recipes": [],
+        "social": {
+            "followers":[],
+            "following":[],
+            "favorites": []
+        }
+    }
+]
