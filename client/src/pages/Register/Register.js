@@ -36,21 +36,21 @@ class Register extends Component {
         else (
             API.saveUser({
                 name: {
-                    first: this.state.first,
-                    last: this.state.last
+                    first: this.state.first.trim(),
+                    last: this.state.last.trim()
                 },
-                username: this.state.username,
+                username: this.state.username.trim(),
                 contact: {
-                    email: this.state.email,
-                    phone: this.state.phone,
-                    city: this.state.city,
-                    state: this.state.state
+                    email: this.state.email.trim(),
+                    phone: this.state.phone.trim(),
+                    city: this.state.city.trim(),
+                    state: this.state.state.trim()
                 },
-                password: this.state.password,
-                // currently not included in the seed. We'll have to come back and update
-                // image: this.state.image
+                password: this.state.password.trim(),
+                image: this.state.image.trim()
             })
         )
+        console.log(this.state.first.trim());
     };
     
     // =================
@@ -94,6 +94,9 @@ class Register extends Component {
         return(
             <Panel>
                 <form>
+                    <Row>
+                        <HelpBlock>Note: all outlier spaces will be trimed</HelpBlock>
+                    </Row>
                     <Row>
                         <Col xs={12} md={6}>
                         <FormGroup controlId={'formFirst'} validationState={this.firstValidation()}>
