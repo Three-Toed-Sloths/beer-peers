@@ -4,8 +4,8 @@ import VideoBackground from "./components/VideoBackground"
 import { Container, Row } from "./components/Grid"
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NoMatch from './pages/NoMatch';
-import Nav from './components/Nav';
-import AllRecipes from './pages/viewAllRecipes';
+// import Nav from './components/Nav';
+import Profile from './pages/Profile';
 import Likes from './pages/Likes';
 import Following from './pages/Following';
 import Register from './pages/Register';

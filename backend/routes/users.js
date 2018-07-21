@@ -43,7 +43,7 @@ router.get('/login', function (req, res) {
 // });
 
 
-// Login user
+// User Login
 passport.use(new LocalStrategy(
     function (username, password, done) {
         User.getUserByUsername(username, function (err, user) {

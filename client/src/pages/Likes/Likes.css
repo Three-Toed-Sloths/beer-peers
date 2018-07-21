@@ -16,11 +16,19 @@
 }
 
 .likesHeader {
-    margin-bottom: 0;
+    margin-top: 2.5em;
+    font-family: 'EB Garamond', serif;
+    font-size: 5em;
+    color: white;
+    text-shadow: 2px 2px 10px #000;
 }
 
 .likesContainer {
     width: 80%;
     margin: 0 10%;
     position: absolute;
+}
+
+.likesCol {
+    padding: 0;
 }

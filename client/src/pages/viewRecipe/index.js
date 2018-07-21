@@ -1,1 +1,1 @@
-export { default } from "./viewRecipe.js";
+export { default } from './ViewRecipe';

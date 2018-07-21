@@ -35,8 +35,9 @@ const userSchema = new Schema({
     maxlength: [20, 'Please select username 20 characters or less.'],
   },
   password: {
-    type: String
+    type: String,
     // required: [true, 'Please enter password.'],
+    // trim: true,
     // minlength: [4, 'Please select password 4 characters or more.'],
     // maxlength: [20, 'Please select password 20 characters or less.'],
   },
@@ -56,31 +57,37 @@ const userSchema = new Schema({
       type: String,
       required: false,
       trim: true,
-      // validate: {
-      //   validator: phone =>  /\d{3}-\d{3}-\d{4}/.test(phone),
-      //   message: '{VALUE} is not a valid phone number.'
-      // },
+      validate: {
+        validator: phone =>  /\d{3}-\d{3}-\d{4}/.test(phone),
+        message: '{VALUE} is not a valid phone number.'
+      },
       maxlength: 12
     },
     city: {
       type: String,
-      // required: [true, 'Please enter city.'],
+      required: [true, 'Please enter city.'],
       trim: true,
       maxlength: 50
+    },
+    state: {
+      type: String,
+      required: [true, 'Please enter state.'],
+      trim: true,
+      enum: STATES,
+      maxlength: 2
     }
-    // state: {
-    //   type: String,
-    //   required: [true, 'Please enter state.'],
-    //   trim: true,
-    //   enum: STATES,
-    //   maxlength: 2
-    // }
   },
   recipes: [{ type : Schema.Types.ObjectId, ref: 'Recipe' }],
   social: {
     followers: [{ type : Schema.Types.ObjectId, ref: 'User' }],
     following: [{ type : Schema.Types.ObjectId, ref: 'User' }],
     favorites: [{ type : Schema.Types.ObjectId, ref: 'Recipe' }]
+  },
+  image: {
+    type: String,
+    required: false,
+    trim: true,
+    maxlength: [200, 'Please select a shorter image url (below 200)'],
   },
 
   created: { type: Date, default: Date.now }
