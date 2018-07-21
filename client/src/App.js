@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NoMatch from './pages/NoMatch';
 import Nav from './components/Nav';
 import AllRecipes from './pages/viewAllRecipes';
+import Profile from './pages/Profile';
 import Likes from './pages/Likes';
 import Following from './pages/Following';
 import Register from './pages/Register';
@@ -14,6 +15,7 @@ const App = () => (
       {/* <Nav /> */}
       <Switch>
         {/* <Route exact path='/' component={Users} /> */}
+        <Route exact path='/profile/:id' component={Profile} />
         <Route exact path='/recipes' component={AllRecipes} />
         <Route exact path='/likes' component={Likes} />
         <Route exact path='/following' component={Following} />
