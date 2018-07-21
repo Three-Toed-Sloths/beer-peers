@@ -1,0 +1,8 @@
+
+.viewAllRecipes {
+    flex-grow: 1;
+}
+
+.viewAllRecipes h1 {
+    text-align: center;
+}

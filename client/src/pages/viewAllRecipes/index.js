@@ -1,1 +1,1 @@
-export { default } from "./ViewAllRecipes.js";
+export { default } from "./ViewAllRecipes";

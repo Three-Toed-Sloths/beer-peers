@@ -1,0 +1,9 @@
+.wrapper {
+  /* background: url("https://vignette.wikia.nocookie.net/mariokart/images/9/9b/800px-MK8-RainbowRoad-overview.jpg/revision/latest?cb=20150403062312");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: fixed; */
+  width: 80%;
+  height: 100%;
+  margin: 0 auto;
+}
