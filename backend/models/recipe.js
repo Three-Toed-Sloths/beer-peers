@@ -98,7 +98,7 @@ const recipeSchema = new Schema({
             maxlength: 50
           },
           amount: {
-            type: Number,
+            // type: Number,
             type: String,
             required: true,
             trim: true,
@@ -121,7 +121,7 @@ const recipeSchema = new Schema({
             maxlength: 50
           },
           amount: {
-            type: Number,
+            // type: Number,
             type: String,
             required: true,
             trim: true,
@@ -151,14 +151,14 @@ const recipeSchema = new Schema({
           maxlength: 50
         },
         alpha: {
-          type: Number,
+          // type: Number,
           type: String,
           required: true,
           trim: true,
           max: 100
         },
         amount: {
-          type: Number,
+          // type: Number,
           type: String,
           required: true,
           trim: true,
