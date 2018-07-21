@@ -159,7 +159,7 @@ class RecipeForm extends Component {
 
         const newRecipe = {
             name: this.state.name,
-            brewer: '5b4a548d4cb96a51b8d6c61b',
+            // brewer: '5b4a548d4cb96a51b8d6c61b',
             style: this.state.style,
             likes: parseFloat(0),
             description: this.state.description,
