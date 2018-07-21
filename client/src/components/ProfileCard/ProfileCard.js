@@ -5,7 +5,7 @@ import Row from 'react-bootstrap/lib/Row';
 import "./ProfileCard.css";
 
 
-const ProfileCard =  (props) => (
+const ProfileCard =  props => (
     <Grid className="profileCard_card">
         <Row className="profileCard_content">
             <Col className="profileCard_picture" sm={5} xs={12}>

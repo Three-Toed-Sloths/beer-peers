@@ -10,7 +10,7 @@
 }
 .pic{
     height: 100%;
-    width: 100%;
+    width: auto;
     border-radius: 300px;
 }
 .profileCard_picture{

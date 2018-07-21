@@ -27,7 +27,7 @@ class Profile extends Component {
         console.log(this.state.identify);
     }
     
-    loadUser = (id) => {
+    loadUser = id => {
         API.getUser(id)
             .then(res => {
                 this.setState({
@@ -46,7 +46,7 @@ class Profile extends Component {
             .catch(err => console.log(err));
     }
 
-    loadRecipe = (recId) => {
+    loadRecipe = recId => {
         RecAPI.getRecipe(recId)
             .then(res => {
                 this.setState({
@@ -57,23 +57,23 @@ class Profile extends Component {
             .catch(err => console.log(err));
     }
     //color change by type
-    colorType = (type) => {
-        let c = "";
+    colorType = type => {
+        let color = "";
         switch(type){
             case "American IPA":
-            c = "yellow";
+            color = "yellow";
             break;
             case "Stout":
-            c = "green";
+            color = "green";
             break;
             case "Amber Ale":
-            c = "red";
+            color = "red";
             break;
             default:
-            c = "pink";
+            color = "pink";
             break;
         }
-        return c;
+        return color;
     }
     
     
