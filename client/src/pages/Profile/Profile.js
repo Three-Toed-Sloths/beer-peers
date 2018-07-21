@@ -59,13 +59,13 @@ class Profile extends Component {
     colorType = (type) => {
         let c = "";
         switch(type){
-            case 'American IPA':
-            c = "blue";
+            case "American IPA":
+            c = "yellow";
             break;
-            case 'Stout':
+            case "Stout":
             c = "green";
             break;
-            case 'Amber Ale':
+            case "Amber Ale":
             c = "red";
             break;
             default:
@@ -97,10 +97,10 @@ class Profile extends Component {
                     </Col>
                 </Row>
                 <Row>
-                    <Col sm={6} xs={12} style={{background: this.colorType('Stout')}}><h3>{"Name: " + this.state.recipeStrNames + " Type: " + this.state.recipeTypes}</h3></Col>
-                    <Col sm={6} xs={12} style={{background: this.colorType('Amber Ale')}}><h3>{"Name: " + this.state.recipeStrNames + " Type: " + this.state.recipeTypes}</h3></Col>
-                    <Col sm={6} xs={12} style={{background: this.colorType('ASS JUICE')}}><h3>{"Name: " + this.state.recipeStrNames + " Type: " + this.state.recipeTypes}</h3></Col>
-                    <Col sm={6} xs={12} style={{background: this.colorType(this.state.recipeTypes)}}><h3>{"Name: " + this.state.recipeStrNames + " Type: " + this.state.recipeTypes}</h3></Col>
+                    <Col sm={6} xs={12}><h3 style={{background: this.colorType(this.state.recipeTypes)}}>{"Name: " + this.state.recipeStrNames + " Type: " + this.state.recipeTypes}</h3></Col>
+                    <Col sm={6} xs={12}><h3 style={{background: this.colorType(this.state.recipeTypes)}}>{"Name: " + this.state.recipeStrNames + " Type: " + this.state.recipeTypes}</h3></Col>
+                    <Col sm={6} xs={12}><h3 style={{background: this.colorType(this.state.recipeTypes)}}>{"Name: " + this.state.recipeStrNames + " Type: " + this.state.recipeTypes}</h3></Col>
+                    <Col sm={6} xs={12}><h3 style={{background: this.colorType(this.state.recipeTypes)}}>{"Name: " + this.state.recipeStrNames + " Type: " + this.state.recipeTypes}</h3></Col>
                 </Row>
                 <Row>
                     <Col sm={12}>Recent Activity</Col>

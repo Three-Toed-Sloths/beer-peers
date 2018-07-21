@@ -1,7 +1,5 @@
 import React from "react";
-import Grid from 'react-bootstrap/lib/Grid';
-import Col from 'react-bootstrap/lib/Col';
-import Row from 'react-bootstrap/lib/Row';
+import {Grid, Col, Row} from 'react-bootstrap';
 import "./SecondaryNav.css";
 
 const SecondaryNav = (props) => (
@@ -13,6 +11,7 @@ const SecondaryNav = (props) => (
         <Col className="secondaryCols" sm={3} xs={12}><a href={"/recipes/" + props.iden}><h1 className="secondaryColText">Recipes</h1></a></Col>
     </Row>
 </Grid>
+
 );
 
 export default SecondaryNav;
