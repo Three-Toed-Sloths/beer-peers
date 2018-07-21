@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+
 const STATES = [ 'AK', 'AL', 'AR', 'AS', 'AZ', 'CA', 'CO', 'CT', 'DC', 'DE', 'FL', 'GA', 'GU', 'HI', 'IA', 'ID', 'IL', 'IN', 'KS', 'KY', 'LA', 'MA', 'MD', 'ME', 'MI', 'MN', 'MO', 'MS', 'MT', 'NC', 'ND', 'NE', 'NH', 'NJ', 'NM', 'NV', 'NY', 'OH', 'OK', 'OR', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VA', 'VI', 'VT', 'WA', 'WI', 'WV', 'WY'];
 
 const validateEmail = email => {
@@ -32,6 +33,13 @@ const userSchema = new Schema({
     trim: true,
     minlength: [4, 'Please select username 4 characters or more.'],
     maxlength: [20, 'Please select username 20 characters or less.'],
+  },
+  password: {
+    type: String,
+    // required: [true, 'Please enter password.'],
+    // trim: true,
+    // minlength: [4, 'Please select password 4 characters or more.'],
+    // maxlength: [20, 'Please select password 20 characters or less.'],
   },
   contact: {
     email: {
@@ -75,6 +83,12 @@ const userSchema = new Schema({
     following: [{ type : Schema.Types.ObjectId, ref: 'User' }],
     favorites: [{ type : Schema.Types.ObjectId, ref: 'Recipe' }]
   },
+  image: {
+    type: String,
+    required: false,
+    trim: true,
+    maxlength: [200, 'Please select a shorter image url (below 200)'],
+  },
 
   created: { type: Date, default: Date.now }
 });
@@ -82,4 +96,3 @@ const userSchema = new Schema({
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;
-

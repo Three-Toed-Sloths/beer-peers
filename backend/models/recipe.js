@@ -11,7 +11,7 @@ const recipeSchema = new Schema({
   brewer: { type : Schema.Types.ObjectId, ref: 'User' },
   style: {
     type: String,
-    required: true,
+    // required: true,
     trim: true,
     maxlength: 50
   },
@@ -77,7 +77,7 @@ const recipeSchema = new Schema({
         type: Number,
         required: true,
         trim: true,
-        max: 5
+        max: 1000
       },
       units: {
         type: String,
@@ -98,7 +98,8 @@ const recipeSchema = new Schema({
             maxlength: 50
           },
           amount: {
-            type: Number,
+            // type: Number,
+            type: String,
             required: true,
             trim: true,
             max: 1000
@@ -120,7 +121,8 @@ const recipeSchema = new Schema({
             maxlength: 50
           },
           amount: {
-            type: Number,
+            // type: Number,
+            type: String,
             required: true,
             trim: true,
             max: 1000
@@ -149,13 +151,15 @@ const recipeSchema = new Schema({
           maxlength: 50
         },
         alpha: {
-          type: Number,
+          // type: Number,
+          type: String,
           required: true,
           trim: true,
           max: 100
         },
         amount: {
-          type: Number,
+          // type: Number,
+          type: String,
           required: true,
           trim: true,
           max: 1000
@@ -193,7 +197,7 @@ const recipeSchema = new Schema({
     type: String,
     required: true,
     trim: true,
-    // maxlength: 255
+    maxlength: 255
   },
   created: { type: Date, default: Date.now }
 });

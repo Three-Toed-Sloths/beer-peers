@@ -1,0 +1,37 @@
+.profileCard_card{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: solid 2px red;
+    padding: 20px;
+    width: 100%;
+}
+.profileCard_content{
+    height: 300px;
+}
+.pic{
+    height: 100%;
+    width: auto;
+    border-radius: 300px;
+}
+.profileCard_picture{
+    border: solid 2px green;
+    border-radius: 300px;
+    height: 100%;
+    text-align: center;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.profileCard_location{
+    border: solid 2px yellow;
+    height: 100%;
+    text-align: center;
+}
+.profileCard_social{
+    border: solid 2px blue;
+    height: 100%;
+    text-align: center;
+}
+.profileCard_socialRows{
+    height: 150px;
+    border-bottom: solid 2px pink;
+}
