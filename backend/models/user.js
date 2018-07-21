@@ -33,6 +33,13 @@ const userSchema = new Schema({
     minlength: [4, 'Please select username 4 characters or more.'],
     maxlength: [20, 'Please select username 20 characters or less.'],
   },
+  password: {
+    type: String,
+    // required: [true, 'Please enter password.'],
+    // trim: true,
+    // minlength: [4, 'Please select password 4 characters or more.'],
+    // maxlength: [20, 'Please select password 20 characters or less.'],
+  },
   contact: {
     email: {
       type: String,
@@ -74,6 +81,12 @@ const userSchema = new Schema({
     followers: [{ type : Schema.Types.ObjectId, ref: 'User' }],
     following: [{ type : Schema.Types.ObjectId, ref: 'User' }],
     favorites: [{ type : Schema.Types.ObjectId, ref: 'Recipe' }]
+  },
+  image: {
+    type: String,
+    required: false,
+    trim: true,
+    maxlength: [200, 'Please select a shorter image url (below 200)'],
   },
 
   created: { type: Date, default: Date.now }
