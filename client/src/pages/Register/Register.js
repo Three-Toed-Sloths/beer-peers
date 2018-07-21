@@ -126,7 +126,7 @@ class Register extends Component {
 
     phoneValidation() {
         if (/\d{3}-\d{3}-\d{4}/.test(this.state.phone)) return 'success';
-    }
+    };
 
     render() {
         return(
@@ -138,7 +138,7 @@ class Register extends Component {
                             <ControlLabel>First Name:</ControlLabel>
                             <FormControl 
                                 type='text'
-                                placeholder='John'
+                                placeholder='John (Required)'
                                 value={this.state.first}
                                 name='first'
                                 onChange={this.handleInputChange}
@@ -151,7 +151,7 @@ class Register extends Component {
                             <ControlLabel>Last Name:</ControlLabel>
                             <FormControl
                                 type='text'
-                                placeholder='Doe'
+                                placeholder='Doe (Required)'
                                 value={this.state.last}
                                 name='last'
                                 onChange={this.handleInputChange}
@@ -166,7 +166,7 @@ class Register extends Component {
                                 <ControlLabel>Username:</ControlLabel>
                                 <FormControl
                                     type='text'
-                                    placeholder='WhoAmI'
+                                    placeholder='WhoAmI (Required)'
                                     value={this.state.username}
                                     name='username'
                                     onChange={this.handleInputChange}
@@ -179,7 +179,7 @@ class Register extends Component {
                                 <ControlLabel>Password:</ControlLabel>
                                 <FormControl
                                     type='password'
-                                    placeholder='Password'
+                                    placeholder='Password (Required)'
                                     value={this.state.password}
                                     name='password'
                                     onChange={this.handleInputChange}
@@ -194,7 +194,7 @@ class Register extends Component {
                                 <ControlLabel>Email Address:</ControlLabel>
                                 <FormControl
                                     type='email'
-                                    placeholder='email@example.com'
+                                    placeholder='email@example.com (Required)'
                                     value={this.state.email}
                                     name='email'
                                     onChange={this.handleInputChange}
@@ -226,7 +226,7 @@ class Register extends Component {
                                 <ControlLabel>City:</ControlLabel>
                                 <FormControl
                                     type='text'
-                                    placeholder='Irvine'
+                                    placeholder='Irvine (Required)'
                                     value={this.state.city}
                                     name='city'
                                     onChange={this.handleInputChange}

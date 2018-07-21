@@ -1,33 +1,22 @@
-// import React from 'react';
-// import './Following.css';
+import React from 'react';
+import {Grid, Row, Col} from 'react-bootstrap';
+import './Following.css';
 
-// const Following = props => {
-//     const { classes } = props;
+const Following = () => {
+    return (
+        <Row>
+            <Col xs={12} className='followingCol'>
+                <div className='followingParallax'>
+                    <div className='followingContainer'>
+                        <h1 className='followingHeader'>Following</h1>
+                        <hr />
+                    </div>
+                </div>
+            </Col>
+        </Row>
+        // <Grid>
+        // </Grid>
+    );
+}
 
-//     return(
-//         <div className={classes.root}>
-//             <div className='followingContent'>
-//                 <Grid container spacing={24}>
-//                     <div className='followingParallax'>
-//                         <div className='followingContainer'>
-//                             <h1 className='followingHeader'>Following</h1>
-//                             <hr />
-//                         </div>
-//                     </div>
-//                 </Grid>
-//                 {/* <Grid container spacing={24}>
-//                     <SecondaryNav />
-//                 </Grid> */}
-//                 {/* <Grid container spacing={24}>
-//                     <FollowingProfileCard />
-//                 </Grid> */}
-//             </div>
-//         </div>
-//     );
-// };
-
-// Following.prototypes = {
-//     classes: PropTypes.object.isRequired,
-// };
-
-// export default withStyles(styles)(Following);
+export default Following;
