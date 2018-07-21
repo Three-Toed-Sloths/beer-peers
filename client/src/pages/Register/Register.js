@@ -3,6 +3,8 @@ import { FormGroup, ControlLabel, FormControl, HelpBlock, Button, Panel, Row, Co
 import API from '../../utils/userAPI';
 import './Register.css';
 
+const STATES = [ 'AK', 'AL', 'AR', 'AS', 'AZ', 'CA', 'CO', 'CT', 'DC', 'DE', 'FL', 'GA', 'GU', 'HI', 'IA', 'ID', 'IL', 'IN', 'KS', 'KY', 'LA', 'MA', 'MD', 'ME', 'MI', 'MN', 'MO', 'MS', 'MT', 'NC', 'ND', 'NE', 'NH', 'NJ', 'NM', 'NV', 'NY', 'OH', 'OK', 'OR', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VA', 'VI', 'VT', 'WA', 'WI', 'WV', 'WY'];
+
 class Register extends Component {
     state = {
         first: '',
@@ -49,44 +51,6 @@ class Register extends Component {
                 // image: this.state.image
             })
         )
-
-        
-        // ==============================
-        // || Checking Form Submission ||
-        // ==============================
-
-        let newUser = {
-            name: {
-                fist: this.state.first,
-                last: this.state.last
-            },
-            username: this.state.username,
-            contact: {
-                email: this.state.email,
-                phone: this.state.phone,
-                city: this.state.city,
-                state: this.state.state
-            },
-            password: this.state.password,
-            image: this.state.image
-        };
-
-        console.log(newUser);
-
-        // ==================
-        // || Reset States ||
-        // ==================
-
-        // this.setState({
-        //     first: '',
-        //     last: '',
-        //     username: '',
-        //     password: '',
-        //     email: '',
-        //     phone: '',
-        //     city: '',
-        //     state: ''
-        // });
     };
     
     // =================
@@ -97,14 +61,12 @@ class Register extends Component {
         const length = this.state.first.length;
         if (length > 50) return 'error';
         else if (length > 0) return 'success';
-        return null;
     };
 
     lastValidation() {
         const length = this.state.last.length;
         if (length > 50) return 'error';
         else if (length > 0) return 'success';
-        return null;
     };
 
     usernameValidation() {
@@ -138,7 +100,7 @@ class Register extends Component {
                             <ControlLabel>First Name:</ControlLabel>
                             <FormControl 
                                 type='text'
-                                placeholder='John (Required)'
+                                placeholder='First Name (Required)'
                                 value={this.state.first}
                                 name='first'
                                 onChange={this.handleInputChange}
@@ -151,7 +113,7 @@ class Register extends Component {
                             <ControlLabel>Last Name:</ControlLabel>
                             <FormControl
                                 type='text'
-                                placeholder='Doe (Required)'
+                                placeholder='Last Name (Required)'
                                 value={this.state.last}
                                 name='last'
                                 onChange={this.handleInputChange}
@@ -166,7 +128,7 @@ class Register extends Component {
                                 <ControlLabel>Username:</ControlLabel>
                                 <FormControl
                                     type='text'
-                                    placeholder='WhoAmI (Required)'
+                                    placeholder='Username (Required)'
                                     value={this.state.username}
                                     name='username'
                                     onChange={this.handleInputChange}
@@ -194,7 +156,7 @@ class Register extends Component {
                                 <ControlLabel>Email Address:</ControlLabel>
                                 <FormControl
                                     type='email'
-                                    placeholder='email@example.com (Required)'
+                                    placeholder='Email (Required)'
                                     value={this.state.email}
                                     name='email'
                                     onChange={this.handleInputChange}
@@ -226,7 +188,7 @@ class Register extends Component {
                                 <ControlLabel>City:</ControlLabel>
                                 <FormControl
                                     type='text'
-                                    placeholder='Irvine (Required)'
+                                    placeholder='City (Required)'
                                     value={this.state.city}
                                     name='city'
                                     onChange={this.handleInputChange}
@@ -243,57 +205,7 @@ class Register extends Component {
                                     onChange={this.handleInputChange}
                                 >
                                     <option value='' disabled selected>State</option>
-                                    <option value='AL'>AL</option>
-                                    <option value='AK'>AK</option>
-                                    <option value='AR'>AR</option>
-                                    <option value='AZ'>AZ</option>
-                                    <option value='CA'>CA</option>
-                                    <option value='CO'>CO</option>
-                                    <option value='CT'>CT</option>
-                                    <option value='DC'>DC</option>
-                                    <option value='DE'>DE</option>
-                                    <option value='FL'>FL</option>
-                                    <option value='GA'>GA</option>
-                                    <option value='HI'>HI</option>
-                                    <option value='IA'>IA</option>
-                                    <option value='ID'>ID</option>
-                                    <option value='IL'>IL</option>
-                                    <option value='IN'>IN</option>
-                                    <option value='KS'>KS</option>
-                                    <option value='KY'>KY</option>
-                                    <option value='LA'>LA</option>
-                                    <option value='MA'>MA</option>
-                                    <option value='MD'>MD</option>
-                                    <option value='ME'>ME</option>
-                                    <option value='MI'>MI</option>
-                                    <option value='MN'>MN</option>
-                                    <option value='MO'>MO</option>
-                                    <option value='MS'>MS</option>
-                                    <option value='MT'>MT</option>
-                                    <option value='NC'>NC</option>
-                                    <option value='NE'>NE</option>
-                                    <option value='NH'>NH</option>
-                                    <option value='NJ'>NJ</option>
-                                    <option value='NM'>NM</option>
-                                    <option value='NV'>NV</option>
-                                    <option value='NY'>NY</option>
-                                    <option value='ND'>ND</option>
-                                    <option value='OH'>OH</option>
-                                    <option value='OK'>OK</option>
-                                    <option value='OR'>OR</option>
-                                    <option value='PA'>PA</option>
-                                    <option value='RI'>RI</option>
-                                    <option value='SC'>SC</option>
-                                    <option value='SD'>SD</option>
-                                    <option value='TN'>TN</option>
-                                    <option value='TX'>TX</option>
-                                    <option value='UT'>UT</option>
-                                    <option value='VT'>VT</option>
-                                    <option value='VA'>VA</option>
-                                    <option value='WA'>WA</option>
-                                    <option value='WI'>WI</option>
-                                    <option value='WV'>WV</option>
-                                    <option value='WY'>WY</option>
+                                    {STATES.map(state => ( <option value={state}>{state}</option> ))}
                                 </FormControl>
                             </FormGroup>
                         </Col>
