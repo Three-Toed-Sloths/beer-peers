@@ -74,7 +74,8 @@ class Register extends Component {
 
     passwordValidation() {
         const length = this.state.password.length;
-        if (length < 8) return 'warning';
+        if (length < 1) return 'error';
+        else if (length < 8) return 'warning';
         else if (length > 7) return 'success';
     };
 
@@ -92,14 +93,18 @@ class Register extends Component {
             <Wrapper>
                 <Panel>
                     <Wrapper>
-                        <form>
+                        <form className='registerForm'>
                             <Row>
-                                <HelpBlock>Note: All outlier spaces will be trimed from all fields</HelpBlock>
+                                <h1 className='registerH1'>Create New Account:</h1>
+                                <hr />
+                            </Row>
+                            <Row>
+                                <HelpBlock>Note: All spaces will be trimed from all fields.</HelpBlock>
                             </Row>
                             <Row>
                                 <Col xs={12} md={6}>
                                 <FormGroup controlId={'formFirst'} validationState={this.firstValidation()}>
-                                    <ControlLabel>First Name:</ControlLabel>
+                                    <ControlLabel className='registerControlLabel'>First Name:</ControlLabel>
                                     <FormControl 
                                         type='text'
                                         placeholder='First Name (Required)'
@@ -113,7 +118,7 @@ class Register extends Component {
                                 </Col>
                                 <Col xs={12} md={6}>
                                 <FormGroup controlId={'formLast'} validationState={this.lastValidation()}>
-                                    <ControlLabel>Last Name:</ControlLabel>
+                                    <ControlLabel className='registerControlLabel'>Last Name:</ControlLabel>
                                     <FormControl
                                         type='text'
                                         placeholder='Last Name (Required)'
@@ -129,7 +134,7 @@ class Register extends Component {
                             <Row>
                                 <Col sm={12} md={6}>
                                     <FormGroup controlId={'formUsername'} validationState={this.usernameValidation()}>
-                                        <ControlLabel>Username:</ControlLabel>
+                                        <ControlLabel className='registerControlLabel'>Username:</ControlLabel>
                                         <FormControl
                                             type='text'
                                             placeholder='Username (Required)'
@@ -139,11 +144,12 @@ class Register extends Component {
                                             onChange={this.handleInputChange}
                                         />
                                         <FormControl.Feedback />
+                                        <HelpBlock>Must be at least 4 characters long</HelpBlock>
                                     </FormGroup>
                                 </Col>
                                 <Col xs={12} md={6}>
                                     <FormGroup controlId={'formPassword'} validationState={this.passwordValidation()}>
-                                        <ControlLabel>Password:</ControlLabel>
+                                        <ControlLabel className='registerControlLabel'>Password:</ControlLabel>
                                         <FormControl
                                             type='password'
                                             placeholder='Password (Required)'
@@ -158,7 +164,7 @@ class Register extends Component {
                             <Row>
                                 <Col xs={12} md={6}>
                                     <FormGroup controlId={'formEmail'} validationState={this.emailValidation()}>
-                                        <ControlLabel>Email Address:</ControlLabel>
+                                        <ControlLabel className='registerControlLabel'>Email Address:</ControlLabel>
                                         <FormControl
                                             type='email'
                                             placeholder='Email (Required)'
@@ -167,12 +173,12 @@ class Register extends Component {
                                             onChange={this.handleInputChange}
                                         />
                                         <FormControl.Feedback />
-                                        <HelpBlock>Please enter a valid email address.</HelpBlock>
+                                        <HelpBlock>Addresses must contain an '@' and ending (.com / .co / etc.)</HelpBlock>
                                     </FormGroup>
                                 </Col>
                                 <Col xs={12} md={6}>
                                     <FormGroup controlId={'formPhone'} validationState={this.phoneValidation()}>
-                                        <ControlLabel>Phone Number:</ControlLabel>
+                                        <ControlLabel className='registerControlLabel'>Phone Number:</ControlLabel>
                                         <FormControl
                                             type='tel'
                                             maxLength={12}
@@ -187,9 +193,9 @@ class Register extends Component {
                                 </Col>
                             </Row>
                             <Row>
-                                <Col xs={9} md={6}>
+                                <Col xs={8} md={6}>
                                     <FormGroup controlId={'formCity'}>
-                                        <ControlLabel>City:</ControlLabel>
+                                        <ControlLabel className='registerControlLabel'>City:</ControlLabel>
                                         <FormControl
                                             type='text'
                                             placeholder='City (Required)'
@@ -199,9 +205,9 @@ class Register extends Component {
                                         />
                                     </FormGroup>
                                 </Col>
-                                <Col xs={3} md={2}>
+                                <Col xs={4} md={2}>
                                     <FormGroup id='formState'>
-                                        <ControlLabel>State:</ControlLabel>
+                                        <ControlLabel className='registerControlLabel'>State:</ControlLabel>
                                         <FormControl 
                                             componentClass='select'
                                             value={this.state.state}
@@ -217,10 +223,10 @@ class Register extends Component {
                             <Row>
                                 <Col xs={12} md={6}>
                                     <FormGroup controlId={'formImage'}>
-                                        <ControlLabel>Image URL:</ControlLabel>
+                                        <ControlLabel className='registerControlLabel'>Image URL:</ControlLabel>
                                         <FormControl
                                             type='text'
-                                            placeholder='https://website.com/image_source.jpg'
+                                            placeholder='Image URL'
                                             value={this.state.image}
                                             name='image'
                                             onChange={this.handleInputChange}
@@ -228,13 +234,18 @@ class Register extends Component {
                                     </FormGroup>
                                 </Col>
                             </Row>
-                            <Button onClick={this.handleSubmit} type='submit'>Submit</Button>
+                            <Row>
+                                <Col xs={0} md={4} />
+                                <Col xs={12} md={4}>
+                                    <Button className='registerSubmit' bsSize='large' type='submit' block onClick={this.handleSubmit}>Submit</Button>
+                                </Col>
+                            </Row>
                         </form>
                     </Wrapper>
                 </Panel>
             </Wrapper>
-        )
-    }
-}
+        );
+    };
+};
 
 export default Register;

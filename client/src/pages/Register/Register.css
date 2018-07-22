@@ -1,0 +1,21 @@
+.registerH1 {
+    font-family: 'EB Garamond', serif;
+}
+
+.registerForm {
+    margin-bottom: 2em;
+}
+
+.registerControlLabel {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.registerSubmit {
+    margin-top: 1em;
+    font-family: 'EB Garamond', serif;
+    font-weight: bold;
+}
+
+.test {
+    text-align: center;
+}
