@@ -68,7 +68,7 @@ class FullRecipe extends Component {
         const batch = this.state.batch;
 
         return (
-            <Wrapper>
+            
             <div className="fullRecipe">
                 <Row className="show-grid">
                     <Col xs={12}>
@@ -101,18 +101,18 @@ class FullRecipe extends Component {
 
                         <h3>Ingredients</h3>
                         <h4>Base Malt</h4>
-                        {this.state.base.map(malt => (
-                            <Malt name={malt.name} amount={malt.amount} units={malt.units}/>
+                        {this.state.base.map((malt, i) => (
+                            <Malt key={`base${i}`} name={malt.name} amount={malt.amount} units={malt.units}/>
                         ))}
 
                         <h4>Speciality Malt</h4>
-                        {this.state.speciality.map(malt => (
-                            <Malt name={malt.name} amount={malt.amount} units={malt.units}/>
+                        {this.state.speciality.map((malt, i) => (
+                            <Malt key={`speciality${i}`} name={malt.name} amount={malt.amount} units={malt.units}/>
                         ))}
 
                         <h4>Hops</h4>
-                        {this.state.hops.map(hop => (
-                            <Hop name={hop.name} type={hop.type} alpha={hop.alpha} amount={hop.amount} units={hop.units} addition={hop.addition}/>
+                        {this.state.hops.map((hop, i) => (
+                            <Hop key={`hop${i}`} name={hop.name} type={hop.type} alpha={hop.alpha} amount={hop.amount} units={hop.units} addition={hop.addition}/>
                         ))}
                         
                         <h4>Yeast</h4>
@@ -127,7 +127,7 @@ class FullRecipe extends Component {
                     </Col>
                 </Row>
             </div>
-            </Wrapper>
+            
         )
     }
 }       

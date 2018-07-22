@@ -36,11 +36,10 @@ class RecipeBoard extends Component {
             <div className="recipeBoard">
                 <Grid>
                     {this.state.recipes.map(recipe => (
-                        <Row>
-                            <Col item key={recipe.id} sm={12} md={12}>
+                        <Row key={recipe._id}>
+                            <Col sm={12} md={12}>
                                 <RecipeCard
                                     id={recipe._id}
-                                    // key={recipe.id}
                                     name={recipe.name}
                                     style={recipe.style}
                                     abv={recipe.specs.abv}
