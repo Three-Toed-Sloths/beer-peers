@@ -48,7 +48,9 @@ class RecipeBoard extends Component {
                                     batchUnits={recipe.specs.batch.units}
                                     ibu={recipe.specs.ibu}
                                     fg={recipe.specs.fg}
-                                    brewer={recipe.brewer}
+                                    brewer={recipe.brewer.username}
+                                    brewerFirstName={recipe.brewer.name.first}
+                                    brewerLastName={recipe.brewer.name.last}
                                     description={recipe.description}
                                 />
                             </Col>
