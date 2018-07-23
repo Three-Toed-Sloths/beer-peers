@@ -35,7 +35,7 @@ class Register extends Component {
             alert('Please fill out all required fields.')
         }
         else (
-            API.saveUser({
+            API.createUser({
                 name: {
                     first: this.state.first,
                     last: this.state.last
@@ -90,160 +90,162 @@ class Register extends Component {
 
     render() {
         return(
-            <Wrapper>
-                <Panel>
-                    <Wrapper>
-                        <form className='registerForm'>
-                            <Row>
-                                <h1 className='registerH1'>Create New Account:</h1>
-                                <hr />
-                            </Row>
-                            <Row>
-                                <HelpBlock>Note: All spaces will be trimed from all fields.</HelpBlock>
-                            </Row>
-                            <Row>
-                                <Col xs={12} md={6}>
-                                <FormGroup controlId={'formFirst'} validationState={this.firstValidation()}>
-                                    <ControlLabel className='registerControlLabel'>First Name:</ControlLabel>
-                                    <FormControl 
-                                        type='text'
-                                        placeholder='First Name (Required)'
-                                        value={this.state.first}
-                                        name='first'
-                                        maxLength={50}
-                                        onChange={this.handleInputChange}
-                                    />
-                                    <FormControl.Feedback />
-                                </FormGroup>
-                                </Col>
-                                <Col xs={12} md={6}>
-                                <FormGroup controlId={'formLast'} validationState={this.lastValidation()}>
-                                    <ControlLabel className='registerControlLabel'>Last Name:</ControlLabel>
-                                    <FormControl
-                                        type='text'
-                                        placeholder='Last Name (Required)'
-                                        value={this.state.last}
-                                        name='last'
-                                        maxLength={50}
-                                        onChange={this.handleInputChange}
-                                    />
-                                    <FormControl.Feedback />
-                                </FormGroup>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col sm={12} md={6}>
-                                    <FormGroup controlId={'formUsername'} validationState={this.usernameValidation()}>
-                                        <ControlLabel className='registerControlLabel'>Username:</ControlLabel>
-                                        <FormControl
-                                            type='text'
-                                            placeholder='Username (Required)'
-                                            value={this.state.username}
-                                            name='username'
-                                            maxLength={20}
-                                            onChange={this.handleInputChange}
-                                        />
-                                        <FormControl.Feedback />
-                                        <HelpBlock>Must be at least 4 characters long</HelpBlock>
-                                    </FormGroup>
-                                </Col>
-                                <Col xs={12} md={6}>
-                                    <FormGroup controlId={'formPassword'} validationState={this.passwordValidation()}>
-                                        <ControlLabel className='registerControlLabel'>Password:</ControlLabel>
-                                        <FormControl
-                                            type='password'
-                                            placeholder='Password (Required)'
-                                            value={this.state.password}
-                                            name='password'
-                                            onChange={this.handleInputChange}
-                                        />
-                                        <FormControl.Feedback />
-                                    </FormGroup>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col xs={12} md={6}>
-                                    <FormGroup controlId={'formEmail'} validationState={this.emailValidation()}>
-                                        <ControlLabel className='registerControlLabel'>Email Address:</ControlLabel>
-                                        <FormControl
-                                            type='email'
-                                            placeholder='Email (Required)'
-                                            value={this.state.email}
-                                            name='email'
-                                            onChange={this.handleInputChange}
-                                        />
-                                        <FormControl.Feedback />
-                                        <HelpBlock>Addresses must contain an '@' and ending (.com / .co / etc.)</HelpBlock>
-                                    </FormGroup>
-                                </Col>
-                                <Col xs={12} md={6}>
-                                    <FormGroup controlId={'formPhone'} validationState={this.phoneValidation()}>
-                                        <ControlLabel className='registerControlLabel'>Phone Number:</ControlLabel>
-                                        <FormControl
-                                            type='tel'
-                                            maxLength={12}
-                                            placeholder='###-###-####'
-                                            value={this.state.phone}
-                                            name='phone'
-                                            onChange={this.handleInputChange}
-                                        />
-                                    <FormControl.Feedback />
-                                    <HelpBlock>Please use the following format: ### - ### - ####</HelpBlock>
-                                    </FormGroup>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col xs={8} md={6}>
-                                    <FormGroup controlId={'formCity'}>
-                                        <ControlLabel className='registerControlLabel'>City:</ControlLabel>
-                                        <FormControl
-                                            type='text'
-                                            placeholder='City (Required)'
-                                            value={this.state.city}
-                                            name='city'
-                                            onChange={this.handleInputChange}
-                                        />
-                                    </FormGroup>
-                                </Col>
-                                <Col xs={4} md={2}>
-                                    <FormGroup id='formState'>
-                                        <ControlLabel className='registerControlLabel'>State:</ControlLabel>
+            <div className='registerBackground'>
+                <Wrapper>
+                    <Panel>
+                        <Wrapper>
+                            <form className='registerForm'>
+                                <Row>
+                                    <h1 className='registerH1'>Create New Account:</h1>
+                                    <hr />
+                                </Row>
+                                <Row>
+                                    <HelpBlock>Note: All spaces will be trimed from all fields.</HelpBlock>
+                                </Row>
+                                <Row>
+                                    <Col xs={12} md={6}>
+                                    <FormGroup controlId={'formFirst'} validationState={this.firstValidation()}>
+                                        <ControlLabel className='registerControlLabel'>First Name:</ControlLabel>
                                         <FormControl 
-                                            componentClass='select'
-                                            value={this.state.state}
-                                            name='state'
-                                            onChange={this.handleInputChange}
-                                        >
-                                            <option value='' disabled selected>State</option>
-                                            {STATES.map(state => ( <option value={state}>{state}</option> ))}
-                                        </FormControl>
-                                    </FormGroup>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col xs={12} md={6}>
-                                    <FormGroup controlId={'formImage'}>
-                                        <ControlLabel className='registerControlLabel'>Image URL:</ControlLabel>
-                                        <FormControl
                                             type='text'
-                                            placeholder='Image URL'
-                                            value={this.state.image}
-                                            name='image'
+                                            placeholder='First Name (Required)'
+                                            value={this.state.first}
+                                            name='first'
+                                            maxLength={50}
                                             onChange={this.handleInputChange}
                                         />
+                                        <FormControl.Feedback />
                                     </FormGroup>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col xs={0} md={4} />
-                                <Col xs={12} md={4}>
-                                    <Button className='registerSubmit' bsSize='large' type='submit' block onClick={this.handleSubmit}>Submit</Button>
-                                </Col>
-                            </Row>
-                        </form>
-                    </Wrapper>
-                </Panel>
-            </Wrapper>
+                                    </Col>
+                                    <Col xs={12} md={6}>
+                                    <FormGroup controlId={'formLast'} validationState={this.lastValidation()}>
+                                        <ControlLabel className='registerControlLabel'>Last Name:</ControlLabel>
+                                        <FormControl
+                                            type='text'
+                                            placeholder='Last Name (Required)'
+                                            value={this.state.last}
+                                            name='last'
+                                            maxLength={50}
+                                            onChange={this.handleInputChange}
+                                        />
+                                        <FormControl.Feedback />
+                                    </FormGroup>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col sm={12} md={6}>
+                                        <FormGroup controlId={'formUsername'} validationState={this.usernameValidation()}>
+                                            <ControlLabel className='registerControlLabel'>Username:</ControlLabel>
+                                            <FormControl
+                                                type='text'
+                                                placeholder='Username (Required)'
+                                                value={this.state.username}
+                                                name='username'
+                                                maxLength={20}
+                                                onChange={this.handleInputChange}
+                                            />
+                                            <FormControl.Feedback />
+                                            <HelpBlock>Must be at least 4 characters long</HelpBlock>
+                                        </FormGroup>
+                                    </Col>
+                                    <Col xs={12} md={6}>
+                                        <FormGroup controlId={'formPassword'} validationState={this.passwordValidation()}>
+                                            <ControlLabel className='registerControlLabel'>Password:</ControlLabel>
+                                            <FormControl
+                                                type='password'
+                                                placeholder='Password (Required)'
+                                                value={this.state.password}
+                                                name='password'
+                                                onChange={this.handleInputChange}
+                                            />
+                                            <FormControl.Feedback />
+                                        </FormGroup>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col xs={12} md={6}>
+                                        <FormGroup controlId={'formEmail'} validationState={this.emailValidation()}>
+                                            <ControlLabel className='registerControlLabel'>Email Address:</ControlLabel>
+                                            <FormControl
+                                                type='email'
+                                                placeholder='Email (Required)'
+                                                value={this.state.email}
+                                                name='email'
+                                                onChange={this.handleInputChange}
+                                            />
+                                            <FormControl.Feedback />
+                                            <HelpBlock>Addresses must contain an '@' and ending (.com / .co / etc.)</HelpBlock>
+                                        </FormGroup>
+                                    </Col>
+                                    <Col xs={12} md={6}>
+                                        <FormGroup controlId={'formPhone'} validationState={this.phoneValidation()}>
+                                            <ControlLabel className='registerControlLabel'>Phone Number:</ControlLabel>
+                                            <FormControl
+                                                type='tel'
+                                                maxLength={12}
+                                                placeholder='###-###-####'
+                                                value={this.state.phone}
+                                                name='phone'
+                                                onChange={this.handleInputChange}
+                                            />
+                                        <FormControl.Feedback />
+                                        <HelpBlock>Please use the following format: ### - ### - ####</HelpBlock>
+                                        </FormGroup>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col xs={8} md={6}>
+                                        <FormGroup controlId={'formCity'}>
+                                            <ControlLabel className='registerControlLabel'>City:</ControlLabel>
+                                            <FormControl
+                                                type='text'
+                                                placeholder='City (Required)'
+                                                value={this.state.city}
+                                                name='city'
+                                                onChange={this.handleInputChange}
+                                            />
+                                        </FormGroup>
+                                    </Col>
+                                    <Col xs={4} md={2}>
+                                        <FormGroup id='formState'>
+                                            <ControlLabel className='registerControlLabel'>State:</ControlLabel>
+                                            <FormControl 
+                                                componentClass='select'
+                                                value={this.state.state}
+                                                name='state'
+                                                onChange={this.handleInputChange}
+                                            >
+                                                <option value='' disabled selected>State</option>
+                                                {STATES.map(state => ( <option value={state}>{state}</option> ))}
+                                            </FormControl>
+                                        </FormGroup>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col xs={12} md={6}>
+                                        <FormGroup controlId={'formImage'}>
+                                            <ControlLabel className='registerControlLabel'>Image URL:</ControlLabel>
+                                            <FormControl
+                                                type='text'
+                                                placeholder='Image URL'
+                                                value={this.state.image}
+                                                name='image'
+                                                onChange={this.handleInputChange}
+                                            />
+                                        </FormGroup>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col xs={0} md={4} />
+                                    <Col xs={12} md={4}>
+                                        <Button className='registerSubmit' bsSize='large' type='submit' block onClick={this.handleSubmit}>Submit</Button>
+                                    </Col>
+                                </Row>
+                            </form>
+                        </Wrapper>
+                    </Panel>
+                </Wrapper>
+            </div>
         );
     };
 };

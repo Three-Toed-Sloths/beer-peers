@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./AboutBanner.css"
-import { Jumbotron, Button, Image } from 'react-bootstrap/lib';
+import { Jumbotron, Button, Image } from 'react-bootstrap';
 import { Container, Row } from "../Grid"
 
 
@@ -14,8 +14,8 @@ class AboutBanner extends React.Component {
                         <h1>Connect with other brewers.</h1>
                     </Row>
                     <Row>
-                        <Image xs={6} md={6} lg={6} src='https://images.unsplash.com/photo-1515303900226-036e8b860207?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=83b7b7ecf6d99a4b2742f825fe0d2cf4&auto=format&fit=crop&w=600&q=60' alt='glass of beer' rounded responsive />
-                        <ul xs={6} md={6} lg={6}>
+                        <Image xs={6} src='#' alt='glass of beer' rounded responsive />
+                        <ul xs={6}>
                             <li><h3>Learn how to brew from others</h3></li>
                             <li><h3>Share your recipes and get feedback</h3></li>
                             <li><h3>Connect with similar minded people</h3></li>

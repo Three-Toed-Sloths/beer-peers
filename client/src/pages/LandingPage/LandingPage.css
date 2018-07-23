@@ -1,0 +1,36 @@
+.landingBackground {
+    background-image: url('../../images/adam-wilson-138927-unsplash.jpg');
+    background-repeat: no-repeat; 
+    height: 100vh;
+    min-height: 100vh;
+}
+
+.landingTitle {
+    margin: 0 auto;
+    padding-top: 2em;
+    text-align: center;
+    font-family: 'EB Garamond', serif;
+    font-size: 5em;
+}
+
+.landingCatch {
+    margin-top: 0;
+    margin-bottom: 1em;
+    text-align: center;
+    font-family: 'EB Garamond', serif;
+    font-size: 3em;
+}
+
+.loginTitle {
+    text-align: center;
+    font-family: 'EB Garamond', serif;
+}
+
+.loginLabel {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.landingBtn {
+    font-family: 'EB Garamond', serif;
+    font-weight: bold;
+}

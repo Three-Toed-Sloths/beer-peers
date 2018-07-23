@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Nav from './components/Nav';
 import NoMatch from './pages/NoMatch';
 import Profile from './pages/Profile';
 import Likes from './pages/Likes';
@@ -7,13 +8,14 @@ import Following from './pages/Following';
 import Register from './pages/Register';
 import AllRecipes from './pages/ViewAllRecipes';
 import ViewRecipe from './pages/ViewRecipe';
-import AddRecipe from './pages/AddRecipe'
+import AddRecipe from './pages/AddRecipe';
 import LandingPage from "./pages/LandingPage";
 
 const App = () => (
+  <div>
+    <Nav />
     <Router>
       <div>
-        {/* <Nav /> */}
         <Switch>
           <Route exact path='/' component={LandingPage} />
           <Route exact path='/profile/:id' component={Profile} />
@@ -29,6 +31,7 @@ const App = () => (
         </Switch>
       </div>
     </Router>
+  </div>
   );
 
 export default App;

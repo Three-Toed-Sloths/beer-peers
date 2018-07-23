@@ -1,3 +1,10 @@
+.registerBackground {
+    background-image: url('../../images/david-straight-341873-unsplash.jpg');
+    background-repeat: no-repeat;
+    height: 100vh;
+    min-height: 100vh;
+}
+
 .registerH1 {
     font-family: 'EB Garamond', serif;
 }
@@ -14,8 +21,4 @@
     margin-top: 1em;
     font-family: 'EB Garamond', serif;
     font-weight: bold;
-}
-
-.test {
-    text-align: center;
 }

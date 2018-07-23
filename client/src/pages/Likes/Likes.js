@@ -4,18 +4,14 @@ import './Likes.css';
 
 const Likes = () => {
     return (
-        <Row>
-            <Col xs={12} className='likesCol'>
-                <div className='likesParallax'>
-                    <div className='likesContainer'>
-                        <h1 className='likesHeader'>Likes</h1>
-                        <hr />
-                    </div>
+        <Col xs={12} className='likesCol'>
+            <div className='likesParallax'>
+                <div className='likesContainer'>
+                    <h1 className='likesHeader'>Likes</h1>
+                    <hr />
                 </div>
-            </Col>
-        </Row>
-        // <Grid>
-        // </Grid>
+            </div>
+        </Col>
     );
 }
 
