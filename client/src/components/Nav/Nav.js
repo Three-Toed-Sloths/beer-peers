@@ -1,11 +1,9 @@
-import React from "react";
+import React from 'react';
+import { Navbar } from 'react-bootstrap';
 
-const Nav = () => (
-  <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a className="navbar-brand" href="/">
-      Test Nav
-    </a>
-  </nav>
-);
+const Navbar = () => {
+    <Navbar>
+    </Navbar>
+}
 
-export default Nav;
+export default Navbar;
