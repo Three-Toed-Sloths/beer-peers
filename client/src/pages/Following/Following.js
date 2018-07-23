@@ -4,18 +4,14 @@ import './Following.css';
 
 const Following = () => {
     return (
-        <Row>
-            <Col xs={12} className='followingCol'>
-                <div className='followingParallax'>
-                    <div className='followingContainer'>
-                        <h1 className='followingHeader'>Following</h1>
-                        <hr />
-                    </div>
+        <Col xs={12} className='followingCol'>
+            <div className='followingParallax'>
+                <div className='followingContainer'>
+                    <h1 className='followingHeader'>Following</h1>
+                    <hr />
                 </div>
-            </Col>
-        </Row>
-        // <Grid>
-        // </Grid>
+            </div>
+        </Col>
     );
 }
 
