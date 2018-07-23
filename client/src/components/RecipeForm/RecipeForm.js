@@ -199,7 +199,8 @@ class RecipeForm extends Component {
 
     render() {
         return(
-        <Grid>
+            
+        <Grid className="recipeForm">
             <Row className='show-grid'>
                 <Col xs={12} md={12}>
                     <form>
@@ -436,7 +437,7 @@ class RecipeForm extends Component {
                         </Row>
                         <Row>
                             <Col xs={12}>
-                                <Button onClick={this.handleFormSubmit}>Submit</Button>
+                                <Button bsSize="large" onClick={this.handleFormSubmit} block>Submit</Button>
                             </Col>
                         </Row>
                     </form>
