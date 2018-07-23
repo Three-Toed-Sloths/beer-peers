@@ -1,3 +1,13 @@
 .navbar {
     margin-bottom: 0;
 }
+
+.navName {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.75em;
+}
+
+.navLinks {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1em;
+}

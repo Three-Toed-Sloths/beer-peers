@@ -6,19 +6,19 @@ const Head = () => (
     <Navbar collapseOnSelect>
         <Navbar.Header>
             <Navbar.Brand>
-                <a href='/'>Beer Peers</a>
+                <a className='navName' href='/'>Beer Peers</a>
             </Navbar.Brand>
             <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>
             <Nav pullRight>
-                <NavItem eventKey={1} href='/register'>
+                <NavItem className='navLinks' eventKey={1} href='/register'>
                     Sign Up
                 </NavItem>
-                <NavItem eventKey={2} href='/likes'>
+                <NavItem className='navLinks' eventKey={2} href='/likes'>
                     Top Recipes
                 </NavItem>
-                <NavItem eventKey={3} href='/following'>
+                <NavItem className='navLinks' eventKey={3} href='/following'>
                     Top Brewers
                 </NavItem>
             </Nav>

@@ -92,7 +92,7 @@ class Register extends Component {
         return(
             <div className='registerBackground'>
                 <Wrapper>
-                    <Panel>
+                    <Panel className='registerPanel'>
                         <Wrapper>
                             <form className='registerForm'>
                                 <Row>
