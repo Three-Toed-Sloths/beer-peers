@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, Row, Col, FormGroup, Button, FormControl, Well, ControlLabel, Jumbotron, Image } from 'react-bootstrap';
+import { Form, Row, Col, FormGroup, Button, FormControl, Well, ControlLabel, Image } from 'react-bootstrap';
 import API from '../../utils/userAPI';
 import Wrapper from '../../components/Wrapper';
 import './LandingPage.css';
@@ -44,7 +44,7 @@ class LandingPage extends React.Component {
         return (
             <div>
                 <div className='landingBackground'>
-                    <Wrapper>
+                    <Wrapper className='landingLogin'>
                         <h1 className='landingTitle'>Beer Peers</h1>
                         <h2 className='landingCatch'>'Where hoppy hour is when you make it'</h2>
                         <Well className='col-lg-4 col-lg-offset-4'>

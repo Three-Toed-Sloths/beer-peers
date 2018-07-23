@@ -1,5 +1,10 @@
 .landingBackground {
-    background-image: url('../../images/adam-wilson-138927-unsplash.jpg');
+    /* background-image: url('../../images/adam-wilson-138927-unsplash.jpg'); */
+    background-image:
+        linear-gradient(
+            rgba(255, 255, 255, 0.15),
+            rgba(255, 255, 255, 0.15)
+        ), url('../../images/adam-wilson-138927-unsplash.jpg');
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -7,6 +12,10 @@
     position: relative;
     height: 93vh;
     min-height: 93vh;
+}
+
+.landingLogin {
+    filter: blur(0px);
 }
 
 .landingTitle {
@@ -52,7 +61,7 @@
 .landingHR {
     height: 2px;
     background-color: #000;
-    background: linear-gradient(to right, #f5f5f5, #000, #f5f5f5)
+    background: linear-gradient(to right, #f5f5f5, #000, #f5f5f5);
 }
 
 .landingList {
