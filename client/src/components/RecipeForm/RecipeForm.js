@@ -54,7 +54,11 @@ class RecipeForm extends Component {
 
     addRecipe = newRecipe => {
         API.saveRecipe(newRecipe)
-         .then(res => this.resetState())
+         .then(res => {
+            this.resetState()
+            window.location.href = `/`;
+         }
+        )
          .catch(err => console.log(err));
     }
 

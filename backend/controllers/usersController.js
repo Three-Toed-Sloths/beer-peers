@@ -19,18 +19,7 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-
-  // FindByUsername: (req, res) => {
-  //   // console.log('user controller page')
-  //   // console.log(req.params.username + ' req.params.username');
-  //   db.User
-  //     .findOne({username: req.params.username})
-  //     .then(dbModel => res.json(dbModel))
-  //     .catch(err => res.status(422).json(err));
-  // },
-
-
-
+  
   addRecById: (req, res) => {
     db.User
       .findById(req.params.id)

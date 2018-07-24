@@ -4,13 +4,9 @@ const db = require('../models');
 module.exports = {
 
   findUsername: (req, res) => {
-      console.log(req.params.username)
     db.User
       .findOne({username: req.params.username})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   }
-
-
-
 };

@@ -4,8 +4,7 @@ import { Form, Col, FormGroup, Button, FormControl, Well, ControlLabel } from 'r
 import API from '../../utils/loginAPI';
 
 
-class Login extends React.Component {
-
+class Login extends Component {
 
     state = {
         username: '',
@@ -25,17 +24,7 @@ class Login extends React.Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        // if (!this.state.password || !this.state.username){
-        //     alert('Please fill out all manditory fields.')
-        // }
-        // else (
 
-        console.log(this.state.username)
-        console.log(this.state.password)
-            // API.loginUser({
-            //     username: this.state.username,
-            //     password: this.state.password,
-            // })
             API.checkUsername(
                 this.state.username
             ).then(res => {
@@ -47,21 +36,22 @@ class Login extends React.Component {
                     })
                     window.location.href = `/profile/${this.state.id}`;
                 } else {
-                    this.setState({
-                        username: '',
-                        password: '',
-                        message: 'Incorrect username or password'
-                    })
+                    this.handleInvalidLogin();
                 }
             })
             .catch(err => {
-                this.setState({
-                    username: '',
-                    password: '',
-                    message: 'Incorrect username or password'
-                })
+                this.handleInvalidLogin();
                 console.log(err)
+                return err
             });
+    }
+
+    handleInvalidLogin = () => {
+        this.setState({
+            username: '',
+            password: '',
+            message: 'Incorrect username or password'
+        })
     }
 
     render() {
@@ -86,7 +76,8 @@ class Login extends React.Component {
                         <div className='border rounded'>
                             <Col>
                                 <ControlLabel>Username:</ControlLabel>
-                                <FormControl 
+                                <FormControl
+                                    id="loginUsername" 
                                     type="username" 
                                     placeholder="Username"
                                     value={this.state.username}
@@ -96,7 +87,8 @@ class Login extends React.Component {
                             </Col>
                             <Col>
                                 <ControlLabel>Password:</ControlLabel>
-                                <FormControl 
+                                <FormControl
+                                    id="loginPassword"
                                     type="password"
                                     placeholder="Password"
                                     value={this.state.password}
@@ -109,7 +101,7 @@ class Login extends React.Component {
 
                     <FormGroup>
                         <Col>
-                            <Button type="submit" bsStyle="primary" onClick={this.handleSubmit}>Log in</Button>
+                            <Button id="loginBtn" type="submit" bsStyle="primary" onClick={this.handleSubmit}>Log in</Button>
                             <Button type="submit">Create Account</Button>
                         </Col>
                     </FormGroup>
