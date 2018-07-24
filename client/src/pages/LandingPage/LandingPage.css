@@ -87,3 +87,7 @@
 .landingBottom {
     margin-bottom: 1.5em;
 }
+
+.failedLogin {
+    color: red
+}

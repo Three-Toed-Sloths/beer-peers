@@ -31,7 +31,7 @@ const GrainRow = props => (
                     onChange={props.weightUpdate}
                     placeholder="Weight"
                 />
-                <DropdownButton
+                {/* <DropdownButton
                     componentClass={InputGroup.Button}
                     id="input-dropdown-addon"
                     title="Units"
@@ -39,7 +39,8 @@ const GrainRow = props => (
                     {weightUnits.map(unit => (
                         <MenuItem key={unit} value={unit}>{unit}</MenuItem>
                     ))}
-                </DropdownButton>
+                </DropdownButton> */}
+                <InputGroup.Addon>lbs</InputGroup.Addon>
             </InputGroup>
         </Col>
     </Row>
