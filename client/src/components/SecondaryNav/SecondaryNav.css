@@ -1,11 +1,10 @@
 .secondaryNav{
-    padding: 20px;
+    font-family: 'Montserrat', sans-serif;
     width: 100%;
-    text-align: center;
 }
 .secondaryNavRow{
-    width: 100%;
-    background: green;
+    width: 80%;
+    background: rgb(240, 240, 240);
     padding: 10px;
     border-radius: 10px;
     margin: 0 auto;
@@ -13,7 +12,19 @@
 .secondaryCols{
     text-align: center;
     color: white;
+    width: 25%;
+    font-size: 20px;
 }
 .secondaryColText{
     cursor: pointer;
 }
+a {
+    color: rgb(104, 103, 103);
+}
+a:hover{
+    color: black;
+}
+a, a:hover, a:active {
+    text-decoration: none;
+}
+
