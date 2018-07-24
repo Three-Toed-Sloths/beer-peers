@@ -1,8 +1,14 @@
 .registerBackground {
     background-image: url('../../images/david-straight-341873-unsplash.jpg');
     background-repeat: no-repeat;
-    height: 93vh;
-    min-height: 93vh;
+    background-position: center;
+    /* height: 93vh;
+    min-height: 93vh; */
+    padding: 2em 0;
+}
+
+.registerPanel {
+    margin-bottom: 0;
 }
 
 .registerH1 {
