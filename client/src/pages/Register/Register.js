@@ -19,10 +19,11 @@ class Register extends Component {
         image: ''
     };
     
-    saveUser = userData => {
-        API.createUser(userData)
-        .catch(err => console.log(err));
-    }
+    // for passport login
+    // saveUser = userData => {
+    //     API.createUser(userData)
+    //     .catch(err => console.log(err));
+    // }
 
     handleInputChange = event => {
         let value = event.target.value;
@@ -40,7 +41,7 @@ class Register extends Component {
             alert('Please fill out all required fields.')
         }
         else {
-            let userData = {
+            API.saveUser({
                 name: {
                     first: this.state.first,
                     last: this.state.last
@@ -53,13 +54,6 @@ class Register extends Component {
                     state: this.state.state
                 },
                 password: this.state.password,
-<<<<<<< HEAD
-                // currently not included in the seed. We'll have to come back and update
-                // image: this.state.image
-            }
-            this.saveUser(userData);
-        }
-=======
                 image: this.state.image
             }).then(res => {
                 // insert new confirmation page + styling
@@ -67,8 +61,7 @@ class Register extends Component {
             }).catch (err => {
                 console.log(err);
             })
-        )
->>>>>>> 7c04015927ac886b4cddc16d46f5540a48bc4f36
+        }
     };
     
     // =================
