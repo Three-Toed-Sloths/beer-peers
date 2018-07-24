@@ -1,5 +1,4 @@
 import axios from 'axios';
-import bcrypt from 'bcryptjs';
 // import passport from 'passport';
 // import LocalStrategy from 'passport-local.Strategy';
 
@@ -11,37 +10,15 @@ export default {
   getUser: id => axios.get(`/api/users/${id}`),
   // DELETE USER BY ID
   deleteUser: id => axios.delete(`/api/users/${id}`),
+  
   // POST NEW USER original
   // saveUser: userData => axios.post('/api/users', userData)
 
   // POST NEW USER new with bcrypt
-  createUser: userData => {
-    //checking if username are already taken
-    //     User.findOne({
-    //         userData.username: {
-    //             "$regex": "^" + userData.username + "\\b", "$options": "i"
-    //         }
-    //     }, function (err, user) {
-    //         if (user) {
-    //             return alert('username is alreday taken')
-    //             res.render('register', {
-    //                 user: user,
-    //             });
-    //         }
-    //         else {
-    bcrypt.genSalt(10, function(err, salt) {
-      bcrypt.hash(userData.password, salt, function(err, hash) {
-        userData.password = hash;
-        if (err){
-          console.log(err)
-        }
-        else{
-          console.log('Registration succesfull')
-        };
-        return axios.post('/api/users', userData);
-      });
-    });
-  },
+  createUser: userData => axios.post('/api/users', userData),
+
+  //LOG IN
+  logIn: loginData => axios.post('/api/users/login', loginData),
 
   //LOG IN
   // logIn: (username, password) => {

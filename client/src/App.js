@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NoMatch from './pages/NoMatch';
 import Profile from './pages/Profile';
+import PersonalProfile from "./pages/PersonalProfile";
 import Likes from './pages/Likes';
 import Following from './pages/Following';
 import Register from './pages/Register';
@@ -19,6 +20,7 @@ const App = () => (
           <Route exact path='/profile/:id' component={Profile} />
           <Route exact path='/profile/:id/likes' component={Profile} />
           <Route exact path='/profile/:id/following' component={Profile} />
+          <Route exact path='/personalprofile/:id' component={PersonalProfile} />          
           <Route exact path='/recipes' component={AllRecipes} />
           <Route exact path='/likes' component={Likes} />
           <Route exact path='/following' component={Following} />

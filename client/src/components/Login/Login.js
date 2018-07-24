@@ -12,6 +12,13 @@ class Login extends React.Component {
         password: ''
     };
 
+    logIn = loginData => {
+        console.log('loginAPI data ' + loginData.username + loginData.password +'  '+JSON.stringify(loginData))
+        API.logIn(loginData)
+        .then(res => console.log('check login'))
+        .catch(err => console.log(err));
+    };
+
     handleInputChange = event => {
         let value = event.target.value;
         const name = event.target.name;
@@ -27,12 +34,16 @@ class Login extends React.Component {
         //     alert('Please fill out all manditory fields.')
         // }
         // else (
-            API.Login({
+
+        console.log(this.state.username + ' username')
+        console.log(this.state.password + ' password')
+            let loginData = {
                 username: this.state.username,
                 password: this.state.password,
-            })
+            }
+        this.logIn(loginData);
         // )
-    }
+    };
 
     render() {
 
@@ -58,7 +69,7 @@ class Login extends React.Component {
                                 <FormControl 
                                     type="username" 
                                     placeholder="Username"
-                                    value={this.state.first}
+                                    value={this.state.username}
                                     name='username'
                                     onChange={this.handleInputChange} 
                                 />
@@ -68,10 +79,8 @@ class Login extends React.Component {
                                 <FormControl 
                                     type="password" 
                                     placeholder="Password"
-                                    type="username" 
-                                    placeholder="Password"
-                                    value={this.state.first}
-                                    name='username'
+                                    value={this.state.password}
+                                    name='password'
                                     onChange={this.handleInputChange}
                                 />
                             </Col>

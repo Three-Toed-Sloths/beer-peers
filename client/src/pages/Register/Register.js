@@ -17,6 +17,11 @@ class Register extends Component {
         state: '',
         image: ''
     };
+    
+    saveUser = userData => {
+        API.createUser(userData)
+        .catch(err => console.log(err));
+    }
 
     handleInputChange = event => {
         let value = event.target.value;
@@ -29,12 +34,13 @@ class Register extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
+
         if (!this.state.first || !this.state.last || !this.state.username || 
         !this.state.email || !this.state.city || !this.state.state) {
             alert('Please fill out all manditory fields.')
         }
-        else (
-            API.saveUser({
+        else {
+            let userData = {
                 name: {
                     first: this.state.first,
                     last: this.state.last
@@ -49,8 +55,9 @@ class Register extends Component {
                 password: this.state.password,
                 // currently not included in the seed. We'll have to come back and update
                 // image: this.state.image
-            })
-        )
+            }
+            this.saveUser(userData);
+        }
     };
     
     // =================
