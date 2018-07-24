@@ -6,12 +6,14 @@ module.exports = {
     db.Recipe
       .find(req.query)
       .sort({ date: -1 })
+      .populate('brewer')
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   findById: (req, res) => {
     db.Recipe
       .findById(req.params.id)
+      .populate('brewer')
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

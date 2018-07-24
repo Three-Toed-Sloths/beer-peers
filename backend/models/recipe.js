@@ -11,7 +11,7 @@ const recipeSchema = new Schema({
   brewer: { type : Schema.Types.ObjectId, ref: 'User' },
   style: {
     type: String,
-    // required: true,
+    required: true,
     trim: true,
     maxlength: 50
   },
