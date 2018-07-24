@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import { Form, Row, Col, FormGroup, Button, FormControl, Well, ControlLabel, Image } from 'react-bootstrap';
-import API from '../../utils/userAPI';
+import API from '../../utils/loginAPI';
 import Wrapper from '../../components/Wrapper';
 import './LandingPage.css';
 
-class LandingPage extends React.Component {
+class LandingPage extends Component {
     state = {
         username: '',
-        password: ''
+        password: '',
+        success: false,
+        message: ''
     };
 
     handleInputChange = event => {
@@ -20,15 +22,34 @@ class LandingPage extends React.Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        // if (!this.state.password || !this.state.username){
-        //     alert('Please fill out all manditory fields.')
-        // }
-        // else (
-            API.Login({
-                username: this.state.username,
-                password: this.state.password,
-            })
-        // )
+
+        API.checkUsername(
+            this.state.username
+        ).then(res => {
+
+            if(res.data.password === this.state.password){
+                this.setState({
+                    success: true,
+                    id: res.data._id
+                })
+                window.location.href = `/profile/${this.state.id}`;
+            } else {
+                this.handleInvalidLogin();
+            }
+        })
+        .catch(err => {
+            this.handleInvalidLogin();
+            console.log(err)
+            return err
+        });
+    }
+
+    handleInvalidLogin = () => {
+        this.setState({
+            username: '',
+            password: '',
+            message: 'Incorrect username or password'
+        })
     }
 
     render() {
@@ -50,15 +71,17 @@ class LandingPage extends React.Component {
                         <Well className='col-lg-4 col-lg-offset-4'>
                             <Form horizontal>
                                 <Wrapper>
-                                    <h2 className='loginTitle'>Login</h2 >
-                                    <FormGroup controlId="formHorizontalEmail">
+                                    <h2 className='loginTitle'>Start Connecting</h2>
+                                    <h5 className='text-center failedLogin'>{this.state.message}</h5>
+                                    <FormGroup >
                                         <div className='border rounded'>
                                             <Col>
                                                 <ControlLabel className='loginLabel'>Username:</ControlLabel>
                                                 <FormControl 
+                                                    id="loginUsername" 
                                                     type="username" 
                                                     placeholder="Username"
-                                                    value={this.state.first}
+                                                    value={this.state.username}
                                                     name='username'
                                                     onChange={this.handleInputChange} 
                                                 />
@@ -66,12 +89,11 @@ class LandingPage extends React.Component {
                                             <Col>
                                                 <ControlLabel className='loginLabel'>Password:</ControlLabel>
                                                 <FormControl 
-                                                    type="password" 
+                                                    id="loginPassword"
+                                                    type="password"
                                                     placeholder="Password"
-                                                    type="username" 
-                                                    placeholder="Password"
-                                                    value={this.state.first}
-                                                    name='username'
+                                                    value={this.state.password}
+                                                    name='password'
                                                     onChange={this.handleInputChange}
                                                 />
                                             </Col>
@@ -80,7 +102,7 @@ class LandingPage extends React.Component {
                                     <FormGroup>
                                         <Row>
                                             <Col xs={12} md={6}>
-                                                <Button className='landingBtn' bsSize='large' bsStyle='primary' type="submit" onClick={this.handleSubmit} block>Log in</Button>
+                                                <Button id='loginBtn' className='landingBtn' bsSize='large' bsStyle='primary' type="submit" onClick={this.handleSubmit} block>Log in</Button>
                                             </Col>
                                             <Col xs={12} md={6}>
                                                 <Button className='landingBtn' bsSize='large' type="create" block href='/register'>Create Account</Button>
@@ -92,7 +114,7 @@ class LandingPage extends React.Component {
                         </Well>
                     </Wrapper>
                 </div>
-                <div>
+                <div className='landingBottom'>
                     <Wrapper>
                         <Row>
                             <h2 className='landingSubTitle'>Connect with Other Brewers</h2>
@@ -100,16 +122,16 @@ class LandingPage extends React.Component {
                         </Row>
                         <Row>
                             <Col xs={6}>
-                                <Image src='../../images/alexander-mils-431544-unsplash.jpg' alt='glass of beer' rounded responsive />
+                                <div className='landingAddOn' />
                             </Col>
                             <Col xs={6}>
                                 <Row>
                                     <Col xs={12}>
                                         <ul className='landingList'>
-                                            <li>Learn how to brew from others</li>
-                                            <li>Share your recipes and get feedback</li>
-                                            <li>Connect with like minded people</li>
-                                            <li>Save your own recipes and collect your favorites all in one place</li>
+                                            <li className='landingFirstListItem landingListItem'>Learn how to brew from others</li>
+                                            <li className='landingListItem'>Connect with like minded people</li>
+                                            <li className='landingListItem'>Share your recipes and get feedback</li>
+                                            <li className='landingListItem'>Save your own recipes and collect your favorites all in one place</li>
                                         </ul>
                                     </Col>
                                     <Col xs={12}>

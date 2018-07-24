@@ -1,16 +1,16 @@
 .followingParallax {
     background-image: url('../../images/wil-stewart-24562-unsplash.jpg');
-    min-height: 500px;
+    min-height: 300px;
     width: 100%;
     background-attachment: fixed;
-    background-position: center;
+    background-position: bottom center;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
 }
 
 .followingHeader {
-    margin-top: 2.5em;
+    margin-top: 1.25em;
     font-family: 'EB Garamond', serif;
     font-size: 5em;
     color: white;
@@ -25,4 +25,8 @@
 
 .followingCol {
     padding: 0;
+}
+
+.followingNav {
+    margin-top: 2em;
 }

@@ -1,5 +1,7 @@
 .secondaryNav{
     font-family: 'Montserrat', sans-serif;
+    margin: 2em 0;
+    padding: 20px;
     width: 100%;
 }
 .secondaryNavRow{
@@ -9,12 +11,14 @@
     border-radius: 10px;
     margin: 0 auto;
 }
-.secondaryCols{
+
+.secondaryCols {
     text-align: center;
     color: white;
     width: 25%;
     font-size: 20px;
 }
+
 .secondaryColText{
     cursor: pointer;
 }

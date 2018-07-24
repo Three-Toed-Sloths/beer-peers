@@ -12,10 +12,14 @@ module.exports = {
   findById: (req, res) => {
     db.User
       .findById(req.params.id)
+      .populate('recipes')
+      .populate('social.followers')
+      .populate('social.following')
+      .populate('social.favorites')
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-
+  
   addRecById: (req, res) => {
     db.User
       .findById(req.params.id)

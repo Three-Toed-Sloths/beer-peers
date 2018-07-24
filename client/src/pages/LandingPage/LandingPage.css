@@ -1,5 +1,4 @@
 .landingBackground {
-    /* background-image: url('../../images/adam-wilson-138927-unsplash.jpg'); */
     background-image:
         linear-gradient(
             rgba(255, 255, 255, 0.15),
@@ -67,4 +66,28 @@
 .landingList {
     font-family: 'Montserrat', sans-serif;
     font-size: 1.5em;
+}
+
+.landingAddOn {
+    background-image: url(../../images/alexander-mils-431544-unsplash.jpg);
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: 60%;
+    min-height: 60vh;
+}
+
+.landingFirstListItem {
+    margin-top: 2.5em;
+}
+
+.landingListItem {
+    margin-bottom: 1.5em;
+}
+
+.landingBottom {
+    margin-bottom: 1.5em;
+}
+
+.failedLogin {
+    color: red
 }
