@@ -22,7 +22,6 @@ class Register extends Component {
     handleInputChange = event => {
         let value = event.target.value;
         const name = event.target.name.trim();
-
         this.setState({
             [name]: value
         });
@@ -35,7 +34,7 @@ class Register extends Component {
             alert('Please fill out all required fields.')
         }
         else (
-            API.createUser({
+            API.saveUser({
                 name: {
                     first: this.state.first,
                     last: this.state.last
@@ -49,6 +48,11 @@ class Register extends Component {
                 },
                 password: this.state.password,
                 image: this.state.image
+            }).then(res => {
+                // insert new confirmation page + styling
+                window.location.href = `/`
+            }).catch (err => {
+                console.log(err);
             })
         )
     };
