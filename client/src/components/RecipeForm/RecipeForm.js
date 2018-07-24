@@ -8,7 +8,8 @@ import HopRow from './HopRow';
 
 import './RecipeForm.css';
 
-const beerStyles = ['American IPA', 'Stout', 'Amber Ale'];
+// const beerStyles = ['American IPA', 'Stout', 'Amber Ale'];
+const beerStyles = ['Amber Ale', 'American IPA', 'American Imperial Stout', 'American Lager', 'American Wheat Ale', 'Barley Wine', 'Barrel-Aged Beer', 'Belgian Dubbel', 'Belgian Golden Strong Ale', 'Belgian Saison', 'Belgian Tripel', 'Belgian Witbier', 'Black Ale', 'Blonde Ale', 'Brown Ale', 'Brown Porter', 'California Common', 'Coffee Beer', 'Cream Ale', 'Double IPA', 'English IPA', 'Fruit Beer', 'German Pilsner', 'Hefeweizen', 'Irish Dry Stout', 'Milk Stout', 'New England IPA', 'Oatmeal Stout', 'Oktoberfest', 'Pale Ale', 'Scotch Ale', 'Session IPA', 'Sour Ale', 'Speciality Beer', 'Stout'];
 const liqUnits = ['gal', 'liters', 'bbls'];
 
 class RecipeForm extends Component {
@@ -191,7 +192,8 @@ class RecipeForm extends Component {
                 yeast: {
                     name: this.state.yeast,
                     amount: '1 bag'
-                }
+                },
+                misc: this.state.misc
             },
             directions: this.state.directions
         }
@@ -239,7 +241,7 @@ class RecipeForm extends Component {
                                             <ControlLabel>Batch Volume</ControlLabel>
                                             <InputGroup>
                                                 <FormControl type='number' name='batchVol' value={this.state.batchVol} onChange={this.handleInputChange} id='batchVol' placeholder='Batch'/>
-                                                <DropdownButton
+                                                {/* <DropdownButton
                                                     componentClass={InputGroup.Button}
                                                     id='input-dropdown-addon'
                                                     title='Units'
@@ -247,7 +249,8 @@ class RecipeForm extends Component {
                                                     {liqUnits.map(unit => (
                                                         <MenuItem key={unit} value={unit}>{unit}</MenuItem>
                                                     ))}
-                                                </DropdownButton>
+                                                </DropdownButton> */}
+                                                <InputGroup.Addon>gal</InputGroup.Addon>
                                             </InputGroup>
                                         </FormGroup>
                                     </Col>
@@ -267,7 +270,7 @@ class RecipeForm extends Component {
                                             <ControlLabel>IBU</ControlLabel>
                                             <InputGroup>
                                                 <FormControl id='ibuInput' type='number' name='ibu' value={this.state.ibu} onChange={this.handleInputChange} placeholder='Enter IBUs'/>
-                                                {/* <InputGroup.Addon>%</InputGroup.Addon> */}
+                                                <InputGroup.Addon>IBUs</InputGroup.Addon>
                                             </InputGroup>
                                         </FormGroup>
                                     </Col>
@@ -306,7 +309,7 @@ class RecipeForm extends Component {
                                             <ControlLabel>Preboil Volume</ControlLabel>
                                             <InputGroup>
                                             <FormControl type='number' id='preBoilVolInput' name='preBoil' value={this.state.preBoil} onChange={this.handleInputChange} placeholder='Preboil'/>
-                                                <DropdownButton
+                                                {/* <DropdownButton
                                                     componentClass={InputGroup.Button}
                                                     id='input-dropdown-addon'
                                                     title='Units'
@@ -314,7 +317,8 @@ class RecipeForm extends Component {
                                                     {liqUnits.map(unit => (
                                                         <MenuItem key={unit} value={unit}>{unit}</MenuItem>
                                                     ))}
-                                                </DropdownButton>
+                                                </DropdownButton> */}
+                                                <InputGroup.Addon>gal</InputGroup.Addon>
                                             </InputGroup>
                                         </FormGroup>
                                     </Col>
@@ -378,7 +382,7 @@ class RecipeForm extends Component {
                                         <ControlLabel>Yeast</ControlLabel>
                                         <InputGroup>
                                                 <FormControl type='text' name='yeast' value={this.state.yeast} onChange={this.handleInputChange} placeholder='Yeast Name'/>
-                                                <DropdownButton
+                                                {/* <DropdownButton
                                                     componentClass={InputGroup.Button}
                                                     id='input-dropdown-addon'
                                                     title='Type'
@@ -386,7 +390,7 @@ class RecipeForm extends Component {
                                                     <MenuItem key='Dry' value='Dry'>Dry</MenuItem>
                                                     <MenuItem key='Liquid' value='Liquid'>Liquid</MenuItem>
                                                
-                                                </DropdownButton>
+                                                </DropdownButton> */}
                                         </InputGroup>
                                     </FormGroup>
                                 </Col>

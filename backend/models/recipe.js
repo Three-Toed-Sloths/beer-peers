@@ -19,7 +19,7 @@ const recipeSchema = new Schema({
     type: String,
     required: true,
     trim: true,
-    maxlength: 300
+    maxlength: 400
   },
   likes: {
     type: Number,
@@ -191,13 +191,19 @@ const recipeSchema = new Schema({
         trim: true,
         maxlength: 50
       },
-    }
+    },
+    misc: {
+      type: String,
+      // required: true,
+      trim: true,
+      maxlength: 1000
+    },
   },
   directions: {
     type: String,
     required: true,
     trim: true,
-    maxlength: 255
+    maxlength: 1000
   },
   created: { type: Date, default: Date.now }
 });

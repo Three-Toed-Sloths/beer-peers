@@ -21,7 +21,7 @@ const HopRow = props => (
                 onChange={props.nameUpdate}
                 placeholder="Hop Name"
             />
-            <DropdownButton
+            {/* <DropdownButton
                 componentClass={InputGroup.Button}
                 id="input-dropdown-addon"
                 title="Type"
@@ -29,7 +29,7 @@ const HopRow = props => (
                 {hopType.map(unit => (
                     <MenuItem key={unit} value={unit}>{unit}</MenuItem>
                 ))}
-            </DropdownButton>
+            </DropdownButton> */}
         </InputGroup>
     </Col>
 
@@ -62,7 +62,7 @@ const HopRow = props => (
                 onChange={props.weightUpdate}
                 placeholder="Weight"
             />
-            <DropdownButton
+            {/* <DropdownButton
                 componentClass={InputGroup.Button}
                 id="input-dropdown-addon"
                 title="Units"
@@ -70,7 +70,8 @@ const HopRow = props => (
                 {weightUnits.map(unit => (
                     <MenuItem key={unit} value={unit}>{unit}</MenuItem>
                 ))}
-            </DropdownButton>
+            </DropdownButton> */}
+            <InputGroup.Addon>oz</InputGroup.Addon>
         </InputGroup>
     </Col>
     <Col xs={3}>

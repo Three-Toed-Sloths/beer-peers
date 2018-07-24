@@ -1,27 +1,10 @@
-// import React from 'react';
-
 import React, { Component } from 'react';
 import API from '../../utils/userAPI';
 
 import {Grid, Row, Col} from 'react-bootstrap';
+import Wrapper from '../../components/Wrapper';
+import SecondaryNav from '../../components/SecondaryNav';
 import './Likes.css';
-
-// const Likes = () => {
-//     return (
-//         <Row>
-//             <Col xs={12} className='likesCol'>
-//                 <div className='likesParallax'>
-//                     <div className='likesContainer'>
-//                         <h1 className='likesHeader'>Likes</h1>
-//                         <hr />
-//                     </div>
-//                 </div>
-//             </Col>
-//         </Row>
-//         // <Grid>
-//         // </Grid>
-//     );
-// }
 
 class Likes extends Component {
     state = {
@@ -29,7 +12,6 @@ class Likes extends Component {
         likes: []
     }
 
-    
     componentDidMount() {
         this.getLikes(this.state.id);
     }
@@ -46,25 +28,29 @@ class Likes extends Component {
     render(){
         return (
             <div>
-            <Row>
-                <Col xs={12} className='likesCol'>
+                <div className='likesCol'>
                     <div className='likesParallax'>
                         <div className='likesContainer'>
                             <h1 className='likesHeader'>Likes</h1>
                             <hr />
                         </div>
                     </div>
-                </Col>
-            </Row>
-            <Row>
-                <Col xs={12}>
-                    {this.state.likes.map(like => (
-                        <h1>{like.name}</h1>
-                    ))}
-                </Col>
-            </Row>
-            {/* // <Grid>
-            // </Grid> */}
+                </div>
+                <div>
+                    <Grid />
+                </div>
+                <Wrapper>
+                    <Row>
+                        <Col xs={12}>
+                            {this.state.likes.map(like => (
+                                <h1>{like.name}</h1>
+                            ))}
+                        </Col>
+                    </Row>
+                    <Row>
+                        <SecondaryNav />
+                    </Row>
+                </Wrapper>
             </div>
         );
     }
