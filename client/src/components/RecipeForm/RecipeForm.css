@@ -1,5 +1,8 @@
 .recipeForm{
-    margin-top: 10px;
-    background: rgb(255,255,255,.7);
+    background: rgb(255,255,255);
+    padding: 20px;
     
+}
+.recipeAdd{
+    font-family: 'Montserrat', sans-serif;
 }

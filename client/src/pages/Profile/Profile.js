@@ -83,7 +83,6 @@ class Profile extends Component {
     render(){
         return(
         <div className="profileBackground">
-            <Wrapper>
                 <Grid>
                     <Row>
                         <Col sm={12}>
@@ -108,11 +107,7 @@ class Profile extends Component {
                         <Col className="recipeCardShort" sm={6} xs={12}><p style={{background: this.colorType(this.state.recipeTypes)}}>{"Name: " + this.state.recipeStrNames}<br/>{" Type: " + this.state.recipeTypes}</p></Col>
                         <Col className="recipeCardShort" sm={6} xs={12}><p style={{background: this.colorType(this.state.recipeTypes)}}>{"Name: " + this.state.recipeStrNames}<br/>{" Type: " + this.state.recipeTypes}</p></Col>
                     </Row>
-                    <Row>
-                        <Col sm={12}>Recent Activity</Col>
-                    </Row>
                 </Grid>
-            </Wrapper>
         </div>
         );
     }

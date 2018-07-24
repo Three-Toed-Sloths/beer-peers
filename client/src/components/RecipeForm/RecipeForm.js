@@ -199,11 +199,10 @@ class RecipeForm extends Component {
 
     render() {
         return(
-            
         <Grid className="recipeForm">
             <Row className='show-grid'>
                 <Col xs={12} md={12}>
-                    <form>
+                    <form className="recipeAdd">
                         <Row>
                             <Col xs={6}>
                                 <FormGroup>
@@ -329,7 +328,7 @@ class RecipeForm extends Component {
                             <Col xs={8}>
                                 <FormGroup>
                                     <ControlLabel>Recipe Description</ControlLabel>
-                                    <FormControl componentClass='textarea' id='recipeDescription' name='description' value={this.state.description} onChange={this.handleInputChange} placeholder='Description' />
+                                    <FormControl rows='11' componentClass='textarea' id='recipeDescription' name='description' value={this.state.description} onChange={this.handleInputChange} placeholder='Description' />
                                 </FormGroup>
                             </Col>
                         </Row>
@@ -338,7 +337,7 @@ class RecipeForm extends Component {
                             <Row>
                                 <Col xs={12}>
                                     <FormGroup >
-                                        <ControlLabel>Base Malt</ControlLabel>
+                                        <ControlLabel>Base Malt</ControlLabel><Button onClick={this.addBaseMaltRow}>+</Button>
                                         {this.state.baseMaltArr.map((unit, i) => (
                                             <GrainRow
                                                 nameValue={this.state.baseMaltArr[i].name}
@@ -347,14 +346,13 @@ class RecipeForm extends Component {
                                                 weightValue={this.state.baseMaltArr[i].amount}
                                             />
                                         ))}
-                                        <Button onClick={this.addBaseMaltRow}>New Base Malt</Button>
                                     </FormGroup>
                                 </Col>
                             </Row>
                             <Row>
                                 <Col xs={12}>
                                     <FormGroup >
-                                        <ControlLabel>Speciality Malt</ControlLabel>
+                                        <ControlLabel>Speciality Malt</ControlLabel><Button onClick={this.addSpecMaltRow}>+</Button>
                                         {this.state.specialityMaltArr.map((unit, i) => (
                                             <GrainRow 
                                                 nameValue={this.state.specialityMaltArr[i].name}
@@ -363,7 +361,6 @@ class RecipeForm extends Component {
                                                 weightValue={this.state.specialityMaltArr[i].amount}
                                             />
                                         ))}
-                                        <Button onClick={this.addSpecMaltRow}>New Speciality Malt</Button>
                                     </FormGroup>
                                 </Col>
                             </Row>
@@ -391,7 +388,7 @@ class RecipeForm extends Component {
                                 <Row>
                                     <Col xs={12}>
                                         <FormGroup >
-                                            <ControlLabel>Hop Additions</ControlLabel>
+                                            <ControlLabel>Hop Additions</ControlLabel><Button onClick={this.addHopRow}>New Hop Addition</Button>
                                                 {this.state.hopsArr.map((unit, i) => (
                                                     <HopRow
                                                         nameValue={this.state.hopsArr[i].name}
@@ -407,7 +404,6 @@ class RecipeForm extends Component {
                                                         additionUpdate={this.handleChangeFor('addition', 'hopsArr', i)}
                                                     />
                                                 ))}
-                                            <Button onClick={this.addHopRow}>New Hop Addition</Button>
                                         </FormGroup>
                                     </Col>
                                 </Row>
