@@ -227,6 +227,7 @@ class RecipeForm extends Component {
                                 </FormGroup>
                             </Col>
                         </Row>
+                        second
                         <Row>
                             <Col xs={4}>
                                 <Row>
@@ -326,69 +327,38 @@ class RecipeForm extends Component {
                                 </Row>
                             </Col>
                             <Col xs={8}>
-                                <FormGroup>
-                                    <ControlLabel>Recipe Description</ControlLabel>
-                                    <FormControl rows='11' componentClass='textarea' id='recipeDescription' name='description' value={this.state.description} onChange={this.handleInputChange} placeholder='Description' />
-                                </FormGroup>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col xs={4}>
-                            <Row>
-                                <Col xs={12}>
-                                    <FormGroup >
-                                        <ControlLabel>Base Malt</ControlLabel><Button onClick={this.addBaseMaltRow}>+</Button>
-                                        {this.state.baseMaltArr.map((unit, i) => (
-                                            <GrainRow
-                                                nameValue={this.state.baseMaltArr[i].name}
-                                                nameUpdate={this.handleChangeFor('name', 'baseMaltArr', i)}
-                                                weightUpdate={this.handleChangeFor('amount', 'baseMaltArr', i)}
-                                                weightValue={this.state.baseMaltArr[i].amount}
-                                            />
-                                        ))}
-                                    </FormGroup>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col xs={12}>
-                                    <FormGroup >
-                                        <ControlLabel>Speciality Malt</ControlLabel><Button onClick={this.addSpecMaltRow}>+</Button>
-                                        {this.state.specialityMaltArr.map((unit, i) => (
-                                            <GrainRow 
-                                                nameValue={this.state.specialityMaltArr[i].name}
-                                                nameUpdate={this.handleChangeFor('name', 'specialityMaltArr', i)}
-                                                weightUpdate={this.handleChangeFor('amount', 'specialityMaltArr', i)}
-                                                weightValue={this.state.specialityMaltArr[i].amount}
-                                            />
-                                        ))}
-                                    </FormGroup>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col xs={12}>
-                                    <FormGroup >
-                                        <ControlLabel>Yeast</ControlLabel>
-                                        <InputGroup>
-                                                <FormControl type='text' name='yeast' value={this.state.yeast} onChange={this.handleInputChange} placeholder='Yeast Name'/>
-                                                <DropdownButton
-                                                    componentClass={InputGroup.Button}
-                                                    id='input-dropdown-addon'
-                                                    title='Type'
-                                                >
-                                                    <MenuItem key='Dry' value='Dry'>Dry</MenuItem>
-                                                    <MenuItem key='Liquid' value='Liquid'>Liquid</MenuItem>
-                                               
-                                                </DropdownButton>
-                                        </InputGroup>
-                                    </FormGroup>
-                                </Col>
-                            </Row>
-                            </Col>
-                            <Col xs={8}>
+                                <Row>
+                                    <Col xs={6}>
+                                        <FormGroup >
+                                                <ControlLabel>Base Malt</ControlLabel><Button className="addButtons" onClick={this.addBaseMaltRow}>+</Button>
+                                                {this.state.baseMaltArr.map((unit, i) => (
+                                                    <GrainRow
+                                                        nameValue={this.state.baseMaltArr[i].name}
+                                                        nameUpdate={this.handleChangeFor('name', 'baseMaltArr', i)}
+                                                        weightUpdate={this.handleChangeFor('amount', 'baseMaltArr', i)}
+                                                        weightValue={this.state.baseMaltArr[i].amount}
+                                                    />
+                                                ))}
+                                        </FormGroup>
+                                    </Col>
+                                    <Col xs={6}>
+                                        <FormGroup >
+                                            <ControlLabel>Speciality Malt</ControlLabel><Button className="addButtons" onClick={this.addSpecMaltRow}>+</Button>
+                                            {this.state.specialityMaltArr.map((unit, i) => (
+                                                <GrainRow 
+                                                    nameValue={this.state.specialityMaltArr[i].name}
+                                                    nameUpdate={this.handleChangeFor('name', 'specialityMaltArr', i)}
+                                                    weightUpdate={this.handleChangeFor('amount', 'specialityMaltArr', i)}
+                                                    weightValue={this.state.specialityMaltArr[i].amount}
+                                                />
+                                            ))}
+                                        </FormGroup>
+                                    </Col>
+                                </Row>
                                 <Row>
                                     <Col xs={12}>
                                         <FormGroup >
-                                            <ControlLabel>Hop Additions</ControlLabel><Button onClick={this.addHopRow}>New Hop Addition</Button>
+                                            <ControlLabel>Hop Additions</ControlLabel><Button className="addButtons" onClick={this.addHopRow}>+</Button>
                                                 {this.state.hopsArr.map((unit, i) => (
                                                     <HopRow
                                                         nameValue={this.state.hopsArr[i].name}
@@ -408,17 +378,39 @@ class RecipeForm extends Component {
                                     </Col>
                                 </Row>
                                 <Row>
-                                    <Col xs={12}>
+                                    <Col xs={4}>
                                         <FormGroup >
-                                        <ControlLabel>Misc. Ingredients</ControlLabel>
-                                        <FormControl componentClass='textarea' name='misc' value={this.state.misc} onChange={this.handleInputChange} placeholder='Enter Misc. Ingredients' />
-                                    </FormGroup>
+                                            <ControlLabel>Yeast</ControlLabel>
+                                            <InputGroup>
+                                                    <FormControl type='text' name='yeast' value={this.state.yeast} onChange={this.handleInputChange} placeholder='Yeast Name'/>
+                                                    <DropdownButton
+                                                        componentClass={InputGroup.Button}
+                                                        id='input-dropdown-addon'
+                                                        title='Type'
+                                                    >
+                                                        <MenuItem key='Dry' value='Dry'>Dry</MenuItem>
+                                                        <MenuItem key='Liquid' value='Liquid'>Liquid</MenuItem>
+                                                    </DropdownButton>
+                                            </InputGroup>
+                                        </FormGroup>
+                                    </Col>
+                                    <Col xs={8}>
+                                        <FormGroup >
+                                            <ControlLabel>Misc. Ingredients</ControlLabel>
+                                            <FormControl componentClass='textarea' name='misc' value={this.state.misc} onChange={this.handleInputChange} placeholder='Enter Misc. Ingredients' />
+                                        </FormGroup>
                                     </Col>
                                 </Row>
                             </Col>
                         </Row>
                         <Row>
-                            <Col xs={12}>
+                            <Col xs={6}>
+                                <FormGroup>
+                                    <ControlLabel>Recipe Description</ControlLabel>
+                                    <FormControl componentClass='textarea' id='recipeDescription' name='description' value={this.state.description} onChange={this.handleInputChange} placeholder='Description' />
+                                </FormGroup>
+                            </Col>
+                            <Col xs={6}>
                                 <FormGroup>
                                     <ControlLabel>Recipe Instructions</ControlLabel>
                                     <FormControl
