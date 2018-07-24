@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Login.css"
 import { Form, Col, FormGroup, Button, FormControl, Well, ControlLabel } from 'react-bootstrap/lib';
-import API from '../../utils/userAPI';
+import API from '../../utils/loginAPI';
 
 
 class Login extends React.Component {
@@ -9,7 +9,9 @@ class Login extends React.Component {
 
     state = {
         username: '',
-        password: ''
+        password: '',
+        success: false,
+        message: ''
     };
 
     handleInputChange = event => {
@@ -27,11 +29,39 @@ class Login extends React.Component {
         //     alert('Please fill out all manditory fields.')
         // }
         // else (
-            API.Login({
-                username: this.state.username,
-                password: this.state.password,
+
+        console.log(this.state.username)
+        console.log(this.state.password)
+            // API.loginUser({
+            //     username: this.state.username,
+            //     password: this.state.password,
+            // })
+            API.checkUsername(
+                this.state.username
+            ).then(res => {
+
+                if(res.data.password === this.state.password){
+                    this.setState({
+                        success: true,
+                        id: res.data._id
+                    })
+                    window.location.href = `/profile/${this.state.id}`;
+                } else {
+                    this.setState({
+                        username: '',
+                        password: '',
+                        message: 'Incorrect username or password'
+                    })
+                }
             })
-        // )
+            .catch(err => {
+                this.setState({
+                    username: '',
+                    password: '',
+                    message: 'Incorrect username or password'
+                })
+                console.log(err)
+            });
     }
 
     render() {
@@ -51,14 +81,15 @@ class Login extends React.Component {
             <Well className='col-lg-4 col-lg-offset-4'>
                 <Form horizontal>
                     <h2 className='text-center'>Please Sign In <br/> --or-- <br/> Create an Account</h2 >
-                    <FormGroup controlId="formHorizontalEmail">
+                    <h5 className='text-center failedLogin'>{this.state.message}</h5>
+                    <FormGroup >
                         <div className='border rounded'>
                             <Col>
                                 <ControlLabel>Username:</ControlLabel>
                                 <FormControl 
                                     type="username" 
                                     placeholder="Username"
-                                    value={this.state.first}
+                                    value={this.state.username}
                                     name='username'
                                     onChange={this.handleInputChange} 
                                 />
@@ -66,12 +97,10 @@ class Login extends React.Component {
                             <Col>
                                 <ControlLabel>Password:</ControlLabel>
                                 <FormControl 
-                                    type="password" 
+                                    type="password"
                                     placeholder="Password"
-                                    type="username" 
-                                    placeholder="Password"
-                                    value={this.state.first}
-                                    name='username'
+                                    value={this.state.password}
+                                    name='password'
                                     onChange={this.handleInputChange}
                                 />
                             </Col>
@@ -81,7 +110,7 @@ class Login extends React.Component {
                     <FormGroup>
                         <Col>
                             <Button type="submit" bsStyle="primary" onClick={this.handleSubmit}>Log in</Button>
-                            <Button type="create">Create Account</Button>
+                            <Button type="submit">Create Account</Button>
                         </Col>
                     </FormGroup>
 

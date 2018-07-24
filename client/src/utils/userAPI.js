@@ -13,7 +13,7 @@ export default {
   deleteUser: id => axios.delete(`/api/users/${id}`),
   // POST NEW USER original
   // saveUser: userData => axios.post('/api/users', userData)
-
+  // checkUsername: username => axios.get(`/api/login/${username}`),
   // POST NEW USER new with bcrypt
   createUser: userData => {
     //checking if username are already taken
