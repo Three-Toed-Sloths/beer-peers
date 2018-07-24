@@ -221,7 +221,7 @@ class RecipeForm extends Component {
                                     <ControlLabel>Select Beer Style</ControlLabel>
                                     <FormControl componentClass='select' name='style' value={this.state.style} onChange={this.handleInputChange}>
                                         {beerStyles.map(style => (
-                                            <option value={style}>{style}</option>
+                                            <option key={style} value={style}>{style}</option>
                                         ))}
                                     </FormControl>
                                 </FormGroup>
@@ -340,6 +340,7 @@ class RecipeForm extends Component {
                                         <ControlLabel>Base Malt</ControlLabel>
                                         {this.state.baseMaltArr.map((unit, i) => (
                                             <GrainRow
+                                                key={`baseGrainRow${i}`}
                                                 nameValue={this.state.baseMaltArr[i].name}
                                                 nameUpdate={this.handleChangeFor('name', 'baseMaltArr', i)}
                                                 weightUpdate={this.handleChangeFor('amount', 'baseMaltArr', i)}
@@ -356,6 +357,7 @@ class RecipeForm extends Component {
                                         <ControlLabel>Speciality Malt</ControlLabel>
                                         {this.state.specialityMaltArr.map((unit, i) => (
                                             <GrainRow 
+                                                key={`specialityGrainRow${i}`}
                                                 nameValue={this.state.specialityMaltArr[i].name}
                                                 nameUpdate={this.handleChangeFor('name', 'specialityMaltArr', i)}
                                                 weightUpdate={this.handleChangeFor('amount', 'specialityMaltArr', i)}
@@ -393,6 +395,7 @@ class RecipeForm extends Component {
                                             <ControlLabel>Hop Additions</ControlLabel>
                                                 {this.state.hopsArr.map((unit, i) => (
                                                     <HopRow
+                                                        key={`hopRow${i}`}
                                                         nameValue={this.state.hopsArr[i].name}
                                                         nameUpdate={this.handleChangeFor('name', 'hopsArr', i)}
 

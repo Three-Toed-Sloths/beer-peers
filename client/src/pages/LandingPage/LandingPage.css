@@ -1,5 +1,4 @@
 .landingBackground {
-    /* background-image: url('../../images/adam-wilson-138927-unsplash.jpg'); */
     background-image:
         linear-gradient(
             rgba(255, 255, 255, 0.15),
@@ -67,4 +66,9 @@
 .landingList {
     font-family: 'Montserrat', sans-serif;
     font-size: 1.5em;
+}
+
+.test {
+    background-image: url(../../images/alexander-mils-431544-unsplash.jpg);
+    min-height: 200px;
 }

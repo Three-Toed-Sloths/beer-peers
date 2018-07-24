@@ -19,7 +19,7 @@ const App = () => (
         <Switch>
           <Route exact path='/' component={LandingPage} />
           <Route exact path='/profile/:id' component={Profile} />
-          <Route exact path='/profile/:id/likes' component={Profile} />
+          <Route exact path='/profile/:id/likes' component={Likes} />
           <Route exact path='/profile/:id/following' component={Profile} />
           <Route exact path='/recipes' component={AllRecipes} />
           <Route exact path='/likes' component={Likes} />

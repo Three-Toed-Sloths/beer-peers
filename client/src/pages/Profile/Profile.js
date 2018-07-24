@@ -42,7 +42,8 @@ class Profile extends Component {
                 });
                 console.log(res.data);
             })
-            .then(() => {this.loadRecipe(this.state.recipeIds[0]);})
+            // .then(() => {this.loadRecipe(this.state.recipeIds[0]);})
+            .then(() => {console.log('got user')})
             .catch(err => console.log(err));
     }
 

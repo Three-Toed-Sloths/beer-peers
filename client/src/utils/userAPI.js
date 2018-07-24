@@ -29,6 +29,7 @@ export default {
     //             });
     //         }
     //         else {
+
     bcrypt.genSalt(10, function(err, salt) {
       bcrypt.hash(userData.password, salt, function(err, hash) {
         userData.password = hash;

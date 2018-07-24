@@ -100,7 +100,8 @@ class LandingPage extends React.Component {
                         </Row>
                         <Row>
                             <Col xs={6}>
-                                <Image src='../../images/alexander-mils-431544-unsplash.jpg' alt='glass of beer' rounded responsive />
+                                <div className='test' />
+                                {/* <Image src='../../images/alexander-mils-431544-unsplash.jpg' alt='glass of beer' rounded responsive /> */}
                             </Col>
                             <Col xs={6}>
                                 <Row>
