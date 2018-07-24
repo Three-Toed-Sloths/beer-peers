@@ -1,19 +1,23 @@
-.secondaryNav{
+.secondaryNav {
+    margin: 2em 0;
     padding: 20px;
     width: 100%;
     text-align: center;
 }
-.secondaryNavRow{
+
+.secondaryNavRow {
     width: 100%;
     background: green;
     padding: 10px;
     border-radius: 10px;
     margin: 0 auto;
 }
-.secondaryCols{
+
+.secondaryCols {
     text-align: center;
     color: white;
 }
+
 .secondaryColText{
     cursor: pointer;
 }
