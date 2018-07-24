@@ -1,0 +1,93 @@
+.landingBackground {
+    background-image:
+        linear-gradient(
+            rgba(255, 255, 255, 0.15),
+            rgba(255, 255, 255, 0.15)
+        ), url('../../images/adam-wilson-138927-unsplash.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    height: 93vh;
+    min-height: 93vh;
+}
+
+.landingLogin {
+    filter: blur(0px);
+}
+
+.landingTitle {
+    margin: 0 auto;
+    padding-top: 1.75em;
+    text-align: center;
+    font-family: 'EB Garamond', serif;
+    color: white;
+    text-shadow: 2px 2px 10px #000;
+    font-size: 5em;
+}
+
+.landingCatch {
+    margin-top: 0;
+    margin-bottom: 1em;
+    text-align: center;
+    font-family: 'EB Garamond', serif;
+    color: white;
+    text-shadow: 2px 2px 10px #000;
+    font-size: 3em;
+}
+
+.loginTitle {
+    text-align: center;
+    font-family: 'EB Garamond', serif;
+}
+
+.loginLabel {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.landingBtn {
+    font-family: 'EB Garamond', serif;
+    font-weight: bold;
+}
+
+.landingSubTitle {
+    margin-top: 1.5em;
+    font-family: 'EB Garamond', serif;
+    font-size: 3em;
+}
+
+.landingHR {
+    height: 2px;
+    background-color: #000;
+    background: linear-gradient(to right, #f5f5f5, #000, #f5f5f5);
+}
+
+.landingList {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5em;
+}
+
+.landingAddOn {
+    background-image: url(../../images/alexander-mils-431544-unsplash.jpg);
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: 60%;
+    min-height: 60vh;
+}
+
+.landingFirstListItem {
+    margin-top: 2.5em;
+}
+
+.landingListItem {
+    margin-bottom: 1.5em;
+}
+
+.landingBottom {
+    margin-bottom: 1.5em;
+}
+
+.failedLogin {
+    color: red
+}

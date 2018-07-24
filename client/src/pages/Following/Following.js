@@ -1,22 +1,30 @@
 import React from 'react';
-import {Grid, Row, Col} from 'react-bootstrap';
+import { Col, Row, Grid } from 'react-bootstrap';
+import SecondaryNav from '../../components/SecondaryNav';
+import Wrapper from '../../components/Wrapper';
 import './Following.css';
 
 const Following = () => {
     return (
-        <Row>
-            <Col xs={12} className='followingCol'>
+        <div>
+            <div className='followingCol'>
                 <div className='followingParallax'>
                     <div className='followingContainer'>
                         <h1 className='followingHeader'>Following</h1>
                         <hr />
                     </div>
                 </div>
-            </Col>
-        </Row>
-        // <Grid>
-        // </Grid>
+            </div>
+            <div>
+                <Grid />
+            </div>
+            <Wrapper>
+                <Row>
+                    <SecondaryNav />
+                </Row>
+            </Wrapper>
+        </div>
     );
-}
+};
 
 export default Following;

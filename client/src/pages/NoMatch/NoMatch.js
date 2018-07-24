@@ -1,22 +1,28 @@
-// import React from "react";
-// import { Col, Row, Container } from "../../components/Grid";
-// import Jumbotron from "../../components/Jumbotron";
+import React from "react";
 
-// const NoMatch = () => (
-//   <Container fluid>
-//     <Row>
-//       <Col size="md-12">
-//         <Jumbotron>
-//           <h1>404 Page Not Found</h1>
-//           <h1>
-//             <span role="img" aria-label="Face With Rolling Eyes Emoji">
-//               🙄
-//             </span>
-//           </h1>
-//         </Jumbotron>
-//       </Col>
-//     </Row>
-//   </Container>
-// );
+import { Grid, Col, Row, Jumbotron, Button } from 'react-bootstrap';
 
-// export default NoMatch;
+import './NoMatch.css'
+
+const NoMatch = () => (
+    <Grid className='noMatch'>
+        <Row>
+            <Col xs={12}>
+                <Jumbotron className='jumbo'>
+                    <h1>404 Page Not Found</h1>
+                    <h2>
+                        You seem to be lost..
+                    </h2>
+                    <p>
+                        <Button href='/'bsStyle='primary'>Go Home</Button>
+                    </p>
+                </Jumbotron>;
+            </Col>
+        </Row>
+    </Grid>
+)
+
+
+
+
+export default NoMatch;

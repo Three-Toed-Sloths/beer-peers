@@ -21,6 +21,11 @@ router
   //my things.
 router
   .route('/rec/:id')
-  .post(usersController.addRecById)
+  .post(usersController.addRecById);
+
+
+// router
+//   .route('/login/:username')
+//   .get(usersController.findByUsername);
 
 module.exports = router;

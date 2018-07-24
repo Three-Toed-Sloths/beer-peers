@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import FullRecipe from './../../components/FullRecipe';
-
+import Wrapper from './../../components/Wrapper';
 
 import "./ViewRecipe.css";
 
@@ -14,9 +14,9 @@ class ViewRecipe extends Component {
         render() {
 
         return(
-            <div className="viewAllRecipes">
+            <Wrapper>
                 <FullRecipe id={this.state.id}/>
-          </div>
+            </Wrapper>
         )
     }
 }
