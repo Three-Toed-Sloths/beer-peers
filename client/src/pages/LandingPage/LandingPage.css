@@ -68,7 +68,22 @@
     font-size: 1.5em;
 }
 
-.test {
+.landingAddOn {
     background-image: url(../../images/alexander-mils-431544-unsplash.jpg);
-    min-height: 200px;
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: 60%;
+    min-height: 60vh;
+}
+
+.landingFirstListItem {
+    margin-top: 2.5em;
+}
+
+.landingListItem {
+    margin-bottom: 1.5em;
+}
+
+.landingBottom {
+    margin-bottom: 1.5em;
 }

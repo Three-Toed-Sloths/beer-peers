@@ -50,7 +50,7 @@ class LandingPage extends React.Component {
                         <Well className='col-lg-4 col-lg-offset-4'>
                             <Form horizontal>
                                 <Wrapper>
-                                    <h2 className='loginTitle'>Login</h2 >
+                                    <h2 className='loginTitle'>Start Connecting</h2 >
                                     <FormGroup controlId="formHorizontalEmail">
                                         <div className='border rounded'>
                                             <Col>
@@ -92,7 +92,7 @@ class LandingPage extends React.Component {
                         </Well>
                     </Wrapper>
                 </div>
-                <div>
+                <div className='landingBottom'>
                     <Wrapper>
                         <Row>
                             <h2 className='landingSubTitle'>Connect with Other Brewers</h2>
@@ -100,17 +100,16 @@ class LandingPage extends React.Component {
                         </Row>
                         <Row>
                             <Col xs={6}>
-                                <div className='test' />
-                                {/* <Image src='../../images/alexander-mils-431544-unsplash.jpg' alt='glass of beer' rounded responsive /> */}
+                                <div className='landingAddOn' />
                             </Col>
                             <Col xs={6}>
                                 <Row>
                                     <Col xs={12}>
                                         <ul className='landingList'>
-                                            <li>Learn how to brew from others</li>
-                                            <li>Share your recipes and get feedback</li>
-                                            <li>Connect with like minded people</li>
-                                            <li>Save your own recipes and collect your favorites all in one place</li>
+                                            <li className='landingFirstListItem landingListItem'>Learn how to brew from others</li>
+                                            <li className='landingListItem'>Connect with like minded people</li>
+                                            <li className='landingListItem'>Share your recipes and get feedback</li>
+                                            <li className='landingListItem'>Save your own recipes and collect your favorites all in one place</li>
                                         </ul>
                                     </Col>
                                     <Col xs={12}>

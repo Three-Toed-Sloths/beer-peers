@@ -1,0 +1,27 @@
+.footerPanel {
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.footerAuthor {
+    margin-top: 1em;
+    margin-bottom: .5em;
+}
+
+.footerHR {
+    margin-top: 0;
+    margin-bottom: .75em;
+}
+
+.footerAuthor {    
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.25em;
+}
+
+.footerAuthorLink {
+    color: black;
+}
+
+.footerAuthorContainer {
+    margin-bottom: 1.5em;
+}
