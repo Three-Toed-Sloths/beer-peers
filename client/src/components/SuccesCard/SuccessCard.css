@@ -1,3 +1,18 @@
-#success-login {
-    margin: 0 auto;
+#success-button {
+    margin-bottom: 1em;
+    margin-top: 1em;
+    font-family: 'EB Garamond', serif;
+    font-weight: bold;
+}   
+
+.success-panel {
+    
+}
+
+.success-title {
+    font-family: 'EB Garamond', serif;
+}
+
+.success-h3 {
+    font-family: 'Montserrat', sans-serif;
 }

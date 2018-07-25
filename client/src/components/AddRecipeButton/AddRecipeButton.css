@@ -1,4 +1,6 @@
 #AddRecipeButton { 
-    width: 400;
-    margin: '0 auto 10px';
+    margin-bottom: 1em;
+    margin-top: 1em;
+    font-family: 'EB Garamond', serif;
+    font-weight: bold;
 };

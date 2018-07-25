@@ -18,6 +18,7 @@ class Register extends Component {
         city: '',
         state: '',
         image: '',
+        isRegistered: true
     };
 
     handleInputChange = event => {
@@ -51,7 +52,7 @@ class Register extends Component {
                 image: this.state.image
             }).then(res => {
                 // insert new confirmation page + styling
-                window.location.href = `/`
+                this.setState({isRegistered: true})
             }).catch (err => {
                 console.log(err);
             })
@@ -93,10 +94,9 @@ class Register extends Component {
     };
 
     render() {
-        const isRegistered = true;
         return(
             <div className='registerBackground'>
-                {isRegistered ? (<SuccesCard/>
+                {this.state.isRegistered ? (<SuccesCard/>
                 ) : (
                 <Wrapper>
                     <Panel className='registerPanel'>
