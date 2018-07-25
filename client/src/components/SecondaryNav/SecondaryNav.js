@@ -8,7 +8,7 @@ const SecondaryNav = props => {
 return (
     <Grid className="secondaryNav">
         <Row className="secondaryNavRow">
-            <Col className="secondaryCols" sm={3} xs={12}><a href={"/profile/" + props.iden + "/"}><p className="secondaryColText">Overview</p></a></Col>
+            <Col className="secondaryCols" sm={3} xs={12}><a href={current}><p className="secondaryColText">Overview</p></a></Col>
             <Col className="secondaryCols" sm={3} xs={12}><a href={current + "following"}><p className="secondaryColText">Following</p></a></Col>
             <Col className="secondaryCols" sm={3} xs={12}><a href={current + "likes"}><p className="secondaryColText">Likes</p></a></Col>
             <Col className="secondaryCols" sm={3} xs={12}><a href={current + "recipes"}><p className="secondaryColText">Recipes</p></a></Col>

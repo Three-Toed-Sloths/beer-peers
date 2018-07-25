@@ -30,3 +30,8 @@
 .followingNav {
     margin-top: 2em;
 }
+
+.totalFollowingHeader {
+    text-align: center;
+    width: 100%;
+}

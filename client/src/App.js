@@ -21,7 +21,7 @@ const App = () => (
           <Route exact path='/' component={LandingPage} />
           <Route exact path='/profile/:id' component={Profile} />
           <Route exact path='/profile/:id/likes' component={Likes} />
-          <Route exact path='/profile/:id/following' component={Profile} />
+          <Route exact path='/profile/:id/following' component={Following} />
           <Route exact path='/recipes' component={AllRecipes} />
           <Route exact path='/likes' component={Likes} />
           <Route exact path='/following' component={Following} />

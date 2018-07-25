@@ -1,0 +1,42 @@
+.followingCard_card{
+    margin-top: 1%;
+    border-radius: 20px;
+    padding: 5px;
+    width: 80%;
+    font-family: 'EB Garamond', serif;
+    border: 2px black solid;
+    /* text-shadow: 4px 4px 14px black; */
+}
+.followingCard_content{
+    height: 150px;
+}
+.pic{
+    height: 128px;
+    width: 128px;
+    border-radius: 100%;
+}
+.followingCard_picture, .followingCard_location, .followingCard_social{
+    height: 100%;
+    text-align: center;
+    padding: 11px 0px;
+}
+
+.followingCard_location p,
+.followingCard_social p{
+    height: 50px;
+    margin: 0 auto;
+    font-size: 25px;
+    color: black;
+    padding: 39px 0;
+}
+
+.followingCard_name p{
+    font-size: 18px;
+    font-style: italic;
+}
+
+.followingCard_name {
+    text-align: center;
+    height: 100px;
+    padding: 25px 0;
+}
