@@ -18,7 +18,7 @@ class Register extends Component {
         city: '',
         state: '',
         image: '',
-        isRegistered: true
+        isRegistered: false
     };
 
     handleInputChange = event => {
