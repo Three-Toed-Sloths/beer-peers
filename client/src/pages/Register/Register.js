@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { FormGroup, ControlLabel, FormControl, HelpBlock, Button, Panel, Row, Col } from 'react-bootstrap';
 import API from '../../utils/userAPI';
-import Check from '../../utils/loginAPI';
 import Wrapper from '../../components/Wrapper';
 import SuccesCard from '../../components/SuccesCard';
+import Check from '../../utils/loginAPI';
 import './Register.css';
 
 const STATES = [ 'AK', 'AL', 'AR', 'AS', 'AZ', 'CA', 'CO', 'CT', 'DC', 'DE', 'FL', 'GA', 'GU', 'HI', 'IA', 'ID', 'IL', 'IN', 'KS', 'KY', 'LA', 'MA', 'MD', 'ME', 'MI', 'MN', 'MO', 'MS', 'MT', 'NC', 'ND', 'NE', 'NH', 'NJ', 'NM', 'NV', 'NY', 'OH', 'OK', 'OR', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VA', 'VI', 'VT', 'WA', 'WI', 'WV', 'WY'];
@@ -56,43 +56,15 @@ class Register extends Component {
             if (this.state.state !== '') {
                 this.stateReset();
             }
-            }).catch(err => {
-                this.usernameReset();
-                this.emailReset();
-                this.postUser();
-                console.log(err);
-                return err;
-            });
-        };
-        
-
-    // ======================
-    // || Handle Post User ||
-    // ======================
-
-    postUser = () => {
-        API.saveUser({
-            name: {
-                first: this.state.first,
-                last: this.state.last
-            },
-            contact: {
-                email: this.state.email,
-                phone: this.state.phone,
-                city: this.state.city,
-                state: this.state.state
-            },
-            username: this.state.username,
-            password: this.state.password,
-            image: this.state.image
-        }).then(res => {
-            this.setState({isRegistered: true})
-        }).catch (err => {
+        }).catch(err => {
+            // this.usernameReset();
+            // this.emailReset();
+            this.postUser();
             console.log(err);
             return err;
         });
     };
-
+    
     // =======================
     // || Handle Duplicates ||
     // =======================
@@ -134,6 +106,32 @@ class Register extends Component {
     stateReset = () => {
         this.setState({
             stateMessage: ''
+        });
+    };
+
+    // ======================
+    // || Handle Post User ||
+    // ======================
+
+    postUser = () => {
+        API.saveUser({
+            name: {
+                first: this.state.first,
+                last: this.state.last
+            },
+            username: this.state.username,
+            contact: {
+                email: this.state.email,
+                phone: this.state.phone,
+                city: this.state.city,
+                state: this.state.state
+            },
+            password: this.state.password,
+            image: this.state.image
+        }).then(res => {
+            this.setState({isRegistered: true})
+        }).catch (err => {
+            console.log(err);
         });
     };
     // =================
@@ -199,7 +197,7 @@ class Register extends Component {
                                             name='first'
                                             maxLength={50}
                                             onChange={this.handleInputChange}
-                                            />
+                                        />
                                         <FormControl.Feedback />
                                     </FormGroup>
                                     </Col>
@@ -213,7 +211,7 @@ class Register extends Component {
                                             name='last'
                                             maxLength={50}
                                             onChange={this.handleInputChange}
-                                            />
+                                        />
                                         <FormControl.Feedback />
                                     </FormGroup>
                                     </Col>
@@ -229,7 +227,7 @@ class Register extends Component {
                                                 name='username'
                                                 maxLength={20}
                                                 onChange={this.handleInputChange}
-                                                />
+                                            />
                                             <FormControl.Feedback />
                                             {/* <HelpBlock>Must be at least 4 characters long</HelpBlock> */}
                                         </FormGroup>
@@ -269,7 +267,7 @@ class Register extends Component {
                                         <FormGroup controlId={'formPhone'} validationState={this.phoneValidation()}>
                                             <ControlLabel className='registerControlLabel'>Phone Number:</ControlLabel>
                                             <FormControl
-                                                type='number'
+                                                type='tel'
                                                 maxLength={12}
                                                 placeholder='###-###-####'
                                                 value={this.state.phone}
@@ -306,8 +304,8 @@ class Register extends Component {
                                                 <option value='' disabled selected>State</option>
                                                 {STATES.map(state => ( <option value={state}>{state}</option> ))}
                                             </FormControl>
+                                        <HelpBlock className='registerError'>{this.state.emailMessage}</HelpBlock>
                                         </FormGroup>
-                                        <HelpBlock className='registerError'>{this.state.stateMessage}</HelpBlock>
                                     </Col>
                                 </Row>
                                 <Row>
