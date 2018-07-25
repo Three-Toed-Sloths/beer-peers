@@ -1,10 +1,11 @@
 
 import React, {Component} from "react";
-import { Col, Row } from 'react-bootstrap';
+import { Grid, Col, Row } from 'react-bootstrap';
 import SecondaryNav from '../../components/SecondaryNav';
 import Wrapper from '../../components/Wrapper';
 import FollowingCard from "../../components/FollowingCard";
 import API from "../../utils/userAPI";
+import ProfileCard from "../../components/ProfileCard";
 import './Followers.css';
 
 
@@ -12,7 +13,10 @@ class Followers extends Component {
 
     state = {
         id: this.props.match.params.id,
-        followersArr: []
+        followersArr: [],
+        name:{},
+        contact: {},
+        img: 'https://nyppagesix.files.wordpress.com/2017/06/ben-stiller-dodgeball.jpg?quality=90&strip=all'
     }
     componentDidMount() {
         this.getUser(this.state.id);
@@ -23,6 +27,9 @@ class Followers extends Component {
         API.getUser(id)
          .then(res => {
             this.setState({
+                name: res.data.name,
+                contact: res.data.contact,
+                // img: res.data.image,
                 followersArr: res.data.social.followers
             });
                 console.log(res.data.social.followers);
@@ -35,16 +42,20 @@ class Followers extends Component {
     render(){
 
         return (
-            <div>
-                <div className='followerCol'>
-                    <div className='followerParallax'>
-                        <div className='followerContainer'>
-                            <h1 className='followerHeader'>Followers</h1>
-                            <hr />
-                        </div>
-                    </div>
-                </div>
-                <Wrapper>
+            <div className='profileBackground'>
+                <Grid>
+                    <Row>
+                        <Col sm={12}>
+                            <ProfileCard 
+                            userName={this.state.name.first +  " " + this.state.name.last}
+                            location={this.state.contact.city + ", " + this.state.contact.state}
+                            email={this.state.contact.email}
+                            img={this.state.img}
+                            recipes={this.state.recipes}
+                            ></ProfileCard>
+                        </Col>
+                    </Row>
+            
                     <Row>
                         <SecondaryNav iden={this.state.id}/>
                     </Row>
@@ -62,7 +73,7 @@ class Followers extends Component {
                             )}
                         </Col>
                     </Row>
-                </Wrapper>
+                </Grid>
             </div>
         )
     }

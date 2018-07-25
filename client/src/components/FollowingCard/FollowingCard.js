@@ -6,6 +6,7 @@ import './FollowingCard.css';
 
 
 const FollowingCard =  props => (
+    <a href={`/profile/${props.user._id}`}>
     <Grid className='followingCard_card'>
         <Row className='followingCard_content'>
             <Col className='followingCard_picture' sm={3} xs={12}>
@@ -27,6 +28,7 @@ const FollowingCard =  props => (
             </Col>
         </Row>
     </Grid>
+    </a>
 );
 
 

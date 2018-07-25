@@ -1,9 +1,11 @@
 import React from 'react';
-import { Panel, Row, Col } from 'react-bootstrap';
+import { Grid, Panel, Row, Col } from 'react-bootstrap';
 import Wrapper from '../../components/Wrapper';
 import './Footer.css';
 
 const Footer = () => (
+    <div>
+        <Grid />
     <footer>
         <Panel className='footerPanel'>
             <Wrapper>
@@ -20,6 +22,7 @@ const Footer = () => (
             </Wrapper>
         </Panel>
     </footer>
+    </div>
 );
 
 export default Footer;

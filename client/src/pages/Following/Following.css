@@ -1,4 +1,18 @@
-.followingParallax {
+.profileBackground{
+    background-image: url("../../images/profilepic4.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    width: 100%;
+    height: 300px;
+    
+}
+
+
+
+/* .followingParallax {
     background-image: url('../../images/wil-stewart-24562-unsplash.jpg');
     min-height: 300px;
     width: 100%;
@@ -34,4 +48,4 @@
 .totalFollowingHeader {
     text-align: center;
     width: 100%;
-}
+} */

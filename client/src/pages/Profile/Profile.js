@@ -50,19 +50,6 @@ class Profile extends Component {
             .catch(err => console.log(err));
     }
 
-    // loadRecipe = recId => {
-    //     RecAPI.getRecipe(recId)
-    //         .then(res => {
-    //             console.log(res.data);
-    //             this.setState({
-    //                 recipeStrNames: res.data.name,
-    //                 recipeTypes: res.data.style
-    //             });
-    //         })
-    //         .catch(err => console.log(err));
-    // }
-    
-
     //color change by type
     colorType = type => {
         let color = "";
