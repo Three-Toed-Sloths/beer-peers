@@ -87,7 +87,7 @@ const userSchema = new Schema({
     type: String,
     required: false,
     trim: true,
-    maxlength: [200, 'Please select a shorter image url (below 200)'],
+    maxlength: [1000, 'Please select a shorter image url (below 1000)'],
   },
 
   created: { type: Date, default: Date.now }
