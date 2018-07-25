@@ -19,13 +19,14 @@ const FollowingCard =  props => (
             <Col className='followingCard_location' sm={3} xs={12}>
                
                     <p>{props.user.contact.city}, {props.user.contact.state}</p>
+                    <p>{props.user.contact.email}</p>
                 
             </Col>
-            <Col className='followingCard_social' sm={3} xs={12}>
+            {/* <Col className='followingCard_social' sm={3} xs={12}>
              
                     <p>{props.user.contact.email}</p>
                
-            </Col>
+            </Col> */}
         </Row>
     </Grid>
     </a>

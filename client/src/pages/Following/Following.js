@@ -16,7 +16,7 @@ class Following extends Component {
         followingArr: [],
         name:{},
         contact: {},
-        img: 'https://nyppagesix.files.wordpress.com/2017/06/ben-stiller-dodgeball.jpg?quality=90&strip=all'
+        img: ''
     }
     componentDidMount() {
         this.getUser(this.state.id);
@@ -29,7 +29,7 @@ class Following extends Component {
             this.setState({
                 name: res.data.name,
                 contact: res.data.contact,
-                // img: res.data.image,
+                img: res.data.image,
                 followingArr: res.data.social.following
             });
                 console.log(res.data.social.following);

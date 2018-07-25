@@ -14,7 +14,7 @@ class Recipes extends Component {
         recipes: [],
         name:{},
         contact: {},
-        img: 'https://nyppagesix.files.wordpress.com/2017/06/ben-stiller-dodgeball.jpg?quality=90&strip=all'
+        img: ''
     }
 
     componentDidMount() {
@@ -27,7 +27,7 @@ class Recipes extends Component {
             this.setState({
                 name: res.data.name,
                 contact: res.data.contact,
-                // img: res.data.image,
+                img: res.data.image,
                 recipes:res.data.recipes
             })
         })

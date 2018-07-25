@@ -9,6 +9,7 @@ import Followers from './pages/Followers';
 import Recipes from './pages/Recipes';
 import Register from './pages/Register';
 import AllRecipes from './pages/ViewAllRecipes';
+import TopBrewers from './pages/TopBrewers'
 import ViewRecipe from './pages/ViewRecipe';
 import AddRecipe from './pages/AddRecipe';
 import LandingPage from "./pages/LandingPage";
@@ -27,7 +28,7 @@ const App = () => (
           <Route exact path='/profile/:id/followers' component={Followers} />
           <Route exact path='/profile/:id/recipes' component={Recipes} />
           <Route exact path='/recipes' component={AllRecipes} />
-          <Route exact path='/likes' component={Likes} />
+          <Route exact path='/brewers' component={TopBrewers} />
           <Route exact path='/following' component={Following} />
           <Route exact path='/register' component={Register} />
           <Route exact path='/recipes/new' component={AddRecipe} />
