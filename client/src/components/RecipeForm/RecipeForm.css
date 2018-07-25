@@ -1,0 +1,14 @@
+.recipeForm{
+    background: rgb(255,255,255);
+    padding: 20px;
+    
+}
+.recipeAdd{
+    font-family: 'Montserrat', sans-serif;
+}
+.addButtons{
+    margin-left: 5px;
+    margin-bottom: 5px;
+    padding: 0px 10px;
+    font-size: 20px;
+}

@@ -7,9 +7,9 @@ import "./AddRecipe.css";
 
 
 const AddRecipe = props => (
-    <Wrapper>
+    <div className="addRecipeBackground">
         <RecipeForm/>
-    </Wrapper>
+    </div>
 )
     
 

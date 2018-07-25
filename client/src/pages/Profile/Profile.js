@@ -4,8 +4,10 @@ import Col from 'react-bootstrap/lib/Col';
 import Row from 'react-bootstrap/lib/Row';
 import ProfileCard from "../../components/ProfileCard";
 import SecondaryNav from "../../components/SecondaryNav";
+import Wrapper from "../../components/Wrapper";
 import API from "../../utils/userAPI";
 import RecAPI from "../../utils/recipeAPI";
+import "./Profile.css";
 
 class Profile extends Component {
 
@@ -38,6 +40,7 @@ class Profile extends Component {
                     email: res.data.contact.email,
                     image: "https://i.ytimg.com/vi/I7jgu-8scIA/maxresdefault.jpg",
                     // image: res.data.image ADD THIS TO DATABASE,
+                    //recipes
                     recipeIds: res.data.recipes
                 });
                 console.log(res.data);
@@ -62,16 +65,16 @@ class Profile extends Component {
         let color = "";
         switch(type){
             case "American IPA":
-            color = "yellow";
+            color = "orange";
             break;
             case "Stout":
-            color = "green";
+            color = "darkgreen";
             break;
             case "Amber Ale":
-            color = "red";
+            color = "purple";
             break;
             default:
-            color = "pink";
+            color = "darkblue";
             break;
         }
         return color;
@@ -80,34 +83,33 @@ class Profile extends Component {
     
     render(){
         return(
-            <Grid>
-                <Row>
-                    <Col sm={12}>
-                        <ProfileCard 
-                        userName={this.state.first +  " " + this.state.last}
-                        location={this.state.city+ ", " + this.state.state}
-                        email={this.state.email}
-                        img={this.state.image}
-                        ></ProfileCard>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col sm={12}>
-                        <SecondaryNav
-                        iden={this.state.identify}
-                        ></SecondaryNav>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col sm={6} xs={12}><h3 style={{background: this.colorType(this.state.recipeTypes)}}>{"Name: " + this.state.recipeStrNames + " Type: " + this.state.recipeTypes}</h3></Col>
-                    <Col sm={6} xs={12}><h3 style={{background: this.colorType(this.state.recipeTypes)}}>{"Name: " + this.state.recipeStrNames + " Type: " + this.state.recipeTypes}</h3></Col>
-                    <Col sm={6} xs={12}><h3 style={{background: this.colorType(this.state.recipeTypes)}}>{"Name: " + this.state.recipeStrNames + " Type: " + this.state.recipeTypes}</h3></Col>
-                    <Col sm={6} xs={12}><h3 style={{background: this.colorType(this.state.recipeTypes)}}>{"Name: " + this.state.recipeStrNames + " Type: " + this.state.recipeTypes}</h3></Col>
-                </Row>
-                <Row>
-                    <Col sm={12}>Recent Activity</Col>
-                </Row>
-            </Grid>
+        <div className="profileBackground">
+                <Grid>
+                    <Row>
+                        <Col sm={12}>
+                            <ProfileCard 
+                            userName={this.state.first +  " " + this.state.last}
+                            location={this.state.city+ ", " + this.state.state}
+                            email={this.state.email}
+                            img={this.state.image}
+                            ></ProfileCard>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col sm={12}>
+                            <SecondaryNav
+                            iden={this.state.identify}
+                            ></SecondaryNav>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col className="recipeCardShort" sm={6} xs={12}><p style={{background: this.colorType(this.state.recipeTypes)}}>{"Name: " + this.state.recipeStrNames}<br/>{" Type: " + this.state.recipeTypes}</p></Col>
+                        <Col className="recipeCardShort" sm={6} xs={12}><p style={{background: this.colorType(this.state.recipeTypes)}}>{"Name: " + this.state.recipeStrNames}<br/>{" Type: " + this.state.recipeTypes}</p></Col>
+                        <Col className="recipeCardShort" sm={6} xs={12}><p style={{background: this.colorType(this.state.recipeTypes)}}>{"Name: " + this.state.recipeStrNames}<br/>{" Type: " + this.state.recipeTypes}</p></Col>
+                        <Col className="recipeCardShort" sm={6} xs={12}><p style={{background: this.colorType(this.state.recipeTypes)}}>{"Name: " + this.state.recipeStrNames}<br/>{" Type: " + this.state.recipeTypes}</p></Col>
+                    </Row>
+                </Grid>
+        </div>
         );
     }
 }
