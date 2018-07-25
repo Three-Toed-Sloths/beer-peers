@@ -35,12 +35,18 @@ class RecipeBoard extends Component {
         return (
             <div className="recipeBoard">
                 <Grid>
+                    <Row>
+                        <Col xs={12}>
+                            <h2 className='recipeHeader'>
+                                Top Recipes
+                            </h2>
+                        </Col>
+                    </Row>
                     {this.state.recipes.map(recipe => (
-                        <Row>
-                            <Col item key={recipe.id} sm={12} md={12}>
+                        <Row key={recipe._id}>
+                            <Col sm={12} md={12}>
                                 <RecipeCard
                                     id={recipe._id}
-                                    // key={recipe.id}
                                     name={recipe.name}
                                     style={recipe.style}
                                     abv={recipe.specs.abv}
@@ -48,7 +54,9 @@ class RecipeBoard extends Component {
                                     batchUnits={recipe.specs.batch.units}
                                     ibu={recipe.specs.ibu}
                                     fg={recipe.specs.fg}
-                                    brewer={recipe.brewer}
+                                    // brewer={recipe.brewer.username}
+                                    // brewerFirstName={recipe.brewer.name.first}
+                                    // brewerLastName={recipe.brewer.name.last}
                                     description={recipe.description}
                                 />
                             </Col>

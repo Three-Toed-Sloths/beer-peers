@@ -1,0 +1,16 @@
+.profileBackground{
+    background-image: url("../../images/profilepic4.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    width: 100%;
+    height: 300px;
+    
+}
+
+.totalFollowerHeader {
+    text-align: center;
+    width: 100%;
+}

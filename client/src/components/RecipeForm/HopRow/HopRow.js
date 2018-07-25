@@ -1,12 +1,9 @@
 import React from 'react';
 
 import { Col, Row } from 'react-bootstrap';
-import { FormGroup, ControlLabel, FormControl, InputGroup, DropdownButton, MenuItem } from 'react-bootstrap';
+import { FormGroup, ControlLabel, FormControl, InputGroup } from 'react-bootstrap';
 
 import "./HopRow.css";
-
-const hopType = ['Pellet', 'Extract', 'Whole Leaf'];
-const weightUnits = ['lbs', 'kg', 'oz', 'g'];
 
 const HopRow = props => (
 <Row className="hopInputRow">
@@ -21,15 +18,6 @@ const HopRow = props => (
                 onChange={props.nameUpdate}
                 placeholder="Hop Name"
             />
-            <DropdownButton
-                componentClass={InputGroup.Button}
-                id="input-dropdown-addon"
-                title="Type"
-            >
-                {hopType.map(unit => (
-                    <MenuItem key={unit} value={unit}>{unit}</MenuItem>
-                ))}
-            </DropdownButton>
         </InputGroup>
     </Col>
 
@@ -62,15 +50,7 @@ const HopRow = props => (
                 onChange={props.weightUpdate}
                 placeholder="Weight"
             />
-            <DropdownButton
-                componentClass={InputGroup.Button}
-                id="input-dropdown-addon"
-                title="Units"
-            >
-                {weightUnits.map(unit => (
-                    <MenuItem key={unit} value={unit}>{unit}</MenuItem>
-                ))}
-            </DropdownButton>
+            <InputGroup.Addon>oz</InputGroup.Addon>
         </InputGroup>
     </Col>
     <Col xs={3}>

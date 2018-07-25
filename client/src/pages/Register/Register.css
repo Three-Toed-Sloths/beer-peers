@@ -1,0 +1,34 @@
+.registerBackground {
+    background-image: url('../../images/david-straight-341873-unsplash.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    /* height: 93vh;
+    min-height: 93vh; */
+    padding: 2em 0;
+}
+
+.registerPanel {
+    margin-bottom: 0;
+}
+
+.registerH1 {
+    font-family: 'EB Garamond', serif;
+}
+
+.registerForm {
+    margin-bottom: 2em;
+}
+
+.registerControlLabel {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.registerError {
+    color: red;
+}
+
+.registerSubmit {
+    margin-top: 1em;
+    font-family: 'EB Garamond', serif;
+    font-weight: bold;
+}

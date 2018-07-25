@@ -1,0 +1,9 @@
+.addRecipeBackground{
+    background-image: url("../../images/breweryProcesspicUpdate.png");
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
