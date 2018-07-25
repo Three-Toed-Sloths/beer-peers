@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { FormGroup, ControlLabel, FormControl, HelpBlock, Button, Panel, Row, Col } from 'react-bootstrap';
 import API from '../../utils/userAPI';
 import Wrapper from '../../components/Wrapper';
+import SuccesCard from '../../components/SuccesCard';
 import './Register.css';
 
 const STATES = [ 'AK', 'AL', 'AR', 'AS', 'AZ', 'CA', 'CO', 'CT', 'DC', 'DE', 'FL', 'GA', 'GU', 'HI', 'IA', 'ID', 'IL', 'IN', 'KS', 'KY', 'LA', 'MA', 'MD', 'ME', 'MI', 'MN', 'MO', 'MS', 'MT', 'NC', 'ND', 'NE', 'NH', 'NJ', 'NM', 'NV', 'NY', 'OH', 'OK', 'OR', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VA', 'VI', 'VT', 'WA', 'WI', 'WV', 'WY'];
@@ -16,7 +17,8 @@ class Register extends Component {
         phone: '',
         city: '',
         state: '',
-        image: ''
+        image: '',
+        isRegistered: false
     };
 
     handleInputChange = event => {
@@ -50,13 +52,12 @@ class Register extends Component {
                 image: this.state.image
             }).then(res => {
                 // insert new confirmation page + styling
-                window.location.href = `/`
+                this.setState({isRegistered: true})
             }).catch (err => {
                 console.log(err);
             })
         )
     };
-    
     // =================
     // || Validations ||
     // =================
@@ -95,9 +96,12 @@ class Register extends Component {
     render() {
         return(
             <div className='registerBackground'>
+                {this.state.isRegistered ? (<SuccesCard/>
+                ) : (
                 <Wrapper>
                     <Panel className='registerPanel'>
                         <Wrapper>
+
                             <form className='registerForm'>
                                 <Row>
                                     <h1 className='registerH1'>Create New Account:</h1>
@@ -249,6 +253,7 @@ class Register extends Component {
                         </Wrapper>
                     </Panel>
                 </Wrapper>
+            )}
             </div>
         );
     };
