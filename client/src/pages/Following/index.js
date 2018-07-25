@@ -1,1 +1,1 @@
-export { default } from "./Following.js";
+export { default } from './Following';

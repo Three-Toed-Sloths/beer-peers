@@ -97,7 +97,7 @@ class LandingPage extends Component {
                                                 <Button id='loginBtn' className='landingBtn' bsSize='large' bsStyle='primary' type="submit" onClick={this.handleSubmit} block>Log In</Button>
                                             </Col>
                                             <Col xs={12} md={6}>
-                                                <Button className='landingBtn' bsSize='large' type="create" block href='/register'>Create Account</Button>
+                                                <Button className='landingBtn' bsSize='large' type="submit" block href='/register'>Create Account</Button>
                                             </Col>
                                         </Row>
                                     </FormGroup>
