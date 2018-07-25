@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, Row, Col, FormGroup, Button, FormControl, Well, ControlLabel, Image } from 'react-bootstrap';
+import { Form, Row, Col, FormGroup, Button, FormControl, Well, ControlLabel } from 'react-bootstrap';
 import API from '../../utils/loginAPI';
 import Wrapper from '../../components/Wrapper';
 import './LandingPage.css';
@@ -32,7 +32,7 @@ class LandingPage extends Component {
                     success: true,
                     id: res.data._id
                 })
-                window.location.href = `/profile/${this.state.id}`;
+                window.location.href = `/personal/${this.state.id}`;
             } else {
                 this.handleInvalidLogin();
             }

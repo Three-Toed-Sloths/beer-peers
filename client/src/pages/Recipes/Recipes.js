@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import API from '../../utils/userAPI';
 
 import {Grid, Row, Col} from 'react-bootstrap';
-import Wrapper from '../../components/Wrapper';
 import SecondaryNav from '../../components/SecondaryNav';
 import RecipeCard from '../../components/RecipeCard';
 import ProfileCard from "../../components/ProfileCard";
@@ -49,7 +48,7 @@ class Recipes extends Component {
                         </Col>
                     </Row>
                     <Row>
-                        <SecondaryNav iden={this.state.id}/>
+                        <SecondaryNav  path='profile' iden={this.state.id}/>
                     </Row>
                     <Row>
                         <Col xs={12}>

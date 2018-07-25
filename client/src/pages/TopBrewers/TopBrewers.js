@@ -1,7 +1,5 @@
 import React, {Component} from "react";
 import { Grid, Col, Row } from 'react-bootstrap';
-import SecondaryNav from '../../components/SecondaryNav';
-import Wrapper from '../../components/Wrapper';
 import FollowingCard from "../../components/FollowingCard";
 import API from "../../utils/userAPI";
 import './TopBrewers.css';

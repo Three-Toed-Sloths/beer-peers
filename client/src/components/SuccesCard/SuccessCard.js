@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Panel, Row, Col, Button } from 'react-bootstrap';
 import './SuccessCard.css';
 import Wrapper from '../Wrapper';
