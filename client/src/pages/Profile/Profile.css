@@ -9,6 +9,7 @@
     height: 300px;
     
 }
+
 .recipeCardShort{
     font-family: 'Montserrat', sans-serif;
     color: white;
@@ -16,9 +17,13 @@
     margin-top: 30px;
     text-align: center;
 }
-.recipeCardShort > p{
+.recipeCardShort p{
     width: 80%;
     margin: 0 auto;
     font-size: 20px;
     border-radius: 10px;
+}
+
+.recipeCardShort a {
+    color: white
 }

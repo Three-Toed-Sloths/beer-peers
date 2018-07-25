@@ -4,9 +4,8 @@ import Col from 'react-bootstrap/lib/Col';
 import Row from 'react-bootstrap/lib/Row';
 import ProfileCard from "../../components/ProfileCard";
 import SecondaryNav from "../../components/SecondaryNav";
-import Wrapper from "../../components/Wrapper";
+// import Wrapper from "../../components/Wrapper";
 import API from "../../utils/userAPI";
-import RecAPI from "../../utils/recipeAPI";
 import "./Profile.css";
 
 class Profile extends Component {
@@ -18,10 +17,11 @@ class Profile extends Component {
         city: "",
         state: "",
         email: "",
-        image:"",
-        recipeIds:[],
-        recipeStrNames:"",
-        recipeTypes:""
+        image: "",
+        recipeArr: [],
+        // recipeIds:[],
+        // recipeStrNames:"",
+        // recipeTypes:""
     }
 
     componentWillMount() {
@@ -41,7 +41,7 @@ class Profile extends Component {
                     image: "https://i.ytimg.com/vi/I7jgu-8scIA/maxresdefault.jpg",
                     // image: res.data.image ADD THIS TO DATABASE,
                     //recipes
-                    recipeIds: res.data.recipes
+                    recipeArr: res.data.recipes
                 });
                 console.log(res.data);
             })
@@ -50,16 +50,19 @@ class Profile extends Component {
             .catch(err => console.log(err));
     }
 
-    loadRecipe = recId => {
-        RecAPI.getRecipe(recId)
-            .then(res => {
-                this.setState({
-                    recipeStrNames: res.data.name,
-                    recipeTypes: res.data.style
-                });
-            })
-            .catch(err => console.log(err));
-    }
+    // loadRecipe = recId => {
+    //     RecAPI.getRecipe(recId)
+    //         .then(res => {
+    //             console.log(res.data);
+    //             this.setState({
+    //                 recipeStrNames: res.data.name,
+    //                 recipeTypes: res.data.style
+    //             });
+    //         })
+    //         .catch(err => console.log(err));
+    // }
+    
+
     //color change by type
     colorType = type => {
         let color = "";
@@ -92,6 +95,7 @@ class Profile extends Component {
                             location={this.state.city+ ", " + this.state.state}
                             email={this.state.email}
                             img={this.state.image}
+                            recipes={this.state.recipes}
                             ></ProfileCard>
                         </Col>
                     </Row>
@@ -103,11 +107,23 @@ class Profile extends Component {
                         </Col>
                     </Row>
                     <Row>
+                        {this.state.recipeArr.map((recipe, i) =>
+                            <Col key={`recipe${i}`} className="recipeCardShort" sm={6} xs={12}>
+                                <a href={`/recipes/${recipe._id}`}>
+                                    <p style={{background: this.colorType(recipe.style)}}>
+                                        {"Name: " + recipe.name}<br/>
+                                        {" Style: " + recipe.style}
+                                    </p>
+                                </a>
+                            </Col>
+                        )}
+
+                        {/* <Col className="recipeCardShort" sm={6} xs={12}><p style={{background: this.colorType(this.state.recipeTypes)}}>{"Name: " + this.state.recipeStrNames}<br/>{" Type: " + this.state.recipeTypes}</p></Col>
                         <Col className="recipeCardShort" sm={6} xs={12}><p style={{background: this.colorType(this.state.recipeTypes)}}>{"Name: " + this.state.recipeStrNames}<br/>{" Type: " + this.state.recipeTypes}</p></Col>
                         <Col className="recipeCardShort" sm={6} xs={12}><p style={{background: this.colorType(this.state.recipeTypes)}}>{"Name: " + this.state.recipeStrNames}<br/>{" Type: " + this.state.recipeTypes}</p></Col>
-                        <Col className="recipeCardShort" sm={6} xs={12}><p style={{background: this.colorType(this.state.recipeTypes)}}>{"Name: " + this.state.recipeStrNames}<br/>{" Type: " + this.state.recipeTypes}</p></Col>
-                        <Col className="recipeCardShort" sm={6} xs={12}><p style={{background: this.colorType(this.state.recipeTypes)}}>{"Name: " + this.state.recipeStrNames}<br/>{" Type: " + this.state.recipeTypes}</p></Col>
+                        <Col className="recipeCardShort" sm={6} xs={12}><p style={{background: this.colorType(this.state.recipeTypes)}}>{"Name: " + this.state.recipeStrNames}<br/>{" Type: " + this.state.recipeTypes}</p></Col> */}
                     </Row>
+
                 </Grid>
         </div>
         );

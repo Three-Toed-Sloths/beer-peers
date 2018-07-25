@@ -9,7 +9,7 @@ const ProfileCard =  props => (
     <Grid className="profileCard_card">
         <Row className="profileCard_content">
             <Col className="profileCard_picture" sm={4} xs={12}>
-                <img className="pic" src={props.img}></img>
+                <img className="pic" src={props.img} alt={`${props.userName}ProfilePic`}></img>
             </Col>
             <Col className="profileCard_location" sm={4} xs={12}>
                 <div>
