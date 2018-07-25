@@ -1,5 +1,5 @@
 import axios from 'axios';
-import bcrypt from 'bcryptjs';
+// import bcrypt from 'bcryptjs';
 // import passport from 'passport';
 // import LocalStrategy from 'passport-local.Strategy';
 
@@ -15,7 +15,7 @@ export default {
   saveUser: userData => axios.post('/api/users', userData),
 
   // POST NEW USER new with bcrypt
-  createUser: userData => {
+  // createUser: userData => {
     //checking if username are already taken
     //     User.findOne({
     //         userData.username: {
@@ -30,19 +30,19 @@ export default {
     //         }
     //         else {
 
-    bcrypt.genSalt(10, function(err, salt) {
-      bcrypt.hash(userData.password, salt, function(err, hash) {
-        userData.password = hash;
-        if (err){
-          console.log(err)
-        }
-        else{
-          console.log('Registration succesfull')
-        };
-        return axios.post('/api/users', userData);
-      });
-    });
-  },
+  //   bcrypt.genSalt(10, function(err, salt) {
+  //     bcrypt.hash(userData.password, salt, function(err, hash) {
+  //       userData.password = hash;
+  //       if (err){
+  //         console.log(err)
+  //       }
+  //       else{
+  //         console.log('Registration succesfull')
+  //       };
+  //       return axios.post('/api/users', userData);
+  //     });
+  //   });
+  // },
 
   //LOG IN
   // logIn: (username, password) => {

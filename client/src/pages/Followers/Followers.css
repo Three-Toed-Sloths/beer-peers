@@ -11,8 +11,7 @@
 }
 
 
-
-/* .followingParallax {
+/* .followerParallax {
     background-image: url('../../images/wil-stewart-24562-unsplash.jpg');
     min-height: 300px;
     width: 100%;
@@ -23,7 +22,7 @@
     position: relative;
 }
 
-.followingHeader {
+.followerHeader {
     margin-top: 1.25em;
     font-family: 'EB Garamond', serif;
     font-size: 5em;
@@ -31,21 +30,21 @@
     text-shadow: 2px 2px 10px #000;
 }
 
-.followingContainer {
+.followerContainer {
     width: 80%;
     margin: 0 10%;
     position: absolute;
 }
 
-.followingCol {
+.followerCol {
     padding: 0;
 }
 
-.followingNav {
+.followerNav {
     margin-top: 2em;
 }
 
-.totalFollowingHeader {
+.totalFollowerHeader {
     text-align: center;
     width: 100%;
 } */
