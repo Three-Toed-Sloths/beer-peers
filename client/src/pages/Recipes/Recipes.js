@@ -1,48 +1,41 @@
+import React, { Component } from 'react';
+import API from '../../utils/userAPI';
 
-import React, {Component} from "react";
-import { Grid, Col, Row } from 'react-bootstrap';
-import SecondaryNav from '../../components/SecondaryNav';
+import {Grid, Row, Col} from 'react-bootstrap';
 import Wrapper from '../../components/Wrapper';
-import FollowingCard from "../../components/FollowingCard";
-import API from "../../utils/userAPI";
+import SecondaryNav from '../../components/SecondaryNav';
+import RecipeCard from '../../components/RecipeCard';
 import ProfileCard from "../../components/ProfileCard";
-import './Following.css';
+import './Recipes.css';
 
-
-class Following extends Component {
-
+class Recipes extends Component {
     state = {
         id: this.props.match.params.id,
-        followingArr: [],
+        recipes: [],
         name:{},
         contact: {},
         img: 'https://nyppagesix.files.wordpress.com/2017/06/ben-stiller-dodgeball.jpg?quality=90&strip=all'
     }
+
     componentDidMount() {
-        this.getUser(this.state.id);
+        this.getRecipes(this.state.id);
     }
 
-
-    getUser = id => {
+    getRecipes = id => {
         API.getUser(id)
-         .then(res => {
+        .then(res => {
             this.setState({
                 name: res.data.name,
                 contact: res.data.contact,
                 // img: res.data.image,
-                followingArr: res.data.social.following
-            });
-                console.log(res.data.social.following);
-         })
-         .then(() => {console.log('got users following')})
-         .catch(err => console.log(err));
+                recipes:res.data.recipes
+            })
+        })
     }
 
-
     render(){
-
         return (
-            <div className="profileBackground">
+            <div className='profileBackground'>
                 <Grid>
                     <Row>
                         <Col sm={12}>
@@ -60,22 +53,26 @@ class Following extends Component {
                     </Row>
                     <Row>
                         <Col xs={12}>
-                            <h2 className='totalFollowingHeader'>
-                                Total Following: {this.state.followingArr.length} Brewers
-                            </h2>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col xs={12}>
-                            {this.state.followingArr.map((user, i) =>
-                                <FollowingCard key={`followingCard${i}`} user={user} />
-                            )}
+                            {this.state.recipes.map(recipe => (
+                                <RecipeCard
+                                    key={`recipe${recipe._id}`}
+                                    id={recipe._id}
+                                    name={recipe.name}
+                                    style={recipe.style}
+                                    abv={recipe.specs.abv}
+                                    batchSize={recipe.specs.batch.size}
+                                    batchUnits={recipe.specs.batch.units}
+                                    ibu={recipe.specs.ibu}
+                                    fg={recipe.specs.fg}
+                                    description={recipe.description}
+                                />
+                            ))}
                         </Col>
                     </Row>
                 </Grid>
             </div>
-        )
+        );
     }
-};
+}
 
-export default Following;
+export default Recipes;
