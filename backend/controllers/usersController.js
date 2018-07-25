@@ -1,5 +1,4 @@
 const db = require('../models');
-// METHODS - usersController
 module.exports = {
   findAll: (req, res) => {
     db.User
