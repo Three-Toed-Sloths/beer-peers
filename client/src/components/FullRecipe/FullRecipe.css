@@ -1,0 +1,12 @@
+.fullRecipe{
+    text-shadow: 2px 2px 10px black;
+    color: white;
+    margin-bottom: 4em;
+    font-size: 1.3em;
+}
+.fullRecipeHeader{
+    margin-top: 3em;
+    margin-bottom: 1em;
+}
+
+

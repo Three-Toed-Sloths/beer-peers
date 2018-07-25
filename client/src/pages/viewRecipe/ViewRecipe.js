@@ -14,9 +14,13 @@ class ViewRecipe extends Component {
         render() {
 
         return(
-            <Wrapper>
-                <FullRecipe id={this.state.id}/>
-            </Wrapper>
+            <div className="viewRecipeBackground">
+                <div className="viewRecipeOpacity">
+                    <Wrapper>
+                        <FullRecipe id={this.state.id}/>
+                    </Wrapper>
+                </div>
+            </div>
         )
     }
 }

@@ -10,21 +10,22 @@ import "./RecipeCard.css";
 const RecipeCard = props => (
     
     <Panel className="recipeCard">
+    <div className="recipeCardPanelHeading" >
     <Panel.Heading>
         <Panel.Title toggle>
             <h1>{props.name}</h1><h2>{props.style}</h2>
         </Panel.Title>
     </Panel.Heading>
+    </div>
     <Panel.Collapse>
       <Panel.Body>
         <Grid>
-            <Row className="show-grid">
+            <Row>
                 <Col xs={12} md={12}>
                     <h2>Brewer: {props.brewer} - {props.brewerFirstName} {props.brewerLastName}</h2>
                 </Col>
             </Row>
-       
-            <Row className="show-grid">
+            <Row>
                 <Col xs={12} md={4}>
                     <h3>Specs</h3>
                     <p>
@@ -46,10 +47,6 @@ const RecipeCard = props => (
                 </Col>
             </Row>
         </Grid>
-      
-
-        
-      
       </Panel.Body>
       </Panel.Collapse>
     </Panel>
