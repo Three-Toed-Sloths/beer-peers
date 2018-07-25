@@ -36,10 +36,10 @@ const userSchema = new Schema({
   },
   password: {
     type: String,
-    // required: [true, 'Please enter password.'],
-    // trim: true,
-    // minlength: [4, 'Please select password 4 characters or more.'],
-    // maxlength: [20, 'Please select password 20 characters or less.'],
+    required: [true, 'Please enter password.'],
+    trim: true,
+    minlength: [4, 'Please select password 4 characters or more.'],
+    maxlength: [30, 'Please select password 30 characters or less.'],
   },
   contact: {
     email: {

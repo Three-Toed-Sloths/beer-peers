@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import API from '../../utils/userAPI';
 
 import {Grid, Row, Col} from 'react-bootstrap';
-import Wrapper from '../../components/Wrapper';
 import SecondaryNav from '../../components/SecondaryNav';
 import RecipeCard from '../../components/RecipeCard';
 import ProfileCard from "../../components/ProfileCard";
@@ -14,7 +13,7 @@ class Recipes extends Component {
         recipes: [],
         name:{},
         contact: {},
-        img: 'https://nyppagesix.files.wordpress.com/2017/06/ben-stiller-dodgeball.jpg?quality=90&strip=all'
+        img: ''
     }
 
     componentDidMount() {
@@ -27,7 +26,7 @@ class Recipes extends Component {
             this.setState({
                 name: res.data.name,
                 contact: res.data.contact,
-                // img: res.data.image,
+                img: res.data.image,
                 recipes:res.data.recipes
             })
         })
@@ -49,7 +48,7 @@ class Recipes extends Component {
                         </Col>
                     </Row>
                     <Row>
-                        <SecondaryNav iden={this.state.id}/>
+                        <SecondaryNav  path='profile' iden={this.state.id}/>
                     </Row>
                     <Row>
                         <Col xs={12}>
