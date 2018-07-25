@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Nav from './components/Nav';
 import NoMatch from './pages/NoMatch';
 import Profile from './pages/Profile';
+import PersonalProfile from './pages/PersonalProfile';
 import Likes from './pages/Likes';
 import Following from './pages/Following';
 import Followers from './pages/Followers';
@@ -22,6 +23,7 @@ const App = () => (
       <div>
         <Switch>
           <Route exact path='/' component={LandingPage} />
+          <Route exact path='/personalprofile/:id' component={PersonalProfile} />
           <Route exact path='/profile/:id' component={Profile} />
           <Route exact path='/profile/:id/likes' component={Likes} />
           <Route exact path='/profile/:id/following' component={Following} />
