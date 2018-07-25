@@ -21,7 +21,7 @@
 }
 .specs{
     border: solid white 3px;
-    background: yellow;
+    background: gold;
     border-radius: 20px;
     padding-top: 10px;
     padding-bottom: 20px;
@@ -42,4 +42,9 @@
 }
 .submitBtn{
     font-family: 'EB Garamond', serif;
+    transition: .7s;
+}
+.submitBtn:hover{
+    background: #a86222;
+    color: white;
 }

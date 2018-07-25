@@ -38,8 +38,8 @@ class Profile extends Component {
                     city: res.data.contact.city,
                     state: res.data.contact.state,
                     email: res.data.contact.email,
-                    image: "https://i.ytimg.com/vi/I7jgu-8scIA/maxresdefault.jpg",
-                    // image: res.data.image ADD THIS TO DATABASE,
+                    //image: "https://i.ytimg.com/vi/I7jgu-8scIA/maxresdefault.jpg",
+                    image: res.data.image,
                     //recipes
                     recipeArr: res.data.recipes
                 });
@@ -67,17 +67,69 @@ class Profile extends Component {
     colorType = type => {
         let color = "";
         switch(type){
-            case "American IPA":
-            color = "orange";
+            case "American Lager":
+            case "Cream Ale":
+            case "German Pilsner":
+            color = "#e9d76c";
             break;
-            case "Stout":
-            color = "darkgreen";
+            case "Belgian Golden Strong Ale":
+            case "Blonde Ale":
+            color = "#e1c336";
+            break;
+            case "Belgian Dubbel":
+            case "Belgian Tripel":
+            case "Belgian Witbier":
+            case "Session IPA":
+            case "Sour Ale":
+            color = "#dab700";
+            break;
+            case "American Wheat Ale":
+            case "California Common":
+            case "Hefeweizen":
+            case "Pale Ale":
+            color = "#cfa200";
+            break;
+            case "English IPA":
+            case "Fruit Beer":
+            case "New England IPA":
+            color = "#c38e0d";
+            break;
+            case "American IPA":
+            case "Barley Wine":
+            case "Belgian Saison":
+            color = "#b87b1c";
+            break;
+            case "Double IPA":
+            case "Oktoberfest":
+            color = "#a86222";
             break;
             case "Amber Ale":
-            color = "purple";
+            case "Speciality Beer":
+            color = "#94461c";
+            break;
+            case "Brown Ale":
+            case "Scotch Ale":
+            color = "#85341d";
+            break;
+            case "Barrel-Aged Beer":
+            case "Brown Porter":
+            color = "#74211a";
+            break;
+            case "Coffee Beer":
+            case "Oatmeal Stout":
+            color = "#601213";
+            break;
+            case "Irish Dry Stout":
+            case "Milk Stout":
+            case "Stout":
+            color = "#4b0c11";
+            break;
+            case "American Imperial Stout":
+            case "Black Ale":
+            color = "#3c0c11";
             break;
             default:
-            color = "darkblue";
+            color = "#FFF";
             break;
         }
         return color;
@@ -112,6 +164,7 @@ class Profile extends Component {
                                 <a href={`/recipes/${recipe._id}`}>
                                     <p style={{background: this.colorType(recipe.style)}}>
                                         {"Name: " + recipe.name}<br/>
+                                        <hr className="profileHorizontal"/>
                                         {" Style: " + recipe.style}
                                     </p>
                                 </a>
