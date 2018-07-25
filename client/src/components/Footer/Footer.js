@@ -1,11 +1,11 @@
 import React from 'react';
-import { Grid, Panel, Row, Col } from 'react-bootstrap';
+import { Panel, Row, Col, Grid } from 'react-bootstrap';
 import Wrapper from '../../components/Wrapper';
 import './Footer.css';
 
 const Footer = () => (
     <div>
-        <Grid />
+    <Grid />
     <footer>
         <Panel className='footerPanel'>
             <Wrapper>

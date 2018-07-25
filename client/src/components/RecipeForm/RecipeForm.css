@@ -1,14 +1,50 @@
 .recipeForm{
     background: rgb(255,255,255);
-    padding: 20px;
-    
+    padding: 40px;
+}
+.addRecH1{
+    font-family: 'EB Garamond', serif;
 }
 .recipeAdd{
     font-family: 'Montserrat', sans-serif;
+    font-size: 1.1em;
+    margin-left: 20px;
+    margin-right: 20px;
 }
-.addButtons{
-    margin-left: 5px;
-    margin-bottom: 5px;
-    padding: 0px 10px;
-    font-size: 20px;
+.addBtn{
+    margin-left: .4em;
+    padding: 0 .4em;
+    background: green;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.specs{
+    border: solid white 3px;
+    background: gold;
+    border-radius: 20px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+.malts{
+    border: solid white 3px;
+    background: lightcoral;
+    border-radius: 20px;
+    margin-bottom: .25em;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.hops{
+    border: solid white 3px;
+    border-radius: 20px;
+    background: lightgreen;
+    padding-top: 10px;
+}
+.submitBtn{
+    font-family: 'EB Garamond', serif;
+    transition: .7s;
+}
+.submitBtn:hover{
+    background: #a86222;
+    color: white;
 }
