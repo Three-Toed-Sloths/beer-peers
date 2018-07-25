@@ -1,0 +1,37 @@
+.followerParallax {
+    background-image: url('../../images/wil-stewart-24562-unsplash.jpg');
+    min-height: 300px;
+    width: 100%;
+    background-attachment: fixed;
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.followerHeader {
+    margin-top: 1.25em;
+    font-family: 'EB Garamond', serif;
+    font-size: 5em;
+    color: white;
+    text-shadow: 2px 2px 10px #000;
+}
+
+.followerContainer {
+    width: 80%;
+    margin: 0 10%;
+    position: absolute;
+}
+
+.followerCol {
+    padding: 0;
+}
+
+.followerNav {
+    margin-top: 2em;
+}
+
+.totalFollowerHeader {
+    text-align: center;
+    width: 100%;
+}

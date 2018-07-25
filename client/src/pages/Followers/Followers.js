@@ -5,14 +5,14 @@ import SecondaryNav from '../../components/SecondaryNav';
 import Wrapper from '../../components/Wrapper';
 import FollowingCard from "../../components/FollowingCard";
 import API from "../../utils/userAPI";
-import './Following.css';
+import './Followers.css';
 
 
-class Following extends Component {
+class Followers extends Component {
 
     state = {
         id: this.props.match.params.id,
-        followingArr: []
+        followersArr: []
     }
     componentDidMount() {
         this.getUser(this.state.id);
@@ -23,11 +23,11 @@ class Following extends Component {
         API.getUser(id)
          .then(res => {
             this.setState({
-                followingArr: res.data.social.following
+                followersArr: res.data.social.followers
             });
-                console.log(res.data.social.following);
+                console.log(res.data.social.followers);
          })
-         .then(() => {console.log('got users following')})
+         .then(() => {console.log('got users followers')})
          .catch(err => console.log(err));
     }
 
@@ -36,10 +36,10 @@ class Following extends Component {
 
         return (
             <div>
-                <div className='followingCol'>
-                    <div className='followingParallax'>
-                        <div className='followingContainer'>
-                            <h1 className='followingHeader'>Following</h1>
+                <div className='followerCol'>
+                    <div className='followerParallax'>
+                        <div className='followerContainer'>
+                            <h1 className='followerHeader'>Followers</h1>
                             <hr />
                         </div>
                     </div>
@@ -50,15 +50,15 @@ class Following extends Component {
                     </Row>
                     <Row>
                         <Col xs={12}>
-                            <h2 className='totalFollowingHeader'>
-                                Total Following: {this.state.followingArr.length} Brewers
+                            <h2 className='totalFollowerHeader'>
+                                Total Followers: {this.state.followersArr.length} Brewers
                             </h2>
                         </Col>
                     </Row>
                     <Row>
                         <Col xs={12}>
-                            {this.state.followingArr.map((user, i) =>
-                                <FollowingCard key={`followingCard${i}`} user={user} />
+                            {this.state.followersArr.map((user, i) =>
+                                <FollowingCard key={`followerCard${i}`} user={user} />
                             )}
                         </Col>
                     </Row>
@@ -68,4 +68,4 @@ class Following extends Component {
     }
 };
 
-export default Following;
+export default Followers;
