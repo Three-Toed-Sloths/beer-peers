@@ -6,11 +6,12 @@
 }   
 
 .success-panel {
-    
+    min-height: 400px;
 }
 
 .success-title {
     font-family: 'EB Garamond', serif;
+    margin-top: 3em;
 }
 
 .success-h3 {

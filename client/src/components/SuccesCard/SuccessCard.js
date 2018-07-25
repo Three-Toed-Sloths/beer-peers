@@ -15,7 +15,7 @@ const SuccessCard = () => (
                     </p>
                     <Col xs={0} md={4} />
                     <Col xs={12} md={4}>
-                        <Button href='/' id='success-button' block>Login Page</Button>
+                        <Button href='/' bsSize='large' id='success-button' block >Login Page</Button>
                     </Col>
                 </Row>
             </Wrapper>
