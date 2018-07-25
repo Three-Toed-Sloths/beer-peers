@@ -6,6 +6,8 @@ import Profile from './pages/Profile';
 import PersonalProfile from './pages/PersonalProfile';
 import Likes from './pages/Likes';
 import Following from './pages/Following';
+import Followers from './pages/Followers';
+import Recipes from './pages/Recipes';
 import Register from './pages/Register';
 import AllRecipes from './pages/ViewAllRecipes';
 import ViewRecipe from './pages/ViewRecipe';
@@ -23,7 +25,9 @@ const App = () => (
           <Route exact path='/personalprofile/:id' component={PersonalProfile} />
           <Route exact path='/profile/:id' component={Profile} />
           <Route exact path='/profile/:id/likes' component={Likes} />
-          <Route exact path='/profile/:id/following' component={Profile} />
+          <Route exact path='/profile/:id/following' component={Following} />
+          <Route exact path='/profile/:id/followers' component={Followers} />
+          <Route exact path='/profile/:id/recipes' component={Recipes} />
           <Route exact path='/recipes' component={AllRecipes} />
           <Route exact path='/likes' component={Likes} />
           <Route exact path='/following' component={Following} />

@@ -9,16 +9,27 @@
     height: 300px;
     
 }
+
 .recipeCardShort{
     font-family: 'Montserrat', sans-serif;
     color: white;
     padding: 10px;
-    margin-top: 30px;
-    text-align: center;
+    margin-top: 1.5em;
 }
-.recipeCardShort > p{
+
+.recipeCardShort p{
     width: 80%;
-    margin: 0 auto;
+    margin-bottom: 1.5em;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
     font-size: 20px;
     border-radius: 10px;
+}
+
+.recipeCardShort a {
+    color: white
+}
+.profileHorizontal{
+    margin: 0;
 }
