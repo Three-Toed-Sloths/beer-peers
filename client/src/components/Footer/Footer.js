@@ -5,7 +5,7 @@ import './Footer.css';
 
 const Footer = () => (
     <div>
-    <Grid />
+    <Grid/>
     <footer>
         <Panel className='footerPanel'>
             <Wrapper>
