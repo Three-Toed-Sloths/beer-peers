@@ -5,7 +5,7 @@ export default {
   getRecipes: () => axios.get('/api/recipes'),
   // GET USER BY ID
   getRecipe: id => axios.get(`/api/recipes/${id}`),
-  // GET USER BY ID
+  // UPDATE RECIPE BY ID
   updateRecipe: (id, data) => axios.put(`/api/recipes/${id}`, data),
   // DELETE RECIPE BY ID
   deleteRecipe: id => axios.delete(`/api/recipes/${id}`),

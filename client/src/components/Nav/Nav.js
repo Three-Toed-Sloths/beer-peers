@@ -15,10 +15,10 @@ const Head = () => (
                 <NavItem className='navLinks' eventKey={1} href='/register'>
                     Sign Up
                 </NavItem>
-                <NavItem className='navLinks' eventKey={2} href='/likes'>
+                <NavItem className='navLinks' eventKey={2} href='/recipes'>
                     Top Recipes
                 </NavItem>
-                <NavItem className='navLinks' eventKey={3} href='/following'>
+                <NavItem className='navLinks' eventKey={3} href='/brewers'>
                     Top Brewers
                 </NavItem>
             </Nav>

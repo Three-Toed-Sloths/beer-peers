@@ -1,5 +1,4 @@
 const db = require('../models');
-// METHODS - usersController
 module.exports = {
   findAll: (req, res) => {
     db.User
@@ -27,7 +26,8 @@ module.exports = {
   update: (req, res) => {
     db.User
       .findOneAndUpdate({ _id: req.params.id }, req.body)
-      .then(dbModel => res.json(dbModel))
+      .then(dbModel => res.json(dbModel)
+      )
       .catch(err => res.status(422).json(err));
   },
   remove: (req, res) => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Panel, Row, Col, Grid } from 'react-bootstrap';
+import { Panel, Col, Grid } from 'react-bootstrap';
 import Wrapper from '../../components/Wrapper';
 import './Footer.css';
 

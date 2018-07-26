@@ -1,11 +1,9 @@
 import React from 'react';
 
 import { Col, Row } from 'react-bootstrap';
-import { FormControl, InputGroup, DropdownButton, MenuItem } from 'react-bootstrap';
+import { FormControl, InputGroup } from 'react-bootstrap';
 
 import "./GrainRow.css";
-
-const weightUnits = ['lbs', 'kg', 'oz', 'g'];
 
 const GrainRow = props => (
     <Row className="maltInputRow">
@@ -31,15 +29,7 @@ const GrainRow = props => (
                     onChange={props.weightUpdate}
                     placeholder="Weight"
                 />
-                {/* <DropdownButton
-                    componentClass={InputGroup.Button}
-                    id="input-dropdown-addon"
-                    title="Units"
-                >
-                    {weightUnits.map(unit => (
-                        <MenuItem key={unit} value={unit}>{unit}</MenuItem>
-                    ))}
-                </DropdownButton> */}
+
                 <InputGroup.Addon>lbs</InputGroup.Addon>
             </InputGroup>
         </Col>
