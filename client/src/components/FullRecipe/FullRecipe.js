@@ -36,6 +36,7 @@ class FullRecipe extends Component {
                 batch: res.data.specs.batch,
                 hops: res.data.ingredients.hops,
                 yeast: res.data.ingredients.yeast,
+                misc: res.data.ingredients.misc,
                 base: res.data.ingredients.malt.base,
                 speciality: res.data.ingredients.malt.speciality
             })
@@ -73,7 +74,7 @@ class FullRecipe extends Component {
                     </Col>
                 </Row>
                 <Row>
-                    <Col xs={12}>
+                    <Col xs={12} md={4}>
                         <h3>Specs:</h3>
                         <p>
                             Batch: {batch.size} {batch.units}<br />
@@ -83,6 +84,10 @@ class FullRecipe extends Component {
                             FG: {specs.fg}<br />
                         </p>
                     </Col>
+                    <Col xs={12} md={8}>
+                        <h3>Directions:</h3>
+                        <p>{recipe.directions}</p>
+                    </Col>
                 </Row>
                 <Row>
                     <Col xs={12}>
@@ -90,13 +95,13 @@ class FullRecipe extends Component {
                     </Col>
                 </Row>
                 <Row>
-                    <Col xs={12} md={4}>
+                    <Col s={12} md={3}>
                         <h4>Hops:</h4>
                         {this.state.hops.map((hop, i) => (
                             <Hop key={`hop${i}`} name={hop.name} type={hop.type} alpha={hop.alpha} amount={hop.amount} units={hop.units} addition={hop.addition}/>
                         ))}
                     </Col>
-                    <Col xs={12} md={4}>
+                    <Col s={12} md={3}>
                         <h4>Base Malt:</h4>
                             {this.state.base.map((malt, i) => (
                                 <Malt key={`base${i}`} name={malt.name} amount={malt.amount} units={malt.units}/>
@@ -107,10 +112,16 @@ class FullRecipe extends Component {
                             <Malt key={`speciality${i}`} name={malt.name} amount={malt.amount} units={malt.units}/>
                         ))}
                     </Col>
-                    <Col xs={12} md={4}>
+                    <Col s={12} md={3}>
                     <h4>Yeast:</h4>
                         <div className="yeast">
                             <p>{this.state.yeast.name} ({this.state.yeast.amount})</p>
+                        </div>
+                    </Col>
+                    <Col s={12} md={3}>
+                    <h4>Misc:</h4>
+                        <div className="misc">
+                            <p>{this.state.misc}</p>
                         </div>
                     </Col>
                 </Row>
