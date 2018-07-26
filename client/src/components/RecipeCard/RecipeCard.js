@@ -10,35 +10,37 @@ import "./RecipeCard.css";
 const RecipeCard = props => (
     
     <Panel className="recipeCard">
-    <div className="recipeCardPanelHeading" >
+        <div className="recipeCardPanelHeading" >
     <Panel.Heading>
         <Panel.Title toggle>
             <h1>{props.name}</h1><h2>{props.style}</h2>
         </Panel.Title>
     </Panel.Heading>
     </div>
+    <div className="panelCollapse">
     <Panel.Collapse>
       <Panel.Body>
-        <Grid>
+        <Grid className="panelBody">
             <Row>
                 <Col xs={12} md={12}>
                     <h2>Brewer: {props.brewer} - {props.brewerFirstName} {props.brewerLastName}</h2>
                 </Col>
             </Row>
             <Row>
-                <Col xs={12} md={4}>
-                    <h3>Specs</h3>
-                    <p>
+                <Col xs={12} md={3}>
+                    <h3>Specs:</h3>
+                    <p className="recipeCardText">
                         Batch: {props.batchSize} {props.batchUnits}<br />
                         ABV: {props.abv}%<br />
                         IBUs: {props.ibu}<br />
                         FG: {props.fg}<br />
                     </p>
                 </Col>
-                <Col xs={12} md={8}>
-                <Clearfix>
-                    <p>{props.description}</p>
-                </Clearfix>
+            </Row>
+            <Row>
+                <Col xs={12}>
+                    <h3>Description: </h3>
+                    <p className="recipeCardText">{props.description}</p>
                 </Col>
             </Row>
             <Row>
@@ -49,6 +51,7 @@ const RecipeCard = props => (
         </Grid>
       </Panel.Body>
       </Panel.Collapse>
+      </div>
     </Panel>
 )
 
