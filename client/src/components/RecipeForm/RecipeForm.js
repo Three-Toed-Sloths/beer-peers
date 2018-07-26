@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 import API from '../../utils/recipeAPI';
+import userAPI from '../../utils/userAPI';
 
 import { Grid, Col, Row, Button } from 'react-bootstrap';
-import { FormGroup, ControlLabel, FormControl, InputGroup, DropdownButton, MenuItem } from 'react-bootstrap';
+import { FormGroup, ControlLabel, FormControl, InputGroup } from 'react-bootstrap';
 import GrainRow from './GrainRow';
 import HopRow from './HopRow';
 
 import './RecipeForm.css';
 
-// const beerStyles = ['American IPA', 'Stout', 'Amber Ale'];
 const beerStyles = ['Amber Ale', 'American IPA', 'American Imperial Stout', 'American Lager', 'American Wheat Ale', 'Barley Wine','Barrel-Aged Beer', 'Belgian Dubbel', 'Belgian Golden Strong Ale', 'Belgian Saison', 'Belgian Tripel', 'Belgian Witbier', 'Black Ale', 'Blonde Ale', 'Brown Ale', 'Brown Porter', 'California Common', 'Coffee Beer', 'Cream Ale', 'Double IPA', 'English IPA', 'Fruit Beer', 'German Pilsner', 'Hefeweizen', 'Irish Dry Stout', 'Milk Stout', 'New England IPA', 'Oatmeal Stout', 'Oktoberfest', 'Pale Ale', 'Scotch Ale', 'Session IPA', 'Sour Ale', 'Speciality Beer', 'Stout'];
-const liqUnits = ['gal', 'liters', 'bbls'];
 
 class RecipeForm extends Component {
     state = {
         name: '',
+        brewer: this.props.id,
         style: '',
         batchVol: '',
         abv: '',
@@ -56,11 +56,20 @@ class RecipeForm extends Component {
     addRecipe = newRecipe => {
         API.saveRecipe(newRecipe)
          .then(res => {
-            this.resetState()
-            window.location.href = `/`;
+            this.addRecipeToBrewer(res.data._id);
+            window.location.href = `/personal/${this.state.brewer}`;
          }
         )
-         .catch(err => console.log(err));
+         .catch(err => err);
+    }
+
+    addRecipeToBrewer = recipeID => {
+        userAPI.updateUser(this.state.brewer, {$push:{recipes: [recipeID]}})
+        .then(res => {
+           return ('success')
+        }
+       )
+        .catch(err => err);
     }
 
     handleInputChange = event => {
@@ -117,54 +126,12 @@ class RecipeForm extends Component {
         });
     }
 
-    resetState = () => {
-        this.setState({
-            name: '',
-            style: '',
-            batchVol: '',
-            abv: '',
-            og: '',
-            fg: '',
-            ibu: '',
-            preBoil: '',
-            boilLength: '',
-            description: '',
-            directions: '',
-            misc: '',
-            yeast: '',
-            hopsArr: [
-                {
-                    name: '',
-                    type: 'pellets',
-                    alpha: '',
-                    amount: '',
-                    units: 'oz',
-                    addition: ''
-                }
-            ],
-            baseMaltArr: [
-                {
-                    name: '',
-                    amount: '',
-                    units: 'lb'
-                }
-            ],
-            specialityMaltArr: [
-                {
-                    name: '',
-                    amount: '',
-                    units: 'lb'
-                }
-            ]
-        })
-    }
-
     handleFormSubmit = event => {
         event.preventDefault();
 
         const newRecipe = {
             name: this.state.name,
-            // brewer: '5b4a548d4cb96a51b8d6c61b',
+            brewer: this.state.brewer,
             style: this.state.style,
             likes: parseFloat(0),
             description: this.state.description,
@@ -197,11 +164,8 @@ class RecipeForm extends Component {
             },
             directions: this.state.directions
         }
-
-        console.log(newRecipe);
         this.addRecipe(newRecipe);
     }
-
 
     render() {
         return(
@@ -243,15 +207,6 @@ class RecipeForm extends Component {
                                     <ControlLabel className="formLabels">Batch Volume:</ControlLabel>
                                     <InputGroup>
                                         <FormControl type='number' name='batchVol' value={this.state.batchVol} onChange={this.handleInputChange} id='batchVol' placeholder='Batch'/>
-                                        {/* <DropdownButton
-                                            componentClass={InputGroup.Button}
-                                            id='input-dropdown-addon'
-                                            title='Units'
-                                        >
-                                            {liqUnits.map(unit => (
-                                                <MenuItem key={unit} value={unit}>{unit}</MenuItem>
-                                            ))}
-                                        </DropdownButton> */}
                                         <InputGroup.Addon>gal</InputGroup.Addon>
                                     </InputGroup>
                                 </FormGroup>
@@ -311,15 +266,6 @@ class RecipeForm extends Component {
                                     <ControlLabel className="formLabels">Preboil Volume:</ControlLabel>
                                     <InputGroup>
                                     <FormControl type='number' id='preBoilVolInput' name='preBoil' value={this.state.preBoil} onChange={this.handleInputChange} placeholder='Preboil'/>
-                                        {/* <DropdownButton
-                                            componentClass={InputGroup.Button}
-                                            id='input-dropdown-addon'
-                                            title='Units'
-                                        >
-                                            {liqUnits.map(unit => (
-                                                <MenuItem key={unit} value={unit}>{unit}</MenuItem>
-                                            ))}
-                                        </DropdownButton> */}
                                         <InputGroup.Addon>gal</InputGroup.Addon>
                                     </InputGroup>
                                 </FormGroup>
@@ -342,6 +288,7 @@ class RecipeForm extends Component {
                                         <ControlLabel className="formLabels">Base Malt: <span className="addBtn" onClick={this.addBaseMaltRow}>+</span></ControlLabel>
                                         {this.state.baseMaltArr.map((unit, i) => (
                                             <GrainRow
+                                                key={`baseRow${i}`}
                                                 nameValue={this.state.baseMaltArr[i].name}
                                                 nameUpdate={this.handleChangeFor('name', 'baseMaltArr', i)}
                                                 weightUpdate={this.handleChangeFor('amount', 'baseMaltArr', i)}
@@ -355,6 +302,7 @@ class RecipeForm extends Component {
                                     <ControlLabel className="formLabels">Speciality Malt: <span className="addBtn" onClick={this.addSpecMaltRow}>+</span></ControlLabel>
                                     {this.state.specialityMaltArr.map((unit, i) => (
                                         <GrainRow 
+                                            key={`specialityRow${i}`}
                                             nameValue={this.state.specialityMaltArr[i].name}
                                             nameUpdate={this.handleChangeFor('name', 'specialityMaltArr', i)}
                                             weightUpdate={this.handleChangeFor('amount', 'specialityMaltArr', i)}
@@ -392,15 +340,7 @@ class RecipeForm extends Component {
                                 <FormGroup >
                                     <ControlLabel className="formLabels">Yeast:</ControlLabel>
                                     <InputGroup>
-                                            <FormControl type='text' name='yeast' value={this.state.yeast} onChange={this.handleInputChange} placeholder='Yeast Name'/>
-                                            {/* <DropdownButton
-                                                componentClass={InputGroup.Button}
-                                                id='input-dropdown-addon'
-                                                title='Type'
-                                            >
-                                                <MenuItem key='Dry' value='Dry'>Dry</MenuItem>
-                                                <MenuItem key='Liquid' value='Liquid'>Liquid</MenuItem>
-                                            </DropdownButton> */}
+                                        <FormControl type='text' name='yeast' value={this.state.yeast} onChange={this.handleInputChange} placeholder='Yeast Name'/>
                                     </InputGroup>
                                 </FormGroup>
                             </Col>

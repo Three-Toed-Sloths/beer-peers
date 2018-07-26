@@ -3,6 +3,7 @@ import { FormGroup, ControlLabel, FormControl, HelpBlock, Button, Panel, Row, Co
 import API from '../../utils/userAPI';
 import Wrapper from '../../components/Wrapper';
 import SuccesCard from '../../components/SuccesCard';
+import Check from '../../utils/loginAPI';
 import './Register.css';
 
 const STATES = [ 'AK', 'AL', 'AR', 'AS', 'AZ', 'CA', 'CO', 'CT', 'DC', 'DE', 'FL', 'GA', 'GU', 'HI', 'IA', 'ID', 'IL', 'IN', 'KS', 'KY', 'LA', 'MA', 'MD', 'ME', 'MI', 'MN', 'MO', 'MS', 'MT', 'NC', 'ND', 'NE', 'NH', 'NJ', 'NM', 'NV', 'NY', 'OH', 'OK', 'OR', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VA', 'VI', 'VT', 'WA', 'WI', 'WV', 'WY'];
@@ -12,11 +13,14 @@ class Register extends Component {
         first: '',
         last: '',
         username: '',
+        usernameMessage: '',
         password: '',
         email: '',
+        emailMessage: '',
         phone: '',
         city: '',
         state: '',
+        stateMessage: '',
         image: '',
         isRegistered: false
     };
@@ -31,32 +35,104 @@ class Register extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        if (!this.state.first || !this.state.last || !this.state.username || 
-        !this.state.email || !this.state.city || !this.state.state) {
-            alert('Please fill out all required fields.')
-        }
-        else (
-            API.saveUser({
-                name: {
-                    first: this.state.first,
-                    last: this.state.last
-                },
-                username: this.state.username,
-                contact: {
-                    email: this.state.email,
-                    phone: this.state.phone,
-                    city: this.state.city,
-                    state: this.state.state
-                },
-                password: this.state.password,
-                image: this.state.image
-            }).then(res => {
-                // insert new confirmation page + styling
-                this.setState({isRegistered: true})
-            }).catch (err => {
-                console.log(err);
-            })
-        )
+        Check.checkUsername(
+            this.state.username
+        ).then(res => {
+            if (res.data.username === this.state.username || this.state.username === '') {
+                this.usernameDuplicate();
+            }
+            // if (!res.data.username) {
+            //     this.usernameReset();
+            // }
+            if (res.data.contact.email === this.state.email || this.state.email === '') {
+                this.emailDuplicate();
+            }
+            // if (!res.data.contact.email) {
+            //     this.emailReset();
+            // }
+            if (this.state.state === '') {
+                this.stateSelect();
+            }
+            if (this.state.state !== '') {
+                this.stateReset();
+            }
+        }).catch(err => {
+            // this.usernameReset();
+            // this.emailReset();
+            this.postUser();
+            console.log(err);
+            return err;
+        });
+    };
+    
+    // =======================
+    // || Handle Duplicates ||
+    // =======================
+
+    usernameDuplicate = () => {
+        this.setState({
+            usernameMessage: 'Please enter a unique username'
+        });
+    };
+
+    emailDuplicate = () => {
+        this.setState({
+            emailMessage: 'Please eneter a unique email'
+        });
+    };
+
+    stateSelect = () => {
+        this.setState({
+            stateMessage: 'Please select a state'
+        });
+    };
+
+    // ===================
+    // || Handle Resets ||
+    // ===================
+
+    usernameReset = () => {
+        this.setState({
+            usernameMessage: ''
+        });
+    };
+
+    emailReset = () => {
+        this.setState({
+            emaileMessage: ''
+        });
+    };
+
+    stateReset = () => {
+        this.setState({
+            stateMessage: ''
+        });
+    };
+
+    // ======================
+    // || Handle Post User ||
+    // ======================
+
+    postUser = () => {
+        API.saveUser({
+            name: {
+                first: this.state.first,
+                last: this.state.last
+            },
+            username: this.state.username,
+            contact: {
+                email: this.state.email,
+                phone: this.state.phone,
+                city: this.state.city,
+                state: this.state.state
+            },
+            password: this.state.password,
+            image: this.state.image
+        }).then(res => {
+            this.setState({isRegistered: true})
+        }).catch (err => {
+            console.log(err);
+        });
     };
     // =================
     // || Validations ||
@@ -153,8 +229,9 @@ class Register extends Component {
                                                 onChange={this.handleInputChange}
                                             />
                                             <FormControl.Feedback />
-                                            <HelpBlock>Must be at least 4 characters long</HelpBlock>
+                                            {/* <HelpBlock>Must be at least 4 characters long</HelpBlock> */}
                                         </FormGroup>
+                                        <HelpBlock className='registerError'>{this.state.usernameMessage}</HelpBlock>
                                     </Col>
                                     <Col xs={12} md={6}>
                                         <FormGroup controlId={'formPassword'} validationState={this.passwordValidation()}>
@@ -182,8 +259,9 @@ class Register extends Component {
                                                 onChange={this.handleInputChange}
                                             />
                                             <FormControl.Feedback />
-                                            <HelpBlock>Addresses must contain an '@' and ending (.com / .co / etc.)</HelpBlock>
+                                            {/* <HelpBlock>Addresses must contain an '@' and ending (.com / .co / etc.)</HelpBlock> */}
                                         </FormGroup>
+                                        <HelpBlock className='registerError'>{this.state.emailMessage}</HelpBlock>
                                     </Col>
                                     <Col xs={12} md={6}>
                                         <FormGroup controlId={'formPhone'} validationState={this.phoneValidation()}>
@@ -197,7 +275,7 @@ class Register extends Component {
                                                 onChange={this.handleInputChange}
                                             />
                                         <FormControl.Feedback />
-                                        <HelpBlock>Please use the following format: ### - ### - ####</HelpBlock>
+                                        {/* <HelpBlock>Please use the following format: ### - ### - ####</HelpBlock> */}
                                         </FormGroup>
                                     </Col>
                                 </Row>
@@ -226,6 +304,7 @@ class Register extends Component {
                                                 <option value='' disabled selected>State</option>
                                                 {STATES.map(state => ( <option value={state}>{state}</option> ))}
                                             </FormControl>
+                                        <HelpBlock className='registerError'>{this.state.emailMessage}</HelpBlock>
                                         </FormGroup>
                                     </Col>
                                 </Row>

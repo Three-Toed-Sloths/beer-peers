@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, Row, Col, FormGroup, Button, FormControl, Well, ControlLabel, Image } from 'react-bootstrap';
+import { Form, Row, Col, FormGroup, Button, FormControl, Well, ControlLabel } from 'react-bootstrap';
 import API from '../../utils/loginAPI';
 import Wrapper from '../../components/Wrapper';
 import './LandingPage.css';
@@ -32,7 +32,7 @@ class LandingPage extends Component {
                     success: true,
                     id: res.data._id
                 })
-                window.location.href = `/profile/${this.state.id}`;
+                window.location.href = `/personal/${this.state.id}`;
             } else {
                 this.handleInvalidLogin();
             }
@@ -53,14 +53,6 @@ class LandingPage extends Component {
     }
 
     render() {
-
-        const {
-            horizontal,
-            inline,
-            componentClass: Component,
-            className,
-            ...props
-        } = this.props;
 
         return (
             <div>
@@ -102,7 +94,7 @@ class LandingPage extends Component {
                                     <FormGroup>
                                         <Row>
                                             <Col xs={12} md={6}>
-                                                <Button id='loginBtn' className='landingBtn' bsSize='large' bsStyle='primary' type="submit" onClick={this.handleSubmit} block>Log in</Button>
+                                                <Button id='loginBtn' className='landingBtn' bsSize='large' bsStyle='primary' type="submit" onClick={this.handleSubmit} block>Log In</Button>
                                             </Col>
                                             <Col xs={12} md={6}>
                                                 <Button className='landingBtn' bsSize='large' type="submit" block href='/register'>Create Account</Button>
@@ -138,7 +130,7 @@ class LandingPage extends Component {
                                         <Row>
                                             <Col xs={0} md={4} />
                                             <Col xs={12} md={4}>
-                                                <Button className='landingBtn' bsSize='large' block href='/register'>Sign up</Button>
+                                                <Button className='landingBtn' bsSize='large' block href='/register'>Sign Up</Button>
                                             </Col>
                                         </Row>
                                     </Col>

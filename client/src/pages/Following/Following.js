@@ -2,12 +2,10 @@
 import React, {Component} from "react";
 import { Grid, Col, Row } from 'react-bootstrap';
 import SecondaryNav from '../../components/SecondaryNav';
-import Wrapper from '../../components/Wrapper';
 import FollowingCard from "../../components/FollowingCard";
 import API from "../../utils/userAPI";
 import ProfileCard from "../../components/ProfileCard";
 import './Following.css';
-
 
 class Following extends Component {
 
@@ -16,12 +14,11 @@ class Following extends Component {
         followingArr: [],
         name:{},
         contact: {},
-        img: 'https://nyppagesix.files.wordpress.com/2017/06/ben-stiller-dodgeball.jpg?quality=90&strip=all'
+        img: ''
     }
     componentDidMount() {
         this.getUser(this.state.id);
     }
-
 
     getUser = id => {
         API.getUser(id)
@@ -29,7 +26,7 @@ class Following extends Component {
             this.setState({
                 name: res.data.name,
                 contact: res.data.contact,
-                // img: res.data.image,
+                img: res.data.image,
                 followingArr: res.data.social.following
             });
                 console.log(res.data.social.following);
@@ -56,7 +53,7 @@ class Following extends Component {
                         </Col>
                     </Row>
                     <Row>
-                        <SecondaryNav iden={this.state.id}/>
+                        <SecondaryNav path='profile' iden={this.state.id}/>
                     </Row>
                     <Row>
                         <Col xs={12}>

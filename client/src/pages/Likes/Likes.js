@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import API from '../../utils/userAPI';
-
 import {Grid, Row, Col} from 'react-bootstrap';
-import Wrapper from '../../components/Wrapper';
 import SecondaryNav from '../../components/SecondaryNav';
 import RecipeCard from '../../components/RecipeCard';
 import ProfileCard from "../../components/ProfileCard";
@@ -14,7 +12,7 @@ class Likes extends Component {
         likes: [],
         name:{},
         contact: {},
-        img: 'https://nyppagesix.files.wordpress.com/2017/06/ben-stiller-dodgeball.jpg?quality=90&strip=all'
+        img: ''
     }
 
     componentDidMount() {
@@ -27,7 +25,7 @@ class Likes extends Component {
             this.setState({
                 name: res.data.name,
                 contact: res.data.contact,
-                // img: res.data.image,
+                img: res.data.image,
                 likes:res.data.social.favorites
             })
         })
@@ -49,7 +47,7 @@ class Likes extends Component {
                         </Col>
                     </Row>
                     <Row>
-                        <SecondaryNav iden={this.state.id}/>
+                        <SecondaryNav path='profile' iden={this.state.id}/>
                     </Row>
                     <Row>
                         <Col xs={12}>
@@ -64,6 +62,9 @@ class Likes extends Component {
                                     batchUnits={recipe.specs.batch.units}
                                     ibu={recipe.specs.ibu}
                                     fg={recipe.specs.fg}
+                                    brewer={recipe.brewer.username}
+                                    brewerFirstName={recipe.brewer.name.first}
+                                    brewerLastName={recipe.brewer.name.last}
                                     description={recipe.description}
                                 />
                             ))}

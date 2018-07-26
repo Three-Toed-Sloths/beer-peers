@@ -35,6 +35,13 @@ class RecipeBoard extends Component {
         return (
             <div className="recipeBoard">
                 <Grid>
+                    <Row>
+                        <Col xs={12}>
+                            <h2 className='recipeHeader'>
+                                Top Recipes
+                            </h2>
+                        </Col>
+                    </Row>
                     {this.state.recipes.map(recipe => (
                         <Row key={recipe._id}>
                             <Col sm={12} md={12}>

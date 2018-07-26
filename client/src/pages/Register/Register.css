@@ -23,6 +23,10 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+.registerError {
+    color: red;
+}
+
 .registerSubmit {
     margin-top: 1em;
     font-family: 'EB Garamond', serif;
