@@ -1,20 +1,39 @@
 import React from "react";
-import {Grid, Col, Row} from 'react-bootstrap';
+import { Grid, Col, Row } from 'react-bootstrap';
 import "./SecondaryNav.css";
 
 const SecondaryNav = props => {
+
     let current = `/${props.path}/${props.iden}/`;
-return (
-    <Grid className="secondaryNav">
-        <Row className="secondaryNavRow">
-            <Col className="secondaryCols" sm={3} xs={12}><a href={current}><p className="secondaryColText">Overview</p></a></Col>
-            <Col className="secondaryCols" sm={3} xs={12}><a href={current + "following"}><p className="secondaryColText">Following</p></a></Col>
-            <Col className="secondaryCols" sm={3} xs={12}><a href={current + "followers"}><p className="secondaryColText">Followers</p></a></Col>
-            <Col className="secondaryCols" sm={3} xs={12}><a href={current + "likes"}><p className="secondaryColText">Likes</p></a></Col>
-            <Col className="secondaryCols" sm={3} xs={12}><a href={current + "recipes"}><p className="secondaryColText">Recipes</p></a></Col>
-        </Row>
-    </Grid>
-)
+
+    return (
+        <Grid className="secondaryNav">
+            <Row className="secondaryNavRow">
+                <Col xsHidden>
+                    <div className='nav-wrap' >
+                        <a href={current}><p className="secondaryNavText">Overview</p></a>
+                        <a href={current + "following"}><p className="secondaryNavText">Following</p></a>
+                        <a href={current + "followers"}><p className="secondaryNavText">Followers</p></a>
+                        <a href={current + "likes"}><p className="secondaryNavText">Likes</p></a>
+                        <a href={current + "recipes"}><p className="secondaryNavText">Recipes</p></a>
+                    </div>
+                </Col>
+                <Col smHidden mdHidden lgHidden>
+                    <div>
+                        <a className='text-center' href={current}><p className="secondaryNavText">Overview</p></a>
+                        <hr/>
+                        <a className='text-center' href={current + "following"}><p className="secondaryNavText">Following</p></a>
+                        <hr/>                        
+                        <a className='text-center' href={current + "followers"}><p className="secondaryNavText">Followers</p></a>
+                        <hr/>                        
+                        <a className='text-center' href={current + "likes"}><p className="secondaryNavText">Likes</p></a>
+                        <hr/>                        
+                        <a className='text-center' href={current + "recipes"}><p className="secondaryNavText">Recipes</p></a>
+                    </div>
+                </Col>
+            </Row>
+        </Grid>
+    )
 }
 
 export default SecondaryNav;
