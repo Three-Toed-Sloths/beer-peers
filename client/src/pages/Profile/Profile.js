@@ -4,13 +4,13 @@ import Col from 'react-bootstrap/lib/Col';
 import Row from 'react-bootstrap/lib/Row';
 import ProfileCard from "../../components/ProfileCard";
 import SecondaryNav from "../../components/SecondaryNav";
-// import Wrapper from "../../components/Wrapper";
 import API from "../../utils/userAPI";
 import "./Profile.css";
 
 class Profile extends Component {
 
     state = {
+        path: 'profile',
         identify: this.props.match.params.id,
         first: "",
         last: "",
@@ -18,15 +18,11 @@ class Profile extends Component {
         state: "",
         email: "",
         image: "",
-        recipeArr: [],
-        // recipeIds:[],
-        // recipeStrNames:"",
-        // recipeTypes:""
+        recipeArr: []
     }
 
     componentWillMount() {
         this.loadUser(this.state.identify);
-        console.log(this.state.identify);
     }
     
     loadUser = id => {
@@ -38,14 +34,11 @@ class Profile extends Component {
                     city: res.data.contact.city,
                     state: res.data.contact.state,
                     email: res.data.contact.email,
-                    //image: "https://i.ytimg.com/vi/I7jgu-8scIA/maxresdefault.jpg",
+                    // image: "https://i.ytimg.com/vi/I7jgu-8scIA/maxresdefault.jpg",
                     image: res.data.image,
-                    //recipes
                     recipeArr: res.data.recipes
                 });
-                console.log(res.data);
             })
-            // .then(() => {this.loadRecipe(this.state.recipeIds[0]);})
             .then(() => {console.log('got user')})
             .catch(err => console.log(err));
     }
@@ -122,10 +115,9 @@ class Profile extends Component {
         return color;
     }
     
-    
     render(){
         return(
-        <div className="profileBackground">
+            <div className="profileBackground">
                 <Grid>
                     <Row>
                         <Col sm={12}>
@@ -135,14 +127,15 @@ class Profile extends Component {
                             email={this.state.email}
                             img={this.state.image}
                             recipes={this.state.recipes}
-                            ></ProfileCard>
+                            />
                         </Col>
                     </Row>
                     <Row>
                         <Col sm={12}>
                             <SecondaryNav
+                            path={this.state.path}
                             iden={this.state.identify}
-                            ></SecondaryNav>
+                            />
                         </Col>
                     </Row>
                     <Row>
@@ -157,15 +150,9 @@ class Profile extends Component {
                                 </a>
                             </Col>
                         )}
-
-                        {/* <Col className="recipeCardShort" sm={6} xs={12}><p style={{background: this.colorType(this.state.recipeTypes)}}>{"Name: " + this.state.recipeStrNames}<br/>{" Type: " + this.state.recipeTypes}</p></Col>
-                        <Col className="recipeCardShort" sm={6} xs={12}><p style={{background: this.colorType(this.state.recipeTypes)}}>{"Name: " + this.state.recipeStrNames}<br/>{" Type: " + this.state.recipeTypes}</p></Col>
-                        <Col className="recipeCardShort" sm={6} xs={12}><p style={{background: this.colorType(this.state.recipeTypes)}}>{"Name: " + this.state.recipeStrNames}<br/>{" Type: " + this.state.recipeTypes}</p></Col>
-                        <Col className="recipeCardShort" sm={6} xs={12}><p style={{background: this.colorType(this.state.recipeTypes)}}>{"Name: " + this.state.recipeStrNames}<br/>{" Type: " + this.state.recipeTypes}</p></Col> */}
                     </Row>
-
                 </Grid>
-        </div>
+            </div>
         );
     }
 }

@@ -1,16 +1,10 @@
 import React, { Component } from 'react';
 import API from '../../utils/recipeAPI';
-
-
 import { Col, Row } from 'react-bootstrap';
-
-import Wrapper from './../Wrapper';
 import LikeBtn from './../LikeBtn';
 import Malt from './Malt';
 import Hop from './Hop'
-
 import './FullRecipe.css';
-
 
 class FullRecipe extends Component {
     state = {
@@ -36,7 +30,7 @@ class FullRecipe extends Component {
             this.setState({
                 id: res.data._id,
                 recipe: res.data,
-                likes: parseInt(res.data.likes),
+                likes: parseFloat(res.data.likes),
                 brewer: `${res.data.brewer.name.first} ${res.data.brewer.name.last}`,
                 specs: res.data.specs,
                 batch: res.data.specs.batch,
@@ -60,8 +54,6 @@ class FullRecipe extends Component {
         .catch(err => console.log(err));
     }
     
-
-
     render() {
         const recipe = this.state.recipe;
         const specs = this.state.specs;
@@ -133,8 +125,6 @@ class FullRecipe extends Component {
         )
     }
 }       
-
-
 
 
 export default FullRecipe;
