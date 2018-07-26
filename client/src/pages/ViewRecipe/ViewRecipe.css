@@ -1,0 +1,12 @@
+
+.viewRecipeBackground{
+    background-image: url("../../images/hoppy.png");
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.viewRecipeOpacity{
+    background: rgb(0,0,0,.2);
+}
+
