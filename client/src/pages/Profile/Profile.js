@@ -34,8 +34,8 @@ class Profile extends Component {
                     city: res.data.contact.city,
                     state: res.data.contact.state,
                     email: res.data.contact.email,
-                    image: "https://i.ytimg.com/vi/I7jgu-8scIA/maxresdefault.jpg",
-                    // image: res.data.image,
+                    // image: "https://i.ytimg.com/vi/I7jgu-8scIA/maxresdefault.jpg",
+                    image: res.data.image,
                     recipeArr: res.data.recipes
                 });
             })
