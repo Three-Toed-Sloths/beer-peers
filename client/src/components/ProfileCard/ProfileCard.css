@@ -9,23 +9,46 @@
 .profileCard_content{
     height: 300px;
 }
-.pic{
-    height: 200px;
-    width: 200px;
+.profilePic{
+    max-height: 200px;
+    width: auto;
     border: solid white 6px;
     margin-top: 8em;
 }
-.profileCard_picture, .profileCard_location, .profileCard_social{
-    height: 100%;
+.profileCard_picture,
+.profileCard_location,
+.profileCardSocial {
     text-align: center;
     padding-left: 0px;
     padding-right: 0px;
 }
 
-.profileCard_location > div, .profileCard_social > div{
+.profileCardText {
     height: 100%;
     margin-top: 2em;
     font-size: 35px;
     color: white;
 }
 
+@media only screen and (max-width: 768px) {
+    .profileCardText {
+        font-size: 25px;
+    }
+    .profileCardLocation {
+        margin-top: 0;
+    }
+}
+
+@media only screen and (max-width: 426px) {
+    .profileCardText {
+        font-size: 25px;
+        text-align: right;
+        margin-top: 0;
+    }
+}
+
+@media only screen and (max-width: 376px) {
+    .profileCardText {
+        font-size: 21px;
+    }
+}
