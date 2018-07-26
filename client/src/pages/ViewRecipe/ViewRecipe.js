@@ -9,14 +9,15 @@ class ViewRecipe extends Component {
     state = {
         id: this.props.match.params.id
     }  
-
-
         render() {
-
         return(
-            <Wrapper>
-                <FullRecipe id={this.state.id}/>
-            </Wrapper>
+            <div className="viewRecipeBackground">
+                <div className="viewRecipeOpacity">
+                    <Wrapper>
+                        <FullRecipe id={this.state.id}/>
+                    </Wrapper>
+                </div>
+            </div>
         )
     }
 }
