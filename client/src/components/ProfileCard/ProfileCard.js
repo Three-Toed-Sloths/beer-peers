@@ -6,13 +6,13 @@ import "./ProfileCard.css";
 
 
 const ProfileCard =  props => (
-    <Grid className="profileCard_card">
-        <Row className="profileCard_content">
-            <Col className="profileCard_picture" xs={2} sm={4}>
+    <Grid className="profileCardCard">
+        <Row className="profileCardContent">
+            <Col className="profileCardPicture" xs={2} sm={4}>
                 <img className="profilePic" src={props.img} alt={`${props.userName}ProfilePic`}></img>
             </Col>
             <div className='profileCardTextHolder'>
-                <Col className="profileCard_location" xs={10} sm={4}>
+                <Col className="profileCardLocation" xs={10} sm={4}>
                     <div>
                         <p className='profileCardText'>{props.userName}</p>
                         <p className='profileCardText profileCardLocation'>{props.location}</p>
