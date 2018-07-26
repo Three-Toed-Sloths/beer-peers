@@ -1,0 +1,21 @@
+.recipeCardPanelHeading{
+    text-align: center;
+    background: lightgreen;
+    color: black;
+    font-family: 'EB Garamound', serif;
+}
+.panelBody{
+    width: 100%;
+    height: 100%;
+}
+.panelCollapse{
+    background: lightgoldenrodyellow;
+}
+.recipeCardText{
+    font-size: 1.3em;
+}
+h1:active, h1:focus,h1:visited{
+    outline: none;
+    text-decoration: none;
+}
+
