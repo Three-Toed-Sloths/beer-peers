@@ -60,50 +60,53 @@ class LandingPage extends Component {
                     <Wrapper className='landingLogin'>
                         <h1 className='landingTitle'>Beer Peers</h1>
                         <h2 className='landingCatch'>'Where hoppy hour is when you make it'</h2>
-                        <Well className='col-lg-4 col-lg-offset-4'>
-                            <Form horizontal>
-                                <Wrapper>
-                                    <h2 className='loginTitle'>Start Connecting</h2>
-                                    <h5 className='text-center failedLogin'>{this.state.message}</h5>
-                                    <FormGroup >
-                                        <div className='border rounded'>
-                                            <Col>
-                                                <ControlLabel className='loginLabel'>Username:</ControlLabel>
-                                                <FormControl 
-                                                    id="loginUsername" 
-                                                    type="username" 
-                                                    placeholder="Username"
-                                                    value={this.state.username}
-                                                    name='username'
-                                                    onChange={this.handleInputChange} 
-                                                />
-                                            </Col>
-                                            <Col>
-                                                <ControlLabel className='loginLabel'>Password:</ControlLabel>
-                                                <FormControl 
-                                                    id="loginPassword"
-                                                    type="password"
-                                                    placeholder="Password"
-                                                    value={this.state.password}
-                                                    name='password'
-                                                    onChange={this.handleInputChange}
-                                                />
-                                            </Col>
-                                        </div>
-                                    </FormGroup>
-                                    <FormGroup>
-                                        <Row>
-                                            <Col xs={12} md={6}>
-                                                <Button id='loginBtn' className='landingBtn' bsSize='large' bsStyle='primary' type="submit" onClick={this.handleSubmit} block>Log In</Button>
-                                            </Col>
-                                            <Col xs={12} md={6}>
-                                                <Button className='landingBtn' bsSize='large' type="submit" block href='/register'>Create Account</Button>
-                                            </Col>
-                                        </Row>
-                                    </FormGroup>
-                                </Wrapper>
-                            </Form>
-                        </Well>
+                        <Row>
+                            <Col xs={0} md={2} lg={3} />
+                            <Col xs={12} md={8} lg={6}>
+                                <Well>
+                                    <Form>
+                                        <Wrapper>
+                                            <h2 className='loginTitle'>Start Connecting</h2>
+                                            <h5 className='text-center failedLogin'>{this.state.message}</h5>
+                                            <FormGroup >
+                                                <Col>
+                                                    <ControlLabel className='loginLabel'>Username:</ControlLabel>
+                                                    <FormControl 
+                                                        id="loginUsername" 
+                                                        type="username" 
+                                                        placeholder="Username"
+                                                        value={this.state.username}
+                                                        name='username'
+                                                        onChange={this.handleInputChange} 
+                                                    />
+                                                </Col>
+                                                <Col>
+                                                    <ControlLabel className='loginLabel'>Password:</ControlLabel>
+                                                    <FormControl 
+                                                        id="loginPassword"
+                                                        type="password"
+                                                        placeholder="Password"
+                                                        value={this.state.password}
+                                                        name='password'
+                                                        onChange={this.handleInputChange}
+                                                    />
+                                                </Col>
+                                            </FormGroup>
+                                            <FormGroup>
+                                                <Row>
+                                                    <Col xs={12} md={6}>
+                                                        <Button className='landingBtn' bsStyle='primary' bsSize='large' type="submit" onClick={this.handleSubmit} block>Log In</Button>
+                                                    </Col>
+                                                    <Col xs={12} md={6}>
+                                                        <Button className='landingBtn' bsSize='large' type="submit" href='/register' block>Create Account</Button>
+                                                    </Col>
+                                                </Row>
+                                            </FormGroup>
+                                        </Wrapper>
+                                    </Form>
+                                </Well>
+                            </Col>
+                        </Row>
                     </Wrapper>
                 </div>
                 <div className='landingBottom'>
@@ -113,10 +116,10 @@ class LandingPage extends Component {
                             <hr className='landingHR' />
                         </Row>
                         <Row>
-                            <Col xs={6}>
+                            <Col xs={12} md={6}>
                                 <div className='landingAddOn' />
                             </Col>
-                            <Col xs={6}>
+                            <Col xs={12} md={6}>
                                 <Row>
                                     <Col xs={12}>
                                         <ul className='landingList'>

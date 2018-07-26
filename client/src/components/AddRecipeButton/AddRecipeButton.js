@@ -4,9 +4,9 @@ import './AddRecipeButton.css';
 
 const AddRecipeButton = props => (
     <Row>
-        <Col xs={0} md={4} />
-        <Col xs={12} md={4}>
-            <Button id='AddRecipeButton' block href={`/personal/${props.id}/recipes/new`}>
+        <Col xs={2} md={4} />
+        <Col xs={8} md={4}>
+            <Button id='AddRecipeButton' block href={`/personal/${props.id}/recipes/new`} bsSize='large'>
                 Add a Recipe to Your Profile
             </Button>
         </Col>

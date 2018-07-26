@@ -6,22 +6,24 @@ import "./ProfileCard.css";
 
 
 const ProfileCard =  props => (
-    <Grid className="profileCard_card">
-        <Row className="profileCard_content">
-            <Col className="profileCard_picture" sm={4} xs={12}>
-                <img className="pic" src={props.img} alt={`${props.userName}ProfilePic`}></img>
+    <Grid className="profileCardCard">
+        <Row className="profileCardContent">
+            <Col className="profileCardPicture" xs={2} sm={4}>
+                <img className="profilePic" src={props.img} alt={`${props.userName}ProfilePic`}></img>
             </Col>
-            <Col className="profileCard_location" sm={4} xs={12}>
-                <div>
-                    <p>{props.userName}</p>
-                    <p>{props.location}</p>
-                </div>
-            </Col>
-            <Col className="profileCard_social" sm={4} xs={12}>
-                <div>
-                    <p>{props.email}</p>
-                </div>
-            </Col>
+            <div className='profileCardTextHolder'>
+                <Col className="profileCardLocation" xs={10} sm={4}>
+                    <div>
+                        <p className='profileCardText'>{props.userName}</p>
+                        <p className='profileCardText profileCardLocation'>{props.location}</p>
+                    </div>
+                </Col>
+                <Col className="profileCardSocial" xs={10} sm={4}>
+                    <div>
+                        <p className='profileCardText'>{props.email}</p>
+                    </div>
+                </Col>
+            </div>
         </Row>
     </Grid>
 );

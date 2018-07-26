@@ -91,3 +91,55 @@
 .failedLogin {
     color: red
 }
+
+@media only screen and (max-width: 1024px) {
+    .landingTitle {
+        padding-top: 1em;
+    }
+    .landingAddOn {
+        background-size: 80%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .landingTitle {
+        padding-top: 1em;
+        font-size: 5em;
+    }
+    .landingCatch {
+        font-size: 2.75em;
+    }
+    .landingAddOn {
+        background-size: 60%;
+        background-position-y: -50px;
+    }
+}
+
+@media only screen and (max-width: 426px) {
+    .landingTitle {
+        padding-top: .75em;
+        font-size: 4em;
+    }
+    .landingCatch {
+        font-size: 2em;
+    }
+    .landingSubTitle {
+        text-align: center;
+    }
+    .landingFirstListItem {
+        margin-top: 1em;
+    }
+    .landingAddOn {
+        background-size: 100%;
+        background-position-y: -30px;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .loginTitle {
+        font-size: 1.8em;
+    }
+    .landingAddOn {
+        background-position-y: 0;
+    }
+}
