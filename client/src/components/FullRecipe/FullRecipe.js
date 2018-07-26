@@ -85,8 +85,8 @@ class FullRecipe extends Component {
                         </p>
                     </Col>
                     <Col xs={12} md={8}>
-                        <h3>Directions:</h3>
-                        <p>{recipe.directions}</p>
+                        <h3>Description:</h3>
+                        <p>{recipe.description}</p>
                     </Col>
                 </Row>
                 <Row>
