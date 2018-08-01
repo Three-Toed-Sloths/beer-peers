@@ -99,7 +99,7 @@ class Register extends Component {
 
     emailReset = () => {
         this.setState({
-            emaileMessage: ''
+            emailMessage: ''
         });
     };
 

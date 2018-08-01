@@ -66,7 +66,7 @@ class RecipeForm extends Component {
     addRecipeToBrewer = recipeID => {
         userAPI.updateUser(this.state.brewer, {$push:{recipes: [recipeID]}})
         .then(res => {
-           return ('success')
+           return 'success';
         }
        )
         .catch(err => err);
@@ -167,6 +167,22 @@ class RecipeForm extends Component {
         this.addRecipe(newRecipe);
     }
 
+
+    // VALIDATIONS
+    
+    textValidation(text, min, max) {
+        const length = text.length;
+        if (length >= min && length <= max) return 'success';
+        return 'error';
+    };
+
+    numValidation(num, min, max) {
+        if (num > min && num < max) return 'success';
+        return 'error';
+    };
+
+
+
     render() {
         return(
         <Grid className="recipeForm">
@@ -177,13 +193,14 @@ class RecipeForm extends Component {
                 </Row>
                 <Row>
                     <Col md={6}>
-                        <FormGroup>
+                        <FormGroup validationState={this.textValidation(this.state.name, 1, 50)}>
                             <ControlLabel>Recipe Name:</ControlLabel>
                             <FormControl
                                 type='text'
                                 name='name'
                                 value={this.state.name}
                                 placeholder='Enter name'
+                                maxLength={50}
                                 onChange={this.handleInputChange}
                             />
                         </FormGroup>
@@ -203,19 +220,19 @@ class RecipeForm extends Component {
                     <Col md={4} className="specs">
                         <Row>
                             <Col md={6}>
-                                <FormGroup>
+                                <FormGroup validationState={this.numValidation(this.state.batchVol, 0, 10000)}>
                                     <ControlLabel className="formLabels">Batch Volume:</ControlLabel>
                                     <InputGroup>
-                                        <FormControl type='number' name='batchVol' value={this.state.batchVol} onChange={this.handleInputChange} id='batchVol' placeholder='Batch'/>
+                                        <FormControl type='number' name='batchVol' min={1} max={10000} value={this.state.batchVol} onChange={this.handleInputChange} id='batchVol' placeholder='Batch'/>
                                         <InputGroup.Addon>gal</InputGroup.Addon>
                                     </InputGroup>
                                 </FormGroup>
                             </Col>
                             <Col md={6}>
-                                <FormGroup>
+                                <FormGroup validationState={this.numValidation(this.state.abv, 0, 50)}>
                                     <ControlLabel className="formLabels">ABV:</ControlLabel>
                                     <InputGroup>
-                                        <FormControl id='abvInput' type='number' name='abv' value={this.state.abv} onChange={this.handleInputChange} placeholder='ABV'/>
+                                        <FormControl id='abvInput' type='number' name='abv' min={0} max={40} value={this.state.abv} onChange={this.handleInputChange} placeholder='ABV'/>
                                         <InputGroup.Addon>%</InputGroup.Addon>
                                     </InputGroup>
                                 </FormGroup>
@@ -223,10 +240,10 @@ class RecipeForm extends Component {
                         </Row>
                         <Row>
                             <Col md={12}>
-                                <FormGroup>
+                                <FormGroup validationState={this.numValidation(this.state.ibu, 0, 200)}>
                                     <ControlLabel className="formLabels">IBU</ControlLabel>
                                     <InputGroup>
-                                        <FormControl id='ibuInput' type='number' name='ibu' value={this.state.ibu} onChange={this.handleInputChange} placeholder='Enter IBUs'/>
+                                        <FormControl id='ibuInput' type='number' name='ibu' min={0} max={200} value={this.state.ibu} onChange={this.handleInputChange} placeholder='Enter IBUs'/>
                                         <InputGroup.Addon>IBUs:</InputGroup.Addon>
                                     </InputGroup>
                                 </FormGroup>
@@ -234,12 +251,14 @@ class RecipeForm extends Component {
                         </Row>
                         <Row>
                             <Col md={6}>
-                                <FormGroup>
+                                <FormGroup validationState={this.numValidation(this.state.og, 0, 4)}>
                                     <ControlLabel className="formLabels">Original Gravity:</ControlLabel>
                                     <FormControl
                                         id='ogInput'
                                         type='number'
                                         name='og'
+                                        min={0}
+                                        max={4}
                                         value={this.state.og}
                                         onChange={this.handleInputChange}
                                         placeholder='Enter OG'
@@ -247,12 +266,14 @@ class RecipeForm extends Component {
                                 </FormGroup>
                             </Col>
                             <Col md={6}>
-                                <FormGroup>
+                                <FormGroup validationState={this.numValidation(this.state.fg, 0, 4)}>
                                     <ControlLabel className="formLabels">Final Gravity:</ControlLabel>
                                     <FormControl
                                         id='fgInput'
                                         type='number'
                                         name='fg'
+                                        min={0}
+                                        max={4}
                                         value={this.state.fg}
                                         onChange={this.handleInputChange}
                                         placeholder='Enter FG'
@@ -262,19 +283,19 @@ class RecipeForm extends Component {
                         </Row>
                         <Row>
                             <Col md={6}>
-                                <FormGroup>
+                                <FormGroup validationState={this.numValidation(this.state.preBoil, 0, 10000)}>
                                     <ControlLabel className="formLabels">Preboil Volume:</ControlLabel>
                                     <InputGroup>
-                                    <FormControl type='number' id='preBoilVolInput' name='preBoil' value={this.state.preBoil} onChange={this.handleInputChange} placeholder='Preboil'/>
+                                    <FormControl type='number' id='preBoilVolInput' name='preBoil' min={1} max={10000} value={this.state.preBoil} onChange={this.handleInputChange} placeholder='Preboil'/>
                                         <InputGroup.Addon>gal</InputGroup.Addon>
                                     </InputGroup>
                                 </FormGroup>
                             </Col>
                             <Col md={6}>
-                                <FormGroup>
+                                <FormGroup validationState={this.numValidation(this.state.boilLength, 0, 300)}>
                                     <ControlLabel className="formLabels">Boil Length:</ControlLabel>
                                     <InputGroup>
-                                        <FormControl type='number' name='boilLength' value={this.state.boilLength} onChange={this.handleInputChange} placeholder='Boil'/>
+                                        <FormControl type='number' name='boilLength' min={1} max={300} value={this.state.boilLength} onChange={this.handleInputChange} placeholder='Boil'/>
                                         <InputGroup.Addon>min</InputGroup.Addon>
                                     </InputGroup>
                                 </FormGroup>
@@ -293,6 +314,7 @@ class RecipeForm extends Component {
                                                 nameUpdate={this.handleChangeFor('name', 'baseMaltArr', i)}
                                                 weightUpdate={this.handleChangeFor('amount', 'baseMaltArr', i)}
                                                 weightValue={this.state.baseMaltArr[i].amount}
+                                                // validation={this.textValidation(this.state.baseMaltArr[i].name, 1, 50)}
                                             />
                                         ))}
                                 </FormGroup>
@@ -337,17 +359,17 @@ class RecipeForm extends Component {
                         </Row>
                         <Row>
                             <Col md={4}>
-                                <FormGroup >
+                                <FormGroup validationState={this.textValidation(this.state.yeast, 1, 50)}>
                                     <ControlLabel className="formLabels">Yeast:</ControlLabel>
                                     <InputGroup>
-                                        <FormControl type='text' name='yeast' value={this.state.yeast} onChange={this.handleInputChange} placeholder='Yeast Name'/>
+                                        <FormControl type='text' name='yeast' maxLength={50} value={this.state.yeast} onChange={this.handleInputChange} placeholder='Yeast Name'/>
                                     </InputGroup>
                                 </FormGroup>
                             </Col>
                             <Col md={8}>
-                                <FormGroup>
+                                <FormGroup validationState={this.textValidation(this.state.misc, 1, 500)}>
                                     <ControlLabel className="formLabels">Misc. Ingredients:</ControlLabel>
-                                    <FormControl componentClass='textarea' name='misc' value={this.state.misc} onChange={this.handleInputChange} placeholder='Enter Misc. Ingredients' />
+                                    <FormControl componentClass='textarea' name='misc' value={this.state.misc} onChange={this.handleInputChange} maxLength={4000} placeholder='Enter Misc. Ingredients' />
                                 </FormGroup>
                             </Col>
                         </Row>
@@ -355,19 +377,20 @@ class RecipeForm extends Component {
                 </Row>
                 <Row>
                     <Col md={6}>
-                        <FormGroup>
+                        <FormGroup validationState={this.textValidation(this.state.description, 1, 500)}>
                             <ControlLabel>Recipe Description:</ControlLabel>
-                            <FormControl componentClass='textarea' id='recipeDescription' name='description' value={this.state.description} onChange={this.handleInputChange} placeholder='Description' />
+                            <FormControl componentClass='textarea' id='recipeDescription' name='description' maxLength={4000} value={this.state.description} onChange={this.handleInputChange} placeholder='Description' />
                         </FormGroup>
                     </Col>
                     <Col md={6}>
-                        <FormGroup>
+                        <FormGroup validationState={this.textValidation(this.state.directions, 1, 4000)}>
                             <ControlLabel>Recipe Instructions:</ControlLabel>
                             <FormControl
                                 componentClass='textarea'
                                 name='directions'
                                 value={this.state.directions}
                                 onChange={this.handleInputChange}
+                                maxLength={4000}
                                 placeholder='Instructions'
                             />
                         </FormGroup>

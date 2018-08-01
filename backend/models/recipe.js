@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const beerStyles = ['Amber Ale', 'American IPA', 'American Imperial Stout', 'American Lager', 'American Wheat Ale', 'Barley Wine','Barrel-Aged Beer', 'Belgian Dubbel', 'Belgian Golden Strong Ale', 'Belgian Saison', 'Belgian Tripel', 'Belgian Witbier', 'Black Ale', 'Blonde Ale', 'Brown Ale', 'Brown Porter', 'California Common', 'Coffee Beer', 'Cream Ale', 'Double IPA', 'English IPA', 'Fruit Beer', 'German Pilsner', 'Hefeweizen', 'Irish Dry Stout', 'Milk Stout', 'New England IPA', 'Oatmeal Stout', 'Oktoberfest', 'Pale Ale', 'Scotch Ale', 'Session IPA', 'Sour Ale', 'Speciality Beer', 'Stout'];
+
 const recipeSchema = new Schema({
   name: {
     type: String,
@@ -13,13 +15,14 @@ const recipeSchema = new Schema({
     type: String,
     required: true,
     trim: true,
+    enum: beerStyles,
     maxlength: 50
   },
   description: {
     type: String,
     required: true,
     trim: true,
-    maxlength: 400
+    maxlength: 500
   },
   likes: {
     type: Number,
@@ -72,12 +75,12 @@ const recipeSchema = new Schema({
       trim: true,
       max: 300
     },
-    batch: {
+    preboil: {
       size: {
         type: Number,
         required: true,
         trim: true,
-        max: 1000
+        max: 10000
       },
       units: {
         type: String,
@@ -102,7 +105,7 @@ const recipeSchema = new Schema({
             type: String,
             required: true,
             trim: true,
-            max: 1000
+            max: 10000
           },
           units: {
             type: String,
@@ -125,7 +128,7 @@ const recipeSchema = new Schema({
             type: String,
             required: true,
             trim: true,
-            max: 1000
+            max: 10000
           },
           units: {
             type: String,
@@ -183,7 +186,7 @@ const recipeSchema = new Schema({
         type: String,
         required: true,
         trim: true,
-        maxlength: 100
+        maxlength: 50
       },
       amount: {
         type: String,
@@ -196,14 +199,14 @@ const recipeSchema = new Schema({
       type: String,
       // required: true,
       trim: true,
-      maxlength: 1000
+      maxlength: 500
     },
   },
   directions: {
     type: String,
     required: true,
     trim: true,
-    maxlength: 1000
+    maxlength: 4000
   },
   created: { type: Date, default: Date.now }
 });
