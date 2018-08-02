@@ -137,6 +137,11 @@ class Profile extends Component {
             ));
             case "following":
             //load following component
+            return(
+                <Col>
+                    THIS IS FOLLOWING
+                </Col>
+            )
             break;
             case "followers":
             //load followers component

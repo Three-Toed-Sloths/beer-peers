@@ -4,7 +4,7 @@ import "./SecondaryNav.css";
 
 const SecondaryNav = props => {
 
-    let current = `/${props.path}/${props.iden}/`;
+    //let current = `/${props.path}/${props.iden}/`;
 
     return (
         <Grid className="secondaryNav">
