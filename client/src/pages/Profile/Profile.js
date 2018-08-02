@@ -4,6 +4,7 @@ import Col from 'react-bootstrap/lib/Col';
 import Row from 'react-bootstrap/lib/Row';
 import ProfileCard from "../../components/ProfileCard";
 import SecondaryNav from "../../components/SecondaryNav";
+import PinnedRecipeCard from "../../components/PinnedRecipeCard";
 import API from "../../utils/userAPI";
 import "./Profile.css";
 
@@ -18,7 +19,8 @@ class Profile extends Component {
         state: "",
         email: "",
         image: "",
-        recipeArr: []
+        recipeArr: [],
+        currentComp: "pinnedRec"
     }
 
     componentWillMount() {
@@ -114,6 +116,42 @@ class Profile extends Component {
         }
         return color;
     }
+
+    handleComponentChange = comp => {
+        this.setState({currentComp: comp});
+    };
+
+    renderComponent = () => {
+        switch(this.state.currentComp){
+            case "pinnedRec":
+            //load pinned rec comp
+            return(
+            this.state.recipeArr.map((recipe, i) =>
+                <PinnedRecipeCard 
+                    key={`recipe${i}`}
+                    recipeUrl={`/recipes/${recipe._id}`}
+                    recipeColor={{background: this.colorType(recipe.style)}}
+                    recipeName={recipe.name}
+                    recipeStyle={recipe.style}
+                />
+            ));
+            case "following":
+            //load following component
+            break;
+            case "followers":
+            //load followers component
+            break;
+            case "likes":
+            //load likes component
+            break;
+            case "recipes":
+            //load recipes component
+            break;
+            default:
+            //load pinned rec comp
+            break;
+        }
+    };
     
     render(){
         return(
@@ -135,11 +173,14 @@ class Profile extends Component {
                             <SecondaryNav
                             path={this.state.path}
                             iden={this.state.identify}
+                            currentComp={this.state.currentComp}
+                            handleComponentChange={this.handleComponentChange}
                             />
                         </Col>
                     </Row>
                     <Row>
-                        {this.state.recipeArr.map((recipe, i) =>
+                        {this.renderComponent()}
+                    {/* {this.state.recipeArr.map((recipe, i) =>
                             <Col key={`recipe${i}`} className="recipeCardShort" sm={6} xs={12}>
                                 <a href={`/recipes/${recipe._id}`}>
                                     <p style={{background: this.colorType(recipe.style)}}>
@@ -149,7 +190,7 @@ class Profile extends Component {
                                     </p>
                                 </a>
                             </Col>
-                        )}
+                        )} */}
                     </Row>
                 </Grid>
             </div>
