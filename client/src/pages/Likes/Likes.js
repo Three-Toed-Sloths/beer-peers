@@ -11,6 +11,7 @@ class Likes extends Component {
         id: this.props.match.params.id,
         likes: [],
         name:{},
+        username: {},
         contact: {},
         img: ''
     }
@@ -24,6 +25,7 @@ class Likes extends Component {
         .then(res => {
             this.setState({
                 name: res.data.name,
+                username: res.data.username,
                 contact: res.data.contact,
                 img: res.data.image,
                 likes:res.data.social.favorites
@@ -62,9 +64,9 @@ class Likes extends Component {
                                     batchUnits={recipe.specs.batch.units}
                                     ibu={recipe.specs.ibu}
                                     fg={recipe.specs.fg}
-                                    brewer={recipe.brewer.username}
-                                    brewerFirstName={recipe.brewer.name.first}
-                                    brewerLastName={recipe.brewer.name.last}
+                                    brewer={this.state.username}
+                                    brewerFirstName={this.state.name.first}
+                                    brewerLastName={this.state.name.last}
                                     description={recipe.description}
                                 />
                             ))}

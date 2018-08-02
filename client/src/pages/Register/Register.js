@@ -229,7 +229,6 @@ class Register extends Component {
                                                 onChange={this.handleInputChange}
                                             />
                                             <FormControl.Feedback />
-                                            {/* <HelpBlock>Must be at least 4 characters long</HelpBlock> */}
                                         </FormGroup>
                                         <HelpBlock className='registerError'>{this.state.usernameMessage}</HelpBlock>
                                     </Col>
@@ -259,7 +258,6 @@ class Register extends Component {
                                                 onChange={this.handleInputChange}
                                             />
                                             <FormControl.Feedback />
-                                            {/* <HelpBlock>Addresses must contain an '@' and ending (.com / .co / etc.)</HelpBlock> */}
                                         </FormGroup>
                                         <HelpBlock className='registerError'>{this.state.emailMessage}</HelpBlock>
                                     </Col>
@@ -275,12 +273,11 @@ class Register extends Component {
                                                 onChange={this.handleInputChange}
                                             />
                                         <FormControl.Feedback />
-                                        {/* <HelpBlock>Please use the following format: ### - ### - ####</HelpBlock> */}
                                         </FormGroup>
                                     </Col>
                                 </Row>
                                 <Row>
-                                    <Col xs={8} md={6}>
+                                    <Col xs={12} sm={8} md={6}>
                                         <FormGroup controlId={'formCity'}>
                                             <ControlLabel className='registerControlLabel'>City:</ControlLabel>
                                             <FormControl
@@ -292,7 +289,7 @@ class Register extends Component {
                                             />
                                         </FormGroup>
                                     </Col>
-                                    <Col xs={4} md={2}>
+                                    <Col xs={12} sm={4} md={3}>
                                         <FormGroup id='formState'>
                                             <ControlLabel className='registerControlLabel'>State:</ControlLabel>
                                             <FormControl 
@@ -304,7 +301,7 @@ class Register extends Component {
                                                 <option value='' disabled selected>State</option>
                                                 {STATES.map(state => ( <option value={state}>{state}</option> ))}
                                             </FormControl>
-                                        <HelpBlock className='registerError'>{this.state.emailMessage}</HelpBlock>
+                                        <HelpBlock className='registerError'>{this.state.stateMessage}</HelpBlock>
                                         </FormGroup>
                                     </Col>
                                 </Row>
