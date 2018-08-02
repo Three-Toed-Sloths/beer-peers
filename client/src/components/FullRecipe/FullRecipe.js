@@ -59,7 +59,8 @@ class FullRecipe extends Component {
         const recipe = this.state.recipe;
         const specs = this.state.specs;
         const batch = this.state.batch;
-
+        //Put asterisks where things are required.
+        //Responsiveness.
         return (
             
             <div className="fullRecipe">

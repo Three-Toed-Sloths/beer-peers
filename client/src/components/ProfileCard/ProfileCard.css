@@ -10,6 +10,9 @@
     height: 300px;
 }
 .profilePic{
+    /* 
+    background: white;
+    */
     max-height: 200px;
     width: auto;
     border: solid white 6px;
