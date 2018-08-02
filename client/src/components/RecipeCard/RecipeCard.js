@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 
-import { Grid, Col, Row, Panel, Button, Clearfix } from 'react-bootstrap';
+import { Grid, Col, Row, Panel, Button } from 'react-bootstrap';
 
 
 import "./RecipeCard.css";

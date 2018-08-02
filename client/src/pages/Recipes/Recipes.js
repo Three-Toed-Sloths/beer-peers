@@ -12,6 +12,7 @@ class Recipes extends Component {
         id: this.props.match.params.id,
         recipes: [],
         name:{},
+        username: {},
         contact: {},
         img: ''
     }
@@ -25,6 +26,7 @@ class Recipes extends Component {
         .then(res => {
             this.setState({
                 name: res.data.name,
+                username: res.data.username,
                 contact: res.data.contact,
                 img: res.data.image,
                 recipes:res.data.recipes
@@ -63,9 +65,9 @@ class Recipes extends Component {
                                     batchUnits={recipe.specs.batch.units}
                                     ibu={recipe.specs.ibu}
                                     fg={recipe.specs.fg}
-                                    brewer={recipe.brewer.username}
-                                    brewerFirstName={recipe.brewer.name.first}
-                                    brewerLastName={recipe.brewer.name.last}
+                                    brewer={this.state.username}
+                                    brewerFirstName={this.state.name.first}
+                                    brewerLastName={this.state.name.last}
                                     description={recipe.description}
                                 />
                             ))}

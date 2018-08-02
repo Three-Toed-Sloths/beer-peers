@@ -36,9 +36,7 @@ const App = () => (
           <Route exact path='/profile/:id/recipes' component={Recipes} />
           <Route exact path='/recipes' component={ViewAllRecipes} />
           <Route exact path='/brewers' component={TopBrewers} />
-          {/* <Route exact path='/following' component={Following} /> */}
           <Route exact path='/register' component={Register} />
-          {/* <Route exact path='/recipes/new' component={AddRecipe} /> */}
           <Route exact path='/recipes/:id' component={ViewRecipe} />
           <Route component={NoMatch} />
         </Switch>
