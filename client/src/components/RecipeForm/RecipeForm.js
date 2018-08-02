@@ -128,7 +128,6 @@ class RecipeForm extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-
         const newRecipe = {
             name: this.state.name,
             brewer: this.state.brewer,

@@ -32,7 +32,12 @@ class LandingPage extends Component {
                     success: true,
                     id: res.data._id
                 })
-                window.location.href = `/personal/${this.state.id}`;
+                sessionStorage.setItem('userID', this.state.id);
+
+                let userID = sessionStorage.getItem('userID')
+
+                // window.location.href = `/personal/${this.state.id}`;
+                window.location.href = `/personal/${userID}`;
             } else {
                 this.handleInvalidLogin();
             }

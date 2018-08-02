@@ -4,7 +4,7 @@ module.exports = {
   findAll: (req, res) => {
     db.Recipe
       .find(req.query)
-      .sort({ date: -1 })
+      .sort({ likes: -1 })
       .populate('brewer')
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));

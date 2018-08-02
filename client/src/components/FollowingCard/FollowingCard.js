@@ -10,7 +10,7 @@ const FollowingCard =  props => (
     <Grid className='followingCard_card'>
         <Row className='followingCard_content'>
             <Col className='followingCard_picture' sm={3} xs={12}>
-                <img className='followPic' src='http://www.brattleborofoodcoop.coop/wp-content/uploads/2017/07/cropped-BFC-Sprig-Favicon-450x450.png' alt={`${props.user.username}ProfilePic`}></img>
+                <img className='followPic' src={props.user.image} alt={`${props.user.username}ProfilePic`}></img>
             </Col>
             <Col className='followingCard_name' sm={3} xs={12}>
                 <h2>{props.user.name.first} {props.user.name.last}</h2>

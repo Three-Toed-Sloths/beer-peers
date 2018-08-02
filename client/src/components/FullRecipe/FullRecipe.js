@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import API from '../../utils/recipeAPI';
+import userAPI from '../../utils/userAPI';
 import { Col, Row } from 'react-bootstrap';
 import LikeBtn from './../LikeBtn';
 import Malt from './Malt';
@@ -40,19 +41,32 @@ class FullRecipe extends Component {
                 base: res.data.ingredients.malt.base,
                 speciality: res.data.ingredients.malt.speciality
             })
-
-            console.log(this.state.recipe)
          })
          .catch(err => console.log(err));
     }
 
     handleClick = () => {
-   
-        API.updateRecipe(this.state.id, {
-            likes: this.state.likes + 1
+        if(sessionStorage.getItem('userID')){
+            this.addLikeToBrewer(this.state.id)
+        } else {
+            alert('please log in to like a recipe');
+        }
+    }
+
+    addLikeToBrewer = recipeID => {
+        const userID = sessionStorage.getItem('userID')
+        userAPI.updateUser(userID, {$addToSet: {'social.favorites': [recipeID]}}
+        )
+        .then(res => {
+            API.updateRecipe(recipeID, {
+                likes: this.state.likes + 1
+            })
+            .then(res => {
+                this.getRecipe(recipeID)
+            })
+            .catch(err => err);
         })
-        .then(res => this.getRecipe(this.state.id))
-        .catch(err => console.log(err));
+        .catch(err => err);
     }
     
     render() {
@@ -67,7 +81,6 @@ class FullRecipe extends Component {
                     <Col xs={12} className="fullRecipeHeader">
                         <h1>Recipe: {recipe.name}</h1>
                         <h2>Type: {recipe.style}</h2>
-                        {/* <h2>Total Likes: {recipe.likes}</h2> */}
                         <h2>Total Likes: {this.state.likes}</h2>
                         <h2>Brewer: {this.state.brewer}</h2>
                         <LikeBtn class="fullRecipeLike" id={this.state.id} likes={recipe.likes} addLike={this.handleClick}/>
