@@ -13,8 +13,7 @@ class LandingPage extends Component {
     };
 
     handleInputChange = event => {
-        let value = event.target.value;
-        const name = event.target.name;
+        const { name, value } = event.target;
         this.setState({
             [name]: value
         });
@@ -22,38 +21,53 @@ class LandingPage extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
-
-        API.checkUsername(
-            this.state.username
+        if(!this.state.username || !this.state.password){
+            this.handleInvalidLogin('Please enter a username and password');
+            return
+        }
+        API.checkLogin(
+            this.state.username, this.state.password
         ).then(res => {
+            // console.log(res.data.password +  " res.data");
+            // if(res.data.password === this.state.password){
+            //     this.setState({
+            //         success: true,
+            //         id: res.data._id
+            //     })
+            //     sessionStorage.setItem('userID', this.state.id);
+            //     sessionStorage.setItem('loggedIn', true);
 
-            if(res.data.password === this.state.password){
-                this.setState({
-                    success: true,
-                    id: res.data._id
-                })
-                sessionStorage.setItem('userID', this.state.id);
+            //     let userID = sessionStorage.getItem('userID')
 
-                let userID = sessionStorage.getItem('userID')
-
-                // window.location.href = `/personal/${this.state.id}`;
+            //     // window.location.href = `/personal/${this.state.id}`;
+            //     window.location.href = `/personal/${userID}`;
+            // } else {
+            //     console.log('wrong password')
+            //     this.handleInvalidLogin();
+            // }
+            if(res.data.result){
+                console.log('succeessssss')
+                sessionStorage.setItem('userID', res.data.id);
+                let userID = sessionStorage.getItem('userID');
+                sessionStorage.setItem('loggedIn', true);
                 window.location.href = `/personal/${userID}`;
             } else {
-                this.handleInvalidLogin();
+                this.handleInvalidLogin('Invalid username or password.');
+                
             }
         })
         .catch(err => {
-            this.handleInvalidLogin();
-            console.log(err)
+            this.handleInvalidLogin('Username does not exist.');
+            console.log('wrong username')
             return err
         });
     }
 
-    handleInvalidLogin = () => {
+    handleInvalidLogin = message => {
         this.setState({
             username: '',
             password: '',
-            message: 'Incorrect username or password'
+            message: message
         })
     }
 

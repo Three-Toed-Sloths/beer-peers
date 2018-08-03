@@ -1,7 +1,8 @@
 import React from 'react';
-import Grid from 'react-bootstrap/lib/Grid';
-import Col from 'react-bootstrap/lib/Col';
-import Row from 'react-bootstrap/lib/Row';
+// import Grid from 'react-bootstrap/lib/Grid';
+// import Col from 'react-bootstrap/lib/Col';
+// import Row from 'react-bootstrap/lib/Row';
+import { Grid, Col, Row } from 'react-bootstrap';
 import './FollowingCard.css';
 
 
@@ -17,16 +18,9 @@ const FollowingCard =  props => (
                 <p>{props.user.username}</p>
             </Col>
             <Col className='followingCard_location' sm={3} xs={12}>
-               
-                    <p>{props.user.contact.city}, {props.user.contact.state}</p>
-                    <p>{props.user.contact.email}</p>
-                
+                <p>{props.user.contact.city}, {props.user.contact.state}</p>
+                <p>{props.user.contact.email}</p>
             </Col>
-            {/* <Col className='followingCard_social' sm={3} xs={12}>
-             
-                    <p>{props.user.contact.email}</p>
-               
-            </Col> */}
         </Row>
     </Grid>
     </a>
