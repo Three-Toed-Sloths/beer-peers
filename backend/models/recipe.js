@@ -72,7 +72,7 @@ const recipeSchema = new Schema({
       trim: true,
       max: 300
     },
-    batch: {
+    preBoil: {
       size: {
         type: Number,
         required: true,

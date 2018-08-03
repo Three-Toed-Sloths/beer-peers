@@ -21,7 +21,7 @@ class Register extends Component {
         city: '',
         state: '',
         stateMessage: '',
-        image: '',
+        image: 'http://www.brattleborofoodcoop.coop/wp-content/uploads/2017/07/cropped-BFC-Sprig-Favicon-450x450.png',
         isRegistered: false
     };
 
@@ -312,7 +312,7 @@ class Register extends Component {
                                             <FormControl
                                                 type='text'
                                                 placeholder='Image URL'
-                                                value={this.state.image}
+                                                // value={this.state.image}
                                                 name='image'
                                                 onChange={this.handleInputChange}
                                             />
