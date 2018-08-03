@@ -23,11 +23,8 @@ class RecipeBoard extends Component {
             this.setState({
                 recipes: res.data
             })
-             
-            console.log('get route allrecipes worked')
-            console.log(this.state.recipes)
          })
-         .catch(err => console.log(err));
+         .catch(err => err);
     }
 
 

@@ -55,16 +55,24 @@ class FullRecipe extends Component {
 
     addLikeToBrewer = recipeID => {
         const userID = sessionStorage.getItem('userID')
-        userAPI.updateUser(userID, {$addToSet: {'social.favorites': [recipeID]}}
-        )
+        userAPI.updateUser(userID, {$addToSet: {'social.favorites': [recipeID]}})
         .then(res => {
-            API.updateRecipe(recipeID, {
-                likes: this.state.likes + 1
-            })
-            .then(res => {
-                this.getRecipe(recipeID)
-            })
-            .catch(err => err);
+            console.log(res.data.updated);
+            if(res.data.updated > 0){
+                API.updateRecipe(recipeID, {
+                    likes: this.state.likes + 1
+                })
+                .then(res => {
+                    // this.getRecipe(recipeID)
+                    this.setState({
+                        likes: res.data.likes
+                    })
+                    console.log(res.data)
+                })
+                .catch(err => err);
+            } else {
+                alert('You already liked this recipe')
+            }
         })
         .catch(err => err);
     }
