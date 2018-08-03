@@ -1,10 +1,10 @@
 const router = require('express').Router();
 const loginController = require('../../controllers/loginController');
 
-// '/api/login/:username'
+// '/api/login/check/:username'
 router
-  .route('/:username/')
-  .get(loginController.findUsername);
+  .route('/check/:username/')
+  .get(loginController.checkUsername);
 
 // '/api/login/:username/:password'
 router
