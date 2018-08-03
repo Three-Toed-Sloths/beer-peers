@@ -27,15 +27,7 @@ module.exports = {
   // },
   update: (req, res) => {
     db.User
-      // .findOneAndUpdate({ _id: req.params.id }, req.body, {projection: {password: 0}, new: true, rawResult: true })
-      .update({ _id: req.params.id }, req.body
-      
-        // (err, res) => {
-        //   if (err) throw err;
-        //   // console.log(JSON.stringify(res, null, 2) + " document(s) updated")}
-        //   console.log(res.nModified + " document(s) updated")}
-      )
-      // .then(dbModel => res.json(dbModel))
+      .update({ _id: req.params.id }, req.body, {password: 0})
       .then(result => res.json({updated: result.nModified}))
       .catch(err => res.status(422).json(err));
   },

@@ -42,7 +42,7 @@ class FullRecipe extends Component {
                 speciality: res.data.ingredients.malt.speciality
             })
          })
-         .catch(err => console.log(err));
+         .catch(err => err);
     }
 
     handleClick = () => {
@@ -57,17 +57,14 @@ class FullRecipe extends Component {
         const userID = sessionStorage.getItem('userID')
         userAPI.updateUser(userID, {$addToSet: {'social.favorites': [recipeID]}})
         .then(res => {
-            console.log(res.data.updated);
             if(res.data.updated > 0){
                 API.updateRecipe(recipeID, {
                     likes: this.state.likes + 1
                 })
                 .then(res => {
-                    // this.getRecipe(recipeID)
                     this.setState({
                         likes: res.data.likes
                     })
-                    console.log(res.data)
                 })
                 .catch(err => err);
             } else {
@@ -153,7 +150,6 @@ class FullRecipe extends Component {
                     </Col>
                 </Row>
             </div>
-            
         )
     }
 }       
