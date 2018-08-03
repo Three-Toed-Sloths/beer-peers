@@ -183,7 +183,7 @@ const recipeSchema = new Schema({
     ],
     yeast: {
       name: {
-        type: String,
+        type: String,   
         required: true,
         trim: true,
         maxlength: 50

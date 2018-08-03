@@ -14,12 +14,14 @@ const userSchema = new Schema({
   name: {
     first: {
       type: String,
+      uppercase: true,
       required: [true, 'Please enter first name.'],
       trim: true,
       maxlength: 50
     },
     last: {
       type: String,
+      uppercase: true,
       required: [true, 'Please enter last name.'],
       trim: true,
       maxlength: 50
@@ -65,6 +67,7 @@ const userSchema = new Schema({
     },
     city: {
       type: String,
+      uppercase: true,
       required: [true, 'Please enter city.'],
       trim: true,
       maxlength: 50

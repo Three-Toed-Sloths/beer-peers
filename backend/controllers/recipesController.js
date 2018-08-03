@@ -5,14 +5,14 @@ module.exports = {
     db.Recipe
       .find(req.query)
       .sort({ likes: -1 })
-      .populate('brewer')
+      .populate('brewer', {password: 0})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   findById: (req, res) => {
     db.Recipe
       .findById(req.params.id)
-      .populate('brewer')
+      .populate('brewer', {password: 0})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

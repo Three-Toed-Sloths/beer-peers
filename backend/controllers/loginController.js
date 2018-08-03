@@ -25,7 +25,6 @@ module.exports = {
         bcrypt.compare(req.params.password, user.password).then((result) => {
           (result ? res.json({ id: user._id, result: true }) : res.json({ id: user._id, result: false }))
         })
-
       )
       .catch(err => res.status(422).json(err));
   }

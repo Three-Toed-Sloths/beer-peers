@@ -40,7 +40,6 @@ class LandingPage extends Component {
         })
         .catch(err => {
             this.handleInvalidLogin('Username does not exist.');
-            console.log('wrong username')
             return
         });
     }

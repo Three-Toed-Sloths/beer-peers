@@ -38,6 +38,8 @@ class Profile extends Component {
                     image: res.data.image,
                     recipeArr: res.data.recipes
                 });
+                console.log(res.data.password + '   res.data');
+                console.log(JSON.stringify(res.data, null, 2) + '   res.data');
             })
             .then(() => {console.log('got user')})
             .catch(err => console.log(err));
