@@ -8,7 +8,6 @@ class LandingPage extends Component {
     state = {
         username: '',
         password: '',
-        success: false,
         message: ''
     };
 
@@ -28,38 +27,21 @@ class LandingPage extends Component {
         API.checkLogin(
             this.state.username, this.state.password
         ).then(res => {
-            // console.log(res.data.password +  " res.data");
-            // if(res.data.password === this.state.password){
-            //     this.setState({
-            //         success: true,
-            //         id: res.data._id
-            //     })
-            //     sessionStorage.setItem('userID', this.state.id);
-            //     sessionStorage.setItem('loggedIn', true);
-
-            //     let userID = sessionStorage.getItem('userID')
-
-            //     // window.location.href = `/personal/${this.state.id}`;
-            //     window.location.href = `/personal/${userID}`;
-            // } else {
-            //     console.log('wrong password')
-            //     this.handleInvalidLogin();
-            // }
             if(res.data.result){
-                console.log('succeessssss')
                 sessionStorage.setItem('userID', res.data.id);
                 let userID = sessionStorage.getItem('userID');
                 sessionStorage.setItem('loggedIn', true);
+
                 window.location.href = `/personal/${userID}`;
             } else {
                 this.handleInvalidLogin('Invalid username or password.');
-                
+                return
             }
         })
         .catch(err => {
             this.handleInvalidLogin('Username does not exist.');
             console.log('wrong username')
-            return err
+            return
         });
     }
 
