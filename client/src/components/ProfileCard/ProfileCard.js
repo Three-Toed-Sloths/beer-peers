@@ -1,5 +1,8 @@
 import React from 'react';
 import { Grid, Col, Row, Button } from 'react-bootstrap';
+
+import FollowAlert from './../FollowAlert';
+
 import './ProfileCard.css';
 
 const ProfileCard =  props => (
@@ -21,9 +24,21 @@ const ProfileCard =  props => (
                     </div>
                     <div>
                         <Button bsStyle='success' bsSize='large' onClick={props.handleClick}>Follow</Button>
+                        
                     </div>
                 </Col>
             </div>
+        </Row>
+        <Row>
+            <Col xs={12}>
+                <FollowAlert
+                    handleClick={props.handleClick}
+                    message={props.followAlert}
+                    status={props.showFollowAlert}
+                    closeAlert={props.closeFollowAlert}
+                    class={props.alertClass}
+                />
+            </Col>
         </Row>
     </Grid>
 );

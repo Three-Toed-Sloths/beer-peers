@@ -17,7 +17,10 @@ class Profile extends Component {
         state: '',
         email: '',
         image: '',
-        recipeArr: []
+        recipeArr: [],
+        followAlert: '',
+        showFollowAlert: false,
+        alertClass: ''
     }
 
     componentWillMount() {
@@ -44,9 +47,17 @@ class Profile extends Component {
         const currentBrewerID = sessionStorage.getItem('userID');
 
         if(!currentBrewerID){
-            alert('please log in to follow a user');
+            this.setState({
+                followAlert: `Please log in to follow ${this.state.first} ${this.state.last}`,
+                showFollowAlert: true,
+                alertClass: 'danger'
+            })
         } else if(currentBrewerID === this.state.id){
-            alert('You cannot follow yourself');
+            this.setState({
+                followAlert: `Woah take it easy ${this.state.first}, no need to follow yourself`,
+                showFollowAlert: true,
+                alertClass: 'danger'
+            })
         } else {
             this.handleAddFollow(this.state.id)
         }
@@ -60,14 +71,34 @@ class Profile extends Component {
             if(res.data.updated > 0){
                 // UPDATE THE OTHER BREWER'S FOLLOWERS LIST
                 API.updateUser(brewerToFollowID, {$addToSet: {'social.followers': [currentBrewerID]}})
-                .then(res => 'success')
+                // .then(res => 'success')
+                .then(res => {
+                    this.setState({
+                        followAlert: `Thanks for following ${this.state.first} ${this.state.last}!`,
+                        showFollowAlert: true,
+                        alertClass: 'success'
+                    })
+                })
                 .catch(err => err);
             } else {
-                alert('You already follow this brewer')
+                this.setState({
+                    followAlert: `You already follow ${this.state.first} ${this.state.last}`,
+                    showFollowAlert: true,
+                    alertClass: 'danger'
+                })
             }
         })
         .catch(err => err);
     }
+
+
+    closeFollowAlert = () => {
+        this.setState({
+            followAlert: '',
+            showFollowAlert: false
+        })
+    }
+
 
     render(){
         return(
@@ -82,6 +113,10 @@ class Profile extends Component {
                             img={this.state.image}
                             recipes={this.state.recipes}
                             handleClick={this.handleFollowClick}
+                            followAlert={this.state.followAlert}
+                            showFollowAlert={this.state.showFollowAlert}
+                            closeFollowAlert={this.closeFollowAlert}
+                            alertClass={this.state.alertClass}
                             />
                         </Col>
                     </Row>
