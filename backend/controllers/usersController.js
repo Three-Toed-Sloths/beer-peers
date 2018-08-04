@@ -28,7 +28,7 @@ module.exports = {
   update: (req, res) => {
     db.User
       .update({ _id: req.params.id }, req.body, {password: 0})
-      .then(result => res.json({updated: result.nModified}))
+      .then(dbModel => res.json({updated: dbModel.nModified}))
       .catch(err => res.status(422).json(err));
   },
   remove: (req, res) => {
