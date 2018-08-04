@@ -1,5 +1,4 @@
 import React from "react";
-// import { Form, Row, Col, FormGroup, Button, FormControl, Well, ControlLabel } from 'react-bootstrap';
 import { Form, Row, Col, FormGroup, Button, Well } from 'react-bootstrap';
 import Wrapper from '../Wrapper';
 import WellActionBtn from './WellActionBtn';
@@ -27,28 +26,6 @@ const LoginWell = props => {
                     <FormGroup >
                         <LoginInput name='Username' type='username' value={props.username} change={props.handleInputChange}/>
                         <LoginInput name='Password' type='password' value={props.password} change={props.handleInputChange}/>
-                        {/* <Col>
-                            <ControlLabel className='loginLabel'>Username:</ControlLabel>
-                                <FormControl 
-                                    id="loginUsername" 
-                                    type="username" 
-                                    placeholder="Username"
-                                    value={props.username}
-                                    name='username'
-                                    onChange={props.handleInputChange} 
-                                />
-                        </Col> */}
-                        {/* <Col>
-                            <ControlLabel className='loginLabel'>Password:</ControlLabel>
-                                <FormControl 
-                                    id="loginPassword"
-                                    type="password"
-                                    placeholder="Password"
-                                    value={props.password}
-                                    name='password'
-                                    onChange={props.handleInputChange}
-                                />
-                        </Col> */}
                     </FormGroup>
                     <FormGroup>
                         <Row>

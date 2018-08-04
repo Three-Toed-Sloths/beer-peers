@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import { Form, Row, Col, FormGroup, Button, FormControl, Well, ControlLabel } from 'react-bootstrap';
 import { Row, Col, Button } from 'react-bootstrap';
 import API from '../../utils/loginAPI';
 import Wrapper from '../../components/Wrapper';
@@ -73,50 +72,6 @@ class LandingPage extends Component {
                                     handleInputChange={this.handleInputChange}
                                     handleSubmit={this.handleSubmit}
                                 />
-
-
-                                {/* <Well>
-                                    <Form>
-                                        <Wrapper>
-                                            <h2 className='loginTitle'>Start Connecting</h2>
-                                            <h5 className='text-center failedLogin'>{this.state.message}</h5>
-                                            <FormGroup >
-                                                <Col>
-                                                    <ControlLabel className='loginLabel'>Username:</ControlLabel>
-                                                    <FormControl 
-                                                        id="loginUsername" 
-                                                        type="username" 
-                                                        placeholder="Username"
-                                                        value={this.state.username}
-                                                        name='username'
-                                                        onChange={this.handleInputChange} 
-                                                    />
-                                                </Col>
-                                                <Col>
-                                                    <ControlLabel className='loginLabel'>Password:</ControlLabel>
-                                                    <FormControl 
-                                                        id="loginPassword"
-                                                        type="password"
-                                                        placeholder="Password"
-                                                        value={this.state.password}
-                                                        name='password'
-                                                        onChange={this.handleInputChange}
-                                                    />
-                                                </Col>
-                                            </FormGroup>
-                                            <FormGroup>
-                                                <Row>
-                                                    <Col xs={12} md={6}>
-                                                        <Button className='landingBtn' bsStyle='primary' bsSize='large' type="submit" onClick={this.handleSubmit} block>Log In</Button>
-                                                    </Col>
-                                                    <Col xs={12} md={6}>
-                                                        <Button className='landingBtn' bsSize='large' type="submit" href='/register' block>Create Account</Button>
-                                                    </Col>
-                                                </Row>
-                                            </FormGroup>
-                                        </Wrapper>
-                                    </Form>
-                                </Well> */}
                             </Col>
                         </Row>
                     </Wrapper>
