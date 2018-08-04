@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Grid, Col, Row } from 'react-bootstrap';
 import ProfileCard from '../../components/ProfileCard';
+import ProfileRecipeCard from '../../components/ProfileRecipeCard';
 import SecondaryNav from '../../components/SecondaryNav';
 import API from '../../utils/userAPI';
 import './Profile.css';
@@ -47,11 +48,11 @@ class Profile extends Component {
         } else if(currentBrewerID === this.state.id){
             alert('You cannot follow yourself');
         } else {
-            this.checkFollowingArr(this.state.id)
+            this.handleAddFollow(this.state.id)
         }
     }
 
-    checkFollowingArr = brewerToFollowID => {
+    handleAddFollow = brewerToFollowID => {
         const currentBrewerID = sessionStorage.getItem('userID')
         // UPDATE THE CURRENT BREWER'S FOLLOWING LIST
         API.updateUser(currentBrewerID, {$addToSet: {'social.following': [brewerToFollowID]}})
@@ -69,76 +70,76 @@ class Profile extends Component {
     }
 
     //color change by type
-    colorType = type => {
-        let color = '';
-        switch(type){
-            case 'American Lager':
-            case 'Cream Ale':
-            case 'German Pilsner':
-            color = '#e9d76c';
-            break;
-            case 'Belgian Golden Strong Ale':
-            case 'Blonde Ale':
-            color = '#e1c336';
-            break;
-            case 'Belgian Dubbel':
-            case 'Belgian Tripel':
-            case 'Belgian Witbier':
-            case 'Session IPA':
-            case 'Sour Ale':
-            color = '#dab700';
-            break;
-            case 'American Wheat Ale':
-            case 'California Common':
-            case 'Hefeweizen':
-            case 'Pale Ale':
-            color = '#cfa200';
-            break;
-            case 'English IPA':
-            case 'Fruit Beer':
-            case 'New England IPA':
-            color = '#c38e0d';
-            break;
-            case 'American IPA':
-            case 'Barley Wine':
-            case 'Belgian Saison':
-            color = '#b87b1c';
-            break;
-            case 'Double IPA':
-            case 'Oktoberfest':
-            color = '#a86222';
-            break;
-            case 'Amber Ale':
-            case 'Speciality Beer':
-            color = '#94461c';
-            break;
-            case 'Brown Ale':
-            case 'Scotch Ale':
-            color = '#85341d';
-            break;
-            case 'Barrel-Aged Beer':
-            case 'Brown Porter':
-            color = '#74211a';
-            break;
-            case 'Coffee Beer':
-            case 'Oatmeal Stout':
-            color = '#601213';
-            break;
-            case 'Irish Dry Stout':
-            case 'Milk Stout':
-            case 'Stout':
-            color = '#4b0c11';
-            break;
-            case 'American Imperial Stout':
-            case 'Black Ale':
-            color = '#3c0c11';
-            break;
-            default:
-            color = '#FFF';
-            break;
-        }
-        return color;
-    }
+    // colorType = type => {
+    //     let color = '';
+    //     switch(type){
+    //         case 'American Lager':
+    //         case 'Cream Ale':
+    //         case 'German Pilsner':
+    //         color = '#e9d76c';
+    //         break;
+    //         case 'Belgian Golden Strong Ale':
+    //         case 'Blonde Ale':
+    //         color = '#e1c336';
+    //         break;
+    //         case 'Belgian Dubbel':
+    //         case 'Belgian Tripel':
+    //         case 'Belgian Witbier':
+    //         case 'Session IPA':
+    //         case 'Sour Ale':
+    //         color = '#dab700';
+    //         break;
+    //         case 'American Wheat Ale':
+    //         case 'California Common':
+    //         case 'Hefeweizen':
+    //         case 'Pale Ale':
+    //         color = '#cfa200';
+    //         break;
+    //         case 'English IPA':
+    //         case 'Fruit Beer':
+    //         case 'New England IPA':
+    //         color = '#c38e0d';
+    //         break;
+    //         case 'American IPA':
+    //         case 'Barley Wine':
+    //         case 'Belgian Saison':
+    //         color = '#b87b1c';
+    //         break;
+    //         case 'Double IPA':
+    //         case 'Oktoberfest':
+    //         color = '#a86222';
+    //         break;
+    //         case 'Amber Ale':
+    //         case 'Speciality Beer':
+    //         color = '#94461c';
+    //         break;
+    //         case 'Brown Ale':
+    //         case 'Scotch Ale':
+    //         color = '#85341d';
+    //         break;
+    //         case 'Barrel-Aged Beer':
+    //         case 'Brown Porter':
+    //         color = '#74211a';
+    //         break;
+    //         case 'Coffee Beer':
+    //         case 'Oatmeal Stout':
+    //         color = '#601213';
+    //         break;
+    //         case 'Irish Dry Stout':
+    //         case 'Milk Stout':
+    //         case 'Stout':
+    //         color = '#4b0c11';
+    //         break;
+    //         case 'American Imperial Stout':
+    //         case 'Black Ale':
+    //         color = '#3c0c11';
+    //         break;
+    //         default:
+    //         color = '#FFF';
+    //         break;
+    //     }
+    //     return color;
+    // }
     
     render(){
         return(
@@ -164,7 +165,7 @@ class Profile extends Component {
                             />
                         </Col>
                     </Row>
-                    <Row>
+                    {/* <Row>
                         {this.state.recipeArr.map((recipe, i) =>
                             <Col key={`recipe${i}`} className='recipeCardShort' sm={6} xs={12}>
                                 <a href={`/recipes/${recipe._id}`}>
@@ -176,6 +177,16 @@ class Profile extends Component {
                                 </a>
                             </Col>
                         )}
+                    </Row> */}
+                    <Row>
+                    {this.state.recipeArr.map((recipe, i) =>
+                        <ProfileRecipeCard 
+                            key={`recipe${i}`}
+                            id={recipe._id}
+                            style={recipe.style}
+                            name={recipe.name}
+                        />
+                    )}
                     </Row>
                 </Grid>
             </div>
