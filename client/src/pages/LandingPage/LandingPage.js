@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import { Form, Row, Col, FormGroup, Button, FormControl, Well, ControlLabel } from 'react-bootstrap';
+// import { Form, Row, Col, FormGroup, Button, FormControl, Well, ControlLabel } from 'react-bootstrap';
+import { Row, Col, Button } from 'react-bootstrap';
 import API from '../../utils/loginAPI';
 import Wrapper from '../../components/Wrapper';
+import LoginWell from '../../components/LoginWell';
 import './LandingPage.css';
 
 class LandingPage extends Component {
@@ -63,7 +65,17 @@ class LandingPage extends Component {
                         <Row>
                             <Col xs={0} md={2} lg={3} />
                             <Col xs={12} md={8} lg={6}>
-                                <Well>
+
+                                <LoginWell
+                                    message={this.state.message}
+                                    username={this.state.username}
+                                    password={this.state.password}
+                                    handleInputChange={this.handleInputChange}
+                                    handleSubmit={this.handleSubmit}
+                                />
+
+
+                                {/* <Well>
                                     <Form>
                                         <Wrapper>
                                             <h2 className='loginTitle'>Start Connecting</h2>
@@ -104,7 +116,7 @@ class LandingPage extends Component {
                                             </FormGroup>
                                         </Wrapper>
                                     </Form>
-                                </Well>
+                                </Well> */}
                             </Col>
                         </Row>
                     </Wrapper>
