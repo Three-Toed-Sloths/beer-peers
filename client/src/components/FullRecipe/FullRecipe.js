@@ -13,12 +13,15 @@ class FullRecipe extends Component {
         recipe: {},
         likes: '',
         brewer: '',
+        brewerId: '',
         specs: {},
         batch: {},
         base: [],
         speciality: [],
         hops: [],
-        yeast: {}
+        yeast: {},
+        showAlert: false,
+        alertMessage: ''
     }   
 
     componentDidMount() {
@@ -33,6 +36,7 @@ class FullRecipe extends Component {
                 recipe: res.data,
                 likes: parseFloat(res.data.likes),
                 brewer: `${res.data.brewer.name.first} ${res.data.brewer.name.last}`,
+                brewerId: res.data.brewer.id,
                 specs: res.data.specs,
                 batch: res.data.specs.batch,
                 hops: res.data.ingredients.hops,
@@ -46,10 +50,21 @@ class FullRecipe extends Component {
     }
 
     handleClick = () => {
-        if(sessionStorage.getItem('userID')){
-            this.addLikeToBrewer(this.state.id)
+        if(!sessionStorage.getItem('userID')){
+            // alert('please log in to like a recipe');
+            this.setState({
+                showAlert: true,
+                alertMessage: 'Please log in to like a recipe.'
+            })
+        }
+        else if(sessionStorage.getItem('userID') === this.state.brewerId){
+            // alert(`You can't like your own recipe ${this.state.brewer}`)
+            this.setState({
+                showAlert: true,
+                alertMessage: `You can't like your own recipe ${this.state.brewer}`
+            })
         } else {
-            alert('please log in to like a recipe');
+            this.addLikeToBrewer(this.state.id);
         }
     }
 
@@ -63,12 +78,18 @@ class FullRecipe extends Component {
                 })
                 .then(res => {
                     this.setState({
-                        likes: res.data.likes
+                        likes: res.data.likes,
+                        showAlert: true,
+                        alertMessage: 'Cheers!'
                     })
                 })
                 .catch(err => err);
             } else {
-                alert('You already liked this recipe')
+                // alert('You already liked this recipe')
+                this.setState({
+                    showAlert: true,
+                    alertMessage: 'You already liked this recipe'
+                })
             }
         })
         .catch(err => err);
@@ -88,7 +109,13 @@ class FullRecipe extends Component {
                         <h2>Type: {recipe.style}</h2>
                         <h2>Total Likes: {this.state.likes}</h2>
                         <h2>Brewer: {this.state.brewer}</h2>
-                        <LikeBtn class="fullRecipeLike" id={this.state.id} likes={recipe.likes} addLike={this.handleClick}/>
+                        <LikeBtn class="fullRecipeLike"
+                            id={this.state.id}
+                            likes={recipe.likes}
+                            addLike={this.handleClick}
+                            show={this.state.showAlert}
+                            message={this.state.alertMessage}
+                        />
                     </Col>
                 </Row>
                 <Row>
@@ -131,13 +158,13 @@ class FullRecipe extends Component {
                         ))}
                     </Col>
                     <Col s={12} md={3}>
-                    <h4>Yeast:</h4>
+                        <h4>Yeast:</h4>
                         <div className="yeast">
                             <p>{this.state.yeast.name} ({this.state.yeast.amount})</p>
                         </div>
                     </Col>
                     <Col s={12} md={3}>
-                    <h4>Misc:</h4>
+                        <h4>Misc:</h4>
                         <div className="misc">
                             <p>{this.state.misc}</p>
                         </div>
