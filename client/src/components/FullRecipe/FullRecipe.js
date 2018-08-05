@@ -51,14 +51,12 @@ class FullRecipe extends Component {
 
     handleClick = () => {
         if(!sessionStorage.getItem('userID')){
-            // alert('please log in to like a recipe');
             this.setState({
                 showAlert: true,
                 alertMessage: 'Please log in to like a recipe.'
             })
         }
         else if(sessionStorage.getItem('userID') === this.state.brewerId){
-            // alert(`You can't like your own recipe ${this.state.brewer}`)
             this.setState({
                 showAlert: true,
                 alertMessage: `You can't like your own recipe ${this.state.brewer}`
@@ -85,7 +83,6 @@ class FullRecipe extends Component {
                 })
                 .catch(err => err);
             } else {
-                // alert('You already liked this recipe')
                 this.setState({
                     showAlert: true,
                     alertMessage: 'You already liked this recipe'

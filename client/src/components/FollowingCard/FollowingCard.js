@@ -1,10 +1,6 @@
 import React from 'react';
-// import Grid from 'react-bootstrap/lib/Grid';
-// import Col from 'react-bootstrap/lib/Col';
-// import Row from 'react-bootstrap/lib/Row';
 import { Grid, Col, Row } from 'react-bootstrap';
 import './FollowingCard.css';
-
 
 const FollowingCard =  props => (
     <a href={`/profile/${props.user._id}`}>
@@ -25,7 +21,5 @@ const FollowingCard =  props => (
     </Grid>
     </a>
 );
-
-
 
 export default FollowingCard;

@@ -1,4 +1,3 @@
-// import React from 'react';
 import React, {Component} from 'react';
 import { Navbar, NavItem, Nav } from 'react-bootstrap';
 import './Nav.css';
@@ -6,9 +5,7 @@ import './Nav.css';
 class Head extends Component {
 
     state = {
-        loggedIn: false,
-        navTab: '',
-        onClick: this.handleSignUp
+        loggedIn: sessionStorage.getItem('loggedIn')
     };
 
     componentWillMount() {
@@ -16,18 +13,25 @@ class Head extends Component {
     }
 
     checkLogin = () => {
-        const loggedIn = sessionStorage.getItem('loggedIn');
-        if(loggedIn){
-            this.setState({
-                navTab: 'Log Out',
-                onClick: this.handleLogOut
-            })
+        if(this.state.loggedIn){
+            this.setLogOutTab();
         } else {
-            this.setState({
-                navTab: 'Sign Up',
-                onClick: this.handleSignUp
-            })
+            this.setSignUpTab();
         }
+    }
+
+    setLogOutTab = () => {
+        this.setState({
+            navTab: 'Log Out',
+            onNavTabClick: this.handleLogOut
+        })
+    }
+
+    setSignUpTab = () => {
+        this.setState({
+            navTab: 'Sign Up',
+            onNavTabClick: this.handleSignUp
+        })
     }
 
     handleLogOut = () => {
@@ -50,7 +54,7 @@ class Head extends Component {
                 </Navbar.Header>
                 <Navbar.Collapse>
                     <Nav pullRight>
-                        <NavItem className='navLinks' eventKey={1} onClick={this.state.onClick}>
+                        <NavItem className='navLinks' eventKey={1} onClick={this.state.onNavTabClick}>
                             {this.state.navTab}
                         </NavItem>
                         <NavItem className='navLinks' eventKey={2} href='/recipes'>

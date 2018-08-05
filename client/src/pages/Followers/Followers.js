@@ -50,7 +50,7 @@ class Followers extends Component {
                             email={this.state.contact.email}
                             img={this.state.img}
                             recipes={this.state.recipes}
-                            ></ProfileCard>
+                            />
                         </Col>
                     </Row>
             

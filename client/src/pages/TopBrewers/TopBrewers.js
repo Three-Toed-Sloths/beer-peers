@@ -10,10 +10,10 @@ class TopBrewers extends Component {
     state = {
         userArr: [],
     }
+
     componentDidMount() {
         this.getUsers();
     }
-
 
     getUsers = () => {
         API.getUsers()
@@ -21,10 +21,8 @@ class TopBrewers extends Component {
             this.setState({
                 userArr: res.data
             });
-                console.log(res.data);
          })
-         .then(() => {console.log('got users')})
-         .catch(err => console.log(err));
+         .catch(err => err);
     }
 
 
@@ -35,9 +33,7 @@ class TopBrewers extends Component {
                 <Grid>
                     <Row>
                         <Col xs={12}>
-                            <h2 className='brewerHeader'>
-                                Top Brewers
-                            </h2>
+                            <h2 className='brewerHeader'>Top Brewers</h2>
                         </Col>
                     </Row>
                     <Row>
