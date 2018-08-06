@@ -195,7 +195,9 @@ class Profile extends Component {
                         </Col>
                     </Row>
                     <Row>
-                        {this.renderComponent()}
+                        <Col xs={12}>
+                            {this.renderComponent()}
+                        </Col>
                     </Row>
                 </Grid>
             </div>
