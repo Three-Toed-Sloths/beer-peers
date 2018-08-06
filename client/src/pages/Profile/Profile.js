@@ -144,13 +144,27 @@ class Profile extends Component {
             )
             break;
             case "followers":
-            //load followers component
+            return(
+                <Col>
+                    Followers
+                </Col>
+            )
             break;
             case "likes":
             //load likes component
+            return(
+                <Col>
+                    Likes
+                </Col>
+            )
             break;
             case "recipes":
             //load recipes component
+            return(
+                <Col>
+                    Recipes
+                </Col>
+            )
             break;
             default:
             //load pinned rec comp
@@ -185,17 +199,6 @@ class Profile extends Component {
                     </Row>
                     <Row>
                         {this.renderComponent()}
-                    {/* {this.state.recipeArr.map((recipe, i) =>
-                            <Col key={`recipe${i}`} className="recipeCardShort" sm={6} xs={12}>
-                                <a href={`/recipes/${recipe._id}`}>
-                                    <p style={{background: this.colorType(recipe.style)}}>
-                                        {"Name: " + recipe.name}<br/>
-                                        <hr className="profileHorizontal"/>
-                                        {" Style: " + recipe.style}
-                                    </p>
-                                </a>
-                            </Col>
-                        )} */}
                     </Row>
                 </Grid>
             </div>
