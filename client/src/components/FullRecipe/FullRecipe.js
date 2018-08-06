@@ -137,13 +137,13 @@ class FullRecipe extends Component {
                     </Col>
                 </Row>
                 <Row>
-                    <Col s={12} md={3}>
+                    <Col sm={12} md={3}>
                         <h4>Hops:</h4>
                         {this.state.hops.map((hop, i) => (
                             <Hop key={`hop${i}`} name={hop.name} type={hop.type} alpha={hop.alpha} amount={hop.amount} units={hop.units} addition={hop.addition}/>
                         ))}
                     </Col>
-                    <Col s={12} md={3}>
+                    <Col sm={12} md={3}>
                         <h4>Base Malt:</h4>
                             {this.state.base.map((malt, i) => (
                                 <Malt key={`base${i}`} name={malt.name} amount={malt.amount} units={malt.units}/>
@@ -154,13 +154,13 @@ class FullRecipe extends Component {
                             <Malt key={`speciality${i}`} name={malt.name} amount={malt.amount} units={malt.units}/>
                         ))}
                     </Col>
-                    <Col s={12} md={3}>
+                    <Col sm={12} md={3}>
                         <h4>Yeast:</h4>
                         <div className="yeast">
                             <p>{this.state.yeast.name} ({this.state.yeast.amount})</p>
                         </div>
                     </Col>
-                    <Col s={12} md={3}>
+                    <Col sm={12} md={3}>
                         <h4>Misc:</h4>
                         <div className="misc">
                             <p>{this.state.misc}</p>
