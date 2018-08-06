@@ -7,7 +7,7 @@ import "./GrainRow.css";
 
 const GrainRow = props => (
     <Row className="maltInputRow">
-        <Col xs={6}>
+        <Col xs={12} md={6}>
             <InputGroup>
                 <FormControl
                     type="text"
@@ -19,7 +19,7 @@ const GrainRow = props => (
                 />
             </InputGroup>
         </Col>
-        <Col xs={6}>
+        <Col xs={12} md={6}>
             <InputGroup>
                 <FormControl
                     type="number"

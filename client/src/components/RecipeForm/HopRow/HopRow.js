@@ -7,7 +7,7 @@ import "./HopRow.css";
 
 const HopRow = props => (
 <Row className="hopInputRow">
-    <Col xs={3}>
+    <Col xs={12} sm={3}>
     <ControlLabel>Hop Name</ControlLabel>
         <InputGroup>
             <FormControl
@@ -21,7 +21,7 @@ const HopRow = props => (
         </InputGroup>
     </Col>
 
-    <Col xs={3}>
+    <Col xs={12} sm={3}>
         <FormGroup>
             <ControlLabel>Alpha-Acids</ControlLabel>
            <InputGroup>
@@ -39,7 +39,7 @@ const HopRow = props => (
     </Col>
 
 
-    <Col xs={3}>
+    <Col xs={12} sm={3}>
     <ControlLabel>Hop Amount</ControlLabel>
         <InputGroup>
             <FormControl
@@ -53,7 +53,7 @@ const HopRow = props => (
             <InputGroup.Addon>oz</InputGroup.Addon>
         </InputGroup>
     </Col>
-    <Col xs={3}>
+    <Col xs={12} sm={3}>
         <FormGroup>
             <ControlLabel>Addition</ControlLabel>
            <InputGroup>

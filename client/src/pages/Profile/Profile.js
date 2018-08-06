@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import { Grid, Row, Col } from 'react-bootstrap';
 import ProfileCard from "../../components/ProfileCard";
 import SecondaryNav from "../../components/SecondaryNav";
+import PinnedRecipeCard from "../../components/PinnedRecipeCard";
 import API from "../../utils/userAPI";
 import "./Profile.css";
 
@@ -15,7 +16,8 @@ class Profile extends Component {
         state: "",
         email: "",
         image: "",
-        recipeArr: []
+        recipeArr: [],
+        currentComp: "pinnedRec"
     }
 
     componentWillMount() {
@@ -111,6 +113,61 @@ class Profile extends Component {
         }
         return color;
     }
+
+    handleComponentChange = comp => {
+        this.setState({currentComp: comp});
+    };
+
+    renderComponent = () => {
+        switch(this.state.currentComp){
+            case "pinnedRec":
+            //load pinned rec comp
+            return(
+            this.state.recipeArr.map((recipe, i) =>
+                <PinnedRecipeCard 
+                    key={`recipe${i}`}
+                    recipeUrl={`/recipes/${recipe._id}`}
+                    recipeColor={{background: this.colorType(recipe.style)}}
+                    recipeName={recipe.name}
+                    recipeStyle={recipe.style}
+                />
+            ));
+            case "following":
+            //load following component
+            return(
+                <Col>
+                    THIS IS FOLLOWING
+                </Col>
+            )
+            break;
+            case "followers":
+            return(
+                <Col>
+                    Followers
+                </Col>
+            )
+            break;
+            case "likes":
+            //load likes component
+            return(
+                <Col>
+                    Likes
+                </Col>
+            )
+            break;
+            case "recipes":
+            //load recipes component
+            return(
+                <Col>
+                    Recipes
+                </Col>
+            )
+            break;
+            default:
+            //load pinned rec comp
+            break;
+        }
+    };
     
     render(){
         return(
@@ -128,22 +185,17 @@ class Profile extends Component {
                         </Col>
                     </Row>
                     <Row>
-                        <SecondaryNav path='profile' iden={this.state.identify}/>
+                        <Col sm={12}>
+                            <SecondaryNav
+                            path={this.state.path}
+                            iden={this.state.identify}
+                            currentComp={this.state.currentComp}
+                            handleComponentChange={this.handleComponentChange}
+                            />
+                        </Col>
                     </Row>
                     <Row>
-                        <Col sm={12}>
-                            {this.state.recipeArr.map((recipe, i) =>
-                                <Col key={`recipe${i}`} className="recipeCardShort" sm={6} xs={12}>
-                                    <a href={`/recipes/${recipe._id}`}>
-                                        <p style={{background: this.colorType(recipe.style)}}>
-                                            {"Name: " + recipe.name}<br/>
-                                            <hr className="profileHorizontal"/>
-                                            {" Style: " + recipe.style}
-                                        </p>
-                                    </a>
-                                </Col>
-                            )}
-                        </Col>
+                        {this.renderComponent()}
                     </Row>
                 </Grid>
             </div>
