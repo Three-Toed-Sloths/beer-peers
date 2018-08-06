@@ -1,42 +1,69 @@
-.followingCard_card{
-    margin-top: 1%;
+.followingCard {
+    margin-bottom: 1.5em;
     border-radius: 20px;
     padding: 5px;
-    width: 80%;
+    width: 100%;
     font-family: 'EB Garamond', serif;
     border: 2px black solid;
-    /* text-shadow: 4px 4px 14px black; */
 }
-.followingCard_content{
+
+.followingCardContent {
     height: 150px;
 }
-.followPic{
+
+.followPic {
     height: 128px;
-    width: 128px;
+    width: auto;
     border-radius: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
-.followingCard_picture, .followingCard_location, .followingCard_social{
-    height: 100%;
+
+.followingCardPicture {
+    padding: 1.5em;
+}
+
+.followingCardLocation,
+.followingCardName {
+    font-size: 1.75em;
     text-align: center;
-    padding: 11px 0px;
-}
-
-.followingCard_location,
-.followingCard_social p{
-    height: 50px;
-    margin: 0 auto;
-    font-size: 25px;
     color: black;
-    padding: 39px 0;
+    padding: 1.5em 0;
 }
 
-.followingCard_name p{
-    font-size: 18px;
+.followingCardFull {
+    margin-top: 0;
+}
+
+.followingCardUsername {
     font-style: italic;
 }
 
-.followingCard_name {
-    text-align: center;
-    height: 100px;
-    padding: 25px 0;
+@media only screen and (max-width: 768px) {
+    .followingCardLocation {
+        font-size: 1.25em;
+        padding-top: 2.9em;
+    }
+    .followingCardName {
+        font-size: 1.25em;
+        padding-top: 2.6em;
+    }
+}
+
+@media only screen and (max-width: 426px) {
+    .followingCardLocation,
+    .followingCardName {
+        font-size: 1.75em;
+        padding-top: 0;
+    }
+    .followingCardName {
+        padding-bottom: 0;
+    }
+    .followingCardLocation {
+        padding-bottom: .75em;
+    }
+    .followingCardOther {
+        font-size: 5.5vw;
+    }
 }

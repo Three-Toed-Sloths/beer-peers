@@ -4,7 +4,6 @@ import Wrapper from './../../components/Wrapper';
 
 import "./ViewRecipe.css";
 
-
 class ViewRecipe extends Component {
     state = {
         id: this.props.match.params.id
@@ -21,7 +20,5 @@ class ViewRecipe extends Component {
         )
     }
 }
-
-
 
 export default ViewRecipe;

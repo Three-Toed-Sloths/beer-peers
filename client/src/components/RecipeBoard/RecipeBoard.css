@@ -1,4 +1,6 @@
 .recipeHeader {
+    font-family: 'EB Garamond', serif;
+    font-size: 3em;
     text-align: center;
-    width: 100%;
+    margin-bottom: .5em;
 }
