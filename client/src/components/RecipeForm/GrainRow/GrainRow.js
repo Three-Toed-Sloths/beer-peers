@@ -13,6 +13,7 @@ const GrainRow = props => (
                     type="text"
                     className="maltName"
                     name='name'
+                    maxLength={50}
                     value={props.nameValue}
                     onChange={props.nameUpdate}
                     placeholder="Malt Name"
@@ -25,6 +26,8 @@ const GrainRow = props => (
                     type="number"
                     className="maltWeight"
                     name='amount'
+                    min={0}
+                    max={10000}
                     value={props.weightValue}
                     onChange={props.weightUpdate}
                     placeholder="Weight"
