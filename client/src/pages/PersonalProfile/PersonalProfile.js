@@ -39,7 +39,6 @@ class PersonalProfile extends Component {
                     recipeArr: res.data.recipes
                 });
             })
-            .then(() => {console.log('got user')})
             .catch(err => console.log(err));
     }
 

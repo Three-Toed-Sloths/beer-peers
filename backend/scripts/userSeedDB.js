@@ -18,6 +18,7 @@ const userSeed = [
         last: "Clear"
     },
     username: "nmclear",
+    password: '',
     contact: {
         email: "nickclear22@gmail.com",
         phone: "231-409-0332",
@@ -29,7 +30,8 @@ const userSeed = [
         followers:[],
         following:[],
         favorites: []
-    }
+    },
+    image: ''
   },
   {
     name: {
@@ -37,10 +39,11 @@ const userSeed = [
         last: "Yeung"
     },
     username: "dyeung",
+    password: '',
     contact: {
         email: "d@a.com",
         phone: "111-111-1111",
-        city: "Westminster",
+        city: "Fountain Valley",
         state: "CA"
     },
     recipes: [],
@@ -48,7 +51,8 @@ const userSeed = [
         followers:[],
         following:[],
         favorites: []
-    }
+    },
+    image: ''
   },
   {
     name: {
@@ -56,6 +60,7 @@ const userSeed = [
         last: "Saglietto"
     },
     username: "marcosag",
+    password: '',
     contact: {
         email: "marco@sag.com",
         phone: "111-111-1111",
@@ -67,7 +72,8 @@ const userSeed = [
         followers:[],
         following:[],
         favorites: []
-    }
+    },
+    image: ''
   },
   {
     name: {
@@ -75,6 +81,7 @@ const userSeed = [
         last: "Patel"
     },
     username: "niravpatel",
+    password: '',
     contact: {
         email: "nirav@patel.com",
         phone: "111-111-1111",
@@ -86,7 +93,8 @@ const userSeed = [
         followers:[],
         following:[],
         favorites: []
-    }
+    },
+    image: ''
   },
   {
     name: {
@@ -94,6 +102,7 @@ const userSeed = [
         last: "Smith"
     },
     username: "dougiedougdoug",
+    password: '',
     contact: {
         email: "doug@doug.com",
         phone: "111-111-1111",
@@ -105,7 +114,8 @@ const userSeed = [
         followers:[],
         following:[],
         favorites: []
-    }
+    },
+    image: ''
   }
 ];
 

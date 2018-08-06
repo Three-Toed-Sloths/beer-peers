@@ -12,7 +12,8 @@
 }
 .followPic{
     height: 128px;
-    width: 128px;
+    width: auto;
+    max-width: 128px;
     border-radius: 100%;
 }
 .followingCard_picture, .followingCard_location, .followingCard_social{
