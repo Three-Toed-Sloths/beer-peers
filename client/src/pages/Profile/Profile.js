@@ -1,7 +1,5 @@
 import React, {Component} from "react";
-import Grid from 'react-bootstrap/lib/Grid';
-import Col from 'react-bootstrap/lib/Col';
-import Row from 'react-bootstrap/lib/Row';
+import { Grid, Row, Col } from 'react-bootstrap';
 import ProfileCard from "../../components/ProfileCard";
 import SecondaryNav from "../../components/SecondaryNav";
 import API from "../../utils/userAPI";
@@ -10,7 +8,6 @@ import "./Profile.css";
 class Profile extends Component {
 
     state = {
-        path: 'profile',
         identify: this.props.match.params.id,
         first: "",
         last: "",
@@ -131,25 +128,22 @@ class Profile extends Component {
                         </Col>
                     </Row>
                     <Row>
-                        <Col sm={12}>
-                            <SecondaryNav
-                            path={this.state.path}
-                            iden={this.state.identify}
-                            />
-                        </Col>
+                        <SecondaryNav path='profile' iden={this.state.identify}/>
                     </Row>
                     <Row>
-                        {this.state.recipeArr.map((recipe, i) =>
-                            <Col key={`recipe${i}`} className="recipeCardShort" sm={6} xs={12}>
-                                <a href={`/recipes/${recipe._id}`}>
-                                    <p style={{background: this.colorType(recipe.style)}}>
-                                        {"Name: " + recipe.name}<br/>
-                                        <hr className="profileHorizontal"/>
-                                        {" Style: " + recipe.style}
-                                    </p>
-                                </a>
-                            </Col>
-                        )}
+                        <Col sm={12}>
+                            {this.state.recipeArr.map((recipe, i) =>
+                                <Col key={`recipe${i}`} className="recipeCardShort" sm={6} xs={12}>
+                                    <a href={`/recipes/${recipe._id}`}>
+                                        <p style={{background: this.colorType(recipe.style)}}>
+                                            {"Name: " + recipe.name}<br/>
+                                            <hr className="profileHorizontal"/>
+                                            {" Style: " + recipe.style}
+                                        </p>
+                                    </a>
+                                </Col>
+                            )}
+                        </Col>
                     </Row>
                 </Grid>
             </div>
