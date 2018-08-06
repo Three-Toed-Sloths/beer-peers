@@ -1,7 +1,6 @@
 const bcrypt = require('bcryptjs');
 const db = require('../models');
 
-// METHODS - loginController
 module.exports = {
 
   checkUsername: (req, res) => {
@@ -21,7 +20,7 @@ module.exports = {
         // )
         // =======================================================================================
 
-        bcrypt.compare(req.params.password, user.password).then((result) => {
+        bcrypt.compare(req.params.password, user.password).then(result => {
           (result ? res.json({ id: user._id, result: true }) : res.json({ id: user._id, result: false }))
         })
       )

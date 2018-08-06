@@ -9,6 +9,6 @@ export default {
   updateUser: (id, data) => axios.put(`/api/users/${id}`, data),
   // DELETE USER BY ID
   deleteUser: id => axios.delete(`/api/users/${id}`),
-  // POST NEW USER original
+  // POST NEW USER
   saveUser: userData => axios.post('/api/users', userData),
 };

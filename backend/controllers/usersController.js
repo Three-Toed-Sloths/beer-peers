@@ -19,12 +19,25 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  // ======================== NON HASH PASSWORD OPTIONS ====================================
   // create: (req, res) => {
   //   db.User
   //     .create(req.body)
   //     .then(dbModel => res.json(dbModel))
   //     .catch(err => res.status(422).json(err));
   // },
+  // =======================================================================================
+  create: (req, res) => {
+    bcrypt.genSalt(10, (err, salt) => {
+      bcrypt.hash(req.body.password, salt, (err, hash) => {
+        req.body.password = hash;
+        db.User
+          .create(req.body)
+          .then(dbModel => res.json(dbModel))
+          .catch(err => res.status(422).json(err));
+      });
+    });
+  },
   update: (req, res) => {
     db.User
       .update({ _id: req.params.id }, req.body, {password: 0})
@@ -37,19 +50,5 @@ module.exports = {
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
-  },
-
-
-
-  create: (req, res) => {
-    bcrypt.genSalt(10, (err, salt) => {
-      bcrypt.hash(req.body.password, salt, (err, hash) => {
-        req.body.password = hash;
-        db.User
-          .create(req.body)
-          .then(dbModel => res.json(dbModel))
-          .catch(err => res.status(422).json(err));
-      });
-    });
   }
 };
