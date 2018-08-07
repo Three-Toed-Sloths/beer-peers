@@ -1,7 +1,7 @@
 {
-  "name": "mern",
+  "name": "beerpeers",
   "version": "1.0.0",
-  "description": "Project 3",
+  "description": "Beer Peers Social Recipe App for Brewers",
   "main": "server.js",
   "test": "jest",
   "scripts": {
@@ -31,8 +31,6 @@
     "if-env": "^1.0.4",
     "mongoose": "^5.0.17",
     "nightmare": "^3.0.1",
-    "passport": "^0.4.0",
-    "passport-local": "^1.0.0",
     "react": "^16.4.1",
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.4.1",

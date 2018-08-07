@@ -14,6 +14,8 @@ const HopRow = props => (
                 type="text"
                 className="hopName"
                 name='name'
+                maxLength={50}
+                required
                 value={props.nameValue}
                 onChange={props.nameUpdate}
                 placeholder="Hop Name"
@@ -29,6 +31,8 @@ const HopRow = props => (
                     type="number"
                     className="alphaInput"
                     name='alpha'
+                    min={0}
+                    max={100}
                     value={props.alphaValue}
                     onChange={props.alphaUpdate}
                     placeholder="Alpha-Acids"
@@ -46,6 +50,8 @@ const HopRow = props => (
                 type="number"
                 className="hopWeight"
                 name='amount'
+                min={0}
+                max={1000}
                 value={props.weightValue}
                 onChange={props.weightUpdate}
                 placeholder="Weight"
@@ -61,6 +67,7 @@ const HopRow = props => (
                     type="text"
                     className="hopAddition"
                     name='alpha'
+                    maxLength={20}
                     value={props.additionValue}
                     onChange={props.additionUpdate}
                     placeholder="30 min"

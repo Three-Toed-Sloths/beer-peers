@@ -10,7 +10,7 @@ class ViewRecipe extends Component {
         id: this.props.match.params.id
     }  
         render() {
-        return(
+        return (
             <div className="viewRecipeBackground">
                 <div className="viewRecipeOpacity">
                     <Wrapper>
@@ -21,7 +21,5 @@ class ViewRecipe extends Component {
         )
     }
 }
-
-
 
 export default ViewRecipe;
