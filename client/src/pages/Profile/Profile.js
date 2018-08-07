@@ -63,6 +63,61 @@ class Profile extends Component {
         }
     }
 
+    handleComponentChange = comp => {
+        this.setState({currentComp: comp});
+    };
+
+    renderComponent = () => {
+        switch(this.state.currentComp){
+            case "pinnedRec":
+            //load pinned rec comp
+            return(
+            this.state.recipeArr.map((recipe, i) =>
+                <ProfileRecipeCard 
+                    key={`recipe${i}`}
+                    recipeUrl={`/recipes/${recipe._id}`}
+                    recipeColor={{background: this.colorType(recipe.style)}}
+                    recipeName={recipe.name}
+                    recipeStyle={recipe.style}
+                />
+            ));
+            case "following":
+            //load following component
+            return(
+                <Col>
+                    THIS IS FOLLOWING
+                </Col>
+            )
+            // break;
+            case "followers":
+            return(
+                <Col>
+                    Followers
+                </Col>
+            )
+            // break;
+            case "likes":
+            //load likes component
+            return(
+                <Col>
+                    Likes
+                </Col>
+            )
+            // break;
+            case "recipes":
+            //load recipes component
+            return(
+                <Col>
+                    Recipes
+                </Col>
+            )
+            // break;
+            default:
+            //load pinned rec comp
+            break;
+        }
+    };
+    
     handleAddFollow = brewerToFollowID => {
         const currentBrewerID = sessionStorage.getItem('userID')
         // UPDATE THE CURRENT BREWER'S FOLLOWING LIST
@@ -125,18 +180,15 @@ class Profile extends Component {
                             <SecondaryNav
                             path={this.state.path}
                             iden={this.state.id}
+                            currentComp={this.state.currentComp}
+                            handleComponentChange={this.handleComponentChange}
                             />
                         </Col>
                     </Row>
                     <Row>
-                    {this.state.recipeArr.map((recipe, i) =>
-                        <ProfileRecipeCard 
-                            key={`recipe${i}`}
-                            id={recipe._id}
-                            style={recipe.style}
-                            name={recipe.name}
-                        />
-                    )}
+                        <Col xs={12}>
+                            {this.renderComponent()}
+                        </Col>
                     </Row>
                 </Grid>
             </div>

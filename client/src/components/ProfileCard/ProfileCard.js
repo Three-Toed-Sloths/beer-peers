@@ -12,13 +12,13 @@ const ProfileCard =  props => (
                 <img className='profilePic' src={props.img} alt={`${props.userName}ProfilePic`}></img>
             </Col>
             <div className='profileCardTextHolder'>
-                <Col className='profileCardLocation' xs={10} sm={4}>
+                <Col className="profileCardLocation" xs={10} sm={3}>
                     <div>
                         <p className='profileCardText'>{props.userName}</p>
                         <p className='profileCardText profileCardLocation'>{props.location}</p>
                     </div>
                 </Col>
-                <Col className='profileCardSocial' xs={10} sm={4}>
+                <Col className="profileCardSocial" xs={10} sm={5}>
                     <div>
                         <p className='profileCardText'>{props.email}</p>
                     </div>

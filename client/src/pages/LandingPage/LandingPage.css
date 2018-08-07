@@ -49,6 +49,7 @@
 .landingBtn {
     font-family: 'EB Garamond', serif;
     font-weight: bold;
+    transition: .5s;
 }
 
 .landingSubTitle {
@@ -69,15 +70,15 @@
 }
 
 .landingAddOn {
-    background-image: url(../../images/alexander-mils-431544-unsplash.jpg);
+    background-image: url('../../images/elevate-755021-unsplash.jpg');
     background-repeat: no-repeat;
-    background-position: center top;
-    background-size: 60%;
+    background-position: center;
+    background-size: 100%;
     min-height: 60vh;
 }
 
 .landingFirstListItem {
-    margin-top: 2.5em;
+    margin-top: 3em;
 }
 
 .landingListItem {
@@ -96,8 +97,8 @@
     .landingTitle {
         padding-top: 1em;
     }
-    .landingAddOn {
-        background-size: 80%;
+    .landingFirstListItem {
+        margin-top: 2.5em;
     }
 }
 
@@ -108,10 +109,6 @@
     }
     .landingCatch {
         font-size: 2.75em;
-    }
-    .landingAddOn {
-        background-size: 60%;
-        background-position-y: -50px;
     }
 }
 
@@ -131,7 +128,7 @@
     }
     .landingAddOn {
         background-size: 100%;
-        background-position-y: -30px;
+        min-height: 30vh;
     }
 }
 
@@ -140,6 +137,6 @@
         font-size: 1.8em;
     }
     .landingAddOn {
-        background-position-y: 0;
+        min-height: 25vh;
     }
 }

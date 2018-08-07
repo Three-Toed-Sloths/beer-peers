@@ -6,15 +6,22 @@
     font-family: 'EB Garamond', serif;
     text-shadow: 4px 4px 14px black;
 }
+
 .profileCardContent{
     height: 300px;
 }
+
 .profilePic{
+    /* 
+    background: white;
+    */
     max-height: 200px;
     width: auto;
     border: solid white 6px;
     margin-top: 8em;
+    background-color: white;
 }
+
 .profileCardPicture,
 .profileCardLocation,
 .profileCardSocial {
@@ -26,6 +33,7 @@
 .profileCardText {
     height: 100%;
     margin-top: 2em;
+    margin-bottom: 0;
     font-size: 35px;
     color: white;
 }
@@ -38,14 +46,14 @@
     .profileCardLocation {
         margin-top: 0;
     }
+    .profileCardText {
+        font-size: 3vw;
+    }
 }
 
 @media only screen and (max-width: 768px) {
     .profileCardText {
         font-size: 25px;
-    }
-    .profileCardLocation {
-        margin-top: 0;
     }
     .profileCardTextHolder {
         margin-top: 2em;

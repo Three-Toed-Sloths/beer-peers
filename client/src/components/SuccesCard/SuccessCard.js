@@ -10,7 +10,9 @@ const SuccessCard = () => (
                 <Row>
                     <p className='text-center'>
                         <h1 className='success-title'><strong>Congrautlations!</strong></h1>
-                        <hr/>
+                    </p>
+                    <hr/>
+                    <p>
                         <h3 className='success-h3'>You are now registered and may login. Please click the button below to go to the login page.</h3>
                     </p>
                     <Col xs={0} md={4} />
