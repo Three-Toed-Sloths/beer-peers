@@ -142,14 +142,12 @@ class Profile extends Component {
                     THIS IS FOLLOWING
                 </Col>
             )
-            break;
             case "followers":
             return(
                 <Col>
                     Followers
                 </Col>
             )
-            break;
             case "likes":
             //load likes component
             return(
@@ -157,7 +155,6 @@ class Profile extends Component {
                     Likes
                 </Col>
             )
-            break;
             case "recipes":
             //load recipes component
             return(
@@ -165,7 +162,6 @@ class Profile extends Component {
                     Recipes
                 </Col>
             )
-            break;
             default:
             //load pinned rec comp
             break;
