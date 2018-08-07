@@ -1,10 +1,8 @@
 
 import React, {Component} from "react";
 import { Grid, Col, Row } from 'react-bootstrap';
-import SecondaryNav from '../../components/SecondaryNav';
 import FollowingCard from "../../components/FollowingCard";
 import API from "../../utils/userAPI";
-import ProfileCard from "../../components/ProfileCard";
 import './Following.css';
 
 class Following extends Component {
@@ -39,37 +37,21 @@ class Following extends Component {
     render(){
 
         return (
-            <div className="profileBackground">
-                <Grid>
-                    <Row>
-                        <Col sm={12}>
-                            <ProfileCard 
-                            userName={this.state.name.first +  " " + this.state.name.last}
-                            location={this.state.contact.city + ", " + this.state.contact.state}
-                            email={this.state.contact.email}
-                            img={this.state.img}
-                            recipes={this.state.recipes}
-                            ></ProfileCard>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <SecondaryNav path='profile' iden={this.state.id}/>
-                    </Row>
-                    <Row>
-                        <Col xs={12}>
-                            <h2 className='totalFollowingHeader'>
-                                Total Following: {this.state.followingArr.length} Brewers
-                            </h2>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col xs={12}>
-                            {this.state.followingArr.map((user, i) =>
-                                <FollowingCard key={`followingCard${i}`} user={user} />
-                            )}
-                        </Col>
-                    </Row>
-                </Grid>
+            <div>
+                <Row>
+                    <Col xs={12}>
+                        <h2 className='totalFollowingHeader'>
+                            Total Following: {this.state.followingArr.length} Brewers
+                        </h2>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col xs={12}>
+                        {this.state.followingArr.map((user, i) =>
+                            <FollowingCard key={`followingCard${i}`} user={user} />
+                        )}
+                    </Col>
+                </Row>
             </div>
         )
     }

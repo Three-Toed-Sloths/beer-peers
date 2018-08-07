@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Grid, Col, Row } from 'react-bootstrap';
 import ProfileCard from '../../components/ProfileCard';
 import ProfileRecipeCard from '../../components/ProfileRecipeCard';
+import FollowingCard from '../../components/FollowingCard';
 import SecondaryNav from '../../components/SecondaryNav';
 import API from '../../utils/userAPI';
 import './Profile.css';
@@ -19,6 +20,8 @@ class Profile extends Component {
         image: '',
         recipeArr: [],
         followAlert: '',
+        followingArr: [],
+        followersArr: [],
         showFollowAlert: false,
         currentComp: "pinnedRec",
         alertClass: ''
@@ -38,7 +41,9 @@ class Profile extends Component {
                     state: res.data.contact.state,
                     email: res.data.contact.email,
                     image: res.data.image,
-                    recipeArr: res.data.recipes
+                    recipeArr: res.data.recipes,
+                    followingArr: res.data.social.following,
+                    followersArrArr: res.data.social.followers
                 });
             })
             .catch(err => err);
@@ -71,36 +76,58 @@ class Profile extends Component {
     renderComponent = () => {
         switch(this.state.currentComp){
             case "pinnedRec":
-            //load pinned rec comp
             return(
             this.state.recipeArr.map((recipe, i) =>
-                <PinnedRecipeCard 
+                <ProfileRecipeCard 
                     key={`recipe${i}`}
-                    recipeUrl={`/recipes/${recipe._id}`}
-                    recipeColor={{background: this.colorType(recipe.style)}}
-                    recipeName={recipe.name}
-                    recipeStyle={recipe.style}
+                    _id={recipe._id}
+                    style={recipe.style}
+                    name={recipe.name}
                 />
             ));
             case "following":
-            //load following component
             return(
-                <Col>
-                    THIS IS FOLLOWING
-                </Col>
+                <div>
+                    <Row>
+                        <Col xs={12}>
+                            <h2 className='totalFollowingHeader'>
+                                Total Following: {this.state.followingArr.length} Brewers
+                            </h2>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col xs={12}>
+                            {this.state.followingArr.map((user, i) =>
+                                <FollowingCard key={`followingCard${i}`} user={user} />
+                            )}
+                        </Col>
+                    </Row>
+                </div>
             )
             case "followers":
             return(
-                <Col>
-                    Followers
-                </Col>
+                <div>
+                    <Row>
+                        <Col xs={12}>
+                            <h2 className='totalFollowerHeader'>
+                                Total Followers: {this.state.followersArr.length} Brewers
+                            </h2>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col xs={12}>
+                            {this.state.followersArr.map((user, i) =>
+                                <FollowingCard key={`followerCard${i}`} user={user} />
+                            )}
+                        </Col>
+                    </Row>
+                </div>
             )
             case "likes":
-            //load likes component
             return(
-                <Col>
-                    Likes
-                </Col>
+                <div>
+                    
+                </div>
             )
             case "recipes":
             //load recipes component

@@ -57,20 +57,7 @@ class Followers extends Component {
                     <Row>
                         <SecondaryNav path='profile' iden={this.state.id}/>
                     </Row>
-                    <Row>
-                        <Col xs={12}>
-                            <h2 className='totalFollowerHeader'>
-                                Total Followers: {this.state.followersArr.length} Brewers
-                            </h2>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col xs={12}>
-                            {this.state.followersArr.map((user, i) =>
-                                <FollowingCard key={`followerCard${i}`} user={user} />
-                            )}
-                        </Col>
-                    </Row>
+                    
                 </Grid>
             </div>
         )
