@@ -385,7 +385,7 @@ class RecipeForm extends Component {
                     </Col>
                     <Col md={6}>
                         <FormGroup validationState={this.textMinMaxValidation(this.state.directions, 1, 4000)}>
-                            <ControlLabel>Recipe Instructions:</ControlLabel>
+                            <ControlLabel>*Recipe Instructions:</ControlLabel>
                             <FormControl
                                 componentClass='textarea'
                                 name='directions'
