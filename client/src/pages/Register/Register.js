@@ -21,7 +21,7 @@ class Register extends Component {
         city: '',
         state: '',
         stateMessage: '',
-        image: 'http://www.brattleborofoodcoop.coop/wp-content/uploads/2017/07/cropped-BFC-Sprig-Favicon-450x450.png',
+        image: 'https://thumbs.dreamstime.com/b/vintage-beer-mug-seal-29697271.jpg',
         isRegistered: false
     };
 

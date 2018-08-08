@@ -3,4 +3,5 @@
     margin-top: 1em;
     font-family: 'EB Garamond', serif;
     font-weight: bold;
+    transition: .5s;
 };

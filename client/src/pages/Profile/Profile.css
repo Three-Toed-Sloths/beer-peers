@@ -12,6 +12,7 @@
 .totalFollowerHeader, .totalFollowingHeader {
     text-align: center;
     width: 100%;
+    font-family: 'EB Garamond', serif;
 }
 
 @media only screen and (max-width: 426px) {
