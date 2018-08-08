@@ -8,7 +8,7 @@ class ViewRecipe extends Component {
     state = {
         id: this.props.match.params.id
     }  
-        render() {
+    render() {
         return (
             <div className="viewRecipeBackground">
                 <div className="viewRecipeOpacity">

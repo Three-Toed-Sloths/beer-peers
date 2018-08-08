@@ -1,7 +1,8 @@
 import React from "react";
-import { Row, Col, Button } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import Wrapper from '../../components/Wrapper';
 import LoginWell from '../../components/LoginWell';
+import LandingSignUpBtn from '../../components/LandingSignUpBtn';
 import './LandingPage.css';
 
 const LandingPage = () => (
@@ -42,7 +43,7 @@ const LandingPage = () => (
                                 <Row>
                                     <Col xs={0} md={4} />
                                     <Col xs={12} md={4}>
-                                        <Button className='landingBtn' bsSize='large' block href='/register'>Sign Up</Button>
+                                        <LandingSignUpBtn />
                                     </Col>
                                 </Row>
                             </Col>

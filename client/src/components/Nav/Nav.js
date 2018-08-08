@@ -66,18 +66,20 @@ class Head extends Component {
                 </Navbar.Header>
                 <Navbar.Collapse>
                     <Nav pullRight>
-                        <NavItem className='navLinks' eventKey={1} onClick={this.state.onNavTabClick}>
-                            {this.state.navTab}
+                        <NavItem className='navLinks' eventKey={1} href='/'>
+                        <Glyphicon glyph='home' />
                         </NavItem>
-                        <NavItem className='navLinks' eventKey={2} href='/recipes'>
-                            Top Recipes
-                        </NavItem>
-                        <NavItem className='navLinks' eventKey={3} href='/brewers'>
+                        <NavItem className='navLinks' eventKey={2} href='/brewers'>
                             Top Brewers
+                        </NavItem>
+                        <NavItem className='navLinks' eventKey={3} href='/recipes'>
+                            Top Recipes
                         </NavItem>
                         <NavItem className='navLinks' style={this.state.display} eventKey={4} href={this.state.profileLink}>
                             <Glyphicon glyph='user' />
-                            {/* View Profile */}
+                        </NavItem>
+                        <NavItem className='navLinks' eventKey={5} onClick={this.state.onNavTabClick}>
+                            {this.state.navTab}
                         </NavItem>
                     </Nav>
                 </Navbar.Collapse>

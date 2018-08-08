@@ -12,7 +12,6 @@ import './Profile.css';
 class Profile extends Component {
 
     state = {
-        path: 'profile',
         id: this.props.match.params.id,
         first: '',
         last: '',
@@ -51,28 +50,32 @@ class Profile extends Component {
                     likes: res.data.social.favorites,
                     username: res.data.username
                 });
+                console.log(res.data.recipes)
             })
             .catch(err => err);
     }
 
     handleFollowClick = () => {
+        const loggedIn = sessionStorage.getItem('loggedIn');
         const currentBrewerID = sessionStorage.getItem('userID');
 
-        if(!currentBrewerID){
-            this.setState({
-                followAlert: `Please log in to follow ${this.state.first} ${this.state.last}`,
-                showFollowAlert: true,
-                alertClass: 'danger'
-            })
+        if(!loggedIn){
+            const msg = `Please log in to follow ${this.state.first} ${this.state.last}`;
+            this.showMsgWithClass(msg, 'danger')
         } else if(currentBrewerID === this.state.id){
-            this.setState({
-                followAlert: `Woah take it easy ${this.state.first}, no need to follow yourself`,
-                showFollowAlert: true,
-                alertClass: 'danger'
-            })
+            const msg = `Please don't follow yourself ${this.state.first}`;
+            this.showMsgWithClass(msg, 'danger');
         } else {
             this.handleAddFollow(this.state.id)
         }
+    }
+
+    showMsgWithClass = (message, alertClass) => {
+        this.setState({
+            showFollowAlert: true,
+            followAlert: message,
+            alertClass: alertClass ? alertClass : 'danger'
+        })
     }
 
     handleComponentChange = comp => {
@@ -119,6 +122,9 @@ class Profile extends Component {
             case "likes":
             return(
                 <Col xs={12}>
+                    <h2 className='totalLikesHeader'>
+                        Total Likes: {this.state.likes.length} Recipes
+                    </h2>
                     {this.state.likes.map(recipe => (
                         <RecipeCard
                             key={`likedRecipe${recipe._id}`}
@@ -130,9 +136,13 @@ class Profile extends Component {
                             batchUnits={recipe.specs.batch.units}
                             ibu={recipe.specs.ibu}
                             fg={recipe.specs.fg}
-                            brewer={this.state.username}
-                            brewerFirstName={this.state.first}
-                            brewerLastName={this.state.last}
+
+                            brewer={recipe.brewer.username}
+                            brewerFirstName={recipe.brewer.name.first}
+                            brewerLastName={recipe.brewer.name.last}
+                            // brewer={this.state.username}
+                            // brewerFirstName={this.state.first}
+                            // brewerLastName={this.state.last}
                             description={recipe.description}
                         />
                     ))}
@@ -142,7 +152,13 @@ class Profile extends Component {
             case "recipes":
             return(
                 <Col xs={12}>
-                    {this.state.recipeArr.map(recipe => (
+                    <h2 className='totalLikesHeader'>
+                        Total Recipes: {this.state.recipeArr.length} Recipes
+                    </h2>
+                    {this.state.recipeArr.map(recipe => {
+                            console.log(recipe);
+                            
+                        return (
                         <RecipeCard
                             key={`recipe${recipe._id}`}
                             id={recipe._id}
@@ -153,12 +169,15 @@ class Profile extends Component {
                             batchUnits={recipe.specs.batch.units}
                             ibu={recipe.specs.ibu}
                             fg={recipe.specs.fg}
-                            brewer={this.state.username}
-                            brewerFirstName={this.state.first}
-                            brewerLastName={this.state.last}
+                            brewer={recipe.brewer.username}
+                            brewerFirstName={recipe.brewer.name.first}
+                            brewerLastName={recipe.brewer.name.last}
+                            // brewer={this.state.username}
+                            // brewerFirstName={this.state.first}
+                            // brewerLastName={this.state.last}
                             description={recipe.description}
                         />
-                    ))}
+                    )})}
                 </Col>
             );
             
@@ -173,28 +192,21 @@ class Profile extends Component {
         API.updateUser(currentBrewerID, {$addToSet: {'social.following': [brewerToFollowID]}})
         .then(res => {
             if(res.data.updated > 0){
+                
                 // UPDATE THE OTHER BREWER'S FOLLOWERS LIST
                 API.updateUser(brewerToFollowID, {$addToSet: {'social.followers': [currentBrewerID]}})
-                // .then(res => 'success')
                 .then(res => {
-                    this.setState({
-                        followAlert: `Thanks for following ${this.state.first} ${this.state.last}!`,
-                        showFollowAlert: true,
-                        alertClass: 'success'
-                    })
+                    const msg = `Thanks for following ${this.state.first} ${this.state.last}!`;
+                    this.showMsgWithClass(msg, 'success');
                 })
                 .catch(err => err);
             } else {
-                this.setState({
-                    followAlert: `You already follow ${this.state.first} ${this.state.last}`,
-                    showFollowAlert: true,
-                    alertClass: 'danger'
-                })
+                const msg = `You already follow ${this.state.first} ${this.state.last}`;
+                this.showMsgWithClass(msg, 'danger');
             }
         })
         .catch(err => err);
     }
-
 
     closeFollowAlert = () => {
         this.setState({
@@ -233,10 +245,8 @@ class Profile extends Component {
                     <Row>
                         <Col xs={12}>
                             <SecondaryNav
-                            path={this.state.path}
-                            iden={this.state.id}
-                            currentComp={this.state.currentComp}
-                            handleComponentChange={this.handleComponentChange}
+                                currentComp={this.state.currentComp}
+                                handleComponentChange={this.handleComponentChange}
                             />
                         </Col>
                     </Row>
@@ -248,7 +258,6 @@ class Profile extends Component {
         );
     }
 }
-
 
 
 export default Profile;

@@ -24,7 +24,7 @@ const RecipeCard = props => (
                 <Grid className="panelBody">
                     <Row>
                         <Col xs={12} md={12}>
-                            <h2>Brewer: {props.brewer} - {props.brewerFirstName} {props.brewerLastName}</h2>
+                            <h2>Brewer: {props.brewerFirstName} {props.brewerLastName} - {props.brewer}</h2>
                         </Col>
                     </Row>
                     <Row>

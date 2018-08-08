@@ -271,8 +271,8 @@ class Register extends Component {
                                                 name='state'
                                                 onChange={this.handleInputChange}
                                             >
-                                                <option value='' disabled selected>State</option>
-                                                {STATES.map(state => ( <option value={state}>{state}</option> ))}
+                                                <option value='' disabled defaultValue>State</option>
+                                                {STATES.map(state => ( <option key={state} value={state}>{state}</option> ))}
                                             </FormControl>
                                         <HelpBlock className='registerError'>{this.state.stateMessage}</HelpBlock>
                                         </FormGroup>

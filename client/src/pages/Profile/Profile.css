@@ -9,10 +9,13 @@
     height: 300px;
 }
 
-.totalFollowerHeader, .totalFollowingHeader {
+.totalFollowerHeader, .totalFollowingHeader,
+.totalLikesHeader, .totalRecipesHeader {
     text-align: center;
     width: 100%;
     font-family: 'EB Garamond', serif;
+    font-size: 3em;
+    margin-bottom: .5em;
 }
 
 @media only screen and (max-width: 426px) {
