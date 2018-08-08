@@ -3,6 +3,7 @@ import { Grid, Col, Row } from 'react-bootstrap';
 import ProfileCard from '../../components/ProfileCard';
 import ProfileRecipeCard from '../../components/ProfileRecipeCard';
 import FollowingCard from '../../components/FollowingCard';
+import RecipeCard from '../../components/RecipeCard';
 import SecondaryNav from '../../components/SecondaryNav';
 import API from '../../utils/userAPI';
 import './Profile.css';
@@ -18,10 +19,12 @@ class Profile extends Component {
         state: '',
         email: '',
         image: '',
+        username: '',
         recipeArr: [],
         followAlert: '',
         followingArr: [],
         followersArr: [],
+        likes:[],
         showFollowAlert: false,
         currentComp: "pinnedRec",
         alertClass: ''
@@ -43,7 +46,9 @@ class Profile extends Component {
                     image: res.data.image,
                     recipeArr: res.data.recipes,
                     followingArr: res.data.social.following,
-                    followersArrArr: res.data.social.followers
+                    followersArrArr: res.data.social.followers,
+                    likes: res.data.social.favorites,
+                    username: res.data.username
                 });
             })
             .catch(err => err);
@@ -85,59 +90,78 @@ class Profile extends Component {
                     name={recipe.name}
                 />
             ));
+
             case "following":
             return(
-                <div>
-                    <Row>
-                        <Col xs={12}>
-                            <h2 className='totalFollowingHeader'>
-                                Total Following: {this.state.followingArr.length} Brewers
-                            </h2>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col xs={12}>
-                            {this.state.followingArr.map((user, i) =>
-                                <FollowingCard key={`followingCard${i}`} user={user} />
-                            )}
-                        </Col>
-                    </Row>
-                </div>
-            )
+                <Col xs={12}>
+                    <h2 className='totalFollowingHeader'>
+                        Total Following: {this.state.followingArr.length} Brewers
+                    </h2>
+                    {this.state.followingArr.map((user, i) =>
+                        <FollowingCard key={`followingCard${i}`} user={user} />
+                    )}
+                </Col>
+            );
+
             case "followers":
             return(
-                <div>
-                    <Row>
-                        <Col xs={12}>
-                            <h2 className='totalFollowerHeader'>
-                                Total Followers: {this.state.followersArr.length} Brewers
-                            </h2>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col xs={12}>
-                            {this.state.followersArr.map((user, i) =>
-                                <FollowingCard key={`followerCard${i}`} user={user} />
-                            )}
-                        </Col>
-                    </Row>
-                </div>
-            )
+                <Col xs={12}>
+                    <h2 className='totalFollowerHeader'>
+                        Total Followers: {this.state.followersArr.length} Brewers
+                    </h2>
+                    {this.state.followersArr.map((user, i) =>
+                        <FollowingCard key={`followerCard${i}`} user={user} />
+                    )}
+                </Col>
+            );
+
             case "likes":
             return(
-                <div>
-                    
-                </div>
-            )
-            case "recipes":
-            //load recipes component
-            return(
-                <Col>
-                    Recipes
+                <Col xs={12}>
+                    {this.state.likes.map(recipe => (
+                        <RecipeCard
+                            key={`likedRecipe${recipe._id}`}
+                            id={recipe._id}
+                            name={recipe.name}
+                            style={recipe.style}
+                            abv={recipe.specs.abv}
+                            batchSize={recipe.specs.batch.size}
+                            batchUnits={recipe.specs.batch.units}
+                            ibu={recipe.specs.ibu}
+                            fg={recipe.specs.fg}
+                            brewer={this.state.username}
+                            brewerFirstName={this.state.first}
+                            brewerLastName={this.state.last}
+                            description={recipe.description}
+                        />
+                    ))}
                 </Col>
-            )
+            );
+
+            case "recipes":
+            return(
+                <Col xs={12}>
+                    {this.state.recipeArr.map(recipe => (
+                        <RecipeCard
+                            key={`recipe${recipe._id}`}
+                            id={recipe._id}
+                            name={recipe.name}
+                            style={recipe.style}
+                            abv={recipe.specs.abv}
+                            batchSize={recipe.specs.batch.size}
+                            batchUnits={recipe.specs.batch.units}
+                            ibu={recipe.specs.ibu}
+                            fg={recipe.specs.fg}
+                            brewer={this.state.username}
+                            brewerFirstName={this.state.first}
+                            brewerLastName={this.state.last}
+                            description={recipe.description}
+                        />
+                    ))}
+                </Col>
+            );
+            
             default:
-            //load pinned rec comp
             break;
         }
     };
