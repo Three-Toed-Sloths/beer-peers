@@ -1,7 +1,4 @@
 .profileCardCard {
-    /* margin-top: 1%; */
-    /* border-radius: 20px; */
-    /* padding: 20px; */
     width: 100%;
     font-family: 'EB Garamond', serif;
     text-shadow: 4px 4px 14px black;
@@ -26,14 +23,11 @@
 .profileCardPicture,
 .profileCardLocation,
 .profileCardSocial {
-    /* text-align: center; */
     padding-left: 0px;
     padding-right: 0px;
 }
 
 .profileCardText {
-    /* height: 100%; */
-    /* margin-top: 2em; */
     margin-bottom: 0;
     font-size: 2.5em;
     color: white;
@@ -53,46 +47,44 @@
     transition: .5s;
 }
 
-/* @media only screen and (max-width: 1024px) {
-    .profileCardLocation {
-        margin-top: 0;
-    }
-    .profileCardText {
-        font-size: 3vw;
-    }
-} */
-
 @media only screen and (max-width: 768px) {
     .profileCardText {
-        font-size: 25px;
+        font-size: 1.75em;
     }
-    .profileCardTextHolder {
-        margin-top: 2em;
+    .profileFollow {
+        margin-top: .5em;
     }
 }
 
 @media only screen and (max-width: 426px) {
     .profileCardName {
         text-Align: center;
+        margin-top: .5em;
+    }
+    .profilePic {
+        margin-top: 1.75em;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
     }
     .profileCardHR {
         margin-bottom: 0;
     }
     .profileCardText {
-        font-size: 25px;
-        text-align: right;
-        margin-top: 0;
+        text-align: center;
+        color: black;
+        text-shadow: 0 0 0;
     }
-    .profileCardTextHolder {
-        margin-top: 0;
-    }
-    .profileFollow {
-        float: right;
+    .profileCardLocation {
+        margin-top: .5em;
     }
 }
 
 @media only screen and (max-width: 376px) {
     .profileCardText {
-        font-size: 21px;
+        font-size: 1.5em;
+    }
+    .profileCardEmail {
+        font-size: 1.2em;
     }
 }

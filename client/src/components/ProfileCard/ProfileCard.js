@@ -17,15 +17,15 @@ const ProfileCard =  props => (
         </Row>
         <Row>
             <Wrapper>
-                <Col xs={2} sm={4}>
+                <Col xs={12} sm={5}>
                     <img className='profilePic' src={props.img} alt={`${props.userName}ProfilePic`}></img>
                 </Col>
-                <Col xs={10} sm={8}>
+                <Col xs={12} sm={7}>
                     <p className='profileCardText profileCardLocation profileCardCap'>{props.location}</p>
-                    <p className='profileCardText'>{props.email}</p>
+                    <p className='profileCardText profileCardEmail'>{props.email}</p>
                     <Row>
-                        <Col xs={6} sm={4} />
-                        <Col xs={6} sm={4}>
+                        <Col xs={0} sm={2} />
+                        <Col xs={12} sm={6}>
                             <FollowBtn brewer={props.brewerID} onClick={props.handleClick} />
                         </Col>
                         <Col xs={0} sm={4} />
@@ -33,32 +33,6 @@ const ProfileCard =  props => (
                 </Col>
             </Wrapper>
         </Row>
-        {/* <Row className='profileCardContent'>
-            <Col className='profileCardPicture' xs={2} sm={4}>
-                <img className='profilePic' src={props.img} alt={`${props.userName}ProfilePic`}></img>
-            </Col>
-            <div className='profileCardTextHolder'>
-                <Col className="profileCardLocation" xs={10} sm={3}>
-                    <div>
-                        <p className='profileCardText profileCardCap'>{props.userName}</p>
-                        <p className='profileCardText profileCardLocation profileCardCap'>{props.location}</p>
-                    </div>
-                </Col>
-                <Col className="profileCardSocial" xs={10} sm={5}>
-                    <Row>
-                        <Col xs={12}>
-                            <p className='profileCardText'>{props.email}</p>
-                        </Col>
-                        <Col xs={6} sm={3}/>
-                        <Col xs={6} sm={6}>
-                            <Button className='profileFollow' bsStyle='warning' bsSize='large' onClick={props.handleClick} block>Follow</Button>
-                            <FollowBtn brewer={props.brewerID} onClick={props.handleClick} />
-                        </Col>
-                        <Col xs={0} sm={3}/>
-                    </Row>
-                </Col>
-            </div>
-        </Row> */}
         <Row>
             <Col xs={12}>
                 <FollowAlert
