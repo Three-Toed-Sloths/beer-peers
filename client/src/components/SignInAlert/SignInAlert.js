@@ -7,7 +7,7 @@ const SignInAlert = () => (
         <Row>
             <Col xs={12}>
                 <Jumbotron className='jumbo'>
-                    <h1>You Hop'd To Far</h1>
+                    <h1>You Hop'd Too Far</h1>
                     <h2>
                         Please Login To Add A Recipe
                     </h2>
