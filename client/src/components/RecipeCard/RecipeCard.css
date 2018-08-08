@@ -1,8 +1,13 @@
+.recipeCard{
+    border: 2px black solid;
+    border-radius: 20px;
+}
 .recipeCardPanelHeading{
     text-align: center;
-    background: lightgreen;
+    background: white;
     color: black;
     font-family: 'EB Garamound', serif;
+    border-radius: 20px;
 }
 .panelBody{
     width: 100%;
@@ -10,6 +15,9 @@
 }
 .panelCollapse{
     background: lightgoldenrodyellow;
+    border-radius: 20px;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
 }
 .recipeCardText{
     font-size: 1.3em;

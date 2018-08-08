@@ -47,7 +47,7 @@ class Profile extends Component {
                     image: res.data.image,
                     recipeArr: res.data.recipes,
                     followingArr: res.data.social.following,
-                    followersArrArr: res.data.social.followers,
+                    followersArr: res.data.social.followers,
                     likes: res.data.social.favorites,
                     username: res.data.username
                 });
