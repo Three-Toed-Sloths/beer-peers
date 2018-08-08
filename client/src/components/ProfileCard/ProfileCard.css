@@ -17,6 +17,7 @@
     */
     max-height: 200px;
     width: auto;
+    max-width: 200px;
     border: solid white 6px;
     margin-top: 8em;
     background-color: white;

@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import { Grid, Col, Row } from 'react-bootstrap';
 import ProfileCard from '../../components/ProfileCard';
 import ProfileRecipeCard from '../../components/ProfileRecipeCard';
+import FollowingCard from '../../components/FollowingCard';
+import RecipeCard from '../../components/RecipeCard';
 import SecondaryNav from '../../components/SecondaryNav';
 import API from '../../utils/userAPI';
 import './Profile.css';
@@ -17,9 +19,14 @@ class Profile extends Component {
         state: '',
         email: '',
         image: '',
+        username: '',
         recipeArr: [],
         followAlert: '',
+        followingArr: [],
+        followersArr: [],
+        likes:[],
         showFollowAlert: false,
+        currentComp: "pinnedRec",
         alertClass: ''
     }
 
@@ -37,7 +44,11 @@ class Profile extends Component {
                     state: res.data.contact.state,
                     email: res.data.contact.email,
                     image: res.data.image,
-                    recipeArr: res.data.recipes
+                    recipeArr: res.data.recipes,
+                    followingArr: res.data.social.following,
+                    followersArrArr: res.data.social.followers,
+                    likes: res.data.social.favorites,
+                    username: res.data.username
                 });
             })
             .catch(err => err);
@@ -70,50 +81,87 @@ class Profile extends Component {
     renderComponent = () => {
         switch(this.state.currentComp){
             case "pinnedRec":
-            //load pinned rec comp
             return(
             this.state.recipeArr.map((recipe, i) =>
                 <ProfileRecipeCard 
                     key={`recipe${i}`}
-                    recipeUrl={`/recipes/${recipe._id}`}
-                    recipeColor={{background: this.colorType(recipe.style)}}
-                    recipeName={recipe.name}
-                    recipeStyle={recipe.style}
+                    _id={recipe._id}
+                    style={recipe.style}
+                    name={recipe.name}
                 />
             ));
+
             case "following":
-            //load following component
             return(
-                <Col>
-                    THIS IS FOLLOWING
+                <Col xs={12}>
+                    <h2 className='totalFollowingHeader'>
+                        Total Following: {this.state.followingArr.length} Brewers
+                    </h2>
+                    {this.state.followingArr.map((user, i) =>
+                        <FollowingCard key={`followingCard${i}`} user={user} />
+                    )}
                 </Col>
-            )
-            // break;
+            );
+
             case "followers":
             return(
-                <Col>
-                    Followers
+                <Col xs={12}>
+                    <h2 className='totalFollowerHeader'>
+                        Total Followers: {this.state.followersArr.length} Brewers
+                    </h2>
+                    {this.state.followersArr.map((user, i) =>
+                        <FollowingCard key={`followerCard${i}`} user={user} />
+                    )}
                 </Col>
-            )
-            // break;
+            );
+
             case "likes":
-            //load likes component
             return(
-                <Col>
-                    Likes
+                <Col xs={12}>
+                    {this.state.likes.map(recipe => (
+                        <RecipeCard
+                            key={`likedRecipe${recipe._id}`}
+                            id={recipe._id}
+                            name={recipe.name}
+                            style={recipe.style}
+                            abv={recipe.specs.abv}
+                            batchSize={recipe.specs.batch.size}
+                            batchUnits={recipe.specs.batch.units}
+                            ibu={recipe.specs.ibu}
+                            fg={recipe.specs.fg}
+                            brewer={this.state.username}
+                            brewerFirstName={this.state.first}
+                            brewerLastName={this.state.last}
+                            description={recipe.description}
+                        />
+                    ))}
                 </Col>
-            )
-            // break;
+            );
+
             case "recipes":
-            //load recipes component
             return(
-                <Col>
-                    Recipes
+                <Col xs={12}>
+                    {this.state.recipeArr.map(recipe => (
+                        <RecipeCard
+                            key={`recipe${recipe._id}`}
+                            id={recipe._id}
+                            name={recipe.name}
+                            style={recipe.style}
+                            abv={recipe.specs.abv}
+                            batchSize={recipe.specs.batch.size}
+                            batchUnits={recipe.specs.batch.units}
+                            ibu={recipe.specs.ibu}
+                            fg={recipe.specs.fg}
+                            brewer={this.state.username}
+                            brewerFirstName={this.state.first}
+                            brewerLastName={this.state.last}
+                            description={recipe.description}
+                        />
+                    ))}
                 </Col>
-            )
-            // break;
+            );
+            
             default:
-            //load pinned rec comp
             break;
         }
     };
@@ -186,9 +234,7 @@ class Profile extends Component {
                         </Col>
                     </Row>
                     <Row>
-                        <Col xs={12}>
-                            {this.renderComponent()}
-                        </Col>
+                        {this.renderComponent()}
                     </Row>
                 </Grid>
             </div>
