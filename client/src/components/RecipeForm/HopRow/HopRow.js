@@ -3,35 +3,41 @@ import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { FormGroup, ControlLabel, FormControl, InputGroup } from 'react-bootstrap';
 
-import "./HopRow.css";
+import './HopRow.css';
 
 const HopRow = props => (
-<Row className="hopInputRow">
-    <Col xs={3}>
-    <ControlLabel>Hop Name</ControlLabel>
-        <InputGroup>
-            <FormControl
-                type="text"
-                className="hopName"
-                name='name'
-                value={props.nameValue}
-                onChange={props.nameUpdate}
-                placeholder="Hop Name"
-            />
-        </InputGroup>
+<Row className='hopInputRow'>
+    <Col xs={12} sm={3}>
+        <FormGroup validationState={props.nameValidation}>
+            <ControlLabel>*Hop Name</ControlLabel>
+            <InputGroup>
+                <FormControl
+                    type='text'
+                    className='hopName'
+                    name='name'
+                    maxLength={50}
+                    required
+                    value={props.nameValue}
+                    onChange={props.nameUpdate}
+                    placeholder='Hop Name'
+                />
+            </InputGroup>
+        </FormGroup>
     </Col>
 
-    <Col xs={3}>
-        <FormGroup>
-            <ControlLabel>Alpha-Acids</ControlLabel>
+    <Col xs={12} sm={3}>
+        <FormGroup validationState={props.alphaValidation}>
+            <ControlLabel>*Alpha-Acids</ControlLabel>
            <InputGroup>
                 <FormControl
-                    type="number"
-                    className="alphaInput"
+                    type='number'
+                    className='alphaInput'
                     name='alpha'
+                    min={0}
+                    max={100}
                     value={props.alphaValue}
                     onChange={props.alphaUpdate}
-                    placeholder="Alpha-Acids"
+                    placeholder='Alpha-Acids'
                 />
                <InputGroup.Addon>%</InputGroup.Addon>
             </InputGroup>
@@ -39,31 +45,36 @@ const HopRow = props => (
     </Col>
 
 
-    <Col xs={3}>
-    <ControlLabel>Hop Amount</ControlLabel>
-        <InputGroup>
-            <FormControl
-                type="number"
-                className="hopWeight"
-                name='amount'
-                value={props.weightValue}
-                onChange={props.weightUpdate}
-                placeholder="Weight"
-            />
-            <InputGroup.Addon>oz</InputGroup.Addon>
-        </InputGroup>
+    <Col xs={12} sm={3}>
+        <FormGroup validationState={props.weightValidation}>
+            <ControlLabel>*Hop Amount</ControlLabel>
+            <InputGroup>
+                <FormControl
+                    type='number'
+                    className='hopWeight'
+                    name='amount'
+                    min={0}
+                    max={1000}
+                    value={props.weightValue}
+                    onChange={props.weightUpdate}
+                    placeholder='Weight'
+                />
+                <InputGroup.Addon>oz</InputGroup.Addon>
+            </InputGroup>
+        </FormGroup>
     </Col>
-    <Col xs={3}>
-        <FormGroup>
-            <ControlLabel>Addition</ControlLabel>
+    <Col xs={12} sm={3}>
+        <FormGroup validationState={props.additionValidation}>
+            <ControlLabel>*Addition</ControlLabel>
            <InputGroup>
                <FormControl
-                    type="text"
-                    className="hopAddition"
+                    type='text'
+                    className='hopAddition'
                     name='alpha'
+                    maxLength={20}
                     value={props.additionValue}
                     onChange={props.additionUpdate}
-                    placeholder="30 min"
+                    placeholder='30 min'
                 />
             </InputGroup>
         </FormGroup>

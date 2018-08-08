@@ -1,9 +1,8 @@
 .registerBackground {
-    background-image: url('../../images/david-straight-341873-unsplash.jpg');
-    background-repeat: no-repeat;
+    background-image: url('../../images/hoppy.jpg');
+    background-attachment: fixed;
     background-position: center;
-    /* height: 93vh;
-    min-height: 93vh; */
+    background-repeat: no-repeat;
     padding: 2em 0;
 }
 
@@ -31,4 +30,5 @@
     margin-top: 1em;
     font-family: 'EB Garamond', serif;
     font-weight: bold;
+    transition: .5s;
 }

@@ -1,13 +1,20 @@
 import React from 'react';
 import RecipeForm from './../../components/RecipeForm';
+import SignInAlert from './../../components/SignInAlert';
+
 import "./AddRecipe.css";
 
-const AddRecipe = props => (
-    <div className="addRecipeBackground">
-        <RecipeForm
-            id={props.match.params.id}
-        />
-    </div>
-)
+const AddRecipe = () => {
+    let componentToRender = <RecipeForm />
 
+    if(!sessionStorage.getItem('loggedIn')){
+        componentToRender = <SignInAlert />
+    }
+
+    return (
+        <div className="addRecipeBackground">
+            {componentToRender}
+        </div>
+    )
+}
 export default AddRecipe;

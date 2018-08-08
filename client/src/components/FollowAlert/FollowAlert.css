@@ -1,0 +1,22 @@
+.followAlert {
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    height: 40px;
+    width: 100%;
+    /* margin: 0; */
+    margin-top: 5em;
+}
+
+.followAlert h4{
+    text-shadow: none;
+    color: black;
+    padding: 2px;
+    margin: 0;
+}
+
+@media only screen and (max-width: 484px) {
+    .followAlert {
+        min-height: 4em;
+    }
+}

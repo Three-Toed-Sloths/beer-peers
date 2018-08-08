@@ -1,0 +1,11 @@
+#overload-right > .tooltip-inner {
+    background-color: #fff;
+    color: #000;
+    font-size: 12px;
+    /* border: 1px solid #062e56; */
+}
+  
+#overload-right > .tooltip-arrow {
+    border-right-color: #fff;
+    border-top: 5px solid #062e56;
+}

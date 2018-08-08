@@ -1,37 +1,29 @@
 import React from 'react';
-import Grid from 'react-bootstrap/lib/Grid';
-import Col from 'react-bootstrap/lib/Col';
-import Row from 'react-bootstrap/lib/Row';
+import { Grid, Row, Col } from 'react-bootstrap';
+import Wrapper from '../Wrapper';
 import './FollowingCard.css';
 
 
-const FollowingCard =  props => (
-    <a href={`/profile/${props.user._id}`}>
-    <Grid className='followingCard_card'>
-        <Row className='followingCard_content'>
-            <Col className='followingCard_picture' sm={3} xs={12}>
-                <img className='followPic' src='http://www.brattleborofoodcoop.coop/wp-content/uploads/2017/07/cropped-BFC-Sprig-Favicon-450x450.png' alt={`${props.user.username}ProfilePic`}></img>
-            </Col>
-            <Col className='followingCard_name' sm={3} xs={12}>
-                <h2>{props.user.name.first} {props.user.name.last}</h2>
-                <p>{props.user.username}</p>
-            </Col>
-            <Col className='followingCard_location' sm={3} xs={12}>
-               
-                    <p>{props.user.contact.city}, {props.user.contact.state}</p>
-                    <p>{props.user.contact.email}</p>
-                
-            </Col>
-            {/* <Col className='followingCard_social' sm={3} xs={12}>
-             
-                    <p>{props.user.contact.email}</p>
-               
-            </Col> */}
-        </Row>
-    </Grid>
-    </a>
+const FollowingCard = props => (
+    <Wrapper>
+        <a href={`/profile/${props.user._id}`}>
+            <Grid className='followingCard'>
+                <Row className='followingCardContent'>
+                    <Col className='followingCardPicture' xs={12} sm={3}>
+                        <img className='followPic' src={`${props.user.image}`} alt={`${props.user.username}ProfilePic`}></img>
+                    </Col>
+                    <Col className='followingCardName' xs={12} sm={4}>
+                        <h2 className='followingCardFull followingCardCap'>{props.user.name.first} {props.user.name.last}</h2>
+                        <p className='followingCardUsername followingCardOther'>{props.user.username}</p>
+                    </Col>
+                    <Col className='followingCardLocation' xs={12} sm={5}>
+                        <p className='followingCardOther followingCardCap'>{props.user.contact.city}, {props.user.contact.state}</p>
+                        <p className='followingCardOther'>{props.user.contact.email}</p>
+                    </Col>
+                </Row>
+            </Grid>
+        </a>
+    </Wrapper>
 );
-
-
 
 export default FollowingCard;

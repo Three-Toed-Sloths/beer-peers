@@ -21,7 +21,7 @@ class Register extends Component {
         city: '',
         state: '',
         stateMessage: '',
-        image: '',
+        image: 'https://thumbs.dreamstime.com/b/vintage-beer-mug-seal-29697271.jpg',
         isRegistered: false
     };
 
@@ -41,15 +41,9 @@ class Register extends Component {
             if (res.data.username === this.state.username || this.state.username === '') {
                 this.usernameDuplicate();
             }
-            // if (!res.data.username) {
-            //     this.usernameReset();
-            // }
             if (res.data.contact.email === this.state.email || this.state.email === '') {
                 this.emailDuplicate();
             }
-            // if (!res.data.contact.email) {
-            //     this.emailReset();
-            // }
             if (this.state.state === '') {
                 this.stateSelect();
             }
@@ -57,8 +51,6 @@ class Register extends Component {
                 this.stateReset();
             }
         }).catch(err => {
-            // this.usernameReset();
-            // this.emailReset();
             this.postUser();
             console.log(err);
             return err;
@@ -84,28 +76,6 @@ class Register extends Component {
     stateSelect = () => {
         this.setState({
             stateMessage: 'Please select a state'
-        });
-    };
-
-    // ===================
-    // || Handle Resets ||
-    // ===================
-
-    usernameReset = () => {
-        this.setState({
-            usernameMessage: ''
-        });
-    };
-
-    emailReset = () => {
-        this.setState({
-            emaileMessage: ''
-        });
-    };
-
-    stateReset = () => {
-        this.setState({
-            stateMessage: ''
         });
     };
 
@@ -161,7 +131,9 @@ class Register extends Component {
     };
 
     emailValidation() {
-        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        // const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        // removed 3 characters to eliminate compiled with warnings error - validation seems to still work. above is the original.
+        const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@(([[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         if (re.test(this.state.email)) return 'success';
     };
 
@@ -267,6 +239,7 @@ class Register extends Component {
                                             <FormControl
                                                 type='tel'
                                                 maxLength={12}
+                                                // pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'
                                                 placeholder='###-###-####'
                                                 value={this.state.phone}
                                                 name='phone'
@@ -298,8 +271,8 @@ class Register extends Component {
                                                 name='state'
                                                 onChange={this.handleInputChange}
                                             >
-                                                <option value='' disabled selected>State</option>
-                                                {STATES.map(state => ( <option value={state}>{state}</option> ))}
+                                                <option value='' disabled defaultValue>State</option>
+                                                {STATES.map(state => ( <option key={state} value={state}>{state}</option> ))}
                                             </FormControl>
                                         <HelpBlock className='registerError'>{this.state.stateMessage}</HelpBlock>
                                         </FormGroup>
@@ -312,7 +285,7 @@ class Register extends Component {
                                             <FormControl
                                                 type='text'
                                                 placeholder='Image URL'
-                                                value={this.state.image}
+                                                // value={this.state.image}
                                                 name='image'
                                                 onChange={this.handleInputChange}
                                             />

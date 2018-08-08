@@ -39,7 +39,7 @@ const userSchema = new Schema({
     required: [true, 'Please enter password.'],
     trim: true,
     minlength: [4, 'Please select password 4 characters or more.'],
-    maxlength: [30, 'Please select password 30 characters or less.'],
+    maxlength: [100, 'Please select password 30 characters or less.'],
   },
   contact: {
     email: {

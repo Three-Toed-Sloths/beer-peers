@@ -1,6 +1,6 @@
 .secondaryNav{
     font-family: 'Montserrat', sans-serif;
-    margin: 2em 0;
+    margin: 0 0 2em;
     padding: 20px;
     width: 100%;
 }
@@ -37,6 +37,7 @@
 
 .secondaryNavText{
     cursor: pointer;
+    margin: 0;
 }
 
 a {
@@ -45,7 +46,16 @@ a {
 a:hover{
     color: black;
 }
-a, a:hover, a:active {
+a,
+a:hover,
+a:active {
     text-decoration: none;
 }
 
+.secondaryNavVert {
+    text-align: center;
+}
+
+.secondaryNavVertHR {
+    margin: 1em 0;
+}

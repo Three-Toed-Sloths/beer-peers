@@ -1,70 +1,88 @@
-.profileCardCard{
-    margin-top: 1%;
-    border-radius: 20px;
-    padding: 20px;
+.profileCardCard {
     width: 100%;
     font-family: 'EB Garamond', serif;
     text-shadow: 4px 4px 14px black;
+    min-height: 300px;
 }
-.profileCardContent{
-    height: 300px;
+
+.profileCardName {
+    font-size: 3em;
+    color: white;
+    margin-top: .9em;
+    margin-bottom: 0;
 }
-.profilePic{
+
+.profilePic {
     max-height: 200px;
     width: auto;
+    max-width: 200px;
     border: solid white 6px;
-    margin-top: 8em;
-}
-.profileCardPicture,
-.profileCardLocation,
-.profileCardSocial {
-    text-align: center;
-    padding-left: 0px;
-    padding-right: 0px;
+    margin-top: 3em;
+    background-color: white;
 }
 
 .profileCardText {
-    height: 100%;
-    margin-top: 2em;
-    font-size: 35px;
+    margin-bottom: 0;
+    font-size: 2.5em;
     color: white;
 }
 
-.profileCardLocation {
-    margin-top: 0;
+.profileCardCap {
+    text-transform: capitalize;
 }
 
-@media only screen and (max-width: 1024px) {
-    .profileCardLocation {
-        margin-top: 0;
-    }
+.profileCardLocation {
+    margin-top: 1em;
+}
+
+.profileFollow {
+    font-weight: bold;
+    margin-top: .25em;
+    transition: .5s;
 }
 
 @media only screen and (max-width: 768px) {
     .profileCardText {
-        font-size: 25px;
+        font-size: 1.75em;
     }
     .profileCardLocation {
-        margin-top: 0;
+        margin-top: 1.5em;
     }
-    .profileCardTextHolder {
-        margin-top: 2em;
+    .profileFollow {
+        margin-top: .5em;
     }
 }
 
 @media only screen and (max-width: 426px) {
-    .profileCardText {
-        font-size: 25px;
-        text-align: right;
-        margin-top: 0;
+    .profileCardCard {
+        min-height: 65vh;
     }
-    .profileCardTextHolder {
-        margin-top: 0;
+    .profileCardName {
+        text-Align: center;
+        margin-top: .5em;
+    }
+    .profilePic {
+        margin-top: 1.75em;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .profileCardHR {
+        margin-bottom: 0;
+    }
+    .profileCardText {
+        text-align: center;
+    }
+    .profileCardLocation {
+        margin-top: .5em;
     }
 }
 
 @media only screen and (max-width: 376px) {
     .profileCardText {
-        font-size: 21px;
+        font-size: 1.5em;
+    }
+    .profileCardEmail {
+        font-size: 1.2em;
     }
 }

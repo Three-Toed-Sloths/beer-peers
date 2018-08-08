@@ -4,13 +4,12 @@ import Wrapper from './../../components/Wrapper';
 
 import "./ViewRecipe.css";
 
-
 class ViewRecipe extends Component {
     state = {
         id: this.props.match.params.id
     }  
-        render() {
-        return(
+    render() {
+        return (
             <div className="viewRecipeBackground">
                 <div className="viewRecipeOpacity">
                     <Wrapper>
@@ -21,7 +20,5 @@ class ViewRecipe extends Component {
         )
     }
 }
-
-
 
 export default ViewRecipe;
