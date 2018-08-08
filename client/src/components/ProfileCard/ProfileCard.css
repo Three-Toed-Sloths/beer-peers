@@ -17,6 +17,7 @@
 .profilePic {
     max-height: 200px;
     width: auto;
+    max-width: 200px;
     border: solid white 6px;
     margin-top: 3em;
     background-color: white;

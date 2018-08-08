@@ -1,11 +1,15 @@
 import React, {Component} from 'react';
-import { Navbar, NavItem, Nav } from 'react-bootstrap';
+import { Navbar, NavItem, Nav, Glyphicon } from 'react-bootstrap';
 import './Nav.css';
 
 class Head extends Component {
 
     state = {
-        loggedIn: sessionStorage.getItem('loggedIn')
+        loggedIn: sessionStorage.getItem('loggedIn'),
+        brewer: sessionStorage.getItem('userID'),
+        profileLink: '',
+        display: {display: 'none'}
+
     };
 
     componentWillMount() {
@@ -15,6 +19,7 @@ class Head extends Component {
     checkLogin = () => {
         if(this.state.loggedIn){
             this.setLogOutTab();
+            this.displayViewProfileLink();
         } else {
             this.setSignUpTab();
         }
@@ -42,6 +47,13 @@ class Head extends Component {
     handleSignUp = () => {
         window.location.href = `/register`;
     }
+
+    displayViewProfileLink = () => {
+        this.setState({
+            profileLink: `/profile/${this.state.brewer}`,
+            display: {display: 'inline'}
+        })
+    }
     
     render(){
         return(
@@ -62,6 +74,10 @@ class Head extends Component {
                         </NavItem>
                         <NavItem className='navLinks' eventKey={3} href='/brewers'>
                             Top Brewers
+                        </NavItem>
+                        <NavItem className='navLinks' style={this.state.display} eventKey={4} href={this.state.profileLink}>
+                            <Glyphicon glyph='user' />
+                            {/* View Profile */}
                         </NavItem>
                     </Nav>
                 </Navbar.Collapse>

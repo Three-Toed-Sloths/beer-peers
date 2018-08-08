@@ -54,7 +54,7 @@ class LoginForm extends Component {
 
     handleValidLogin = id => {
         const userID = this.setSessionData(id);
-        window.location.href = `/personal/${userID}`;
+        window.location.href = `/profile/${userID}`;
     }
 
     setSessionData = id => {
