@@ -9,7 +9,7 @@ class LikeBtn extends Component {
         message: this.props.message
     }
 
-    target = ''
+    target = null;
   
     componentDidUpdate(prevProps) {
         if (this.props.show !== prevProps.show) {
@@ -25,7 +25,6 @@ class LikeBtn extends Component {
         if(this.props.brewerId === sessionStorage.getItem('userID')){
             return ''
         }
-
         return (
             <div>
                 <Button ref= {button => {this.target = button;}} onClick={this.props.addLike}>

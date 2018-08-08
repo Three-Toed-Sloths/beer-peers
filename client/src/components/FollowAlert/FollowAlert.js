@@ -26,7 +26,6 @@ class FollowAlert extends Component {
                 </Alert>
             );
         }
-    //   return (<h4>“He was a wise man who invented beer.” - Plato</h4>)
         return ''
     }
 }
