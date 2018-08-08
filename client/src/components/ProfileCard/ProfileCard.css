@@ -12,9 +12,6 @@
 }
 
 .profilePic{
-    /* 
-    background: white;
-    */
     max-height: 200px;
     width: auto;
     border: solid white 6px;
@@ -38,8 +35,18 @@
     color: white;
 }
 
+.profileCardCap {
+    text-transform: capitalize;
+}
+
 .profileCardLocation {
     margin-top: 0;
+}
+
+.profileFollow {
+    font-weight: bold;
+    margin-top: .25em;
+    transition: .5s;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -68,6 +75,9 @@
     }
     .profileCardTextHolder {
         margin-top: 0;
+    }
+    .profileFollow {
+        float: right;
     }
 }
 

@@ -14,18 +14,21 @@ const ProfileCard =  props => (
             <div className='profileCardTextHolder'>
                 <Col className="profileCardLocation" xs={10} sm={3}>
                     <div>
-                        <p className='profileCardText'>{props.userName}</p>
-                        <p className='profileCardText profileCardLocation'>{props.location}</p>
+                        <p className='profileCardText profileCardCap'>{props.userName}</p>
+                        <p className='profileCardText profileCardLocation profileCardCap'>{props.location}</p>
                     </div>
                 </Col>
                 <Col className="profileCardSocial" xs={10} sm={5}>
-                    <div>
-                        <p className='profileCardText'>{props.email}</p>
-                    </div>
-                    <div>
-                        <Button bsStyle='success' bsSize='large' onClick={props.handleClick}>Follow</Button>
-                        
-                    </div>
+                    <Row>
+                        <Col xs={12}>
+                            <p className='profileCardText'>{props.email}</p>
+                        </Col>
+                        <Col xs={6} sm={3}/>
+                        <Col xs={6}>
+                            <Button className='profileFollow' bsStyle='warning' bsSize='large' onClick={props.handleClick} block>Follow</Button>
+                        </Col>
+                        <Col xs={0} sm={3}/>
+                    </Row>
                 </Col>
             </div>
         </Row>

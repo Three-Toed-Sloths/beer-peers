@@ -1,17 +1,25 @@
 import React from "react";
-import { Well } from 'react-bootstrap';
+import { Well, Row, Col } from 'react-bootstrap';
 import WellActionBtn from './WellActionBtn';
 import LoginForm from './LoginForm';
-import './LoginWell.css';
+import Wrapper from '../Wrapper';
 
 const LoginWell = () => {
 
     if(sessionStorage.getItem('loggedIn')){
         return (
             <Well>
-                <h2 className='loginTitle'>What's your next brew?</h2>
-                <WellActionBtn class='landingBtn' link='/recipes' name='Top Recipes' />
-                <WellActionBtn class='landingBtn' link='/brewers' name='Top Brewers' />
+                <Wrapper>
+                    <h2 className='loginTitle'>What's your next brew?</h2>
+                    <Row>
+                        <Col xs={12} sm={6}>
+                            <WellActionBtn class='landingBtn' link='/recipes' name='Top Recipes' />
+                        </Col>
+                        <Col xs={12} sm={6}>
+                            <WellActionBtn class='landingBtn' link='/brewers' name='Top Brewers' />
+                        </Col>
+                    </Row>
+                </Wrapper>
             </Well>
         )
     }

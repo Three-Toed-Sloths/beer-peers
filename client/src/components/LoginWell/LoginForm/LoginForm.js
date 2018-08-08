@@ -3,7 +3,6 @@ import { Form, Row, Col, FormGroup, Button } from 'react-bootstrap';
 import API from '../../../utils/loginAPI'
 import LoginInput from './LoginInput';
 import Wrapper from '../../../components/Wrapper';
-import './LoginForm.css';
 
 class LoginForm extends Component {
     state = {
@@ -85,10 +84,10 @@ class LoginForm extends Component {
                     </FormGroup>
                     <FormGroup>
                         <Row>
-                            <Col xs={12} md={6}>
+                            <Col xs={12} sm={6}>
                                 <Button className='landingBtn' bsStyle='primary' bsSize='large' type="submit" onClick={this.handleSubmit} block>Log In</Button>
                             </Col>
-                            <Col xs={12} md={6}>
+                            <Col xs={12} sm={6}>
                                 <Button className='landingBtn' bsSize='large' type="submit" href='/register' block>Create Account</Button>
                             </Col>
                         </Row>
