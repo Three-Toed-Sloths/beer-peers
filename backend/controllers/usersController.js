@@ -5,6 +5,10 @@ module.exports = {
   findAll: (req, res) => {
     db.User
       .find(req.query, {password: 0})
+      .populate({path: 'recipes', populate: {path: 'brewer'}})
+      .populate('social.followers', {password: 0})
+      .populate('social.following', {password: 0})
+      .populate({path: 'social.favorites', populate: {path: 'brewer'}})
       .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
@@ -12,10 +16,10 @@ module.exports = {
   findById: (req, res) => {
     db.User
       .findById(req.params.id, {password: 0})
-      .populate('recipes')
+      .populate({path: 'recipes', populate: {path: 'brewer'}})
       .populate('social.followers', {password: 0})
       .populate('social.following', {password: 0})
-      .populate('social.favorites')
+      .populate({path: 'social.favorites', populate: {path: 'brewer'}})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

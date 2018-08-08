@@ -10,8 +10,8 @@ const LoginWell = () => {
         return (
             <Well>
                 <h2 className='loginTitle'>What's your next brew?</h2>
-                <WellActionBtn class='landingBtn' link='/recipes' name='Top Recipes' />
-                <WellActionBtn class='landingBtn' link='/brewers' name='Top Brewers' />
+                <WellActionBtn className='landingBtn' link='/recipes' name='Top Recipes' />
+                <WellActionBtn className='landingBtn' link='/brewers' name='Top Brewers' />
             </Well>
         )
     }

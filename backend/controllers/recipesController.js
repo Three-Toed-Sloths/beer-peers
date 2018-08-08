@@ -25,6 +25,7 @@ module.exports = {
   update: (req, res) => {
     db.Recipe
       .findOneAndUpdate({ _id: req.params.id }, req.body, {new: true})
+      .populate('brewer', {password: 0})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

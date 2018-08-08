@@ -15,7 +15,7 @@ class RecipeForm extends Component {
     state = {
         name: '',
         brewer: sessionStorage.getItem('userID'),
-        style: '',
+        style: beerStyles[0],
         batchVol: '',
         abv: '',
         og: '',
@@ -50,7 +50,8 @@ class RecipeForm extends Component {
                 amount: '',
                 units: 'lbs'
             }
-        ]
+        ],
+        errorMsg: ''
     }   
 
     addRecipe = newRecipe => {
@@ -59,8 +60,9 @@ class RecipeForm extends Component {
             this.addRecipeToBrewer(res.data._id);
             window.location.href = `/profile/${this.state.brewer}`;
          }
-        )
-         .catch(err => err);
+        ).catch(err => {
+            this.handleSubmitError();
+        });
     }
 
     addRecipeToBrewer = recipeID => {
@@ -68,8 +70,7 @@ class RecipeForm extends Component {
         .then(res => {
            return 'success';
         }
-       )
-        .catch(err => err);
+       ).catch(err => err);
     }
 
     handleInputChange = event => {
@@ -128,7 +129,12 @@ class RecipeForm extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        const newRecipe = {
+        // const newRecipe = this.getRecipeObject();
+        this.addRecipe(this.getRecipeObject());
+    }
+
+    getRecipeObject = () => {
+        const recipe = {
             name: this.state.name,
             brewer: this.state.brewer,
             style: this.state.style,
@@ -163,10 +169,14 @@ class RecipeForm extends Component {
             },
             directions: this.state.directions
         }
-        this.addRecipe(newRecipe);
+        return recipe;
     }
 
-
+    handleSubmitError = () => {
+        this.setState({
+            errorMsg: 'Please fill out all required fields.'
+        })
+    }
     // VALIDATIONS
     
     textMinMaxValidation(text, min, max) {
@@ -191,6 +201,7 @@ class RecipeForm extends Component {
                     <h1 className='addRecH1'>Add Recipe:</h1>
                     <hr />
                     <HelpBlock>All fields marked with an * are manditory</HelpBlock>
+                    <h5 className='text-center failedSubmit'>{this.state.errorMsg}</h5>
                 </Row>
                 <Row>
                     <Col md={6}>
@@ -230,7 +241,7 @@ class RecipeForm extends Component {
                                 </FormGroup>
                             </Col>
                             <Col md={6}>
-                                <FormGroup validationState={this.numMinMaxValidation(this.state.abv, 0, 50)}>
+                                <FormGroup validationState={this.numMinMaxValidation(this.state.abv, 0, 40)}>
                                     <ControlLabel className="formLabels">*ABV:</ControlLabel>
                                     <InputGroup>
                                         <FormControl id='abvInput' type='number' name='abv' min={0} max={40} value={this.state.abv} onChange={this.handleInputChange} placeholder='ABV'/>
@@ -313,9 +324,11 @@ class RecipeForm extends Component {
                                                 key={`baseRow${i}`}
                                                 nameValue={this.state.baseMaltArr[i].name}
                                                 nameUpdate={this.handleChangeFor('name', 'baseMaltArr', i)}
+                                                nameValidation={this.textMinMaxValidation(this.state.baseMaltArr[i].name, 1, 50)}
+
                                                 weightUpdate={this.handleChangeFor('amount', 'baseMaltArr', i)}
                                                 weightValue={this.state.baseMaltArr[i].amount}
-                                                // validation={this.textMinMaxValidation(this.state.baseMaltArr[i].name, 1, 50)}
+                                                weightValidation={this.numMinMaxValidation(this.state.baseMaltArr[i].amount, 0, 10000)}
                                             />
                                         ))}
                                 </FormGroup>
@@ -328,8 +341,11 @@ class RecipeForm extends Component {
                                             key={`specialityRow${i}`}
                                             nameValue={this.state.specialityMaltArr[i].name}
                                             nameUpdate={this.handleChangeFor('name', 'specialityMaltArr', i)}
+                                            nameValidation={this.textMinMaxValidation(this.state.specialityMaltArr[i].name, 1, 50)}
+
                                             weightUpdate={this.handleChangeFor('amount', 'specialityMaltArr', i)}
                                             weightValue={this.state.specialityMaltArr[i].amount}
+                                            weightValidation={this.numMinMaxValidation(this.state.specialityMaltArr[i].amount, 0, 10000)}
                                         />
                                     ))}
                                 </FormGroup>
@@ -344,15 +360,19 @@ class RecipeForm extends Component {
                                                 key={`hopRow${i}`}
                                                 nameValue={this.state.hopsArr[i].name}
                                                 nameUpdate={this.handleChangeFor('name', 'hopsArr', i)}
+                                                nameValidation={this.textMinMaxValidation(this.state.hopsArr[i].name, 1, 50)}
 
                                                 alphaValue={this.state.hopsArr[i].alpha}
                                                 alphaUpdate={this.handleChangeFor('alpha', 'hopsArr', i)}
+                                                alphaValidation={this.numMinMaxValidation(this.state.hopsArr[i].alpha, 0, 100)}
 
                                                 weightUpdate={this.handleChangeFor('amount', 'hopsArr', i)}
                                                 weightValue={this.state.hopsArr[i].amount}
+                                                weightValidation={this.numMinMaxValidation(this.state.hopsArr[i].amount, 0, 1000)}
 
                                                 additionValue={this.state.hopsArr[i].addition}
                                                 additionUpdate={this.handleChangeFor('addition', 'hopsArr', i)}
+                                                additionValidation={this.textMinMaxValidation(this.state.hopsArr[i].addition, 1, 50)}
                                             />
                                         ))}
                                 </FormGroup>
@@ -385,7 +405,7 @@ class RecipeForm extends Component {
                     </Col>
                     <Col md={6}>
                         <FormGroup validationState={this.textMinMaxValidation(this.state.directions, 1, 4000)}>
-                            <ControlLabel>Recipe Instructions:</ControlLabel>
+                            <ControlLabel>*Recipe Instructions:</ControlLabel>
                             <FormControl
                                 componentClass='textarea'
                                 name='directions'

@@ -11,10 +11,6 @@ class LikeBtn extends Component {
 
     target = ''
   
-    handleToggle = () => {
-      this.setState({ show: !this.state.show });
-    }
-
     componentDidUpdate(prevProps) {
         if (this.props.show !== prevProps.show) {
             this.setState({
@@ -25,16 +21,21 @@ class LikeBtn extends Component {
     }
 
     render() {
-      return (
-        <div>
-            <Button ref= {button => {this.target = button;}} onClick={this.props.addLike}>
-                Like
-            </Button>
-            <Overlay target={this.target} show={this.state.show} placement='right'>
-                <Tooltip id='overload-right' className='overlayAlert' >{this.state.message}</Tooltip>
-            </Overlay>
-        </div>
-      );
+
+        if(this.props.brewerId === sessionStorage.getItem('userID')){
+            return ''
+        }
+
+        return (
+            <div>
+                <Button ref= {button => {this.target = button;}} onClick={this.props.addLike}>
+                    Like
+                </Button>
+                <Overlay target={this.target} show={this.state.show} placement='right'>
+                    <Tooltip id='overload-right' className='overlayAlert' >{this.state.message}</Tooltip>
+                </Overlay>
+            </div>
+        );
     }
 }
   
