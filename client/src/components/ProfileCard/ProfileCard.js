@@ -1,13 +1,39 @@
 import React from 'react';
 import { Grid, Col, Row, Button } from 'react-bootstrap';
-
+import Wrapper from '../Wrapper';
 import FollowAlert from './../FollowAlert';
 
 import './ProfileCard.css';
 
 const ProfileCard =  props => (
     <Grid className='profileCardCard'>
-        <Row className='profileCardContent'>
+        <Row>
+            <Col xs={12}>
+                <Wrapper>
+                    <h1 className='profileCardName profileCardCap'>{props.userName}</h1>
+                </Wrapper>
+                <hr className='profileCardHR' />
+            </Col>
+        </Row>
+        <Row>
+            <Wrapper>
+                <Col xs={2} sm={4}>
+                    <img className='profilePic' src={props.img} alt={`${props.userName}ProfilePic`}></img>
+                </Col>
+                <Col xs={10} sm={8}>
+                    <p className='profileCardText profileCardLocation profileCardCap'>{props.location}</p>
+                    <p className='profileCardText'>{props.email}</p>
+                    <Row>
+                        <Col xs={6} sm={4} />
+                        <Col xs={6} sm={4}>
+                            <Button className='profileFollow' bsStyle='warning' bsSize='large' onClick={props.handleClick} block>Follow</Button>
+                        </Col>
+                        <Col xs={0} sm={4} />
+                    </Row>
+                </Col>
+            </Wrapper>
+        </Row>
+        {/* <Row className='profileCardContent'>
             <Col className='profileCardPicture' xs={2} sm={4}>
                 <img className='profilePic' src={props.img} alt={`${props.userName}ProfilePic`}></img>
             </Col>
@@ -24,14 +50,14 @@ const ProfileCard =  props => (
                             <p className='profileCardText'>{props.email}</p>
                         </Col>
                         <Col xs={6} sm={3}/>
-                        <Col xs={6}>
+                        <Col xs={6} sm={6}>
                             <Button className='profileFollow' bsStyle='warning' bsSize='large' onClick={props.handleClick} block>Follow</Button>
                         </Col>
                         <Col xs={0} sm={3}/>
                     </Row>
                 </Col>
             </div>
-        </Row>
+        </Row> */}
         <Row>
             <Col xs={12}>
                 <FollowAlert

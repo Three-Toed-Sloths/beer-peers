@@ -33,6 +33,10 @@
     padding: 1.5em 0;
 }
 
+.followingCardCap {
+    text-transform: capitalize;
+}
+
 .followingCardFull {
     margin-top: 0;
 }

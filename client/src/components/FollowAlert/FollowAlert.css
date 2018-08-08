@@ -13,3 +13,9 @@
     padding: 2px;
     margin: 0;
 }
+
+@media only screen and (max-width: 484px) {
+    .followAlert {
+        min-height: 4em;
+    }
+}

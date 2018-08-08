@@ -1,40 +1,37 @@
-.profileCardCard {
-    /* margin-top: 1%; */
-    /* border-radius: 20px; */
-    /* padding: 20px; */
+.profileCardCard{
+    margin-top: 1%;
+    border-radius: 20px;
+    padding: 20px;
     width: 100%;
     font-family: 'EB Garamond', serif;
     text-shadow: 4px 4px 14px black;
 }
 
-.profileCardName {
-    font-size: 3em;
-    color: white;
-    margin-top: .9em;
-    margin-bottom: 0;
+.profileCardContent{
+    height: 300px;
 }
 
-.profilePic {
+.profilePic{
     max-height: 200px;
     width: auto;
     border: solid white 6px;
-    margin-top: 3em;
+    margin-top: 8em;
     background-color: white;
 }
 
 .profileCardPicture,
 .profileCardLocation,
 .profileCardSocial {
-    /* text-align: center; */
+    text-align: center;
     padding-left: 0px;
     padding-right: 0px;
 }
 
 .profileCardText {
-    /* height: 100%; */
-    /* margin-top: 2em; */
+    height: 100%;
+    margin-top: 2em;
     margin-bottom: 0;
-    font-size: 2.5em;
+    font-size: 35px;
     color: white;
 }
 
@@ -52,14 +49,14 @@
     transition: .5s;
 }
 
-/* @media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1024px) {
     .profileCardLocation {
         margin-top: 0;
     }
     .profileCardText {
         font-size: 3vw;
     }
-} */
+}
 
 @media only screen and (max-width: 768px) {
     .profileCardText {
@@ -71,12 +68,6 @@
 }
 
 @media only screen and (max-width: 426px) {
-    .profileCardName {
-        text-Align: center;
-    }
-    .profileCardHR {
-        margin-bottom: 0;
-    }
     .profileCardText {
         font-size: 25px;
         text-align: right;
