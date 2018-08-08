@@ -14,21 +14,21 @@
 .addBtn{
     margin-left: .4em;
     padding: 0 .4em;
-    background: green;
+    background: #49A83F;
     color: white;
     border-radius: 10px;
     cursor: pointer;
 }
 .specs{
     border: solid white 3px;
-    background: gold;
+    background: #B6824E;
     border-radius: 20px;
     padding-top: 10px;
     padding-bottom: 20px;
 }
 .malts{
     border: solid white 3px;
-    background: lightcoral;
+    background: #CAC969;
     border-radius: 20px;
     margin-bottom: .25em;
     padding-top: 10px;
@@ -37,14 +37,11 @@
 .hops{
     border: solid white 3px;
     border-radius: 20px;
-    background: lightgreen;
+    background: #BAAE71;
     padding-top: 10px;
 }
 .submitBtn{
     font-family: 'EB Garamond', serif;
-    transition: .7s;
-}
-.submitBtn:hover{
-    background: #a86222;
-    color: white;
+    font-weight: bold;
+    transition: .5s;
 }

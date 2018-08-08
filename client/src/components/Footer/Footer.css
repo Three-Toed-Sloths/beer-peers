@@ -6,16 +6,21 @@
 .footerAuthor {
     margin-top: 1em;
     margin-bottom: .5em;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.25em;
+}
+
+.footerWell {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.25em;
+    color: black;
+    padding-bottom: 2.5em;
+    margin-bottom: 0;
 }
 
 .footerHR {
     margin-top: 0;
     margin-bottom: .75em;
-}
-
-.footerAuthor {    
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.25em;
 }
 
 .footerAuthorLink {
@@ -24,4 +29,14 @@
 
 .footerAuthorContainer {
     margin-bottom: 1.5em;
+}
+
+@media only screen and (max-width: 426px) {
+    .footerWell {
+        text-align: center;
+        padding-bottom: 4.5em;
+    }
+    .footerPanel {
+        text-align: center;
+    }
 }

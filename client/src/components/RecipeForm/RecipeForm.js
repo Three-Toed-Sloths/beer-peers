@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import API from '../../utils/recipeAPI';
 import userAPI from '../../utils/userAPI';
 
-import { Grid, Col, Row, Button } from 'react-bootstrap';
-import { FormGroup, ControlLabel, FormControl, InputGroup } from 'react-bootstrap';
+import { Grid, Col, Row, Button, FormGroup, ControlLabel, FormControl, InputGroup, HelpBlock } from 'react-bootstrap';
+// import { FormGroup, ControlLabel, FormControl, InputGroup } from 'react-bootstrap';
 import GrainRow from './GrainRow';
 import HopRow from './HopRow';
 
@@ -189,11 +189,12 @@ class RecipeForm extends Component {
                 <Row>
                     <h1 className='addRecH1'>Add Recipe:</h1>
                     <hr />
+                    <HelpBlock>All fields marked with an * are manditory</HelpBlock>
                 </Row>
                 <Row>
                     <Col md={6}>
                         <FormGroup validationState={this.textMinMaxValidation(this.state.name, 1, 50)}>
-                            <ControlLabel>Recipe Name:</ControlLabel>
+                            <ControlLabel>*Recipe Name:</ControlLabel>
                             <FormControl
                                 type='text'
                                 name='name'
@@ -206,7 +207,7 @@ class RecipeForm extends Component {
                     </Col>
                     <Col md={6}>
                         <FormGroup>
-                            <ControlLabel>Select Beer Style:</ControlLabel>
+                            <ControlLabel>*Select Beer Style:</ControlLabel>
                             <FormControl componentClass='select' name='style' value={this.state.style} onChange={this.handleInputChange}>
                                 {beerStyles.map(style => (
                                     <option key={style} value={style}>{style}</option>
@@ -220,7 +221,7 @@ class RecipeForm extends Component {
                         <Row>
                             <Col md={6}>
                                 <FormGroup validationState={this.numMinMaxValidation(this.state.batchVol, 0, 10000)}>
-                                    <ControlLabel className="formLabels">Batch Volume:</ControlLabel>
+                                    <ControlLabel className="formLabels">*Batch Volume:</ControlLabel>
                                     <InputGroup>
                                         <FormControl type='number' name='batchVol' min={1} max={10000} value={this.state.batchVol} onChange={this.handleInputChange} id='batchVol' placeholder='Batch'/>
                                         <InputGroup.Addon>gal</InputGroup.Addon>
@@ -229,7 +230,7 @@ class RecipeForm extends Component {
                             </Col>
                             <Col md={6}>
                                 <FormGroup validationState={this.numMinMaxValidation(this.state.abv, 0, 50)}>
-                                    <ControlLabel className="formLabels">ABV:</ControlLabel>
+                                    <ControlLabel className="formLabels">*ABV:</ControlLabel>
                                     <InputGroup>
                                         <FormControl id='abvInput' type='number' name='abv' min={0} max={40} value={this.state.abv} onChange={this.handleInputChange} placeholder='ABV'/>
                                         <InputGroup.Addon>%</InputGroup.Addon>
@@ -240,7 +241,7 @@ class RecipeForm extends Component {
                         <Row>
                             <Col md={12}>
                                 <FormGroup validationState={this.numMinMaxValidation(this.state.ibu, 0, 200)}>
-                                    <ControlLabel className="formLabels">IBU</ControlLabel>
+                                    <ControlLabel className="formLabels">*IBU:</ControlLabel>
                                     <InputGroup>
                                         <FormControl id='ibuInput' type='number' name='ibu' min={0} max={200} value={this.state.ibu} onChange={this.handleInputChange} placeholder='Enter IBUs'/>
                                         <InputGroup.Addon>IBUs:</InputGroup.Addon>
@@ -251,7 +252,7 @@ class RecipeForm extends Component {
                         <Row>
                             <Col md={6}>
                                 <FormGroup validationState={this.numMinMaxValidation(this.state.og, 0, 4)}>
-                                    <ControlLabel className="formLabels">Original Gravity:</ControlLabel>
+                                    <ControlLabel className="formLabels">*Original Gravity:</ControlLabel>
                                     <FormControl
                                         id='ogInput'
                                         type='number'
@@ -266,7 +267,7 @@ class RecipeForm extends Component {
                             </Col>
                             <Col md={6}>
                                 <FormGroup validationState={this.numMinMaxValidation(this.state.fg, 0, 4)}>
-                                    <ControlLabel className="formLabels">Final Gravity:</ControlLabel>
+                                    <ControlLabel className="formLabels">*Final Gravity:</ControlLabel>
                                     <FormControl
                                         id='fgInput'
                                         type='number'
@@ -283,7 +284,7 @@ class RecipeForm extends Component {
                         <Row>
                             <Col md={6}>
                                 <FormGroup validationState={this.numMinMaxValidation(this.state.preBoil, 0, 10000)}>
-                                    <ControlLabel className="formLabels">Preboil Volume:</ControlLabel>
+                                    <ControlLabel className="formLabels">*Preboil Volume:</ControlLabel>
                                     <InputGroup>
                                     <FormControl type='number' id='preBoilVolInput' name='preBoil' min={1} max={10000} value={this.state.preBoil} onChange={this.handleInputChange} placeholder='Preboil'/>
                                         <InputGroup.Addon>gal</InputGroup.Addon>
@@ -292,7 +293,7 @@ class RecipeForm extends Component {
                             </Col>
                             <Col md={6}>
                                 <FormGroup validationState={this.numMinMaxValidation(this.state.boilLength, 0, 300)}>
-                                    <ControlLabel className="formLabels">Boil Length:</ControlLabel>
+                                    <ControlLabel className="formLabels">*Boil Length:</ControlLabel>
                                     <InputGroup>
                                         <FormControl type='number' name='boilLength' min={1} max={300} value={this.state.boilLength} onChange={this.handleInputChange} placeholder='Boil'/>
                                         <InputGroup.Addon>min</InputGroup.Addon>
@@ -305,7 +306,7 @@ class RecipeForm extends Component {
                         <Row className="malts">
                             <Col md={6}>
                                 <FormGroup >
-                                        <ControlLabel className="formLabels">Base Malt: <span className="addBtn" onClick={this.addBaseMaltRow}>+</span></ControlLabel>
+                                        <ControlLabel className="formLabels">*Base Malt: <span className="addBtn" onClick={this.addBaseMaltRow}>+</span></ControlLabel>
                                         {this.state.baseMaltArr.map((unit, i) => (
                                             <GrainRow
                                                 key={`baseRow${i}`}
@@ -320,7 +321,7 @@ class RecipeForm extends Component {
                             </Col>
                             <Col md={6}>
                                 <FormGroup >
-                                    <ControlLabel className="formLabels">Speciality Malt: <span className="addBtn" onClick={this.addSpecMaltRow}>+</span></ControlLabel>
+                                    <ControlLabel className="formLabels">*Speciality Malt: <span className="addBtn" onClick={this.addSpecMaltRow}>+</span></ControlLabel>
                                     {this.state.specialityMaltArr.map((unit, i) => (
                                         <GrainRow 
                                             key={`specialityRow${i}`}
@@ -336,7 +337,7 @@ class RecipeForm extends Component {
                         <Row>
                             <Col md={12} className="hops">
                                 <FormGroup >
-                                    <ControlLabel>Hop Additions: <span className="addBtn" onClick={this.addHopRow}>+</span></ControlLabel>
+                                    <ControlLabel>*Hop Additions: <span className="addBtn" onClick={this.addHopRow}>+</span></ControlLabel>
                                         {this.state.hopsArr.map((unit, i) => (
                                             <HopRow
                                                 key={`hopRow${i}`}
@@ -359,7 +360,7 @@ class RecipeForm extends Component {
                         <Row>
                             <Col md={4}>
                                 <FormGroup validationState={this.textMinMaxValidation(this.state.yeast, 1, 50)}>
-                                    <ControlLabel className="formLabels">Yeast:</ControlLabel>
+                                    <ControlLabel className="formLabels">*Yeast:</ControlLabel>
                                     <InputGroup>
                                         <FormControl type='text' name='yeast' maxLength={50} value={this.state.yeast} onChange={this.handleInputChange} placeholder='Yeast Name'/>
                                     </InputGroup>
@@ -377,7 +378,7 @@ class RecipeForm extends Component {
                 <Row>
                     <Col md={6}>
                         <FormGroup validationState={this.textMinMaxValidation(this.state.description, 1, 500)}>
-                            <ControlLabel>Recipe Description:</ControlLabel>
+                            <ControlLabel>*Recipe Description:</ControlLabel>
                             <FormControl componentClass='textarea' id='recipeDescription' name='description' maxLength={4000} value={this.state.description} onChange={this.handleInputChange} placeholder='Description' />
                         </FormGroup>
                     </Col>
