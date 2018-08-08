@@ -3,7 +3,7 @@ import API from '../../utils/recipeAPI';
 import userAPI from '../../utils/userAPI';
 
 import { Grid, Col, Row, Button, FormGroup, ControlLabel, FormControl, InputGroup, HelpBlock } from 'react-bootstrap';
-// import { FormGroup, ControlLabel, FormControl, InputGroup } from 'react-bootstrap';
+
 import GrainRow from './GrainRow';
 import HopRow from './HopRow';
 
@@ -14,7 +14,7 @@ const beerStyles = ['Amber Ale', 'American IPA', 'American Imperial Stout', 'Ame
 class RecipeForm extends Component {
     state = {
         name: '',
-        brewer: this.props.id,
+        brewer: sessionStorage.getItem('userID'),
         style: '',
         batchVol: '',
         abv: '',
@@ -57,7 +57,7 @@ class RecipeForm extends Component {
         API.saveRecipe(newRecipe)
          .then(res => {
             this.addRecipeToBrewer(res.data._id);
-            window.location.href = `/personal/${this.state.brewer}`;
+            window.location.href = `/profile/${this.state.brewer}`;
          }
         )
          .catch(err => err);
@@ -183,6 +183,7 @@ class RecipeForm extends Component {
 
 
     render() {
+
         return(
         <Grid className="recipeForm">
             <form className="recipeAdd">

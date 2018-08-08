@@ -6,6 +6,7 @@ import FollowingCard from '../../components/FollowingCard';
 import RecipeCard from '../../components/RecipeCard';
 import SecondaryNav from '../../components/SecondaryNav';
 import API from '../../utils/userAPI';
+import AddRecipeButton from "../../components/AddRecipeButton/AddRecipeButton";
 import './Profile.css';
 
 class Profile extends Component {
@@ -222,6 +223,11 @@ class Profile extends Component {
                             alertClass={this.state.alertClass}
                             />
                         </Col>
+                    </Row>
+                    <Row>
+                        <AddRecipeButton
+                            id={this.state.id}    
+                        />
                     </Row>
                     <Row>
                         <Col sm={12}>
