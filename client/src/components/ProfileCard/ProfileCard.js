@@ -1,8 +1,8 @@
 import React from 'react';
-import { Grid, Col, Row, Button } from 'react-bootstrap';
+import { Grid, Col, Row } from 'react-bootstrap';
 import Wrapper from '../Wrapper';
 import FollowAlert from './../FollowAlert';
-
+import FollowBtn from './FollowBtn';
 import './ProfileCard.css';
 
 const ProfileCard =  props => (
@@ -26,7 +26,7 @@ const ProfileCard =  props => (
                     <Row>
                         <Col xs={6} sm={4} />
                         <Col xs={6} sm={4}>
-                            <Button className='profileFollow' bsStyle='warning' bsSize='large' onClick={props.handleClick} block>Follow</Button>
+                            <FollowBtn brewer={props.brewerID} onClick={props.handleClick} />
                         </Col>
                         <Col xs={0} sm={4} />
                     </Row>
@@ -52,6 +52,7 @@ const ProfileCard =  props => (
                         <Col xs={6} sm={3}/>
                         <Col xs={6} sm={6}>
                             <Button className='profileFollow' bsStyle='warning' bsSize='large' onClick={props.handleClick} block>Follow</Button>
+                            <FollowBtn brewer={props.brewerID} onClick={props.handleClick} />
                         </Col>
                         <Col xs={0} sm={3}/>
                     </Row>
