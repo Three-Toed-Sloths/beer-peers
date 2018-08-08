@@ -45,7 +45,7 @@ const RecipeCard = props => (
             </Row>
             <Row>
                 <Col xs={12}>
-                    <Button componentClass={Link} to={"/recipes/" + props.id} size="large">View Recipe</Button>
+                    <Button className='recipeBtn' componentClass={Link} to={"/recipes/" + props.id} size="large">View Recipe</Button>
                 </Col>
             </Row>
         </Grid>

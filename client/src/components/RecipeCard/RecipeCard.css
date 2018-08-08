@@ -19,3 +19,7 @@ h1:active, h1:focus,h1:visited{
     text-decoration: none;
 }
 
+.recipeBtn {
+    font-family: 'EB Garamound', serif;
+    transition: .5s;
+}
