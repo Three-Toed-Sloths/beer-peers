@@ -212,6 +212,7 @@ class Profile extends Component {
                         <Col sm={12}>
                             <ProfileCard 
                             userName={this.state.first +  ' ' + this.state.last}
+                            brewerID={this.state.id}
                             location={this.state.city + ', ' + this.state.state}
                             email={this.state.email}
                             img={this.state.image}

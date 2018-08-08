@@ -1,7 +1,8 @@
 import React from 'react';
-import { Grid, Col, Row, Button } from 'react-bootstrap';
+import { Grid, Col, Row } from 'react-bootstrap';
 
 import FollowAlert from './../FollowAlert';
+import FollowBtn from './FollowBtn';
 
 import './ProfileCard.css';
 
@@ -23,8 +24,8 @@ const ProfileCard =  props => (
                         <p className='profileCardText'>{props.email}</p>
                     </div>
                     <div>
-                        <Button bsStyle='success' bsSize='large' onClick={props.handleClick}>Follow</Button>
-                        
+                        {/* <Button bsStyle='success' bsSize='large' onClick={props.handleClick}>Follow</Button> */}
+                        <FollowBtn brewer={props.brewerID} onClick={props.handleClick} />
                     </div>
                 </Col>
             </div>
