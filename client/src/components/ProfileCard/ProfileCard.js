@@ -1,34 +1,36 @@
 import React from 'react';
 import { Grid, Col, Row } from 'react-bootstrap';
-
+import Wrapper from '../Wrapper';
 import FollowAlert from './../FollowAlert';
 import FollowBtn from './FollowBtn';
-
 import './ProfileCard.css';
 
 const ProfileCard =  props => (
     <Grid className='profileCardCard'>
-        <Row className='profileCardContent'>
-            <Col className='profileCardPicture' xs={2} sm={4}>
-                <img className='profilePic' src={props.img} alt={`${props.userName}ProfilePic`}></img>
+        <Row>
+            <Col xs={12}>
+                <Wrapper>
+                    <h1 className='profileCardName profileCardCap'>{props.userName}</h1>
+                </Wrapper>
             </Col>
-            <div className='profileCardTextHolder'>
-                <Col className="profileCardLocation" xs={10} sm={3}>
-                    <div>
-                        <p className='profileCardText'>{props.userName}</p>
-                        <p className='profileCardText profileCardLocation'>{props.location}</p>
-                    </div>
+        </Row>
+        <Row>
+            <Wrapper>
+                <Col xs={12} sm={5}>
+                    <img className='profilePic' src={props.img} alt={`${props.userName}ProfilePic`}></img>
                 </Col>
-                <Col className="profileCardSocial" xs={10} sm={5}>
-                    <div>
-                        <p className='profileCardText'>{props.email}</p>
-                    </div>
-                    <div>
-                        {/* <Button bsStyle='success' bsSize='large' onClick={props.handleClick}>Follow</Button> */}
-                        <FollowBtn brewer={props.brewerID} onClick={props.handleClick} />
-                    </div>
+                <Col xs={12} sm={7}>
+                    <p className='profileCardText profileCardLocation profileCardCap'>{props.location}</p>
+                    <p className='profileCardText profileCardEmail'>{props.email}</p>
+                    <Row>
+                        <Col xs={0} sm={2} />
+                        <Col xs={12} sm={6}>
+                            <FollowBtn brewer={props.brewerID} onClick={props.handleClick} />
+                        </Col>
+                        <Col xs={0} sm={4} />
+                    </Row>
                 </Col>
-            </div>
+            </Wrapper>
         </Row>
         <Row>
             <Col xs={12}>

@@ -47,7 +47,7 @@ class Profile extends Component {
                     image: res.data.image,
                     recipeArr: res.data.recipes,
                     followingArr: res.data.social.following,
-                    followersArrArr: res.data.social.followers,
+                    followersArr: res.data.social.followers,
                     likes: res.data.social.favorites,
                     username: res.data.username
                 });
@@ -209,7 +209,7 @@ class Profile extends Component {
             <div className='profileBackground'>
                 <Grid>
                     <Row>
-                        <Col sm={12}>
+                        <Col xs={12}>
                             <ProfileCard 
                             userName={this.state.first +  ' ' + this.state.last}
                             brewerID={this.state.id}
@@ -231,7 +231,7 @@ class Profile extends Component {
                         />
                     </Row>
                     <Row>
-                        <Col sm={12}>
+                        <Col xs={12}>
                             <SecondaryNav
                             path={this.state.path}
                             iden={this.state.id}

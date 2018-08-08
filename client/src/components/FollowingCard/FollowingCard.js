@@ -13,11 +13,11 @@ const FollowingCard = props => (
                         <img className='followPic' src={`${props.user.image}`} alt={`${props.user.username}ProfilePic`}></img>
                     </Col>
                     <Col className='followingCardName' xs={12} sm={4}>
-                        <h2 className='followingCardFull'>{props.user.name.first} {props.user.name.last}</h2>
+                        <h2 className='followingCardFull followingCardCap'>{props.user.name.first} {props.user.name.last}</h2>
                         <p className='followingCardUsername followingCardOther'>{props.user.username}</p>
                     </Col>
                     <Col className='followingCardLocation' xs={12} sm={5}>
-                        <p className='followingCardOther'>{props.user.contact.city}, {props.user.contact.state}</p>
+                        <p className='followingCardOther followingCardCap'>{props.user.contact.city}, {props.user.contact.state}</p>
                         <p className='followingCardOther'>{props.user.contact.email}</p>
                     </Col>
                 </Row>

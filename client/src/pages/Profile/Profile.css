@@ -1,4 +1,4 @@
-.profileBackground{
+.profileBackground {
     background-image: url("../../images/profilepic4.jpg");
     background-attachment: fixed;
     background-position: center;
@@ -12,4 +12,11 @@
 .totalFollowerHeader, .totalFollowingHeader {
     text-align: center;
     width: 100%;
+    font-family: 'EB Garamond', serif;
+}
+
+@media only screen and (max-width: 426px) {
+    .profileBackground {
+        height: 65vh;
+    }
 }

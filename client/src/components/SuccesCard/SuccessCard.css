@@ -3,7 +3,8 @@
     margin-top: 1em;
     font-family: 'EB Garamond', serif;
     font-weight: bold;
-}   
+    transition: .5s;
+}
 
 .success-panel {
     min-height: 400px;
@@ -12,8 +13,10 @@
 .success-title {
     font-family: 'EB Garamond', serif;
     margin-top: 3em;
+    text-align: center;
 }
 
 .success-h3 {
     font-family: 'Montserrat', sans-serif;
+    text-align: center;
 }
