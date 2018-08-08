@@ -1,6 +1,5 @@
 import React from "react";
 import { Col, FormControl, ControlLabel } from 'react-bootstrap';
-import './LoginInput.css';
 
 const LoginInput = props => (
 

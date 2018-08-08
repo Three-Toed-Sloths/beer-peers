@@ -13,10 +13,6 @@
     min-height: 93vh;
 }
 
-.landingLogin {
-    filter: blur(0px);
-}
-
 .landingTitle {
     margin: 0 auto;
     padding-top: 1.75em;

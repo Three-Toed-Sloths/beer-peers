@@ -9,7 +9,7 @@ const FollowBtn =  props => {
         return ''
     }
 
-    return <Button bsStyle='success' bsSize='large' onClick={props.onClick}>Follow</Button>
+    return <Button className='profileFollow' bsStyle='warning' bsSize='large' onClick={props.onClick} block>Follow</Button>
 };
 
 

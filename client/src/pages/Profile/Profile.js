@@ -221,7 +221,7 @@ class Profile extends Component {
             <div className='profileBackground'>
                 <Grid>
                     <Row>
-                        <Col sm={12}>
+                        <Col xs={12}>
                             <ProfileCard 
                             userName={this.state.first +  ' ' + this.state.last}
                             brewerID={this.state.id}
@@ -243,7 +243,7 @@ class Profile extends Component {
                         />
                     </Row>
                     <Row>
-                        <Col sm={12}>
+                        <Col xs={12}>
                             <SecondaryNav
                                 currentComp={this.state.currentComp}
                                 handleComponentChange={this.handleComponentChange}

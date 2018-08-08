@@ -1,5 +1,6 @@
 import React from "react";
-import { Button, Col, Row } from 'react-bootstrap/lib';
+import { Button, Grid, Col, Row } from 'react-bootstrap/lib';
+import Wrapper from '../Wrapper';
 import './AddRecipeButton.css';
 
 const AddRecipeButton = props => {
@@ -8,14 +9,19 @@ const AddRecipeButton = props => {
     
     if(loggedIn && props.id === brewer){
         return (
-            <Row>
-                <Col xs={2} md={4} />
-                <Col xs={8} md={4}>
-                    <Button id='AddRecipeButton' block href={'/recipes/new'} bsSize='large'>
-                        Add a Recipe to Your Profile
-                    </Button>
-                </Col>
-            </Row>
+            <Grid>
+                <Row>
+                    <Wrapper>
+                        <Col xs={0} sm={3} />
+                        <Col xs={12} sm={6}>
+                            <Button id='AddRecipeButton' href={'/recipes/new'} bsSize='large' block>
+                                Add a Recipe
+                            </Button>
+                        </Col>
+                        <Col xs={0} sm={3} />
+                    </Wrapper>
+                </Row>
+            </Grid>
         )
     }
 
