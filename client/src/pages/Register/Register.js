@@ -41,15 +41,9 @@ class Register extends Component {
             if (res.data.username === this.state.username || this.state.username === '') {
                 this.usernameDuplicate();
             }
-            // if (!res.data.username) {
-            //     this.usernameReset();
-            // }
             if (res.data.contact.email === this.state.email || this.state.email === '') {
                 this.emailDuplicate();
             }
-            // if (!res.data.contact.email) {
-            //     this.emailReset();
-            // }
             if (this.state.state === '') {
                 this.stateSelect();
             }
@@ -57,8 +51,6 @@ class Register extends Component {
                 this.stateReset();
             }
         }).catch(err => {
-            // this.usernameReset();
-            // this.emailReset();
             this.postUser();
             console.log(err);
             return err;
@@ -84,28 +76,6 @@ class Register extends Component {
     stateSelect = () => {
         this.setState({
             stateMessage: 'Please select a state'
-        });
-    };
-
-    // ===================
-    // || Handle Resets ||
-    // ===================
-
-    usernameReset = () => {
-        this.setState({
-            usernameMessage: ''
-        });
-    };
-
-    emailReset = () => {
-        this.setState({
-            emailMessage: ''
-        });
-    };
-
-    stateReset = () => {
-        this.setState({
-            stateMessage: ''
         });
     };
 
@@ -269,6 +239,7 @@ class Register extends Component {
                                             <FormControl
                                                 type='tel'
                                                 maxLength={12}
+                                                // pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'
                                                 placeholder='###-###-####'
                                                 value={this.state.phone}
                                                 name='phone'

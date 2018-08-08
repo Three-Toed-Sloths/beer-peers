@@ -12,7 +12,6 @@ const ProfileCard =  props => (
                 <Wrapper>
                     <h1 className='profileCardName profileCardCap'>{props.userName}</h1>
                 </Wrapper>
-                <hr className='profileCardHR' />
             </Col>
         </Row>
         <Row>

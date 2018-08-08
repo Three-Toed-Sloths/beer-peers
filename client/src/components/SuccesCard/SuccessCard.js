@@ -8,16 +8,12 @@ const SuccessCard = () => (
         <Panel className='success-panel'>
             <Wrapper>
                 <Row>
-                    <p className='text-center'>
-                        <h1 className='success-title'><strong>Congrautlations!</strong></h1>
-                    </p>
+                    <h1 className='success-title'><strong>Thank You for Registering!</strong></h1>
                     <hr/>
-                    <p>
-                        <h3 className='success-h3'>You are now registered and may login. Please click the button below to go to the login page.</h3>
-                    </p>
+                    <h3 className='success-h3'>You are now registered and may login. Please click the button below to return to the login page.</h3>
                     <Col xs={0} md={4} />
                     <Col xs={12} md={4}>
-                        <Button href='/' bsSize='large' id='success-button' block >Login Page</Button>
+                        <Button className='successBtn' href='/' bsSize='large' id='success-button' block >Login Page</Button>
                     </Col>
                 </Row>
             </Wrapper>

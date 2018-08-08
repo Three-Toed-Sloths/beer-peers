@@ -17,23 +17,23 @@ const SecondaryNav = props => {
                 </Col>
                 <Col smHidden mdHidden lgHidden>
                     <div>
-                        <a className='text-center' onClick={() => props.handleComponentChange('pinnedRec')}>
+                        <a onClick={() => props.handleComponentChange('pinnedRec')}>
                             <p className='secondaryNavText secondaryNavVert'>Overview</p>
                         </a>
                         <hr/>
-                        <a className='text-center' onClick={() => props.handleComponentChange('following')}>
+                        <a onClick={() => props.handleComponentChange('following')}>
                             <p className='secondaryNavText secondaryNavVert'>Following</p>
                         </a>
                         <hr/>                        
-                        <a className='text-center' onClick={() => props.handleComponentChange('followers')}>
+                        <a onClick={() => props.handleComponentChange('followers')}>
                             <p className='secondaryNavText secondaryNavVert'>Followers</p>
                         </a>
                         <hr/>                        
-                        <a className='text-center' onClick={() => props.handleComponentChange('likes')}>
+                        <a onClick={() => props.handleComponentChange('likes')}>
                             <p className='secondaryNavText secondaryNavVert'>Likes</p>
                         </a>
                         <hr/>                        
-                        <a className='text-center' onClick={() => props.handleComponentChange('recipes')}>
+                        <a onClick={() => props.handleComponentChange('recipes')}>
                             <p className='secondaryNavText secondaryNavVert'>Recipes</p>
                         </a>
                     </div>
