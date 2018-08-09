@@ -50,7 +50,6 @@ class Profile extends Component {
                     likes: res.data.social.favorites,
                     username: res.data.username
                 });
-                console.log(res.data.recipes)
             })
             .catch(err => err);
     }
@@ -136,13 +135,9 @@ class Profile extends Component {
                             batchUnits={recipe.specs.batch.units}
                             ibu={recipe.specs.ibu}
                             fg={recipe.specs.fg}
-
                             brewer={recipe.brewer.username}
                             brewerFirstName={recipe.brewer.name.first}
                             brewerLastName={recipe.brewer.name.last}
-                            // brewer={this.state.username}
-                            // brewerFirstName={this.state.first}
-                            // brewerLastName={this.state.last}
                             description={recipe.description}
                         />
                     ))}
@@ -155,10 +150,7 @@ class Profile extends Component {
                     <h2 className='totalLikesHeader'>
                         Total Recipes: {this.state.recipeArr.length} Recipes
                     </h2>
-                    {this.state.recipeArr.map(recipe => {
-                            console.log(recipe);
-                            
-                        return (
+                    {this.state.recipeArr.map(recipe => (
                         <RecipeCard
                             key={`recipe${recipe._id}`}
                             id={recipe._id}
@@ -172,12 +164,9 @@ class Profile extends Component {
                             brewer={recipe.brewer.username}
                             brewerFirstName={recipe.brewer.name.first}
                             brewerLastName={recipe.brewer.name.last}
-                            // brewer={this.state.username}
-                            // brewerFirstName={this.state.first}
-                            // brewerLastName={this.state.last}
                             description={recipe.description}
                         />
-                    )})}
+                    ))}
                 </Col>
             );
             

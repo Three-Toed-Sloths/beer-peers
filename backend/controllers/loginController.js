@@ -13,13 +13,6 @@ module.exports = {
     db.User
       .findOne({username: req.params.username})
       .then(user => 
-
-        // ======================== NON HASH PASSWORD OPTIONS ====================================
-        // (req.params.password === user.password ? 
-        //   res.json({ id: user._id, result: true }) : res.json({ id: user._id, result: false })
-        // )
-        // =======================================================================================
-
         bcrypt.compare(req.params.password, user.password).then(result => {
           (result ? res.json({ id: user._id, result: true }) : res.json({ id: user._id, result: false }))
         })
