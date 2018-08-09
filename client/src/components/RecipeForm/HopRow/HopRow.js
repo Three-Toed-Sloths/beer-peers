@@ -3,8 +3,6 @@ import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { FormGroup, ControlLabel, FormControl, InputGroup } from 'react-bootstrap';
 
-import './HopRow.css';
-
 const HopRow = props => (
 <Row className='hopInputRow'>
     <Col xs={12} sm={3}>
